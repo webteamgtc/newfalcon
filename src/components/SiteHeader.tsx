@@ -17,6 +17,7 @@ export default function SiteHeader() {
   const links = [
     { href: "/", label: t("welcome") },
     { href: "/gallery", label: t("gallery") },
+    { href: "/awards", label: t("awards") },
     { href: "/agenda", label: t("agenda") },
     { href: "/guest", label: t("guest") },
     { href: "/media", label: t("media") },

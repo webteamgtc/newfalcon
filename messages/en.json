@@ -15,6 +15,7 @@
     "media": "Media",
     "ticket": "Ticket",
     "policy": "Policy & Conditions",
+    "awards": "Awards",
     "joinUs": "Join Us"
   },
   "home": {
@@ -459,6 +460,53 @@
     "policy": "Policy & Conditions",
     "contact": "Contact",
     "rights": "All rights reserved."
+  },
+  "awardsPage": {
+    "heroEyebrow": "AWARDS",
+    "heroHeadingPlain": "Recognition at",
+    "heroHeadingItalic": "its highest level.",
+    "heroDescBlack": "Celebrating the people, businesses, partners, and achievements that define excellence across a global community.",
+    "heroCta": "explore categories",
+    "honoursEyebrow": "The honours",
+    "honoursHeadingPlain": "Excellence deserves to be",
+    "honoursHeadingItalic": "seen.",
+    "honoursDescBlack": "The Golden Falcon Awards recognise more than success. They honour the clarity, courage, partnership, and sustained effort behind it.",
+    "honoursDescGold": "Every category is designed to bring meaningful achievement into focus—from individual leadership and business performance to trusted partnership and industry-defining milestones.",
+    "stats": [
+      { "number": "04", "label": "Award families" },
+      { "number": "16", "label": "Award categories" },
+      { "number": "01", "label": "Signature distinction" }
+    ],
+    "categoriesEyebrow": "Award categories",
+    "categoriesHeadingPlain": "Four ways to",
+    "categoriesHeadingItalic": "honour impact.",
+    "categoriesSubtext": "A clear category structure makes every recognition distinct, relevant, and easy to understand.",
+    "categoryBlocks": [
+      {
+        "title": "Individual Awards",
+        "description": "Honouring leadership, expertise, and exceptional personal contribution.",
+        "items": ["Visionary Leader of the Year", "Industry Innovator", "Rising Star", "Outstanding Contribution"]
+      },
+      {
+        "title": "Individual Awards",
+        "description": "Honouring leadership, expertise, and exceptional personal contribution.",
+        "items": ["Visionary Leader of the Year", "Industry Innovator", "Rising Star", "Outstanding Contribution"]
+      },
+      {
+        "title": "Individual Awards",
+        "description": "Honouring leadership, expertise, and exceptional personal contribution.",
+        "items": ["Visionary Leader of the Year", "Industry Innovator", "Rising Star", "Outstanding Contribution"]
+      },
+      {
+        "title": "Individual Awards",
+        "description": "Honouring leadership, expertise, and exceptional personal contribution.",
+        "items": ["Visionary Leader of the Year", "Industry Innovator", "Rising Star", "Outstanding Contribution"]
+      }
+    ],
+    "certificateEyebrow": "Signature distinction",
+    "certificateTitle": "The Golden Falcon",
+    "certificateTitleItalic": "Visionary Award.",
+    "certificateDesc": "Presented to a leader whose direction, influence, and sustained contribution have created meaningful progress beyond individual achievement."
   },
   "common": {
     "backToHome": "Back to Home",
