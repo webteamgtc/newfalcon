@@ -1,12 +1,13 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Link } from "@/i18n/routing";
 
-type Variant = "dark" | "light";
+type Variant = "dark" | "light" | "gold";
 
 type CommonProps = {
   children: ReactNode;
   variant?: Variant;
   className?: string;
+  textClassName?: string;
 };
 
 type ButtonAsLink = CommonProps & {
@@ -23,6 +24,10 @@ const variantStyles: Record<Variant, { root: string; icon: string }> = {
   dark: {
     root: "bg-ink text-white hover:bg-falcon-deep",
     icon: "bg-white text-ink"
+  },
+  gold: {
+    root: "bg-[#382910] text-white hover:bg-[#382910]",
+    icon: "bg-white text-falcon-deep"
   },
   light: {
     root: "bg-white text-ink hover:bg-parchment-light",
@@ -55,6 +60,7 @@ export default function Button({
   children,
   variant = "dark",
   className = "",
+  textClassName = "",
   ...props
 }: ButtonProps) {
   const styles = variantStyles[variant];
@@ -68,7 +74,7 @@ export default function Button({
 
   const content = (
     <>
-      <span>{children}</span>
+      <span className={textClassName}>{children}</span>
       <span
         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${styles.icon}`}
       >
