@@ -1,0 +1,73 @@
+// import { useTranslations } from "next-intl";
+// import { Link } from "@/i18n/routing";
+
+// export default function SiteFooter() {
+//   const t = useTranslations("footer");
+
+//   return (
+//     <footer className="border-t border-ink/10 bg-parchment-dark">
+//       <div className="container flex flex-col items-center justify-between gap-4 py-8 text-xs uppercase tracking-[0.12em] text-ink/70 md:flex-row">
+//         <p>{t("dateLocation")}</p>
+//         <p className="text-center">{t("brand")}</p>
+//         <div className="flex items-center gap-6">
+//           <Link href="/policy" className="hover:text-falcon-deep">
+//             {t("policy")}
+//           </Link>
+//           <Link href="/agenda" className="hover:text-falcon-deep">
+//             {t("contact")}
+//           </Link>
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// }
+
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
+import Image from "next/image";
+import Button from "@/components/Button";
+
+export default function FooterCtaSection() {
+  const t = useTranslations("home.footerCta");
+  const t2 = useTranslations("footer");
+
+  return (
+    <section className="relative overflow-hidden md:pt-24 pt-8">
+      <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
+        <Image
+          src="/images/footer-bg.webp"
+          alt=""
+          fill
+          priority
+          className="h-full w-full object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
+      <div className="relative container text-left">
+        <p className="eyebrow text-[#382910] !capitalize"><span >{t("eyebrow")}</span></p>
+        <h2 className="mt-3 max-w-lg font-display HeadingH1 !font-medium !text-ink">
+          {t("headingPlain")} <span className="italic text-falcon-deep">{t("headingItalic")}</span>
+        </h2>
+        <p className=" mt-6 max-w-lg Text !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
+        <Button href="/ticket" className="mt-10">
+          {t("cta")}
+        </Button>
+      </div>
+      <footer className="border-t mt-24 border-[#382910]">
+      <div className="container font-poppins flex flex-col items-center justify-between gap-4 py-8 text-xs font-medium uppercase tracking-[0.12em] text-[#382910] md:flex-row">
+        <p className="!font-medium text-xs !text-[#382910]">{t2("dateLocation")}</p>
+        <p className="text-center">{t2("brand")}</p>
+        <div className="flex items-center gap-6">
+          <Link href="/policy" className="hover:text-[#382910]">
+            {t2("policy")}
+          </Link>
+          <Link href="/agenda" className="hover:text-[#382910]">
+            {t2("contact")}
+          </Link>
+        </div>
+      </div>
+    </footer>
+    </section>
+  );
+}

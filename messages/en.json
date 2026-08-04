@@ -1,0 +1,277 @@
+{
+  "meta": {
+    "siteName": "Golden Falcon Night",
+    "brand": "GTCFX",
+    "brandFull": "GTCFX \u2014 Regulated Multi-Asset Trading Platform",
+    "tagline": "A Celebration of Global Excellence",
+    "date": "12 December 2026",
+    "location": "Dubai, UAE"
+  },
+  "nav": {
+    "welcome": "Welcome",
+    "gallery": "Gallery",
+    "agenda": "Agenda",
+    "guest": "Guest",
+    "media": "Media",
+    "ticket": "Ticket",
+    "policy": "Policy & Conditions",
+    "joinUs": "Join Us"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "12 December 2026 \u00b7 Dubai, UAE",
+      "titleLine1": "Golden",
+      "titleLine2": "Falcon",
+      "titleLine3": "Night",
+      "subtitle": "A celebration of global excellence",
+      "dateLabel": "12 December 2026",
+      "locationLabel": "Dubai, UAE",
+      "cta": "Join Us"
+    },
+    "history": {
+      "eyebrow": "History / Gallery",
+      "headingPlain": "A journey told through moments, progress,",
+      "headingItalic": "and our presence around the world.",
+      "cta": "Discover More",
+      "timeline": [
+        {
+          "year": "2025",
+          "title": "Elegance in every detail",
+          "description": "A defining celebration of excellence, partnership, and global ambition."
+        },
+        {
+          "year": "2024",
+          "title": "A night of distinction",
+          "description": "Leaders and partners gathered for an elevated red-carpet experience."
+        },
+        {
+          "year": "2023",
+          "title": "Shared vision took the stage",
+          "description": "Insightful panels and meaningful partnerships shaped the conversation."
+        }
+      ]
+    },
+    "guests": {
+      "eyebrow": "Featured guests",
+      "headingPlain": "An elegant pre-dinner evening designed for networking and",
+      "headingItalic": "connection.",
+      "subtext": "Meet the voices shaping business, leadership, and global impact.",
+      "cta": "View All Guests",
+      "list": [
+        {
+          "name": "Shen Xiang Yang",
+          "role": "Chairman of the Board of Trustees, Hong Kong University of Science and Technology \u00b7 Foreign Member, National Academy of Engineering of the United States",
+          "country": "China"
+        },
+        {
+          "name": "Shen Xiang Yang",
+          "role": "Chairman of the Board of Trustees, Hong Kong University of Science and Technology \u00b7 Foreign Member, National Academy of Engineering of the United States",
+          "country": "China"
+        },
+        {
+          "name": "Shen Xiang Yang",
+          "role": "Chairman of the Board of Trustees, Hong Kong University of Science and Technology \u00b7 Foreign Member, National Academy of Engineering of the United States",
+          "country": "China"
+        }
+      ]
+    },
+    "ticketCta": {
+      "eyebrow": "Dubai \u00b7 December 2026",
+      "dateRange": "11\u201312",
+      "watermark": "DUBAI",
+      "headingPlain": "Secure your",
+      "headingItalic": "ticket today.",
+      "description": "Don't miss your chance to attend this year's most anticipated awards event. Reserve your spot now and be part of an exclusive evening of celebration and networking.",
+      "cta": "Reserve Your Ticket"
+    },
+    "awards": {
+      "eyebrow": "The honours",
+      "headingPlain": "Recognition at",
+      "headingItalic": "its highest level.",
+      "subtext": "Six featured distinctions. One exceptional night celebrating the people who move their industries forward.",
+      "cta": "Explore All Awards",
+      "list": [
+        { "index": "01", "title": "Platinum Excellence Award", "country": "T\u00fcrkiye" },
+        { "index": "02", "title": "Platinum Excellence Award", "country": "T\u00fcrkiye" },
+        { "index": "03", "title": "Platinum Excellence Award", "country": "T\u00fcrkiye" },
+        { "index": "04", "title": "Diamond Excellence Award", "country": "T\u00fcrkiye" },
+        { "index": "05", "title": "Diamond Excellence Award", "country": "T\u00fcrkiye" },
+        { "index": "06", "title": "Diamond Excellence Award", "country": "T\u00fcrkiye" }
+      ]
+    },
+    "media": {
+      "eyebrow": "Global press",
+      "heading": "Media Partners",
+      "subtext": "The international press amplifying the ceremony to forty-six countries \u2014 a curated wall of broadcast, editorial and cultural houses.",
+      "partners": [
+        "TRT World",
+        "Khaleej Times",
+        "Al Arabiya",
+        "WikiFX",
+        "Gulf News",
+        "BBC News",
+        "Lovin Dubai",
+        "France 24",
+        "Al Bayan"
+      ]
+    },
+    "faq": {
+      "heading": "Event FAQs, simplified",
+      "subtext": "Essential info for all attendees",
+      "cta": "Submit Question",
+      "list": [
+        {
+          "question": "How do I join the event?",
+          "answer": "Register online and bring your confirmation. Entry details will be sent by email."
+        },
+        {
+          "question": "Is there a dress code?",
+          "answer": "Business format is preferred. Please review our guidelines."
+        },
+        {
+          "question": "What is the venue address?",
+          "answer": "The event takes place at Grand City Convention Center. See Agenda for directions."
+        },
+        {
+          "question": "Can I give my ticket to someone else?",
+          "answer": "Yes, you can transfer your ticket. Update attendee info in your account."
+        }
+      ]
+    },
+    "footerCta": {
+      "eyebrow": "Golden Falcon Night Awards 2026",
+      "headingPlain": "Trade with Confidence.",
+      "headingItalic": "Anywhere.",
+      "subtext": "Join us for an evening of recognition, leadership and celebration in Dubai.",
+      "cta": "Open an Account"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "heading": "Moments worth remembering.",
+    "subtext": "A visual record of past ceremonies \u2014 the arrivals, the recognitions, and the evenings that brought our global community together.",
+    "filters": ["All", "2025", "2024", "2023"],
+    "loadMore": "Load More"
+  },
+  "agenda": {
+    "eyebrow": "Agenda",
+    "heading": "How the evening unfolds.",
+    "subtext": "From arrival to the final toast \u2014 a full itinerary for Golden Falcon Night 2026.",
+    "venueLabel": "Venue",
+    "venue": "Grand City Convention Center, Dubai, UAE",
+    "schedule": [
+      {
+        "time": "6:00 PM",
+        "title": "Red Carpet Arrivals",
+        "description": "Guests arrive and are welcomed along the ceremonial red carpet."
+      },
+      {
+        "time": "7:00 PM",
+        "title": "Networking Reception",
+        "description": "An elegant pre-dinner evening designed for networking and connection."
+      },
+      {
+        "time": "8:00 PM",
+        "title": "Opening Address",
+        "description": "A welcome from the organizing committee and a look back at the year."
+      },
+      {
+        "time": "8:30 PM",
+        "title": "Gala Dinner",
+        "description": "A seated dinner served while highlights of the year are shared."
+      },
+      {
+        "time": "9:30 PM",
+        "title": "Awards Ceremony",
+        "description": "Presentation of the Platinum and Diamond Excellence Awards."
+      },
+      {
+        "time": "11:00 PM",
+        "title": "Closing Toast & Celebration",
+        "description": "A closing toast followed by live entertainment and celebration."
+      }
+    ]
+  },
+  "guestPage": {
+    "eyebrow": "Featured guests",
+    "heading": "The voices of this year's ceremony.",
+    "subtext": "Leaders, innovators, and partners joining us from around the world.",
+    "searchPlaceholder": "Search guests by name or country"
+  },
+  "mediaPage": {
+    "eyebrow": "Media",
+    "heading": "Coverage & Media Partners",
+    "subtext": "The international press amplifying the ceremony to forty-six countries \u2014 a curated wall of broadcast, editorial and cultural houses.",
+    "watchHighlights": "Watch Highlights",
+    "pressKit": "Download Press Kit"
+  },
+  "ticketPage": {
+    "eyebrow": "Tickets",
+    "heading": "Reserve your seat at the table.",
+    "subtext": "Choose the package that fits your evening. All tickets include entry to the reception, gala dinner, and awards ceremony.",
+    "tiers": [
+      {
+        "name": "Individual",
+        "price": "AED 1,500",
+        "description": "A single seat at the Golden Falcon Night gala dinner and ceremony.",
+        "features": ["Reception access", "Gala dinner seat", "Awards ceremony", "Event gift"]
+      },
+      {
+        "name": "Table of 10",
+        "price": "AED 13,500",
+        "description": "A reserved table for ten guests in a premium location.",
+        "features": ["Reception access", "Reserved table of 10", "Awards ceremony", "Dedicated host"]
+      },
+      {
+        "name": "Patron",
+        "price": "AED 25,000",
+        "description": "Front-row seating with full brand and hospitality privileges.",
+        "features": ["VIP reception", "Front-row reserved table", "Stage recognition", "Concierge service"]
+      }
+    ],
+    "cta": "Select Ticket"
+  },
+  "policyPage": {
+    "eyebrow": "Policy & Conditions",
+    "heading": "Terms, privacy, and event conditions.",
+    "subtext": "Please review the following before registering or attending Golden Falcon Night.",
+    "sections": [
+      {
+        "title": "Registration & Entry",
+        "body": "All attendees must register online and present a valid confirmation and photo identification at entry. Entry details and updates are sent to the email address provided at registration."
+      },
+      {
+        "title": "Dress Code",
+        "body": "Business formal attire is required for all guests. Organizers reserve the right to review attire at the entrance in line with event guidelines."
+      },
+      {
+        "title": "Ticket Transfers",
+        "body": "Tickets may be transferred to another attendee by updating the attendee information in your account prior to the event date."
+      },
+      {
+        "title": "Privacy",
+        "body": "Personal information collected during registration is used solely for event administration, communication, and safety, and is handled in accordance with applicable data protection regulations."
+      },
+      {
+        "title": "Media & Recording",
+        "body": "Photography and video recording will take place throughout the event for editorial and promotional purposes. By attending, guests consent to the possible use of their likeness in such materials."
+      },
+      {
+        "title": "Cancellations & Refunds",
+        "body": "Cancellation and refund requests are handled on a case-by-case basis. Please contact the events team as early as possible for assistance."
+      }
+    ]
+  },
+  "footer": {
+    "dateLocation": "12 December 2026 \u00b7 Dubai, UAE",
+    "brand": "@GTCFX Regulated Multi-Asset Trading Platform",
+    "policy": "Policy & Conditions",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "backToHome": "Back to Home",
+    "readMore": "Read More",
+    "close": "Close"
+  }
+}

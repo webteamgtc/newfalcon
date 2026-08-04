@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Poppins:wght@300;400;500;600;700&family=Amiri:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Baskervville", serif;
+  --font-body: "Baskervville", serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-display-ar: "Amiri", serif;
+  --font-body-ar: "IBM Plex Sans Arabic", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f4ecdc;
+  color: #1c1912;
+  font-family: var(--font-body);
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-body-ar);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+[dir="rtl"] .font-display {
+  font-family: var(--font-display-ar);
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #c9a24b;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+[dir="rtl"] .eyebrow {
+  font-family: var(--font-body-ar);
+}
+
+.gold-underline {
+  position: relative;
+}
+
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 1px;
+  background: #c9a24b;
+}
+
+[dir="rtl"] .gold-underline::after {
+  left: auto;
+  right: 0;
+}
+
+
+  
+  /* =========================
+     HEADINGS
+  ========================= */
+
+  .HeadingH1 {
+    @apply text-[25px] leading-[1.1] font-medium tracking-[-0.02em] text-black
+           md:text-[40px]
+           xl:text-[45px]
+           4xl:text-[50px]
+           6xl:text-[55px];
+  }
+
+  .HeadingH2 {
+    @apply text-[22px] leading-[1.2] font-medium tracking-[-0.02em]
+           md:text-[25px]
+             xl:text-[32px]
+           4xl:text-[34px]
+           6xl:text-[36px];
+
+  }
+
+  .HeadingH3 {
+      @apply text-[18px] leading-[1.3] font-medium
+           md:text-[22px]
+             xl:text-[32px]
+           4xl:text-[35px]
+           6xl:text-[38px];
+  }
+
+  .HeadingH4 {
+    @apply text-[18px] leading-[1.3] font-medium
+           lg:text-[20px]
+           xl:text-[24px];
+  }
+
+  .HeadingH5 {
+    @apply text-[18px] leading-[1.3] font-medium
+           md:text-[17px]
+           xl:text-[19px];
+  }
+
+
+  /* =========================
+     TEXT / PARAGRAPH (UPDATED SMALLER)
+  ========================= */
+
+  .Text {
+    @apply text-[14px]  font-normal leading-7 text-[#07111F] md:text-base md:leading-8
+           md:text-[15px]
+           xl:text-[16px];
+           
+  }
+
+  .TextSmall {
+    @apply text-[12px] md:text-sm leading-[1.5] text-[#07111F] font-normal;
+  }
+
+  /* =========================
+     BUTTON TEXT
+  ========================= */
+
+  .TextButton {
+    @apply text-[14px] font-medium
+           md:text-[15px];
+  }
+
+/* =========================
+   PARTNER LOGO MARQUEE
+========================= */
+
+.logo-marquee {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 3.5rem;
+  animation: logo-marquee-scroll 35s linear infinite;
+}
+
+.logo-marquee:hover .logo-marquee__track {
+  animation-play-state: paused;
+}
+
+.logo-marquee__item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes logo-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
