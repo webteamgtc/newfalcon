@@ -7,9 +7,9 @@ export default function TicketContactSection() {
   const t = useTranslations("ticketPage.contact");
 
   return (
-    <section className="bg-[#F9F7F2] py-16 md:py-24">
+    <section className="bg-[#fff] py-10 md:py-12">
       <div className="container grid gap-10 md:grid-cols-2 md:items-center md:gap-14">
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#E5DFD4]">
+        <div className="relative aspect-[4/3] overflow-hidden bg-[#382910]">
           <Image
             src="/images/img-section2.webp"
             alt=""
@@ -20,14 +20,14 @@ export default function TicketContactSection() {
         </div>
 
         <div>
-          <p className="eyebrow !capitalize text-falcon-deep">
+          <p className="eyebrow !capitalize text-[#382910]">
             <span className="font-poppins">{t("eyebrow")}</span>
           </p>
           <h2 className="mt-3 max-w-md font-display HeadingH1 !font-medium !text-ink">
             {t("headingPlain")}{" "}
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>
-          <p className="mt-4 max-w-md Text !leading-snug !font-poppins !text-ink">
+          <p className="mt-4 max-w-xl Text !leading-snug !font-poppins !text-ink">
             {t("subtext")}
           </p>
 
