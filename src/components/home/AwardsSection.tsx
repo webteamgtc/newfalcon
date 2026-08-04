@@ -41,7 +41,7 @@ export default function AwardsSection() {
             ))}
           </div>
 
-          <Button href="/agenda" className="mt-8">
+          <Button href="/awards" className="mt-8">
             {t("cta")}
           </Button>
         </div>
