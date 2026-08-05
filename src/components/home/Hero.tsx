@@ -6,14 +6,22 @@ export default function Hero() {
   const t = useTranslations("home.hero");
 
   return (
-    <section className="relative overflow-hidden pb-24 pt-40 md:pb-32 md:pt-48">
-      <div className="pointer-events-none absolute inset-0 -z-10 md:h-full h-[90vh] overflow-hidden" aria-hidden>
+    <section className="relative overflow-hidden pb-20 pt-40 md:pb-32 md:pt-48">
+      <div className="pointer-events-none absolute inset-0 -z-10 md:h-full h-full overflow-hidden" aria-hidden>
         <Image
           src="/images/home-banner.webp"
           alt=""
           fill
           priority
-          className="h-full w-full object-fill object-center"
+          className="h-full w-full object-fill object-center hidden md:block"
+          // sizes="100vw"
+        />
+         <Image
+          src="/images/tra-mobile.webp"
+          alt=""
+          fill
+          priority
+          className="h-full w-full object-fill object-center block md:hidden"
           // sizes="100vw"
         />
       </div>

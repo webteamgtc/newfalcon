@@ -5,7 +5,7 @@ export default function GalleryRecognitionSection() {
   const items = t.raw("items") as { title: string; description: string }[];
 
   return (
-    <section className="relative overflow-hidden bg-[#fff] pb-10 md:py-16">
+    <section className="relative overflow-hidden bg-[#fff] pt-8 md:pt-0 pb-10 md:py-16">
       <div className="container relative">
         <div className="flex items-end justify-between gap-6">
           <h2 className="max-w-md font-display HeadingH1 !font-medium !text-ink">
@@ -20,7 +20,7 @@ export default function GalleryRecognitionSection() {
           </span>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 border-s border-t border-[#434343]/25 sm:grid-cols-2 md:grid-cols-4">
+        <div className="mt-6 md:mt-10 grid grid-cols-1 border-s border-t border-[#434343]/25 sm:grid-cols-2 md:grid-cols-4">
           {items.map((item) => (
             <article
               key={item.title}

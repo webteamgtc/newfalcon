@@ -17,14 +17,14 @@ export default function GuestsSection() {
             <span className="italic text-falcon-deep"> {t("headingItalic")}</span>
           </h2>
           <p className="mt-4 TextSmall leading-snug !text-[#C79E5E] font-poppins">{t("subtext")}</p>
-          <Button href="/guest" className="mt-10">
+          <Button href="/guest" className="mt-10 hidden md:block">
             {t("cta")}
           </Button>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:col-span-3">
           {guests.map((guest, i) => (
             <div key={i} className="overflow-hidden border border-[#B5ADA4] bg-[#F8F3EB]">
-              <div className="aspect-[3/4] bg-gradient-to-b from-ink/70 to-ink flex items-end justify-center">
+              <div className="aspect-square md:aspect-[3/4] bg-gradient-to-b from-ink/70 to-ink flex items-end justify-center">
                 {/* <span className="mb-3 text-[10px] uppercase tracking-widest text-parchment/70">
                   {guest.country}
                 </span> */}

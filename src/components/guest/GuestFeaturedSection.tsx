@@ -6,14 +6,14 @@ export default function GuestFeaturedSection() {
   const t = useTranslations("guestPage.featured");
 
   return (
-    <section className="bg-white py-10 md:py-16">
+    <section className="bg-white py-8 md:py-16">
       <div className="container">
-        <p className="eyebrow mb-3 text-[#141414] !capitalize">
+        <p className="eyebrow md:mb-3 mb-2 text-[#141414] !capitalize">
           <span className=" font-poppins ">Featured guests</span>
         </p>
       </div>
       <div className="container">
-        <div className="grid gap-8 md:grid-cols-2 md:items-end md:gap-16">
+        <div className="grid gap-4 md:grid-cols-2 md:items-end md:gap-16">
           <div>
 
             <h2 className="mt-3 font-display HeadingH1 !font-medium !text-ink">
@@ -27,7 +27,7 @@ export default function GuestFeaturedSection() {
           </p>
         </div>
 
-        <div className="mt-10 grid overflow-hidden md:mt-14 md:grid-cols-2">
+        <div className="mt-6 grid overflow-hidden md:mt-14 md:grid-cols-2">
           <div className="relative aspect-[16/11] md:aspect-auto md:min-h-[360px]">
             <Image
               src="/images/img-section2.webp"

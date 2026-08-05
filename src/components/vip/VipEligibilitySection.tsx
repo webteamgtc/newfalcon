@@ -5,7 +5,7 @@ export default function VipEligibilitySection() {
   const t = useTranslations("vipPage");
 
   return (
-    <section className="relative overflow-hidden py-16 md:py-24">
+    <section className="relative overflow-hidden py-10 md:py-24">
       <Image
         src="/images/vip-status-last-bg.webp"
         alt=""

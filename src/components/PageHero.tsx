@@ -87,10 +87,10 @@ export default function PageHero({
             {isHashHref(primaryCta.href) ? (
               <a
                 href={primaryCta.href}
-                className="inline-flex items-center gap-4 rounded-full bg-white py-1.5 ps-6 pe-3 font-poppins text-sm uppercase tracking-[0.14em] text-ink transition-colors hover:bg-parchment-light"
+                className="inline-flex items-center gap-4 rounded-full bg-white py-1.5 ps-6 pe-3 font-poppins text-xs md:text-sm uppercase tracking-[0.14em] text-ink transition-colors hover:bg-parchment-light"
               >
                 <span>{primaryCta.label}</span>
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#171617] text-white">
+                <span className="flex h-7 w-7 md:h-9 md:w-9 shrink-0 items-center justify-center rounded-full bg-[#171617] text-white">
                   <ArrowIcon />
                 </span>
               </a>
@@ -103,14 +103,14 @@ export default function PageHero({
               isHashHref(secondaryCta.href) ? (
                 <a
                   href={secondaryCta.href}
-                  className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 font-poppins text-sm uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
+                  className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 font-poppins text-xs md:text-sm uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
                 >
                   {secondaryCta.label}
                 </a>
               ) : (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 font-poppins text-sm uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
+                  className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 font-poppins text-xs md:text-sm uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
                 >
                   {secondaryCta.label}
                 </Link>

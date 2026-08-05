@@ -8,7 +8,7 @@ export default function AwardsSection() {
 
   return (
     <section className="bg-[#FBF4E7] relative md:py-16 py-8">
-      <div className="container grid gap-12 md:grid-cols-[0.5fr_1fr] md:items-start">
+      <div className="container grid md:gap-12 gap-6 md:grid-cols-[0.5fr_1fr] md:items-start">
         <div>
           <div className="relative h-full top-0 md:absolute md:left-0 md:top-14 bottom-14 md:h-[calc(100%-7rem)] mx-auto aspect-square w-full max-w-sm overflow-hidden">
             <Image
@@ -25,7 +25,7 @@ export default function AwardsSection() {
           <p className="eyebrow text-falcon-deep !capitalize">
             <span className="font-poppins">{t("eyebrow")}</span>
           </p>
-          <h2 className="mt-3 max-w-sm font-display HeadingH1 !font-medium !text-ink">
+          <h2 className="mt-3 max-w-md md:max-w-sm font-display HeadingH1 !font-medium !text-ink">
             {t("headingPlain")}{" "}
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>

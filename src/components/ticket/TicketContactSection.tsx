@@ -7,7 +7,7 @@ export default function TicketContactSection() {
   const t = useTranslations("ticketPage.contact");
 
   return (
-    <section className="bg-[#fff] py-10 md:py-12">
+    <section className="bg-[#fff] py-6 md:py-12">
       <div className="container grid gap-10 md:grid-cols-2 md:items-center md:gap-14">
         <div className="relative aspect-[4/3] overflow-hidden bg-[#382910]">
           <Image
@@ -31,7 +31,7 @@ export default function TicketContactSection() {
             {t("subtext")}
           </p>
 
-          <form className="mt-10 space-y-8" onSubmit={(e) => e.preventDefault()}>
+          <form className="mt-6 md:mt-10 space-y-8" onSubmit={(e) => e.preventDefault()}>
             <label className="block">
               <span className="font-poppins text-[11px] uppercase tracking-[0.16em] text-ink/55">
                 {t("nameLabel")}

@@ -10,13 +10,13 @@ export default function GalleryJourneySection() {
   }[];
 
   return (
-    <section className="bg-[#F8F2E6] pb-10 md:py-16">
+    <section className="bg-[#F8F2E6] pt-8 md:pt-0 pb-10 md:py-16">
       <div className="container">
         <p className="eyebrow mb-3 text-[#382910] !capitalize">
           <span className=" font-poppins ">Timeline</span>
         </p>
       </div>
-      <div className="container grid gap-12 md:grid-cols-2 md:items-start md:gap-16">
+      <div className="container grid gap-6 md:grid-cols-2 md:items-start md:gap-16">
         <div>
           <h2 className="max-w-sm font-display HeadingH1 !font-medium !text-ink">
             {t("headingPlain")}{" "}
@@ -26,7 +26,7 @@ export default function GalleryJourneySection() {
             {t("subtext")}
           </p>
 
-          <div className="relative mt-8 aspect-[16/10] overflow-hidden">
+          <div className="relative mt-4 md:mt-8 aspect-[16/10] overflow-hidden">
             <Image
               src="/images/award-25.svg"
               alt=""
@@ -37,7 +37,7 @@ export default function GalleryJourneySection() {
           </div>
         </div>
 
-        <ol className="space-y-14 md:pt-2">
+        <ol className="space-y-6 md:space-y-14 md:pt-2">
           {timeline.map((item) => (
             <li key={item.year} className="grid grid-cols-[auto_1fr] gap-5 md:gap-8">
               <p className="font-display text-3xl leading-none text-ink md:text-4xl xl:text-5xl">

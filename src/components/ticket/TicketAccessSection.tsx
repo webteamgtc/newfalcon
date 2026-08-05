@@ -47,7 +47,7 @@ function AccessCard({
       </div>
       <h3 className="font-display HeadingH2 md:max-w-[290px] !font-medium !text-ink">{title}</h3>
       <p className="text-sm mt-3 !leading-snug !font-poppins !text-ink">{desc}</p>
-      <div className="mt-8 flex flex-1 flex-col">
+      <div className="mt-6 md:mt-8 flex flex-1 flex-col">
         {fields.map((field) => (
           <label key={field.label} className="block">
             {/* <span className="font-poppins text-[11px] uppercase tracking-[0.16em] text-ink/55">
@@ -67,7 +67,7 @@ function AccessCard({
           </label>
         ))}
       </div>
-      <Button type="submit" className="mt-10 w-full justify-between" variant="gold" textClassName="text-white flex-1">
+      <Button type="submit" className="mt-6 md:mt-10 w-full justify-between" variant="gold" textClassName="text-white flex-1">
         {cta}
       </Button>
     </form>
@@ -81,10 +81,10 @@ export default function TicketAccessSection() {
 
   return (
     <>  {/* Ticket information */}
-      <section id="access" className="bg-[#fff] py-10 md:py-12">
+      <section id="access" className="bg-[#fff] py-8 md:py-12">
 
         <div className="container">
-          <p className="eyebrow !capitalize text-[#382910] mb-3">
+          <p className="eyebrow !capitalize text-[#382910] md:mb-3 mb-2">
             <span className="font-poppins">Ticket information</span>
           </p>
         </div>
@@ -107,10 +107,10 @@ export default function TicketAccessSection() {
         </div>
       </section>
 
-      <div className="bg-[#F4ECDF] py-12 container">
+      <div className="bg-[#F4ECDF] md:py-12 py-8 container">
         <div className="flex justify-between items-center mb-5 border-b border-[#3829104D] pb-3">
-          <p className="font-poppins text-sm">Two access routes</p>
-          <p className="font-poppins text-sm">Choose one path · Both lead to Golden Falcon Night</p>
+          <p className="font-poppins md:text-sm text-xs">Two access routes</p>
+          <p className="font-poppins md:text-sm text-xs">Choose one path · Both lead to Golden Falcon Night</p>
         </div>
         <div className="grid gap-5 md:grid-cols-2  ">
           <AccessCard
@@ -133,7 +133,7 @@ export default function TicketAccessSection() {
           />
         </div>
 
-        <div className="mt-8 flex flex-col items-start justify-between gap-4 bg-[#FFFAF0] px-5 py-4 sm:flex-row sm:items-center sm:px-7">
+        <div className="mt-6 md:mt-8 flex flex-col items-start justify-between gap-4 bg-[#FFFAF0] px-5 py-4 sm:flex-row sm:items-center sm:px-7">
           <div className="flex flex-wrap items-center gap-3 sm:gap-5">
             <span className="font-display text-2xl font-medium text-ink md:text-3xl">
               {t("vip.label")}

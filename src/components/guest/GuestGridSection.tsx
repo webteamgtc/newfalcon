@@ -25,14 +25,14 @@ export default function GuestGridSection() {
     active === "all" ? guests : guests.filter((guest) => guest.category === active);
 
   return (
-    <section className="bg-[#F7F1E7] py-10 md:py-16">
+    <section className="bg-[#F7F1E7] py-8 md:py-16">
       <div className="container">
-        <div className="grid gap-8 md:grid-cols-[1fr_0.7fr] md:items-end md:gap-6">
+        <div className="grid gap-4 md:grid-cols-[1fr_0.7fr] md:items-end md:gap-6">
           <div>
             <p className="eyebrow !capitalize text-falcon-deep">
               <span className="font-poppins">Featured guest</span>
             </p>
-            <h2 className="mt-3 font-display max-w-sm HeadingH1 !font-medium !text-ink">
+            <h2 className="mt-3 md:max-w-sm font-display max-w-md HeadingH1 !font-medium !text-ink">
               {t("headingPlain")}{" "}
               <span className="italic text-falcon-deep">{t("headingItalic")}</span>
             </h2>
@@ -42,7 +42,7 @@ export default function GuestGridSection() {
           </p>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center gap-2 md:mt-10">
+        <div className="mt-6  flex flex-wrap items-center gap-2 md:mt-10">
           {filters.map((filter) => {
             const isActive = active === filter.id;
             return (
@@ -61,7 +61,7 @@ export default function GuestGridSection() {
           })}
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 md:mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((guest) => (
             <article
               key={`${guest.name}-${guest.category}`}
