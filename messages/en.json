@@ -574,7 +574,31 @@
     "campaignSubtext": "Halfway to VIP \u00b7 50%",
     "campaignValue1": "0%",
     "campaignValue2": "241",
-    "dashboardNote": "Your dashboard updates as eligible account activity is confirmed. Figures shown here are the current design-preview state."
+    "dashboardNote": "Your dashboard updates as eligible account activity is confirmed. Figures shown here are the current design-preview state.",
+    "journeySubtext": "Your dashboard updates as eligible account activity is confirmed. Figures shown here are the current design-preview state.",
+    "summaryLabel": "Current progress",
+    "summaryValue": "0%",
+    "daysLabel": "Days remaining",
+    "daysValue": "241",
+    "invitationEyebrow": "Your invitation",
+    "invitationHeadingPlain": "An invitation designed around",
+    "invitationHeadingItalic": "every detail.",
+    "invitationSubtext": "A considered evening from arrival to the final celebration, created for qualified guests and their companions.",
+    "benefits": [
+      { "index": "01", "title": "Private arrival", "text": "Dedicated guest welcome and expedited entry." },
+      { "index": "02", "title": "Reserved seating", "text": "Premium placement for the gala and ceremony." },
+      { "index": "03", "title": "VIP hospitality", "text": "Access to curated reception and dining experiences." },
+      { "index": "04", "title": "Personal support", "text": "A dedicated contact before and during the evening." }
+    ],
+    "eligibleEyebrow": "Your progress",
+    "eligibleHeadingPlain": "Every eligible step",
+    "eligibleHeadingItalic": "builds your progress.",
+    "eligibleSubtext": "Eligible deposits and confirmed trading activity automatically move your invitation status forward.",
+    "memberLabel": "VIP member profile",
+    "memberName": "James Delaney",
+    "memberTier": "Annual invitation candidate",
+    "memberIdLabel": "Member ID",
+    "memberId": "GFN-2026-0241"
   },
   "common": {
     "backToHome": "Back to Home",
