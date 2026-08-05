@@ -5,9 +5,9 @@ export default function GalleryRecognitionSection() {
   const items = t.raw("items") as { title: string; description: string }[];
 
   return (
-    <section className="relative overflow-hidden bg-[#fff] pt-8 md:pt-0 pb-10 md:py-16">
+    <section className="relative overflow-hidden bg-[#fff] py-10 md:my-16">
       <div className="container relative">
-        <div className="flex items-end justify-between gap-6">
+        <div className="flex items-start justify-between gap-6">
           <h2 className="max-w-md font-display HeadingH1 !font-medium !text-ink">
             {t("headingPlain")}{" "}
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>

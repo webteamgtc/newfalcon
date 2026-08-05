@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Button from "@/components/Button";
 
 export default function GuestsSection() {
@@ -6,44 +7,54 @@ export default function GuestsSection() {
   const guests = t.raw("list") as { name: string; role: string; country: string }[];
 
   return (
-    <section className="bg-[#F7F0E3]-light md:py-16 py-8">
-      <div className="container grid gap-6 md:grid-cols-[1fr_1.4fr] md:items-start">
-        <div>
+    <section className="bg-[#F7F0E3] py-10 md:py-16">
+      <div className="container grid gap-8 md:grid-cols-[1fr_1.65fr] md:items-start md:gap-10">
+        <div className="max-w-md">
           <p className="eyebrow !capitalize text-falcon-deep">
             <span className="font-poppins">{t("eyebrow")}</span>
           </p>
-          <h2 className="mt-2 font-display !font-medium HeadingH1 text-ink">
-            <span className="">{t("headingPlain")}</span> {" "}
-            <span className="italic text-falcon-deep"> {t("headingItalic")}</span>
+          <h2 className="mt-3 font-display !font-medium HeadingH1 text-ink">
+            {t("headingPlain")}{" "}
+            <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>
-          <p className="mt-4 TextSmall leading-snug !text-[#C79E5E] font-poppins">{t("subtext")}</p>
-          <Button href="/guest" className="mt-10 hidden md:block">
+          <p className="mt-4 font-poppins TextSmall leading-snug !text-[#C79E5E]">
+            {t("subtext")}
+          </p>
+          <Button href="/guest" className="mt-8 md:mt-10">
             {t("cta")}
           </Button>
         </div>
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:col-span-3">
+
+        <div className="-mx-[15px] flex gap-2 overflow-x-auto px-[15px] pb-1 md:mx-0 md:grid md:grid-cols-3 md:gap-2 md:overflow-visible md:px-0">
           {guests.map((guest, i) => (
-            <div key={i} className="overflow-hidden border border-[#B5ADA4] bg-[#F8F3EB]">
-              <div className="aspect-square md:aspect-[3/4] bg-gradient-to-b from-ink/70 to-ink flex items-end justify-center">
-                {/* <span className="mb-3 text-[10px] uppercase tracking-widest text-parchment/70">
-                  {guest.country}
-                </span> */}
-              </div>
-              <div className="px-3 py-1 font-poppins flex items-center justify-between">
-                <span className="text-xs font-medium uppercase tracking-widest text-ink">
+            <article
+              key={i}
+              className="flex min-w-[58%] shrink-0 flex-col border border-[#B5ADA4] bg-[#F8F3EB] sm:min-w-[42%] md:min-w-0"
+            >
+              <div className="flex items-center justify-between px-3 pt-2.5 font-poppins">
+                <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-ink">
                   {guest.country}
                 </span>
-                <span className="text-xs font-medium uppercase tracking-widest text-ink">
-                  {i+1}
+                <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-ink">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-              <div className="p-3 text-[#2C1F16] font-poppins">
-                <p className="font-display TextSmall !font-medium !font-poppins text-ink">{guest.name}</p>
-                <p className="mt-1 line-clamp-3 text-xs leading-snug font-poppins">
-                  {guest.role}
-                </p>
+
+              <div className="relative mx-3 mt-2 aspect-square overflow-hidden border border-[#B5ADA4]">
+                <Image
+                  src="/home/guest.jpg"
+                  alt={guest.name}
+                  fill
+                  className="object-cover object-top grayscale"
+                  sizes="(max-width: 768px) 45vw, 20vw"
+                />
               </div>
-            </div>
+
+              <div className="flex flex-1 flex-col px-3 pb-4 pt-3 font-poppins">
+                <p className="text-sm font-medium text-ink">{guest.name}</p>
+                <p className="mt-2 text-[11px] leading-snug text-ink/80">{guest.role}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>
