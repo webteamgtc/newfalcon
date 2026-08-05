@@ -16,7 +16,10 @@ export default function MediaPartnersSection() {
   const t = useTranslations("home.media");
 
   return (
-    <section className="bg-gradient-to-b from-[#F7F1E700] to-[#F7F1E7] py-8 md:py-16">
+    <section className="py-8 md:py-16"
+      style={{
+        background: "linear-gradient(180deg, rgb(255 255 255) 0%, #F7F1E7 100%)",
+      }}>
       <div className="container">
         <p className="eyebrow text-falcon-deep !capitalize">
           <span className="font-poppins">In partnership with</span>
@@ -34,7 +37,7 @@ export default function MediaPartnersSection() {
         </div>
       </div>
 
-        <div className="mt-6 md:pt-8">
+      <div className="mt-6 md:pt-8">
         <div className="logo-marquee" aria-label="Partner logos">
           <div className="logo-marquee__track">
             {[...partnerLogos, ...partnerLogos].map((img, i) => (

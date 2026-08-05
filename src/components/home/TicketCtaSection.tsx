@@ -6,7 +6,7 @@ export default function TicketCtaSection() {
   const t = useTranslations("home.ticketCta");
 
   return (
-    <section className="relative overflow-hidden md:min-h-[600px] min-h-[500px] flex items-center justify-center py-8 md:py-20"
+    <section className="relative overflow-hidden md:min-h-[650px] min-h-[500px] flex items-center justify-center py-8 md:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
         <Image

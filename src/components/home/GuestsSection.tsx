@@ -25,7 +25,7 @@ export default function GuestsSection() {
           </Button>
         </div>
 
-        <div className="-mx-[15px] flex gap-2 overflow-x-auto px-[15px] pb-1 md:mx-0 md:grid md:grid-cols-3 md:gap-2 md:overflow-visible md:px-0">
+        <div className=" gap-2 overflow-x-auto pb-1 md:mx-0 grid md:grid-cols-3 md:gap-2 md:overflow-visible md:px-0">
           {guests.map((guest, i) => (
             <article
               key={i}
