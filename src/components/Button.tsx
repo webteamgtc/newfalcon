@@ -65,7 +65,7 @@ export default function Button({
 }: ButtonProps) {
   const styles = variantStyles[variant];
   const classes = [
-    "inline-flex items-center font-poppins gap-4 rounded-full py-1.5 ps-6 pe-3 text-sm uppercase tracking-[0.14em] transition-colors",
+    "inline-flex items-center font-poppins gap-4 rounded-full py-1.5 ps-6 pe-3 text-xs md:text-sm uppercase tracking-[0.14em] transition-colors",
     styles.root,
     className
   ]
@@ -76,7 +76,7 @@ export default function Button({
     <>
       <span className={textClassName}>{children}</span>
       <span
-        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${styles.icon}`}
+        className={`flex h-7 w-7 md:h-9 md:w-9 shrink-0 items-center justify-center rounded-full ${styles.icon}`}
       >
         <ArrowIcon />
       </span>

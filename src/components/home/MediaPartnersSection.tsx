@@ -24,7 +24,7 @@ export default function MediaPartnersSection() {
         <h2 className="mt-3 font-display HeadingH1 !font-medium !text-ink">{t("heading")}</h2>
         <p className="mt-3 max-w-2xl Text !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
 
-        <div className="relative mt-8 aspect-[16/6] overflow-hidden">
+        <div className="relative mt-6 md:mt-8 aspect-[16/6] overflow-hidden">
           <Image
             src="/images/video-icon.png"
             alt="Media Partners"
@@ -34,7 +34,7 @@ export default function MediaPartnersSection() {
         </div>
       </div>
 
-        <div className="mt-6 pt-8">
+        <div className="mt-6 md:pt-8">
         <div className="logo-marquee" aria-label="Partner logos">
           <div className="logo-marquee__track">
             {[...partnerLogos, ...partnerLogos].map((img, i) => (

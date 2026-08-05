@@ -6,7 +6,7 @@ export default function TicketCtaSection() {
   const t = useTranslations("home.ticketCta");
 
   return (
-    <section className="relative overflow-hidden min-h-[600px] flex items-center justify-center py-20"
+    <section className="relative overflow-hidden md:min-h-[600px] min-h-[500px] flex items-center justify-center py-8 md:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
         <Image
@@ -20,7 +20,7 @@ export default function TicketCtaSection() {
       </div>
       <span
         aria-hidden
-        className="pointer-events-none absolute end-20 top-20 font-display text-3xl text-white"
+        className="pointer-events-none absolute md:end-20 end-10 md:top-20 top-10 font-display text-3xl text-white"
       >
         {t("dateRange")}
       </span>

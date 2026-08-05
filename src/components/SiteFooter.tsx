@@ -54,10 +54,10 @@ export default function FooterCtaSection() {
           {t("cta")}
         </Button>
       </div>
-      <footer className="border-t mt-24 border-[#382910]">
-      <div className="container font-poppins flex flex-col items-center justify-between gap-4 py-8 text-xs font-medium uppercase tracking-[0.12em] text-[#382910] md:flex-row">
+      <footer className="border-t md:mt-24 mt-16 border-[#382910]">
+      <div className="container font-poppins flex flex-col md:items-center justify-between md:gap-4 gap-2 md:py-8 py-4 text-xs font-medium uppercase tracking-[0.12em] text-[#382910] md:flex-row">
         <p className="!font-medium text-xs !text-[#382910]">{t2("dateLocation")}</p>
-        <p className="text-center">{t2("brand")}</p>
+        <p className="md:text-center">{t2("brand")}</p>
         <div className="flex items-center gap-6">
           <Link href="/policy" className="hover:text-[#382910]">
             {t2("policy")}

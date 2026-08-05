@@ -79,7 +79,7 @@ export default function VipProgressSection() {
           />
         </div>
 
-        <div className="mx-auto mt-12 flex max-w-xl items-center justify-between gap-6 px-7 py-5"
+        <div className="mx-auto mt-6 md:mt-12 flex md:flex-row flex-col max-w-xl items-center justify-between gap-6 px-7 py-5"
           style={{
             borderRadius: "64px",
             border: "1px solid rgba(56, 41, 16, 0.30)",
@@ -97,7 +97,7 @@ export default function VipProgressSection() {
             </div>
             <p className="font-display HeadingH3 !font-medium !text-falcon-deep">{t("summaryValue")}</p>
           </div>
-          <span className="h-8 w-px bg-ink/15" />
+          <span className="md:h-8 h-px w-px hidden md:block bg-ink/15" />
           <div className=" flex justify-between items-center gap-4">
             <div>
               <p className="font-poppins text-xs uppercase tracking-[0.13em] text-[#382910]">

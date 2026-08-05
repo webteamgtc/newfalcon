@@ -11,7 +11,7 @@ export default function HistorySection() {
   }[];
 
   return (
-    <section className="relative py-8 md:py-14">
+    <section className="relative py-6 md:py-14">
       <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
         <Image
           src="/images/home-section2-bg.webp"
@@ -33,7 +33,7 @@ export default function HistorySection() {
         </div>
       </div>
 
-      <div className="container mt-14 grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
+      <div className="container mt-6 md:mt-14 grid gap-6 md:gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
         <div className="relative overflow-hidden aspect-[16/9]">
           <div className="absolute inset-0 flex items-center justify-center">
             <Image
@@ -60,9 +60,11 @@ export default function HistorySection() {
             ))}
           </ol>
 
-          <Button href="/gallery" className="mt-8">
-            {t("cta")}
-          </Button>
+          <div className=" flex justify-center md:justify-start">
+            <Button href="/gallery" className="mt-6 md:mt-8">
+              {t("cta")}
+            </Button>
+          </div>
         </div>
       </div>
     </section>
