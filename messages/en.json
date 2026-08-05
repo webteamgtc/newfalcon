@@ -149,11 +149,72 @@
     }
   },
   "gallery": {
-    "eyebrow": "Gallery",
-    "heading": "Moments worth remembering.",
-    "subtext": "A visual record of past ceremonies \u2014 the arrivals, the recognitions, and the evenings that brought our global community together.",
-    "filters": ["All", "2025", "2024", "2023"],
-    "loadMore": "Load More"
+    "hero": {
+      "headingPlain": "A story built through",
+      "headingItalic": "remarkable moments.",
+      "subtext": "A visual archive of the evenings that shaped Golden Falcon Night \u2014 the people, the stage, and the celebrations that define our legacy."
+    },
+    "ambition": {
+      "headingPlain": "Built on ambition.",
+      "headingItalic": "Defined by excellence.",
+      "paragraph1": "Golden Falcon Night has grown into a defining gathering for leaders and partners who set the pace in their industries.",
+      "paragraph2": "Each year brings sharper purpose, deeper connections, and a higher standard of recognition on a global stage."
+    },
+    "recognition": {
+      "headingPlain": "Recognition at",
+      "headingItalic": "its highest level.",
+      "watermark": "23",
+      "items": [
+        {
+          "title": "Leadership",
+          "description": "Honouring visionaries who guide teams and industries with clarity and courage."
+        },
+        {
+          "title": "Performance",
+          "description": "Celebrating results that raise the bar and inspire lasting progress."
+        },
+        {
+          "title": "Innovation",
+          "description": "Recognising ideas that reshape markets and open new possibilities."
+        },
+        {
+          "title": "Partnership",
+          "description": "Valuing the alliances that turn shared ambition into lasting impact."
+        }
+      ]
+    },
+    "journey": {
+      "headingPlain": "A journey shaped by",
+      "headingItalic": "remarkable moments.",
+      "subtext": "From intimate beginnings to a global stage, every edition has added a new chapter to our story.",
+      "timeline": [
+        {
+          "year": "2025",
+          "title": "Elegance in every detail",
+          "description": "A defining celebration of excellence, partnership, and global ambition."
+        },
+        {
+          "year": "2024",
+          "title": "A night of distinction",
+          "description": "Leaders and partners gathered for an elevated red-carpet experience."
+        },
+        {
+          "year": "2023",
+          "title": "Shared vision took the stage",
+          "description": "Insightful panels and meaningful partnerships shaped the conversation."
+        },
+        {
+          "year": "2022",
+          "title": "The journey begins",
+          "description": "The first Golden Falcon Night set the tone for years of recognition ahead."
+        }
+      ]
+    },
+    "moments": {
+      "headingPlain": "A journey told through",
+      "headingItalic": "moments.",
+      "subtext": "Snapshots from past ceremonies \u2014 arrivals, recognitions, and the evenings that brought our community together."
+    }
   },
   "agenda": {
     "eyebrow": "Agenda",
@@ -195,10 +256,98 @@
     ]
   },
   "guestPage": {
-    "eyebrow": "Featured guests",
-    "heading": "The voices of this year's ceremony.",
-    "subtext": "Leaders, innovators, and partners joining us from around the world.",
-    "searchPlaceholder": "Search guests by name or country"
+    "hero": {
+      "eyebrow": "Become a partner",
+      "headingPlain": "Meet the people behind the",
+      "headingItalic": "progress.",
+      "subtext": "Leaders, innovators, and partners whose vision shapes industries \u2014 and the evening ahead.",
+      "cta": "Learn More"
+    },
+    "featured": {
+      "eyebrow": "The Conclave",
+      "headingPlain": "A voice of vision.",
+      "headingItalic": "A story of impact.",
+      "subtext": "Every Golden Falcon Night is elevated by voices that challenge convention and celebrate excellence on a global stage.",
+      "label": "Featured Speaker",
+      "name": "Shantanu Iyengar",
+      "role": "Chief Executive Officer \u2014 ABC India",
+      "bio": "A global leader recognised for transforming organisations through clarity, culture, and measurable growth across markets.",
+      "cta": "View More"
+    },
+    "grid": {
+      "eyebrow": "Guests 2026",
+      "headingPlain": "Meet the",
+      "headingItalic": "2026 guests.",
+      "subtext": "A curated gathering of speakers, judges, and performers joining us in Dubai.",
+      "filters": [
+        { "id": "all", "label": "All" },
+        { "id": "speakers", "label": "Speakers" },
+        { "id": "judges", "label": "Judges" },
+        { "id": "performers", "label": "Performers" }
+      ],
+      "list": [
+        {
+          "name": "Shantanu Iyengar",
+          "role": "Managing Director \u2014 ABC India",
+          "bio": "Guiding cross-border strategy and partnership growth across emerging markets.",
+          "category": "speakers"
+        },
+        {
+          "name": "Shen Xiang Yang",
+          "role": "Chairman of the Board of Trustees",
+          "bio": "Hong Kong University of Science and Technology \u00b7 Foreign Member, National Academy of Engineering.",
+          "category": "speakers"
+        },
+        {
+          "name": "Elena Vasquez",
+          "role": "Chief Innovation Officer",
+          "bio": "Championing product excellence and responsible technology leadership worldwide.",
+          "category": "speakers"
+        },
+        {
+          "name": "Omar Al-Rashid",
+          "role": "Awards Jury Chair",
+          "bio": "Overseeing selection standards for Platinum and Diamond Excellence distinctions.",
+          "category": "judges"
+        },
+        {
+          "name": "Amelia Chen",
+          "role": "Global Markets Advisor",
+          "bio": "Advising institutions on capital strategy, resilience, and long-term growth.",
+          "category": "judges"
+        },
+        {
+          "name": "Marcus Webb",
+          "role": "Creative Director",
+          "bio": "Shaping the ceremonial stage experience with music, light, and narrative.",
+          "category": "performers"
+        },
+        {
+          "name": "Layla Haddad",
+          "role": "Keynote Partner",
+          "bio": "Connecting cultural leadership with commercial ambition across the region.",
+          "category": "speakers"
+        },
+        {
+          "name": "James Okonkwo",
+          "role": "Industry Judge",
+          "bio": "Evaluating performance excellence across trading and enterprise categories.",
+          "category": "judges"
+        },
+        {
+          "name": "Sofia Marin",
+          "role": "Stage Performer",
+          "bio": "Bringing live artistry to the closing celebration of Golden Falcon Night.",
+          "category": "performers"
+        }
+      ]
+    },
+    "join": {
+      "eyebrow": "Join us now",
+      "headingPlain": "Where remarkable people",
+      "headingItalic": "meet remarkable ideas.",
+      "cta": "Join Now"
+    }
   },
   "mediaPage": {
     "eyebrow": "Media",
@@ -208,35 +357,113 @@
     "pressKit": "Download Press Kit"
   },
   "ticketPage": {
-    "eyebrow": "Tickets",
-    "heading": "Reserve your seat at the table.",
-    "subtext": "Choose the package that fits your evening. All tickets include entry to the reception, gala dinner, and awards ceremony.",
-    "tiers": [
-      {
-        "name": "Individual",
-        "price": "AED 1,500",
-        "description": "A single seat at the Golden Falcon Night gala dinner and ceremony.",
-        "features": ["Reception access", "Gala dinner seat", "Awards ceremony", "Event gift"]
+    "hero": {
+      "headingPlain": "Your place at",
+      "headingItalic": "an exceptional evening.",
+      "subtext": "Secure your seat at Golden Falcon Night \u2014 an evening of recognition, leadership, and celebration in Dubai.",
+      "primaryCta": "Get Access",
+      "secondaryCta": "Read More"
+    },
+    "access": {
+      "headingPlain": "Choose the access that fits your",
+      "headingItalic": "evening.",
+      "subtext": "Two ways to attend: qualify through performance, or purchase event access directly for yourself or your guests.",
+      "qualify": {
+        "title": "Qualify through performance",
+        "fields": [
+          { "label": "Select your account type", "placeholder": "Choose account type" },
+          { "label": "Account number", "placeholder": "Enter account number" },
+          { "label": "Select country", "placeholder": "Choose country" },
+          { "label": "Trading volume", "placeholder": "Select volume range" }
+        ],
+        "cta": "Request Access"
       },
-      {
-        "name": "Table of 10",
-        "price": "AED 13,500",
-        "description": "A reserved table for ten guests in a premium location.",
-        "features": ["Reception access", "Reserved table of 10", "Awards ceremony", "Dedicated host"]
+      "purchase": {
+        "title": "Purchase event access",
+        "fields": [
+          { "label": "Select your ticket type", "placeholder": "Choose ticket type" },
+          { "label": "Number of tickets", "placeholder": "Select quantity" },
+          { "label": "Guest name", "placeholder": "Enter full name" },
+          { "label": "Email address", "placeholder": "Enter email" }
+        ],
+        "cta": "Continue to Payment"
       },
-      {
-        "name": "Patron",
-        "price": "AED 25,000",
-        "description": "Front-row seating with full brand and hospitality privileges.",
-        "features": ["VIP reception", "Front-row reserved table", "Stage recognition", "Concierge service"]
+      "vip": {
+        "label": "VIP",
+        "text": "Looking for a specific VIP arrangement?",
+        "cta": "Go to VIP page"
       }
-    ],
-    "cta": "Select Ticket"
+    },
+    "steps": {
+      "headingPlain": "Three simple steps to",
+      "headingItalic": "request access.",
+      "contactCta": "Contact us",
+      "list": [
+        {
+          "title": "Choose access",
+          "description": "Select qualification or purchase based on how you want to attend."
+        },
+        {
+          "title": "Submit details",
+          "description": "Share the required information so we can review and process your request."
+        },
+        {
+          "title": "Receive confirmation",
+          "description": "Get your entry confirmation and evening details by email."
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "headingPlain": "Here to make your",
+      "headingItalic": "arrival effortless.",
+      "subtext": "Our team is available to help with seating, transfers, and any arrival questions before the evening begins.",
+      "nameLabel": "Name",
+      "emailLabel": "Email address",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "you@example.com"
+    }
   },
   "policyPage": {
-    "eyebrow": "Policy & Conditions",
-    "heading": "Terms, privacy, and event conditions.",
-    "subtext": "Please review the following before registering or attending Golden Falcon Night.",
+    "hero": {
+      "eyebrow": "Golden Falcon Awards · Legal",
+      "headingPlain": "Welcome,",
+      "headingItalic": "& Conditions.",
+      "subtext": "Review the terms of access, event participation, privacy, and conditions of use for Golden Falcon Awards and GTCFX services."
+    },
+    "intro": {
+      "eyebrow": "Policy overview",
+      "text": "Start with the area most relevant to you, or continue to the complete document below."
+    },
+    "riskCards": [
+      {
+        "index": "01",
+        "title": "Risk Disclaimer",
+        "text": "Understand the responsibilities connected with registration and entry."
+      },
+      {
+        "index": "02",
+        "title": "Risk Disclosure",
+        "text": "Review the standards that apply throughout the event experience."
+      },
+      {
+        "index": "03",
+        "title": "Risk Disclosure",
+        "text": "Know how information, media, and attendance data may be handled."
+      }
+    ],
+    "document": {
+      "eyebrow": "Policy document",
+      "headingPlain": "Clear terms for a",
+      "headingItalic": "considered experience.",
+      "updated": "Last updated · August 2026",
+      "labels": ["Scope", "Your responsibility", "Our commitment"],
+      "clauses": [
+        "Applies before, during, and after participation.",
+        "Provide accurate information and follow published guidance.",
+        "We maintain clear communication and responsible handling."
+      ]
+    },
     "sections": [
       {
         "title": "Registration & Entry",

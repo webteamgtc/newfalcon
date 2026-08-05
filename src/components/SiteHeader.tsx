@@ -5,11 +5,14 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function SiteHeader() {
   const t = useTranslations("nav");
   const meta = useTranslations("meta");
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isGallery = pathname === "/en/gallery"||pathname === "/en/guest"||pathname === "/en/ticket";
 
   const links = [
     { href: "/", label: t("welcome") },
@@ -28,7 +31,7 @@ export default function SiteHeader() {
       <div className="container flex items-center justify-between py-5">
         <Link href="/" className="font-display text-lg tracking-widest2 uppercase">
           <Image
-            src="https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/logo-2024-new.webp"
+            src={isGallery ? "https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/footer-logo.webp" : "https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/logo-2024-new.webp"}
             width={150}
             height={52}
             alt="GTCFX"
@@ -48,7 +51,7 @@ export default function SiteHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs font-medium tracking-[0.12em] !text-[#07111F] transition-colors hover:text-falcon-deep"
+              className={`text-xs font-medium tracking-[0.12em] transition-colors hover:text-falcon-deep ${isGallery ? "!text-[#fff]" : "!text-[#07111F]"}`}
             >
               {link.label}
             </Link>

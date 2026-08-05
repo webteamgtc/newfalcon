@@ -7,14 +7,14 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden pb-24 pt-40 md:pb-32 md:pt-48">
-      <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
+      <div className="pointer-events-none absolute inset-0 -z-10 md:h-full h-[90vh] overflow-hidden" aria-hidden>
         <Image
           src="/images/home-banner.webp"
           alt=""
           fill
           priority
-          className="h-full w-full object-cover object-center"
-          sizes="100vw"
+          className="h-full w-full object-fill object-center"
+          // sizes="100vw"
         />
       </div>
       <div className="container grid items-center gap-12 md:grid-cols-2">
@@ -43,7 +43,7 @@ export default function Hero() {
           </Button>
         </div>
 
-        <div className="relative mx-auto aspect-[3/4] w-full max-w-sm">
+        <div className="relative mx-auto aspect-[3/4] hidden md:block w-full max-w-sm">
           {/* <TrophyIllustration /> */}
         </div>
       </div>
