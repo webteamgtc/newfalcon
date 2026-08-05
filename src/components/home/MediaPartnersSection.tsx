@@ -12,14 +12,40 @@ const partnerLogos = [
   { src: "/images/eight.webp", alt: "Eight" }
 ];
 
+function PartnerLogoMarquee() {
+  const loopLogos = [...partnerLogos, ...partnerLogos];
+
+  return (
+    <div className="logo-marquee" aria-label="Partner logos">
+      <div className="logo-marquee__track">
+        {[...loopLogos, ...loopLogos].map((img, i) => (
+          <div key={`${img.src}-${i}`} className="logo-marquee__item">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="h-10 w-auto max-w-[140px] object-contain opacity-80 transition-opacity hover:opacity-100 md:h-12 lg:h-14"
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function MediaPartnersSection() {
   const t = useTranslations("home.media");
 
   return (
-    <section className="py-8 md:py-16"
+    <section
+      className="overflow-hidden py-8 md:py-16"
       style={{
-        background: "linear-gradient(180deg, rgb(255 255 255) 0%, #F7F1E7 100%)",
-      }}>
+        background: "linear-gradient(180deg, rgb(255 255 255) 0%, #F7F1E7 100%)"
+      }}
+    >
       <div className="container">
         <p className="eyebrow text-falcon-deep !capitalize">
           <span className="font-poppins">In partnership with</span>
@@ -27,7 +53,7 @@ export default function MediaPartnersSection() {
         <h2 className="mt-3 font-display HeadingH1 !font-medium !text-ink">{t("heading")}</h2>
         <p className="mt-3 max-w-2xl Text !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
 
-        <div className="relative mt-6 md:mt-8 aspect-[16/6] overflow-hidden">
+        <div className="relative mt-6 aspect-[16/6] overflow-hidden md:mt-8">
           <Image
             src="/images/video-icon.png"
             alt="Media Partners"
@@ -37,23 +63,8 @@ export default function MediaPartnersSection() {
         </div>
       </div>
 
-      <div className="mt-6 md:pt-8">
-        <div className="logo-marquee" aria-label="Partner logos">
-          <div className="logo-marquee__track">
-            {[...partnerLogos, ...partnerLogos].map((img, i) => (
-              <div key={`${img.alt}-${i}`} className="logo-marquee__item">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="h-10 w-auto max-w-[140px] object-contain md:h-12"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="mt-8 md:mt-10">
+        <PartnerLogoMarquee />
       </div>
     </section>
   );

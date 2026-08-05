@@ -160,8 +160,8 @@ input:focus-visible {
 .logo-marquee {
   overflow: hidden;
   width: 100%;
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
 }
 
 .logo-marquee__track {
@@ -169,7 +169,8 @@ input:focus-visible {
   width: max-content;
   align-items: center;
   gap: 3.5rem;
-  animation: logo-marquee-scroll 35s linear infinite;
+  animation: logo-marquee-scroll 40s linear infinite;
+  will-change: transform;
 }
 
 .logo-marquee:hover .logo-marquee__track {
@@ -183,11 +184,24 @@ input:focus-visible {
   justify-content: center;
 }
 
+[dir="rtl"] .logo-marquee__track {
+  animation-name: logo-marquee-scroll-rtl;
+}
+
 @keyframes logo-marquee-scroll {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-marquee-scroll-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
   }
 }

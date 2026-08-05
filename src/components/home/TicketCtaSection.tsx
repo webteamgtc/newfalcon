@@ -6,18 +6,17 @@ export default function TicketCtaSection() {
   const t = useTranslations("home.ticketCta");
 
   return (
-    <section className="relative overflow-hidden md:min-h-[650px] min-h-[500px] flex items-center justify-center py-8 md:py-20"
-    >
-      <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
+    <section className="relative flex min-h-[500px] items-center overflow-hidden py-8 md:min-h-[650px] md:py-20">
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
         <Image
           src="/images/dubai-crop.png"
           alt=""
           fill
-          priority
-          className="h-full w-full object-cover object-center"
+          className="object-cover object-right-top"
           sizes="100vw"
         />
       </div>
+
       <span
         aria-hidden
         className="pointer-events-none absolute md:end-20 end-10 md:top-20 top-10 font-display text-3xl text-white"
