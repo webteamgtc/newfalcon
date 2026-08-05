@@ -10,7 +10,7 @@ export default function GalleryJourneySection() {
   }[];
 
   return (
-    <section className="bg-[#F8F2E6] pt-8 md:pt-0 pb-10 md:py-16">
+    <section className="bg-[#F8F2E6] pt-8 pb-10 md:py-16">
       <div className="container">
         <p className="eyebrow mb-3 text-[#382910] !capitalize">
           <span className=" font-poppins ">Timeline</span>
