@@ -16,7 +16,8 @@
     "ticket": "Ticket",
     "policy": "Policy & Conditions",
     "awards": "Awards",
-    "joinUs": "Join Us"
+    "joinUs": "Join Us",
+    "vipStatus": "VIP Status"
   },
   "home": {
     "hero": {
@@ -316,6 +317,37 @@
     "certificateTitle": "The Golden Falcon",
     "certificateTitleItalic": "Visionary Award.",
     "certificateDesc": "Presented to a leader whose direction, influence, and sustained contribution have created meaningful progress beyond individual achievement."
+  },
+  "vipPage": {
+    "heroEyebrow": "VIP ANNUAL INVITATION",
+    "heroYear": "2026",
+    "heroHeadingPlain": "Welcome,",
+    "heroHeadingName": "Alexander Chen.",
+    "heroSubtext": "Your private view of the journey toward complimentary VIP access to Golden Falcon Awards Night.",
+    "heroCta": "VIEW PROGRESS",
+    "journeyEyebrow": "QUALIFICATION JOURNEY",
+    "journeyHeadingPlain": "Three stages.",
+    "journeyHeadingItalic": "One invitation.",
+    "stages": [
+      { "number": "01", "name": "Registered", "tier": "Silver status" },
+      { "number": "02", "name": "Active trader", "tier": "Gold status" },
+      { "number": "03", "name": "Qualified", "tier": "Platinum status" }
+    ],
+    "capitalLabel": "01 \u00b7 Capital",
+    "capitalTitle": "Net Deposit",
+    "capitalTarget": "$500,000",
+    "capitalRemaining": "$500,000 remaining to reach the target",
+    "activityLabel": "02 \u00b7 Activity",
+    "activityTitle": "Trading Volume",
+    "activityTarget": "$1,500,000",
+    "activityRemaining": "$1,500,000 remaining to reach the target",
+    "currently": "$0",
+    "targetLabel": "Target",
+    "campaignMilestone": "Campaign milestone",
+    "campaignSubtext": "Halfway to VIP \u00b7 50%",
+    "campaignValue1": "0%",
+    "campaignValue2": "241",
+    "dashboardNote": "Your dashboard updates as eligible account activity is confirmed. Figures shown here are the current design-preview state."
   },
   "common": {
     "backToHome": "Back to Home",
