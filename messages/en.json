@@ -424,9 +424,45 @@
     }
   },
   "policyPage": {
-    "eyebrow": "Policy & Conditions",
-    "heading": "Terms, privacy, and event conditions.",
-    "subtext": "Please review the following before registering or attending Golden Falcon Night.",
+    "hero": {
+      "eyebrow": "Golden Falcon Awards · Legal",
+      "headingPlain": "Welcome,",
+      "headingItalic": "& Conditions.",
+      "subtext": "Review the terms of access, event participation, privacy, and conditions of use for Golden Falcon Awards and GTCFX services."
+    },
+    "intro": {
+      "eyebrow": "Policy overview",
+      "text": "Start with the area most relevant to you, or continue to the complete document below."
+    },
+    "riskCards": [
+      {
+        "index": "01",
+        "title": "Risk Disclaimer",
+        "text": "Understand the responsibilities connected with registration and entry."
+      },
+      {
+        "index": "02",
+        "title": "Risk Disclosure",
+        "text": "Review the standards that apply throughout the event experience."
+      },
+      {
+        "index": "03",
+        "title": "Risk Disclosure",
+        "text": "Know how information, media, and attendance data may be handled."
+      }
+    ],
+    "document": {
+      "eyebrow": "Policy document",
+      "headingPlain": "Clear terms for a",
+      "headingItalic": "considered experience.",
+      "updated": "Last updated · August 2026",
+      "labels": ["Scope", "Your responsibility", "Our commitment"],
+      "clauses": [
+        "Applies before, during, and after participation.",
+        "Provide accurate information and follow published guidance.",
+        "We maintain clear communication and responsible handling."
+      ]
+    },
     "sections": [
       {
         "title": "Registration & Entry",
