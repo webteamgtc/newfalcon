@@ -18,9 +18,9 @@ export default function SiteHeader() {
     { href: "/", label: t("welcome") },
     { href: "/gallery", label: t("gallery") },
     { href: "/awards", label: t("awards") },
-    { href: "/agenda", label: t("agenda") },
+    // { href: "/agenda", label: t("agenda") },
     { href: "/guest", label: t("guest") },
-    { href: "/media", label: t("media") },
+    // { href: "/media", label: t("media") },
     { href: "/ticket", label: t("ticket") },
     { href: "/policy", label: t("policy") },
     { href: "/vip-status", label: t("vipStatus") }
