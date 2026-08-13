@@ -30,7 +30,7 @@ export default function GuestGridSection() {
         <div className="grid gap-4 md:grid-cols-[1fr_0.7fr] md:items-end md:gap-6">
           <div>
             <p className="eyebrow !capitalize text-falcon-deep">
-              <span className="font-poppins">Featured guest</span>
+              <span className="font-poppins">{t("sectionLabel")}</span>
             </p>
             <h2 className="mt-3 md:max-w-sm font-display max-w-md HeadingH1 !font-medium !text-ink">
               {t("headingPlain")}{" "}
@@ -38,7 +38,7 @@ export default function GuestGridSection() {
             </h2>
           </div>
           <p className="Text !leading-snug !font-poppins !text-ink md:text-end">
-            A curated community of leaders and voices joining us in Dubai.
+            {t("description")}
           </p>
         </div>
 

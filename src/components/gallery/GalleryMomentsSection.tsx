@@ -16,7 +16,7 @@ export default function GalleryMomentsSection() {
     <section className="bg-[#F9F7F2] py-10 md:py-16">
       <div className="container">
         <p className="eyebrow mb-3 text-[#382910] !capitalize">
-          <span className=" font-poppins ">Timeline</span>
+          <span className=" font-poppins ">{t("eyebrow")}</span>
         </p>
         <div className="grid gap-6 md:grid-cols-[1fr_0.85fr] md:items-end md:gap-12">
           <h2 className="max-w-sm font-display HeadingH1 !font-medium !text-ink">

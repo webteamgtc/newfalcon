@@ -14,7 +14,6 @@ export default function Hero() {
           fill
           priority
           className="h-full w-full object-fill object-center hidden md:block"
-          // sizes="100vw"
         />
          <Image
           src="/images/tra-mobile.webp"
@@ -22,37 +21,51 @@ export default function Hero() {
           fill
           priority
           className="h-full w-full object-fill object-center block md:hidden"
-          // sizes="100vw"
         />
       </div>
       <div className="container grid items-center gap-12 md:grid-cols-2">
-        <div className="max-w-xl">
-          <h1 className="font-display text-[3.2rem] uppercase leading-[1.05] text-ink md:text-[5rem]">
-            {t("titleLine1")}
-            <br />
-            {t("titleLine2")}
-            <br />
-            {t("titleLine3")}
-          </h1>
-          <p className="mt-2  eyebrow Text max-w-xs !tracking-[0.5em] !leading-snug text-[#382910">
-            <span className="font-poppins">{t("subtitle")}</span>
+        <div>
+          {/* Eyebrow */}
+          <p className="font-poppins text-sm md:text-base uppercase tracking-[0.35em] text-falcon-deep font-semibold">
+            {t("eyebrow")}
           </p>
-          <div className="mt-8 font-poppins flex flex-wrap flex-col gap-1 uppercase TextSmall !text-[#07111F]">
-            <span className="flex items-center gap-2">
-              <CalendarIcon /> {t("dateLabel")}
-            </span>
-            <span className="flex items-center gap-2">
-              <PinIcon /> {t("locationLabel")}
-            </span>
+
+          {/* Diamond divider */}
+          <div className="mt-4 mb-6 flex items-center gap-3">
+            <span className="block h-px w-12 bg-falcon-deep" />
+            <span className="block h-3 w-3 rotate-45 border border-falcon-deep" />
+            <span className="block h-px w-12 bg-falcon-deep" />
           </div>
 
+          {/* Main heading */}
+          <h1 className="font-display text-[3.2rem] uppercase leading-[1.05] md:text-[3.8rem] lg:text-[4.2rem] max-w-[650px]">
+            <span className="text-falcon-deep">{t("titleLine1")}</span>{" "}
+            <span className="text-ink">{t("titleLine2")}</span>{" "}
+            <span className="text-ink">{t("titleLine3")}</span> <span className="text-falcon-deep text-[2.8rem]  md:text-[3.8rem] lg:text-[4.9rem]">{t("year")}</span>
+          </h1>
+
+          {/* Year */}
+          <p className="mt-3 font-display text-2xl md:text-4xl tracking-[0.4em] text-falcon-deep font-bold">
+            
+          </p>
+
+          {/* Subtitle */}
+          <p className="mt-6 font-display text-base md:text-2xl italic text-[#382910]">
+            {t("subtitle")}
+          </p>
+
+          {/* Description */}
+          <p className="mt-4 max-w-md font-poppins text-sm md:text-base leading-relaxed text-[#382910]/70">
+            {t("description")}
+          </p>
+
+          {/* CTA */}
           <Button href="/ticket" className="mt-10">
             {t("cta")}
           </Button>
         </div>
 
         <div className="relative mx-auto aspect-[3/4] hidden md:block w-full max-w-sm">
-          {/* <TrophyIllustration /> */}
         </div>
       </div>
     </section>

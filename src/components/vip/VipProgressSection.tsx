@@ -68,6 +68,8 @@ export default function VipProgressSection() {
             target={t("capitalTarget")}
             targetLabel={t("targetLabel")}
             remaining={t("capitalRemaining")}
+            targetText={t("targetValue")}
+            percentText={t("progressPercent")}
           />
           <ProgressCard
             label={t("activityLabel")}
@@ -76,6 +78,8 @@ export default function VipProgressSection() {
             target={t("activityTarget")}
             targetLabel={t("targetLabel")}
             remaining={t("activityRemaining")}
+            targetText={t("targetValue")}
+            percentText={t("progressPercent")}
           />
         </div>
 
@@ -92,7 +96,7 @@ export default function VipProgressSection() {
                 {t("summaryLabel")}
               </p>
               <p className="font-poppins mt-1 text-xs uppercase tracking-[0.13em] text-[#382910]">
-                Halfway to VIP · 50%
+                {t("progressSubtext")}
               </p>
             </div>
             <p className="font-display HeadingH3 !font-medium !text-falcon-deep">{t("summaryValue")}</p>
@@ -104,7 +108,7 @@ export default function VipProgressSection() {
                 {t("daysLabel")}
               </p>
               <p className="font-poppins mt-1 text-xs uppercase tracking-[0.13em] text-[#382910]">
-                Halfway to VIP · 50%
+                {t("progressSubtext")}
               </p>
             </div>
             <p className="font-display HeadingH3 !font-medium !text-falcon-deep">{t("daysValue")}</p>
@@ -121,7 +125,9 @@ function ProgressCard({
   current,
   target,
   targetLabel,
-  remaining
+  remaining,
+  targetText,
+  percentText
 }: {
   label: string;
   title: string;
@@ -129,6 +135,8 @@ function ProgressCard({
   target: string;
   targetLabel: string;
   remaining: string;
+  targetText: string;
+  percentText: string;
 }) {
   return (
     <article className=" p-4 md:p-6"
@@ -142,7 +150,7 @@ function ProgressCard({
           {label}
         </p>
         <p className="font-poppins text-xs uppercase tracking-[0.14em] text-[#382910]">
-          Target $500,000
+          {targetText}
         </p>
       </div>
       <div className="mt-8 flex items-end justify-between gap-5">
@@ -158,7 +166,7 @@ function ProgressCard({
       <div className="mt-6 h-2.5 overflow-hidden rounded-full bg-[#D8C8AE]">
         <div className="h-full w-[2%] rounded-full bg-falcon-gold" />
       </div>
-      <p className="mt-3 HeadingH4 border-b border-[#D8C8AE] pb-2 !text-[#AD7833]">0%</p>
+      <p className="mt-3 HeadingH4 border-b border-[#D8C8AE] pb-2 !text-[#AD7833]">{percentText}</p>
       <p className="mt-3 TextSmall !font-poppins !text-[#382910]">{remaining}</p>
     </article>
   );

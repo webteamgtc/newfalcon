@@ -19,7 +19,7 @@ export default function GalleryAmbitionSection() {
 
       <div className="container">
         <p className="eyebrow mb-4 text-[#382910] !capitalize">
-          <span className=" font-poppins ">Featured guests</span>
+          <span className=" font-poppins ">{t("eyebrow")}</span>
         </p>
         <div className="grid gap-8 md:grid-cols-2 md:items-start md:gap-16">
           <h2 className="font-display HeadingH1 !font-medium !text-ink">

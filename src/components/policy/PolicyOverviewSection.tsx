@@ -37,7 +37,7 @@ export default function PolicyOverviewSection() {
                   {card.index}
                 </span>
                 <p className="text-xs !leading-relaxed !font-poppins !text-[#382910]">
-                  O1 -UNDERSTANDING RISK
+                  {t("intro.riskLabel")}
                 </p>
               </div>
               <h2 className="max-w-[12rem] mt-10 font-display HeadingH3 !font-medium !text-ink">
@@ -47,7 +47,7 @@ export default function PolicyOverviewSection() {
                 {card.text}
               </p>
               <p className="TextSmall border-t border-[#3829104D] pt-4 mt-4 !leading-relaxed !font-poppins !text-[#382910]">
-                <span className="font-poppins">REVIEW SECTION</span>
+                <span className="font-poppins">{t("intro.reviewSection")}</span>
               </p>
             </article>
           ))}

@@ -17,7 +17,7 @@ export default function VipEligibilitySection() {
       <div className="container grid gap-12 md:grid-cols-[1fr_0.75fr] md:items-center md:gap-16">
         <div>
           <p className="eyebrow uppercase text-[#382910] !text-xs">
-            <span className="font-poppins">Move closer to VIP</span>
+            <span className="font-poppins">{t("eligibleMoveEyebrow")}</span>
           </p>
           <h2 className="mt-5 md:max-w-xs font-display HeadingH1 !font-medium !text-[#382910]">
             {t("eligibleHeadingPlain")}{" "}
@@ -26,7 +26,7 @@ export default function VipEligibilitySection() {
             </span>
           </h2>
           <p className="mt-5 max-w-lg Text !leading-snug !font-poppins !text-[#382910]">
-            Increase eligible deposit or trading activity to move toward qualification. Final eligibility remains subject to the confirmed campaign terms.
+            {t("eligibleDescription")}
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export default function VipEligibilitySection() {
           </div>
           <div className="flex items-center justify-between gap-5 pt-5">
             <span className="font-poppins text-[10px] uppercase tracking-[0.14em] text-[#382910]">
-            CONTACT NOW
+            {t("contactNow")}
             </span>
             <span className="font-poppins text-xs font-medium tracking-[0.1em] text-[#382910]">
               {t("memberId")}

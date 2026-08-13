@@ -9,7 +9,7 @@ export default function GuestFeaturedSection() {
     <section className="bg-white py-8 md:py-16">
       <div className="container">
         <p className="eyebrow md:mb-3 mb-2 text-[#141414] !capitalize">
-          <span className=" font-poppins ">Featured guests</span>
+          <span className=" font-poppins ">{t("sectionLabel")}</span>
         </p>
       </div>
       <div className="container">
@@ -44,7 +44,7 @@ export default function GuestFeaturedSection() {
             }}
           >
             <p className="eyebrow TextSmall !capitalize text-ink">
-              <span className="font-poppins">China · Visionary Leader</span>
+              <span className="font-poppins">{t("tag")}</span>
             </p>
             <h3 className="mt-4 font-display HeadingH1 max-w-xs !font-medium !text-ink">
               {t("name")}
@@ -53,7 +53,7 @@ export default function GuestFeaturedSection() {
               {t("role")}
             </p>
             <p className="mt-5 max-w-md border-t border-[#3829104D] pt-5 Text !leading-snug !font-poppins !text-ink">
-            “Leadership becomes meaningful when vision turns into opportunity for others.”
+            {t("quote")}
             </p>
             <Button href="/guest" className="mt-8 self-start">
               {t("cta")}

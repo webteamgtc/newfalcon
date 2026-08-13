@@ -85,7 +85,7 @@ export default function TicketAccessSection() {
 
         <div className="container">
           <p className="eyebrow !capitalize text-[#382910] md:mb-3 mb-2">
-            <span className="font-poppins">Ticket information</span>
+            <span className="font-poppins">{t("eyebrow")}</span>
           </p>
         </div>
         <div className="container">
@@ -96,8 +96,7 @@ export default function TicketAccessSection() {
             </h2>
             <div>
               <p className="Text !leading-snug  !text-ink ">
-                Golden Falcon Awards is a curated event. Every ticket request is reviewed so the guest experience
-                remains considered, relevant, and personal.
+                {t("descriptionText")}
               </p>
               <p className="text-sm mt-3 !leading-snug !font-poppins !text-ink">
                 {t("subtext")}
@@ -109,27 +108,27 @@ export default function TicketAccessSection() {
 
       <div className="bg-[#F4ECDF] md:py-12 py-8 container">
         <div className="flex justify-between items-center mb-5 border-b border-[#3829104D] pb-3">
-          <p className="font-poppins md:text-sm text-xs">Two access routes</p>
-          <p className="font-poppins md:text-sm text-xs">Choose one path · Both lead to Golden Falcon Night</p>
+          <p className="font-poppins md:text-sm text-xs">{t("twoAccessLabel")}</p>
+          <p className="font-poppins md:text-sm text-xs">{t("twoAccessHint")}</p>
         </div>
         <div className="grid gap-5 md:grid-cols-2  ">
           <AccessCard
             title={t("qualify.title")}
             fields={qualifyFields}
             cta={t("qualify.cta")}
-            top1={"Complimentary access"}
-            top2={"For eligible GTCFX clients"}
+            top1={t("complimentaryAccess")}
+            top2={t("forEligibleClients")}
             value={"01"}
-            desc="Reach the confirmed campaign targets to unlock complimentary access to Golden Falcon Awards Night."
+            desc={t("qualifyDesc")}
           />
           <AccessCard
             title={t("purchase.title")}
             fields={purchaseFields}
             cta={t("purchase.cta")}
-            top1={"Falcon ticket"}
-            top2={"Subject to availability"}
+            top1={t("falconTicket")}
+            top2={t("subjectToAvailability")}
             value={"02"}
-            desc="Reach the confirmed campaign targets to unlock complimentary access to Golden Falcon Awards Night."
+            desc={t("purchaseDesc")}
           />
         </div>
 
@@ -140,7 +139,7 @@ export default function TicketAccessSection() {
             </span>
             <div>
               <p className="Text !leading-snug !font-medium  !text-[#17130F]">{t("vip.text")}</p>
-              <p className="text-xs mt-1 !font-poppins !text-[#000000]">Our guest relations team can assist with executive hosting, private introductions, and tailored partner access.</p>
+              <p className="text-xs mt-1 !font-poppins !text-[#000000]">{t("vipAssistText")}</p>
             </div>
           </div>
           <Link

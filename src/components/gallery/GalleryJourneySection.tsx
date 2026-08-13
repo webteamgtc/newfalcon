@@ -13,7 +13,7 @@ export default function GalleryJourneySection() {
     <section className="bg-[#F8F2E6] pt-8 pb-10 md:py-16">
       <div className="container">
         <p className="eyebrow mb-3 text-[#382910] !capitalize">
-          <span className=" font-poppins ">Timeline</span>
+          <span className=" font-poppins ">{t("eyebrow")}</span>
         </p>
       </div>
       <div className="container grid gap-6 md:grid-cols-2 md:items-start md:gap-16">

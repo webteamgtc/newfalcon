@@ -12,7 +12,7 @@ export default function SiteHeader() {
   const meta = useTranslations("meta");
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const isGallery = pathname === "/en/gallery"||pathname === "/en/guest"||pathname === "/en/ticket";
+  const isGallery = pathname.includes('/gallery') || pathname.includes('/guest') || pathname.includes('/ticket');
 
   const links = [
     { href: "/", label: t("welcome") },

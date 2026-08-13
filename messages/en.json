@@ -1,110 +1,112 @@
 {
   "meta": {
-    "siteName": "Golden Falcon Night",
+    "siteName": "Golden Falcon Awards",
     "brand": "GTCFX",
-    "brandFull": "GTCFX \u2014 Regulated Multi-Asset Trading Platform",
-    "tagline": "A Celebration of Global Excellence",
+    "brandFull": "GTCFX — Regulated Multi-Asset Broker",
+    "tagline": "Celebrating Excellence in Global Trading Partnerships",
     "date": "12 December 2026",
-    "location": "Dubai, UAE"
+    "location": "Conrad Hotel, Dubai, UAE"
   },
   "nav": {
-    "welcome": "Welcome",
+    "welcome": "Home",
     "gallery": "Gallery",
     "agenda": "Agenda",
-    "guest": "Guest",
+    "guest": "Guests",
     "media": "Media",
-    "ticket": "Ticket",
-    "policy": "Policy & Conditions",
+    "ticket": "Tickets",
+    "policy": "Terms & Conditions",
     "awards": "Awards",
-    "joinUs": "Join Us",
+    "joinUs": "Register Now",
     "vipStatus": "VIP Status"
   },
   "home": {
     "hero": {
-      "eyebrow": "12 December 2026 \u00b7 Dubai, UAE",
+      "eyebrow": "You are cordially invited",
       "titleLine1": "Golden",
       "titleLine2": "Falcon",
-      "titleLine3": "Night",
-      "subtitle": "A celebration of global excellence",
+      "titleLine3": "Awards",
+      "year": "2 0 2 6",
+      "subtitle": "“Where excellence takes centre stage”",
+      "description": "Join us for an unforgettable evening honouring vision, achievement, and the individuals shaping the future of our industry.",
       "dateLabel": "12 December 2026",
-      "locationLabel": "Dubai, UAE",
-      "cta": "Join Us"
+      "locationLabel": "Conrad Hotel, Dubai",
+      "cta": "Secure Your Invitation"
     },
     "history": {
-      "eyebrow": "History / Gallery",
-      "headingPlain": "A journey told through moments, progress,",
-      "headingItalic": "and our presence around the world.",
-      "cta": "Discover More",
+      "eyebrow": "Our Legacy",
+      "headingPlain": "A legacy forged through partnership,",
+      "headingItalic": "performance, and global ambition.",
+      "cta": "Explore the Journey",
       "timeline": [
         {
           "year": "2025",
-          "title": "Elegance in every detail",
-          "description": "A defining celebration of excellence, partnership, and global ambition."
+          "title": "A Night of Unprecedented Scale",
+          "description": "Over 400 partners and industry leaders gathered for the most ambitious ceremony to date."
         },
         {
           "year": "2024",
-          "title": "A night of distinction",
-          "description": "Leaders and partners gathered for an elevated red-carpet experience."
+          "title": "Global Recognition, Elevated",
+          "description": "The awards expanded to 18 categories, honouring partners across six continents."
         },
         {
           "year": "2023",
-          "title": "Shared vision took the stage",
-          "description": "Insightful panels and meaningful partnerships shaped the conversation."
+          "title": "The Foundation of Excellence",
+          "description": "The inaugural Golden Falcon Awards set a new benchmark for trading industry recognition."
         }
       ]
     },
     "guests": {
-      "eyebrow": "Featured guests",
-      "headingPlain": "An elegant pre-dinner evening designed for networking and",
-      "headingItalic": "connection.",
-      "subtext": "Meet the voices shaping business, leadership, and global impact.",
+      "eyebrow": "Distinguished Guests",
+      "headingPlain": "An exclusive evening of networking with",
+      "headingItalic": "industry leaders.",
+      "subtext": "Connect with the visionaries, executives, and partners shaping the future of global trading.",
       "cta": "View All Guests",
       "list": [
         {
-          "name": "ShenXiang yang",
-          "role": "Chairman of the Board of Trustees of The Hong Kong University of Science and Technology Foreign Member of the National Academy of Engineering of the United States",
-          "country": "China"
+          "name": "Alexander Delaney",
+          "role": "Chief Commercial Officer, GTCFX",
+          "country": "United Kingdom"
         },
         {
-          "name": "ShenXiang yang",
-          "role": "Chairman of the Board of Trustees of The Hong Kong University of Science and Technology Foreign Member of the National Academy of Engineering of the United States",
-          "country": "China"
+          "name": "Kenji Watanabe",
+          "role": "Managing Director, Apex Capital Partners",
+          "country": "Japan"
         },
         {
-          "name": "ShenXiang yang",
-          "role": "Chairman of the Board of Trustees of The Hong Kong University of Science and Technology Foreign Member of the National Academy of Engineering of the United States",
-          "country": "China"
+          "name": "Priya Sharma",
+          "role": "Fund Manager, Meridian Global Investments",
+          "country": "India"
         }
       ]
     },
     "ticketCta": {
-      "eyebrow": "Dubai \u00b7 December 2026",
-      "dateRange": "11\u201312",
+      "eyebrow": "Conrad Hotel · December 2026",
+      "dateRange": "12",
       "watermark": "DUBAI",
-      "headingPlain": "Secure your",
-      "headingItalic": "ticket today.",
-      "description": "Don't miss your chance to attend this year's most anticipated awards event. Reserve your spot now and be part of an exclusive evening of celebration and networking.",
+      "headingPlain": "Reserve your",
+      "headingItalic": "seat at the table.",
+      "description": "Join an elite gathering of trading professionals, liquidity partners, and industry pioneers for the most prestigious awards night of the year. Limited seats available.",
       "cta": "Reserve Your Ticket"
     },
     "awards": {
-      "eyebrow": "The honours",
+      "eyebrow": "The Honours",
       "headingPlain": "Recognition at",
       "headingItalic": "its highest level.",
-      "subtext": "Six featured distinctions. One exceptional night celebrating the people who move their industries forward.",
+      "subtext": "Twenty-two distinguished categories celebrating the partners, leaders, and achievements that define excellence in global trading.",
       "cta": "Explore All Awards",
       "list": [
-        { "index": "01", "title": "Platinum Excellence Award", "country": "T\u00fcrkiye" },
-        { "index": "02", "title": "Platinum Excellence Award", "country": "T\u00fcrkiye" },
-        { "index": "03", "title": "Platinum Excellence Award", "country": "T\u00fcrkiye" },
-        { "index": "04", "title": "Diamond Excellence Award", "country": "T\u00fcrkiye" },
-        { "index": "05", "title": "Diamond Excellence Award", "country": "T\u00fcrkiye" },
-        { "index": "06", "title": "Diamond Excellence Award", "country": "T\u00fcrkiye" }
+        { "index": "01", "title": "Partner Excellence Award", "country": "Vietnam" },
+        { "index": "02", "title": "Partner Excellence Award", "country": "China" },
+        { "index": "03", "title": "Partner Excellence Award", "country": "India" },
+        { "index": "04", "title": "Global Partner of the Year", "country": "UAE" },
+        { "index": "05", "title": "Elite IB of the Year", "country": "China" },
+        { "index": "06", "title": "Strategic Liquidity Partner", "country": "China" }
       ]
     },
     "media": {
-      "eyebrow": "Global press",
+      "eyebrow": "Global Coverage",
       "heading": "Media Partners",
-      "subtext": "The international press amplifying the ceremony to forty-six countries \u2014 a curated wall of broadcast, editorial and cultural houses.",
+      "subtext": "Leading international press and financial outlets amplifying the Golden Falcon Awards across 46 countries — from broadcast networks to digital publications.",
       "partners": [
         "TRT World",
         "Khaleej Times",
@@ -118,167 +120,175 @@
       ]
     },
     "faq": {
-      "heading": "Event FAQs, simplified",
-      "subtext": "Essential info for all attendees",
-      "cta": "Submit Question",
+      "heading": "Frequently Asked Questions",
+      "subtext": "Everything you need to know before the big night",
+      "cta": "Submit a Question",
       "list": [
         {
-          "question": "How do I join the event?",
-          "answer": "Register online and bring your confirmation. Entry details will be sent by email."
+          "question": "How do I register for the Golden Falcon Awards?",
+          "answer": "Register online through our Tickets page. Once confirmed, you'll receive your invitation details and event access via email within 48 hours."
         },
         {
-          "question": "Is there a dress code?",
-          "answer": "Business format is preferred. Please review our guidelines."
+          "question": "What is the dress code for the evening?",
+          "answer": "Black-tie or formal evening attire is required. The organisers reserve the right to review attire at the entrance to maintain the event's standard of elegance."
         },
         {
-          "question": "What is the venue address?",
-          "answer": "The event takes place at Grand City Convention Center. See Agenda for directions."
+          "question": "Where is the event held?",
+          "answer": "The Golden Falcon Awards 2026 will take place at the Conrad Hotel, Sheikh Zayed Road, Dubai, UAE. Valet parking and complimentary transfers are available for VIP guests."
         },
         {
-          "question": "Can I give my ticket to someone else?",
-          "answer": "Yes, you can transfer your ticket. Update attendee info in your account."
+          "question": "Can I transfer my ticket to a colleague?",
+          "answer": "Yes. Tickets may be transferred by updating the attendee information in your account at least 7 days prior to the event. Please contact support@gtcfx.com for assistance."
         }
       ]
     },
     "footerCta": {
-      "eyebrow": "Golden Falcon Night Awards 2026",
-      "headingPlain": "Trade with Confidence.",
-      "headingItalic": "Anywhere.",
-      "subtext": "Join us for an evening of recognition, leadership and celebration in Dubai.",
-      "cta": "Open an Account"
+      "eyebrow": "Golden Falcon Awards 2026",
+      "headingPlain": "Be Part of Something",
+      "headingItalic": "Extraordinary.",
+      "subtext": "The Golden Falcon Awards 2026 brings together the most accomplished minds in global trading. Whether you're a partner, trader, or visionary — this is your stage.",
+      "cta": "Explore Your Invitation"
     }
   },
   "gallery": {
     "hero": {
-      "headingPlain": "A story built through",
+      "headingPlain": "A legacy captured through",
       "headingItalic": "remarkable moments.",
-      "subtext": "A visual archive of the evenings that shaped Golden Falcon Night \u2014 the people, the stage, and the celebrations that define our legacy."
+      "subtext": "A visual chronicle of the evenings that defined the Golden Falcon Awards — the partnerships forged, the achievements celebrated, and the milestones that shaped our global community."
     },
     "ambition": {
+      "eyebrow": "Featured guests",
       "headingPlain": "Built on ambition.",
       "headingItalic": "Defined by excellence.",
-      "paragraph1": "Golden Falcon Night has grown into a defining gathering for leaders and partners who set the pace in their industries.",
-      "paragraph2": "Each year brings sharper purpose, deeper connections, and a higher standard of recognition on a global stage."
+      "paragraph1": "The Golden Falcon Awards have grown into the trading industry's most prestigious gathering — uniting partners, executives, and leaders who set the global standard.",
+      "paragraph2": "Each year raises the benchmark higher, delivering deeper connections, sharper recognition, and a celebration worthy of the achievements it honours."
     },
     "recognition": {
       "headingPlain": "Recognition at",
       "headingItalic": "its highest level.",
-      "watermark": "23",
+      "watermark": "22",
       "items": [
         {
-          "title": "Leadership",
-          "description": "Honouring visionaries who guide teams and industries with clarity and courage."
+          "title": "Partnership",
+          "description": "Celebrating the strategic alliances that drive growth and trust across global markets."
         },
         {
           "title": "Performance",
-          "description": "Celebrating results that raise the bar and inspire lasting progress."
+          "description": "Honouring partners whose trading volume and client acquisition set industry benchmarks."
         },
         {
-          "title": "Innovation",
-          "description": "Recognising ideas that reshape markets and open new possibilities."
+          "title": "Leadership",
+          "description": "Recognising visionaries who guide teams, inspire communities, and elevate standards."
         },
         {
-          "title": "Partnership",
-          "description": "Valuing the alliances that turn shared ambition into lasting impact."
+          "title": "Integrity",
+          "description": "Valuing the compliance, transparency, and ethical conduct that sustain lasting partnerships."
         }
       ]
     },
     "journey": {
+      "eyebrow": "Timeline",
       "headingPlain": "A journey shaped by",
-      "headingItalic": "remarkable moments.",
-      "subtext": "From intimate beginnings to a global stage, every edition has added a new chapter to our story.",
+      "headingItalic": "extraordinary milestones.",
+      "subtext": "From an intimate inaugural ceremony to a globally recognised event — every edition has added a defining chapter to the Golden Falcon legacy.",
       "timeline": [
         {
           "year": "2025",
-          "title": "Elegance in every detail",
-          "description": "A defining celebration of excellence, partnership, and global ambition."
+          "title": "A Night of Unprecedented Scale",
+          "description": "Over 400 partners and industry leaders gathered for the most ambitious ceremony to date."
         },
         {
           "year": "2024",
-          "title": "A night of distinction",
-          "description": "Leaders and partners gathered for an elevated red-carpet experience."
+          "title": "Global Recognition, Elevated",
+          "description": "The awards expanded to 18 categories, honouring partners across six continents."
         },
         {
           "year": "2023",
-          "title": "Shared vision took the stage",
-          "description": "Insightful panels and meaningful partnerships shaped the conversation."
+          "title": "The Foundation of Excellence",
+          "description": "The inaugural Golden Falcon Awards set a new benchmark for trading industry recognition."
         },
         {
           "year": "2022",
-          "title": "The journey begins",
-          "description": "The first Golden Falcon Night set the tone for years of recognition ahead."
+          "title": "Where It All Began",
+          "description": "A private dinner among founding partners planted the seed for what would become a global tradition."
         }
       ]
     },
     "moments": {
-      "headingPlain": "A journey told through",
-      "headingItalic": "moments.",
-      "subtext": "Snapshots from past ceremonies \u2014 arrivals, recognitions, and the evenings that brought our community together."
+      "eyebrow": "Moments",
+      "headingPlain": "The evening through",
+      "headingItalic": "a thousand moments.",
+      "subtext": "From red-carpet arrivals to the final standing ovation — snapshots of the connections, celebrations, and triumphs that bring our community together."
     }
   },
   "agenda": {
-    "eyebrow": "Agenda",
+    "eyebrow": "The Evening",
     "heading": "How the evening unfolds.",
-    "subtext": "From arrival to the final toast \u2014 a full itinerary for Golden Falcon Night 2026.",
+    "subtext": "From red-carpet arrivals to the closing celebration — your complete itinerary for the Golden Falcon Awards 2026.",
     "venueLabel": "Venue",
-    "venue": "Grand City Convention Center, Dubai, UAE",
+    "venue": "Conrad Hotel, Sheikh Zayed Road, Dubai, UAE",
     "schedule": [
       {
         "time": "6:00 PM",
         "title": "Red Carpet Arrivals",
-        "description": "Guests arrive and are welcomed along the ceremonial red carpet."
+        "description": "Guests arrive at the Conrad Hotel and are welcomed along the ceremonial red carpet with welcome champagne."
       },
       {
         "time": "7:00 PM",
         "title": "Networking Reception",
-        "description": "An elegant pre-dinner evening designed for networking and connection."
+        "description": "An elegant pre-dinner reception designed for partners and executives to connect over curated canapés and drinks."
       },
       {
         "time": "8:00 PM",
         "title": "Opening Address",
-        "description": "A welcome from the organizing committee and a look back at the year."
+        "description": "A keynote welcome from GTCFX leadership, reflecting on the year's achievements and the partnerships that made them possible."
       },
       {
         "time": "8:30 PM",
         "title": "Gala Dinner",
-        "description": "A seated dinner served while highlights of the year are shared."
+        "description": "A five-course seated dinner accompanied by live music and highlights from the year's most impactful milestones."
       },
       {
         "time": "9:30 PM",
         "title": "Awards Ceremony",
-        "description": "Presentation of the Platinum and Diamond Excellence Awards."
+        "description": "The presentation of all 22 Golden Falcon Award categories, honouring the year's most distinguished partners and achievements."
       },
       {
         "time": "11:00 PM",
-        "title": "Closing Toast & Celebration",
-        "description": "A closing toast followed by live entertainment and celebration."
+        "title": "Closing Toast & After-Party",
+        "description": "A celebratory closing toast followed by live entertainment, music, and an exclusive after-party for all guests."
       }
     ]
   },
   "guestPage": {
     "hero": {
-      "eyebrow": "Become a partner",
-      "headingPlain": "Meet the people behind the",
-      "headingItalic": "progress.",
-      "subtext": "Leaders, innovators, and partners whose vision shapes industries \u2014 and the evening ahead.",
-      "cta": "Learn More"
+      "eyebrow": "Golden Falcon Awards · December 12, 2026",
+      "headingPlain": "An exclusive gathering of",
+      "headingItalic": "the world's finest minds.",
+      "subtext": "Over 200 distinguished leaders from 30+ countries — CEOs, fund managers, chief analysts, and visionary partners — converge at the Conrad Hotel, Dubai for one extraordinary evening. A celebration of ambition, excellence, and the partnerships shaping the future of global finance.",
+      "cta": "Reserve Your Seat"
     },
     "featured": {
-      "eyebrow": "The Conclave",
+      "eyebrow": "Keynote Speaker",
+      "sectionLabel": "Featured guests",
       "headingPlain": "A voice of vision.",
       "headingItalic": "A story of impact.",
-      "subtext": "Every Golden Falcon Night is elevated by voices that challenge convention and celebrate excellence on a global stage.",
+      "subtext": "Every Golden Falcon Awards ceremony is elevated by leaders who challenge convention and inspire excellence on a global stage.",
       "label": "Featured Speaker",
-      "name": "Shantanu Iyengar",
-      "role": "Chief Executive Officer \u2014 ABC India",
-      "bio": "A global leader recognised for transforming organisations through clarity, culture, and measurable growth across markets.",
-      "cta": "View More"
+      "tag": "United Kingdom · Chief Commercial Officer",
+      "quote": "“Leadership becomes meaningful when vision turns into opportunity for others.”",
+      "name": "Alexander Delaney",
+      "role": "Chief Commercial Officer — GTCFX",
+      "bio": "A globally recognised executive known for scaling cross-border partnerships and driving measurable growth across emerging and established markets.",
+      "cta": "View Full Profile"
     },
     "grid": {
       "eyebrow": "Guests 2026",
-      "headingPlain": "Meet the",
-      "headingItalic": "2026 guests.",
-      "subtext": "A curated gathering of speakers, judges, and performers joining us in Dubai.",
+      "sectionLabel": "Featured guest",
+      "headingPlain": "The 2026",
+      "headingItalic": "guest list.",
+      "subtext": "A curated assembly of executives, analysts, fund managers, and partners joining us at the Conrad Hotel, Dubai.",
+      "description": "A curated community of leaders and voices joining us in Dubai.",
       "filters": [
         { "id": "all", "label": "All" },
         { "id": "speakers", "label": "Speakers" },
@@ -287,316 +297,335 @@
       ],
       "list": [
         {
-          "name": "Shantanu Iyengar",
-          "role": "Managing Director \u2014 ABC India",
-          "bio": "Guiding cross-border strategy and partnership growth across emerging markets.",
+          "name": "Alexander Delaney",
+          "role": "Chief Commercial Officer — GTCFX",
+          "bio": "Driving global partnership strategy and commercial growth across emerging markets.",
           "category": "speakers"
         },
         {
-          "name": "Shen Xiang Yang",
-          "role": "Chairman of the Board of Trustees",
-          "bio": "Hong Kong University of Science and Technology \u00b7 Foreign Member, National Academy of Engineering.",
+          "name": "Kenji Watanabe",
+          "role": "Managing Director — Apex Capital Partners",
+          "bio": "Leading cross-border investment strategy and institutional client development in Asia-Pacific.",
           "category": "speakers"
         },
         {
-          "name": "Elena Vasquez",
-          "role": "Chief Innovation Officer",
-          "bio": "Championing product excellence and responsible technology leadership worldwide.",
+          "name": "Priya Sharma",
+          "role": "Fund Manager — Meridian Global Investments",
+          "bio": "Overseeing multi-asset portfolio strategy with a focus on sustainable long-term returns.",
           "category": "speakers"
         },
         {
           "name": "Omar Al-Rashid",
-          "role": "Awards Jury Chair",
-          "bio": "Overseeing selection standards for Platinum and Diamond Excellence distinctions.",
+          "role": "Senior Vice President — GTCFX",
+          "bio": "Overseeing awards selection standards and compliance integrity across all categories.",
           "category": "judges"
         },
         {
-          "name": "Amelia Chen",
-          "role": "Global Markets Advisor",
-          "bio": "Advising institutions on capital strategy, resilience, and long-term growth.",
+          "name": "Elena Vasquez",
+          "role": "Chief Analyst — Global Markets Division",
+          "bio": "Providing authoritative market insights and advisory on liquidity and risk management.",
           "category": "judges"
         },
         {
           "name": "Marcus Webb",
-          "role": "Creative Director",
-          "bio": "Shaping the ceremonial stage experience with music, light, and narrative.",
+          "role": "Creative Director — Luminary Productions",
+          "bio": "Designing the ceremonial stage experience through immersive light, sound, and narrative.",
           "category": "performers"
         },
         {
           "name": "Layla Haddad",
-          "role": "Keynote Partner",
-          "bio": "Connecting cultural leadership with commercial ambition across the region.",
+          "role": "CEO — Levant Capital Group",
+          "bio": "Connecting strategic leadership with commercial ambition across the Middle East and beyond.",
           "category": "speakers"
         },
         {
           "name": "James Okonkwo",
-          "role": "Industry Judge",
-          "bio": "Evaluating performance excellence across trading and enterprise categories.",
+          "role": "Industry Judge — Trading Excellence Panel",
+          "bio": "Evaluating performance benchmarks across trading volume, client acquisition, and partnership categories.",
           "category": "judges"
         },
         {
           "name": "Sofia Marin",
-          "role": "Stage Performer",
-          "bio": "Bringing live artistry to the closing celebration of Golden Falcon Night.",
+          "role": "Stage Performer — International Artist",
+          "bio": "Bringing world-class live artistry to the closing celebration of the Golden Falcon Awards.",
           "category": "performers"
         }
       ]
     },
     "join": {
-      "eyebrow": "Join us now",
+      "eyebrow": "Be Part of It",
       "headingPlain": "Where remarkable people",
-      "headingItalic": "meet remarkable ideas.",
-      "cta": "Join Now"
+      "headingItalic": "forge remarkable partnerships.",
+      "cta": "Register Now"
     }
   },
   "mediaPage": {
-    "eyebrow": "Media",
+    "eyebrow": "Press & Media",
     "heading": "Coverage & Media Partners",
-    "subtext": "The international press amplifying the ceremony to forty-six countries \u2014 a curated wall of broadcast, editorial and cultural houses.",
-    "watchHighlights": "Watch Highlights",
+    "subtext": "The international press and financial media outlets amplifying the Golden Falcon Awards to audiences across 46 countries — from leading broadcast networks to premier digital publications.",
+    "watchHighlights": "Watch Event Highlights",
     "pressKit": "Download Press Kit"
   },
   "ticketPage": {
     "hero": {
-      "headingPlain": "Your place at",
-      "headingItalic": "an exceptional evening.",
-      "subtext": "Secure your seat at Golden Falcon Night \u2014 an evening of recognition, leadership, and celebration in Dubai.",
-      "primaryCta": "Get Access",
-      "secondaryCta": "Read More"
+      "headingPlain": "One night. One stage. One legacy.",
+      "headingItalic": "Infinite recognition awaits.",
+      "subtext": "December 12, 2026 — Conrad Hotel, Dubai. The Golden Falcon Awards brings together 200+ elite traders, partners, and visionaries for the most anticipated evening in global trading. Red carpet. World-class speakers. 22 awards. This is your invitation to greatness.",
+      "primaryCta": "Secure Your Seat",
+      "secondaryCta": "View Qualification"
     },
     "access": {
-      "headingPlain": "Choose the access that fits your",
+      "headingPlain": "Choose the path that suits your",
       "headingItalic": "evening.",
-      "subtext": "Two ways to attend: qualify through performance, or purchase event access directly for yourself or your guests.",
+      "subtext": "Two ways to attend: qualify through your trading performance as an IB partner, or purchase event access directly for yourself and your guests.",
+      "eyebrow": "Ticket information",
+      "descriptionText": "Golden Falcon Awards is a curated event. Every ticket request is reviewed so the guest experience remains considered, relevant, and personal.",
+      "twoAccessLabel": "Two access routes",
+      "twoAccessHint": "Choose one path · Both lead to Golden Falcon Night",
+      "complimentaryAccess": "Complimentary access",
+      "forEligibleClients": "For eligible GTCFX clients",
+      "qualifyDesc": "Reach the confirmed campaign targets to unlock complimentary access to Golden Falcon Awards Night.",
+      "falconTicket": "Falcon ticket",
+      "subjectToAvailability": "Subject to availability",
+      "purchaseDesc": "Purchase event access directly for yourself or your guests. Subject to availability.",
+      "vipAssistText": "Our guest relations team can assist with executive hosting, private introductions, and tailored partner access.",
       "qualify": {
         "title": "Qualify through performance",
         "fields": [
-          { "label": "Select your account type", "placeholder": "Choose account type" },
-          { "label": "Account number", "placeholder": "Enter account number" },
-          { "label": "Select country", "placeholder": "Choose country" },
+          { "label": "Account type", "placeholder": "Select your account type" },
+          { "label": "Account number", "placeholder": "Enter your account number" },
+          { "label": "Country of residence", "placeholder": "Select your country" },
           { "label": "Trading volume", "placeholder": "Select volume range" }
         ],
-        "cta": "Request Access"
+        "cta": "Request Qualified Access"
       },
       "purchase": {
         "title": "Purchase event access",
         "fields": [
-          { "label": "Select your ticket type", "placeholder": "Choose ticket type" },
+          { "label": "Ticket type", "placeholder": "Select ticket type" },
           { "label": "Number of tickets", "placeholder": "Select quantity" },
           { "label": "Guest name", "placeholder": "Enter full name" },
-          { "label": "Email address", "placeholder": "Enter email" }
+          { "label": "Email address", "placeholder": "Enter your email" }
         ],
-        "cta": "Continue to Payment"
+        "cta": "Proceed to Payment"
       },
       "vip": {
         "label": "VIP",
-        "text": "Looking for a specific VIP arrangement?",
-        "cta": "Go to VIP page"
+        "text": "Interested in a VIP experience with premium benefits?",
+        "cta": "Explore VIP Status"
       }
     },
     "steps": {
       "headingPlain": "Three simple steps to",
-      "headingItalic": "request access.",
-      "contactCta": "Contact us",
+      "headingItalic": "secure your place.",
+      "contactCta": "Contact Us",
       "list": [
         {
-          "title": "Choose access",
-          "description": "Select qualification or purchase based on how you want to attend."
+          "title": "Choose Your Path",
+          "description": "Select qualification through performance or direct ticket purchase — whichever suits your journey."
         },
         {
-          "title": "Submit details",
-          "description": "Share the required information so we can review and process your request."
+          "title": "Submit Your Details",
+          "description": "Provide the required information so our team can review and process your registration promptly."
         },
         {
-          "title": "Receive confirmation",
-          "description": "Get your entry confirmation and evening details by email."
+          "title": "Receive Confirmation",
+          "description": "Get your official invitation and full event details delivered to your inbox within 48 hours."
         }
       ]
     },
     "contact": {
-      "eyebrow": "Contact",
-      "headingPlain": "Here to make your",
+      "eyebrow": "Need Help?",
+      "headingPlain": "We're here to make your",
       "headingItalic": "arrival effortless.",
-      "subtext": "Our team is available to help with seating, transfers, and any arrival questions before the evening begins.",
-      "nameLabel": "Name",
-      "emailLabel": "Email address",
-      "namePlaceholder": "Your name",
+      "subtext": "Our events team is available to assist with seating preferences, airport transfers, accommodation, and any questions before the evening begins.",
+      "nameLabel": "Full Name",
+      "emailLabel": "Email Address",
+      "namePlaceholder": "Your full name",
       "emailPlaceholder": "you@example.com"
     }
   },
   "policyPage": {
     "hero": {
       "eyebrow": "Golden Falcon Awards · Legal",
-      "headingPlain": "Welcome,",
+      "headingPlain": "Terms",
       "headingItalic": "& Conditions.",
-      "subtext": "Review the terms of access, event participation, privacy, and conditions of use for Golden Falcon Awards and GTCFX services."
+      "subtext": "Please review the terms governing event access, participation, privacy, and conditions of use for the Golden Falcon Awards 2026, organised by GTC Global Trade Capital Co. Limited."
     },
     "intro": {
-      "eyebrow": "Policy overview",
-      "text": "Start with the area most relevant to you, or continue to the complete document below."
+      "eyebrow": "Policy Overview",
+      "text": "Navigate to the section most relevant to you, or review the complete terms and conditions below.",
+      "riskLabel": "O1 -UNDERSTANDING RISK",
+      "reviewSection": "REVIEW SECTION"
     },
     "riskCards": [
       {
         "index": "01",
-        "title": "Risk Disclaimer",
-        "text": "Understand the responsibilities connected with registration and entry."
+        "title": "Registration Disclaimer",
+        "text": "Understand the obligations and responsibilities associated with event registration and attendance."
       },
       {
         "index": "02",
-        "title": "Risk Disclosure",
-        "text": "Review the standards that apply throughout the event experience."
+        "title": "Event Conduct Policy",
+        "text": "Review the standards of behaviour and conduct expected throughout the event experience."
       },
       {
         "index": "03",
-        "title": "Risk Disclosure",
-        "text": "Know how information, media, and attendance data may be handled."
+        "title": "Data & Privacy Notice",
+        "text": "Learn how your personal information, media consent, and attendance data are collected and handled."
       }
     ],
     "document": {
-      "eyebrow": "Policy document",
+      "eyebrow": "Policy Document",
       "headingPlain": "Clear terms for a",
-      "headingItalic": "considered experience.",
+      "headingItalic": "seamless experience.",
       "updated": "Last updated · August 2026",
-      "labels": ["Scope", "Your responsibility", "Our commitment"],
+      "labels": ["Scope of Application", "Your Responsibilities", "Our Commitment"],
       "clauses": [
-        "Applies before, during, and after participation.",
-        "Provide accurate information and follow published guidance.",
-        "We maintain clear communication and responsible handling."
+        "These terms apply before, during, and after your participation in the Golden Falcon Awards 2026.",
+        "Attendees must provide accurate information and adhere to all published event guidelines and venue policies.",
+        "GTCFX is committed to transparent communication, responsible data handling, and a premium guest experience."
       ]
     },
     "sections": [
       {
         "title": "Registration & Entry",
-        "body": "All attendees must register online and present a valid confirmation and photo identification at entry. Entry details and updates are sent to the email address provided at registration."
+        "body": "All attendees must register online and present a valid confirmation email along with government-issued photo identification at the entrance. Event access details and updates will be sent to the email address provided during registration. For assistance, contact support@gtcfx.com."
       },
       {
         "title": "Dress Code",
-        "body": "Business formal attire is required for all guests. Organizers reserve the right to review attire at the entrance in line with event guidelines."
+        "body": "Black-tie or formal evening attire is required for all guests. The organisers reserve the right to review attire at the entrance to uphold the event's standard of elegance. Smart casual attire will not be permitted."
       },
       {
         "title": "Ticket Transfers",
-        "body": "Tickets may be transferred to another attendee by updating the attendee information in your account prior to the event date."
+        "body": "Tickets may be transferred to another attendee by updating the attendee information in your account at least 7 days prior to the event date. Transfer requests submitted after this deadline will be reviewed on a case-by-case basis."
       },
       {
-        "title": "Privacy",
-        "body": "Personal information collected during registration is used solely for event administration, communication, and safety, and is handled in accordance with applicable data protection regulations."
+        "title": "Privacy Policy",
+        "body": "Personal information collected during registration is used exclusively for event administration, guest communication, and safety purposes. All data is processed and stored in accordance with applicable data protection regulations, including the UAE Federal Data Protection Law."
       },
       {
-        "title": "Media & Recording",
-        "body": "Photography and video recording will take place throughout the event for editorial and promotional purposes. By attending, guests consent to the possible use of their likeness in such materials."
+        "title": "Media & Recording Consent",
+        "body": "Professional photography and video recording will take place throughout the event for editorial, promotional, and archival purposes. By attending, guests consent to the potential use of their likeness in such materials published by GTCFX and its media partners."
       },
       {
         "title": "Cancellations & Refunds",
-        "body": "Cancellation and refund requests are handled on a case-by-case basis. Please contact the events team as early as possible for assistance."
+        "body": "Cancellation and refund requests are evaluated on a case-by-case basis. Please contact the events team at support@gtcfx.com or call +971 800 667788 as early as possible. Refunds requested fewer than 14 days before the event may be subject to administrative fees."
       }
     ]
   },
   "footer": {
-    "dateLocation": "12 December 2026 \u00b7 Dubai, UAE",
-    "brand": "@GTCFX Regulated Multi-Asset Trading Platform",
-    "policy": "Policy & Conditions",
+    "dateLocation": "12 December 2026 · Conrad Hotel, Dubai",
+    "brand": "© GTCFX — Regulated Multi-Asset Broker",
+    "policy": "Terms & Conditions",
     "contact": "Contact",
-    "rights": "All rights reserved."
+    "rights": "© 2026 GTC Global Trade Capital Co. Limited. All rights reserved."
   },
   "awardsPage": {
-    "heroEyebrow": "AWARDS",
+    "heroEyebrow": "THE GOLDEN FALCON AWARDS 2026",
     "heroHeadingPlain": "Recognition at",
     "heroHeadingItalic": "its highest level.",
-    "heroDescBlack": "Celebrating the people, businesses, partners, and achievements that define excellence across a global community.",
-    "heroCta": "explore categories",
-    "honoursEyebrow": "The honours",
+    "heroDescBlack": "Celebrating the partners, leaders, and achievements that define excellence across the global trading community — from regional mastery to worldwide impact.",
+    "heroCta": "Explore Categories",
+    "honoursEyebrow": "The Honours",
     "honoursHeadingPlain": "Excellence deserves to be",
-    "honoursHeadingItalic": "seen.",
-    "honoursDescBlack": "The Golden Falcon Awards recognise more than success. They honour the clarity, courage, partnership, and sustained effort behind it.",
-    "honoursDescGold": "Every category is designed to bring meaningful achievement into focus—from individual leadership and business performance to trusted partnership and industry-defining milestones.",
+    "honoursHeadingItalic": "celebrated.",
+    "honoursDescBlack": "The Golden Falcon Awards honour more than results. They recognise the trust, integrity, partnership, and relentless dedication behind every achievement.",
+    "honoursDescGold": "Each of our 22 categories is crafted to bring meaningful accomplishment into sharp focus — from regional partner excellence and liquidity leadership to individual milestones and compliance integrity.",
     "stats": [
-      { "number": "04", "label": "Award families" },
-      { "number": "16", "label": "Award categories" },
-      { "number": "01", "label": "Signature distinction" }
+      { "number": "04", "label": "Award Families" },
+      { "number": "22", "label": "Award Categories" },
+      { "number": "01", "label": "Signature Distinction" }
     ],
-    "categoriesEyebrow": "Award categories",
-    "categoriesHeadingPlain": "Four ways to",
-    "categoriesHeadingItalic": "honour impact.",
-    "categoriesSubtext": "A clear category structure makes every recognition distinct, relevant, and easy to understand.",
+    "categoriesEyebrow": "Award Categories",
+    "categoriesHeadingPlain": "Four pillars of",
+    "categoriesHeadingItalic": "recognition.",
+    "categoriesSubtext": "A structured category framework ensures every achievement is distinct, relevant, and celebrated with the prominence it deserves.",
     "categoryBlocks": [
       {
-        "title": "Individual Awards",
-        "description": "Honouring leadership, expertise, and exceptional personal contribution.",
-        "items": ["Visionary Leader of the Year", "Industry Innovator", "Rising Star", "Outstanding Contribution"]
+        "title": "Regional Partner Excellence",
+        "description": "Celebrating outstanding partners who drive growth and trust in their respective markets.",
+        "items": ["Partner Excellence Award Turkey", "Partner Excellence Award US/LM", "Partner Excellence Award CIS", "Partner Excellence Award Japan", "Partner Excellence Award UK", "Partner Excellence Award Southeast Asia", "Partner Excellence Award India"]
       },
       {
-        "title": "Individual Awards",
-        "description": "Honouring leadership, expertise, and exceptional personal contribution.",
-        "items": ["Visionary Leader of the Year", "Industry Innovator", "Rising Star", "Outstanding Contribution"]
+        "title": "Liquidity & Strategic Partnerships",
+        "description": "Recognising the strategic alliances and liquidity providers that power market infrastructure.",
+        "items": ["Partner Excellence Award – Prop Trading", "Strategic Liquidity Partner", "Liquidity Partner Excellence Award", "Most Trusted & Long-Standing Partner Award"]
       },
       {
-        "title": "Individual Awards",
-        "description": "Honouring leadership, expertise, and exceptional personal contribution.",
-        "items": ["Visionary Leader of the Year", "Industry Innovator", "Rising Star", "Outstanding Contribution"]
+        "title": "Individual & Performance Awards",
+        "description": "Honouring exceptional traders and professionals whose results set new industry benchmarks.",
+        "items": ["Inspiring Women Award", "Youngest Seven-Figure Trader of the Year 2026", "Outstanding Gross Deposit Award", "Quality Customer Champion of the Year", "Top Monthly ROI Award", "Premium Monthly Rebate Award", "Highest Annual Rebate & Trading"]
       },
       {
-        "title": "Individual Awards",
-        "description": "Honouring leadership, expertise, and exceptional personal contribution.",
-        "items": ["Visionary Leader of the Year", "Industry Innovator", "Rising Star", "Outstanding Contribution"]
+        "title": "Leadership & Integrity",
+        "description": "Celebrating visionary leadership, client acquisition mastery, and uncompromising ethical standards.",
+        "items": ["Highest Client Acquisition Award", "Elite IB of the Year", "Global Partner of the Year", "Compliance & Integrity Excellence Award"]
       }
     ],
-    "certificateEyebrow": "Signature distinction",
+    "certificateEyebrow": "Signature Distinction",
     "certificateTitle": "The Golden Falcon",
     "certificateTitleItalic": "Visionary Award.",
-    "certificateDesc": "Presented to a leader whose direction, influence, and sustained contribution have created meaningful progress beyond individual achievement."
+    "certificateDesc": "The pinnacle honour of the evening — presented to a partner or leader whose vision, influence, and sustained contribution have created transformative impact across the global trading community."
   },
   "vipPage": {
-    "heroEyebrow": "VIP ANNUAL INVITATION",
+    "heroEyebrow": "VIP QUALIFICATION",
     "heroYear": "2026",
-    "heroHeadingPlain": "Welcome,",
-    "heroHeadingName": "Alexander Chen.",
-    "heroSubtext": "Your private view of the journey toward complimentary VIP access to Golden Falcon Awards Night.",
-    "heroCta": "VIEW PROGRESS",
+    "heroHeadingPlain": "Your journey to",
+    "heroHeadingName": "VIP status.",
+    "heroSubtext": "Your personal dashboard tracking progress toward complimentary VIP access to the Golden Falcon Awards — including flights, five-star accommodation, and exclusive event privileges.",
+    "heroCta": "VIEW YOUR PROGRESS",
     "journeyEyebrow": "QUALIFICATION JOURNEY",
     "journeyHeadingPlain": "Three stages.",
     "journeyHeadingItalic": "One invitation.",
     "stages": [
-      { "number": "01", "name": "Registered", "tier": "Silver status" },
-      { "number": "02", "name": "Active trader", "tier": "Gold status" },
-      { "number": "03", "name": "Qualified", "tier": "Platinum status" }
+      { "number": "01", "name": "Registered", "tier": "Silver Status" },
+      { "number": "02", "name": "Active Trader", "tier": "Gold Status" },
+      { "number": "03", "name": "Qualified", "tier": "Platinum Status" }
     ],
-    "capitalLabel": "01 \u00b7 Capital",
-    "capitalTitle": "Net Deposit",
+    "capitalLabel": "01 · Net Deposit",
+    "capitalTitle": "Minimum Deposit",
     "capitalTarget": "$500,000",
-    "capitalRemaining": "$500,000 remaining to reach the target",
-    "activityLabel": "02 \u00b7 Activity",
+    "capitalRemaining": "$500,000 remaining to reach qualification",
+    "activityLabel": "02 · Trading Activity",
     "activityTitle": "Trading Volume",
     "activityTarget": "$1,500,000",
-    "activityRemaining": "$1,500,000 remaining to reach the target",
+    "activityRemaining": "$1,500,000 remaining to reach qualification",
     "currently": "$0",
     "targetLabel": "Target",
-    "campaignMilestone": "Campaign milestone",
-    "campaignSubtext": "Halfway to VIP \u00b7 50%",
+    "campaignMilestone": "Qualification period",
+    "campaignSubtext": "Feb 2 – Oct 31, 2026",
     "campaignValue1": "0%",
     "campaignValue2": "241",
-    "dashboardNote": "Your dashboard updates as eligible account activity is confirmed. Figures shown here are the current design-preview state.",
-    "journeySubtext": "Your dashboard updates as eligible account activity is confirmed. Figures shown here are the current design-preview state.",
-    "summaryLabel": "Current progress",
+    "progressSubtext": "Halfway to VIP · 50%",
+    "targetValue": "Target $500,000",
+    "progressPercent": "0%",
+    "dashboardNote": "Your dashboard updates automatically as eligible account activity is confirmed. Qualification period: 2 February – 31 October 2026.",
+    "journeySubtext": "Your dashboard updates automatically as eligible account activity is confirmed. Qualification period: 2 February – 31 October 2026.",
+    "summaryLabel": "Current Progress",
     "summaryValue": "0%",
-    "daysLabel": "Days remaining",
+    "daysLabel": "Days Remaining",
     "daysValue": "241",
-    "invitationEyebrow": "Your invitation",
-    "invitationHeadingPlain": "An invitation designed around",
+    "invitationEyebrow": "Your VIP Benefits",
+    "invitationHeadingPlain": "An invitation crafted around",
     "invitationHeadingItalic": "every detail.",
-    "invitationSubtext": "A considered evening from arrival to the final celebration, created for qualified guests and their companions.",
+    "invitationSubtext": "A seamless experience from touchdown to the final toast — designed exclusively for qualified IB partners and their companions.",
     "benefits": [
-      { "index": "01", "title": "Private arrival", "text": "Dedicated guest welcome and expedited entry." },
-      { "index": "02", "title": "Reserved seating", "text": "Premium placement for the gala and ceremony." },
-      { "index": "03", "title": "VIP hospitality", "text": "Access to curated reception and dining experiences." },
-      { "index": "04", "title": "Personal support", "text": "A dedicated contact before and during the evening." }
+      { "index": "01", "title": "Round-Trip Flights", "text": "Complimentary return flights to Dubai for the event weekend." },
+      { "index": "02", "title": "Conrad Hotel Stay", "text": "Premium accommodation at the Conrad Hotel for the duration of the event." },
+      { "index": "03", "title": "Airport Transfers", "text": "Private chauffeur transfers between the airport, hotel, and event venue." },
+      { "index": "04", "title": "Full Event Access", "text": "VIP seating, exclusive reception, gala dinner, and after-party access." }
     ],
-    "eligibleEyebrow": "Your progress",
+    "eligibleEyebrow": "Your Progress",
     "eligibleHeadingPlain": "Every eligible step",
-    "eligibleHeadingItalic": "builds your progress.",
-    "eligibleSubtext": "Eligible deposits and confirmed trading activity automatically move your invitation status forward.",
-    "memberLabel": "VIP member profile",
+    "eligibleHeadingItalic": "brings you closer.",
+    "eligibleSubtext": "Eligible net deposits (minimum USD 500,000) and confirmed trading activity between 2 February and 31 October 2026 automatically advance your VIP invitation status.",
+    "eligibleMoveEyebrow": "Move closer to VIP",
+    "eligibleDescription": "Increase eligible deposit or trading activity to move toward qualification. Final eligibility remains subject to the confirmed campaign terms.",
+    "contactNow": "CONTACT NOW",
+    "memberLabel": "VIP Candidate Profile",
     "memberName": "James Delaney",
-    "memberTier": "Annual invitation candidate",
+    "memberTier": "Annual VIP Invitation Candidate",
     "memberIdLabel": "Member ID",
     "memberId": "GFN-2026-0241"
   },

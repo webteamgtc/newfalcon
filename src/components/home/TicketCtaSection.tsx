@@ -36,7 +36,7 @@ export default function TicketCtaSection() {
             {t("description")}
           </p>
           <Button href="/ticket" variant="light" className="mt-9">
-            VIEW ALL GUESTS
+            {t("cta")}
           </Button>
         </div>
       </div>
