@@ -76,7 +76,7 @@ export default function PageHero({
               <span className="font-poppins">{eyebrow}</span>
             </p>
           ) : null}
-          <h1 className="mt-4 font-display HeadingH1 !font-medium !text-white">
+          <h1 className="mt-4 font-display HeadingH1 !font-medium !text-white uppercase">
             {headingPlain}{" "}
             <span className="italic text-falcon-light">{headingItalic}</span>
           </h1>

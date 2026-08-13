@@ -152,9 +152,9 @@
   },
   "gallery": {
     "hero": {
-      "headingPlain": "A legacy captured through",
-      "headingItalic": "remarkable moments.",
-      "subtext": "A visual chronicle of the evenings that defined the Golden Falcon Awards — the partnerships forged, the achievements celebrated, and the milestones that shaped our global community."
+      "headingPlain": "Where Greatness Was",
+      "headingItalic": "Immortalised.",
+      "subtext": "Step into the defining moments of the Golden Falcon Awards — an extraordinary chronicle of ambition realised, partnerships celebrated, and legacies etched into the history of global trading excellence."
     },
     "ambition": {
       "eyebrow": "Featured guests",
@@ -174,7 +174,7 @@
         },
         {
           "title": "Performance",
-          "description": "Honouring partners whose trading volume and client acquisition set industry benchmarks."
+          "description": "Honouring partners whose Trading Lot and client acquisition set industry benchmarks."
         },
         {
           "title": "Leadership",
@@ -341,7 +341,7 @@
         {
           "name": "James Okonkwo",
           "role": "Industry Judge — Trading Excellence Panel",
-          "bio": "Evaluating performance benchmarks across trading volume, client acquisition, and partnership categories.",
+          "bio": "Evaluating performance benchmarks across Trading Lot, client acquisition, and partnership categories.",
           "category": "judges"
         },
         {
@@ -395,7 +395,7 @@
           { "label": "Account type", "placeholder": "Select your account type" },
           { "label": "Account number", "placeholder": "Enter your account number" },
           { "label": "Country of residence", "placeholder": "Select your country" },
-          { "label": "Trading volume", "placeholder": "Select volume range" }
+          { "label": "Trading Lot", "placeholder": "Select volume range" }
         ],
         "cta": "Request Qualified Access"
       },
@@ -588,7 +588,7 @@
     "capitalTarget": "$500,000",
     "capitalRemaining": "$500,000 remaining to reach qualification",
     "activityLabel": "02 · Trading Activity",
-    "activityTitle": "Trading Volume",
+    "activityTitle": "Trading Lot",
     "activityTarget": "$1,500,000",
     "activityRemaining": "$1,500,000 remaining to reach qualification",
     "currently": "$0",

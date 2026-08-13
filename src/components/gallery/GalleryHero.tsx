@@ -20,7 +20,7 @@ export default function GalleryHero() {
 
       <div className="container">
         <div className="max-w-2xl">
-          <h1 className="font-display text-[3.2rem] leading-[1.05] max-w-sm text-white md:text-[3rem]">
+          <h1 className="font-display text-[3.2rem] leading-[1.05] max-w-sm text-white md:text-[3rem] uppercase">
             {t("headingPlain")}
             <br />
             <span className="italic text-falcon-light">{t("headingItalic")}</span>

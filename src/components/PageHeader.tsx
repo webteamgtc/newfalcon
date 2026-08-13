@@ -15,7 +15,7 @@ export default function PageHeader({
     <section className="bg-gold-sheen px-6 pb-16 pt-36 md:px-10 md:pt-44">
       <div className="mx-auto max-w-4xl text-center">
         <p className="eyebrow text-falcon-deep">{eyebrow}</p>
-        <h1 className="mt-6 font-display text-3xl leading-snug text-ink md:text-5xl">
+        <h1 className="mt-6 font-display text-3xl leading-snug text-ink md:text-5xl uppercase">
           {heading}
         </h1>
         {subtext && <p className="mx-auto mt-4 max-w-xl text-sm text-ink/65">{subtext}</p>}
