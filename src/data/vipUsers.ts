@@ -29,7 +29,7 @@ export const VIP_USERS: VipUser[] = [
   {
     id: "1",
     email: "webteam1@gtcfx.com",
-    ibId: "12121212",
+    ibId: "12782512",
     firstName: "James",
     lastName: "Delaney",
     memberId: "GFN-2026-0241",
@@ -51,7 +51,7 @@ export const VIP_USERS: VipUser[] = [
   {
     id: "2",
     email: "webteam2@gtcfx.com",
-    ibId: "12121212",
+    ibId: "14567890",
     firstName: "Sarah",
     lastName: "Mitchell",
     memberId: "GFN-2026-0187",
@@ -73,7 +73,7 @@ export const VIP_USERS: VipUser[] = [
   {
     id: "3",
     email: "webteam3@gtcfx.com",
-    ibId: "12121212",
+    ibId: "16789012",
     firstName: "Omar",
     lastName: "Al-Rashid",
     memberId: "GFN-2026-0093",
@@ -95,7 +95,7 @@ export const VIP_USERS: VipUser[] = [
   {
     id: "4",
     email: "webteam4@gtcfx.com",
-    ibId: "12121212",
+    ibId: "18901234",
     firstName: "Elena",
     lastName: "Vasquez",
     memberId: "GFN-2026-0312",
