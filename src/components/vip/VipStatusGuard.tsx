@@ -10,7 +10,7 @@ export default function VipStatusGuard({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (isReady && !user) {
-      router.replace("/");
+      router.replace("/check-status");
     }
   }, [isReady, user, router]);
 
