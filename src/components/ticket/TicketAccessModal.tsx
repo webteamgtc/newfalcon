@@ -36,7 +36,7 @@ export default function TicketAccessModal({ open, onClose }: TicketAccessModalPr
       <button
         type="button"
         aria-label={t("closeModal")}
-        className="absolute inset-0 bg-[#17130F]/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-[#17130F]/85 backdrop-blur-md"
         // onClick={onClose}
       />
 
