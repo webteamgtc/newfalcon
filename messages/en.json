@@ -17,7 +17,9 @@
     "policy": "Terms & Conditions",
     "awards": "Awards",
     "joinUs": "Register Now",
-    "vipStatus": "VIP Status"
+    "vipStatus": "VIP Status",
+    "checkStatus": "Check Status",
+    "ticketAccess": "Ticket"
   },
   "home": {
     "hero": {
@@ -412,8 +414,43 @@
       "vip": {
         "label": "VIP",
         "text": "Interested in a VIP experience with premium benefits?",
-        "cta": "Explore VIP Status"
+        "cta": "Check Status",
+        "viewStatus": "View My Status"
       }
+    },
+    "accessForm": {
+      "eyebrow": "Existing client access",
+      "headingPlain": "Verify your account to",
+      "headingItalic": "view your progress.",
+      "description": "If you are an existing GTCFX client, enter your registered email to check your VIP qualification status and event ticket access.",
+      "existingClientLabel": "Existing GTCFX client?",
+      "selectPlaceholder": "Select",
+      "existingYes": "Yes",
+      "existingNo": "No",
+      "emailLabel": "Email Address*",
+      "emailPlaceholder": "Enter your registered email",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "emailNotFound": "This email is not registered. Please use one of the demo accounts or contact support.",
+      "ibIdLabel": "ID / Referral Code*",
+      "ibIdPlaceholder": "Enter your ID or referral code",
+      "ibIdRequired": "ID / Referral Code is required",
+      "credentialsNotFound": "Email and ID / Referral Code do not match our records.",
+      "getOtp": "Get OTP",
+      "sendingOtp": "Sending...",
+      "otpLabel": "Enter OTP",
+      "otpRequired": "Please enter the 6-digit OTP",
+      "otpInvalid": "Invalid OTP. Please try again.",
+      "demoOtpHint": "Demo OTP: 123456",
+      "emailVerified": "Your email has been verified successfully.",
+      "disclaimer": "By submitting this form, I acknowledge that I have read, understood, and agree to the event terms. I give my consent for GTCFX to contact me regarding my VIP qualification status.",
+      "termsLabel": "I agree to the event terms and privacy policy.",
+      "termsRequired": "You must accept the terms to continue.",
+      "submit": "Check My Status",
+      "submitting": "Submitting...",
+      "closeModal": "Close form",
+      "newClientText": "Don't have an IB account yet? Open one now to start your qualification journey.",
+      "newClientCta": "Open IB Account Now"
     },
     "steps": {
       "headingPlain": "Three simple steps to",
@@ -586,11 +623,11 @@
     "capitalLabel": "01 · Net Deposit",
     "capitalTitle": "Minimum Deposit",
     "capitalTarget": "$500,000",
-    "capitalRemaining": "$500,000 remaining to reach qualification",
+    "capitalRemaining": "{amount} remaining to reach qualification",
     "activityLabel": "02 · Trading Activity",
     "activityTitle": "Trading Lot",
     "activityTarget": "$1,500,000",
-    "activityRemaining": "$1,500,000 remaining to reach qualification",
+    "activityRemaining": "{amount} remaining to reach qualification",
     "currently": "$0",
     "targetLabel": "Target",
     "campaignMilestone": "Qualification period",
@@ -598,7 +635,7 @@
     "campaignValue1": "0%",
     "campaignValue2": "241",
     "progressSubtext": "Halfway to VIP · 50%",
-    "targetValue": "Target $500,000",
+    "targetValue": "Target {amount}",
     "progressPercent": "0%",
     "dashboardNote": "Your dashboard updates automatically as eligible account activity is confirmed. Qualification period: 2 February – 31 October 2026.",
     "journeySubtext": "Your dashboard updates automatically as eligible account activity is confirmed. Qualification period: 2 February – 31 October 2026.",

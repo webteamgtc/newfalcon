@@ -1,8 +1,14 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useVipUser } from "@/context/VipUserProvider";
 
 export default function VipEligibilitySection() {
   const t = useTranslations("vipPage");
+  const { user } = useVipUser();
+
+  if (!user) return null;
 
   return (
     <section className="relative overflow-hidden py-10 md:py-24">
@@ -19,7 +25,7 @@ export default function VipEligibilitySection() {
           <p className="eyebrow uppercase text-[#382910] !text-xs">
             <span className="font-poppins">{t("eligibleMoveEyebrow")}</span>
           </p>
-          <h2 className="mt-5 md:max-w-xs font-display HeadingH1 !font-medium !text-[#382910]">
+          <h2 className="mt-5 font-display HeadingH1 !font-medium !text-[#382910] md:max-w-xs">
             {t("eligibleHeadingPlain")}{" "}
             <span className="italic text-falcon-deep">
               {t("eligibleHeadingItalic")}
@@ -30,7 +36,8 @@ export default function VipEligibilitySection() {
           </p>
         </div>
 
-        <article className=" p-6 md:p-8"
+        <article
+          className="p-6 md:p-8"
           style={{
             border: "1px solid rgba(56, 41, 16, 0.00)",
             background: "#FBF5EA",
@@ -43,22 +50,19 @@ export default function VipEligibilitySection() {
                 {t("memberLabel")}
               </p>
               <h3 className="mt-8 font-display HeadingH3 !font-medium !text-[#382910]">
-                {t("memberName")}
+                {user.firstName} {user.lastName}
               </h3>
               <p className="mt-4 TextSmall !font-poppins !text-[#382910]">
-                {t("memberTier")}
+                {user.memberTier}
               </p>
             </div>
-            {/* <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-falcon-deep/30 font-display text-lg italic text-falcon-deep">
-              VIP
-            </span> */}
           </div>
           <div className="flex items-center justify-between gap-5 pt-5">
             <span className="font-poppins text-[10px] uppercase tracking-[0.14em] text-[#382910]">
-            {t("contactNow")}
+              {t("contactNow")}
             </span>
             <span className="font-poppins text-xs font-medium tracking-[0.1em] text-[#382910]">
-              {t("memberId")}
+              {user.memberId}
             </span>
           </div>
         </article>

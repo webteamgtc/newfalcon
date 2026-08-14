@@ -17,7 +17,9 @@
     "policy": "الشروط والأحكام",
     "awards": "الجوائز",
     "joinUs": "سجّل الآن",
-    "vipStatus": "حالة كبار الشخصيات"
+    "vipStatus": "حالة كبار الشخصيات",
+    "checkStatus": "تحقق من الحالة",
+    "ticketAccess": "التذكرة"
   },
   "home": {
     "hero": {
@@ -412,8 +414,43 @@
       "vip": {
         "label": "VIP",
         "text": "مهتم بتجربة VIP مع مزايا حصرية؟",
-        "cta": "استكشف حالة VIP"
+        "cta": "تحقق من الحالة",
+        "viewStatus": "عرض حالتي"
       }
+    },
+    "accessForm": {
+      "eyebrow": "وصول العملاء الحاليين",
+      "headingPlain": "تحقق من حسابك",
+      "headingItalic": "لعرض تقدّمك.",
+      "description": "إذا كنت عميلاً حالياً في GTCFX، أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى التذاكر.",
+      "existingClientLabel": "هل أنت عميل GTCFX حالي؟",
+      "selectPlaceholder": "اختر",
+      "existingYes": "نعم",
+      "existingNo": "لا",
+      "emailLabel": "عنوان البريد الإلكتروني*",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني المسجّل",
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "يرجى إدخال بريد إلكتروني صالح",
+      "emailNotFound": "هذا البريد غير مسجّل. يرجى استخدام أحد حسابات العرض التجريبي أو التواصل مع الدعم.",
+      "ibIdLabel": "معرّف IB / رمز الإحالة*",
+      "ibIdPlaceholder": "أدخل معرّف IB أو رمز الإحالة",
+      "ibIdRequired": "معرّف IB / رمز الإحالة مطلوب",
+      "credentialsNotFound": "البريد الإلكتروني ومعرّف IB / رمز الإحالة لا يطابقان سجلاتنا.",
+      "getOtp": "احصل على OTP",
+      "sendingOtp": "جارٍ الإرسال...",
+      "otpLabel": "أدخل OTP",
+      "otpRequired": "يرجى إدخال رمز OTP المكوّن من 6 أرقام",
+      "otpInvalid": "رمز OTP غير صحيح. يرجى المحاولة مرة أخرى.",
+      "demoOtpHint": "رمز OTP التجريبي: 123456",
+      "emailVerified": "تم التحقق من بريدك الإلكتروني بنجاح.",
+      "disclaimer": "بإرسال هذا النموذج، أقرّ بأنني قرأتُ الشروط وفهمتها ووافقتُ عليها. أمنح GTCFX موافقتي للتواصل معي بخصوص حالة تأهيل VIP.",
+      "termsLabel": "أوافق على شروط الفعالية وسياسة الخصوصية.",
+      "termsRequired": "يجب الموافقة على الشروط للمتابعة.",
+      "submit": "تحقق من حالتي",
+      "submitting": "جارٍ الإرسال...",
+      "closeModal": "إغلاق النموذج",
+      "newClientText": "ليس لديك حساب IB بعد؟ افتح حسابًا الآن لبدء رحلة التأهيل.",
+      "newClientCta": "افتح حساب IB الآن"
     },
     "steps": {
       "headingPlain": "ثلاث خطوات بسيطة",
@@ -586,11 +623,11 @@
     "capitalLabel": "01 · صافي الإيداع",
     "capitalTitle": "الحد الأدنى للإيداع",
     "capitalTarget": "500,000$",
-    "capitalRemaining": "500,000$ متبقٍّ للوصول إلى التأهيل",
+    "capitalRemaining": "{amount} متبقٍّ للوصول إلى التأهيل",
     "activityLabel": "02 · نشاط التداول",
     "activityTitle": "حجم التداول",
     "activityTarget": "1,500,000$",
-    "activityRemaining": "1,500,000$ متبقٍّ للوصول إلى التأهيل",
+    "activityRemaining": "{amount} متبقٍّ للوصول إلى التأهيل",
     "currently": "0$",
     "targetLabel": "الهدف",
     "campaignMilestone": "فترة التأهيل",
@@ -598,7 +635,7 @@
     "campaignValue1": "0%",
     "campaignValue2": "241",
     "progressSubtext": "نصف الطريق إلى VIP · 50%",
-    "targetValue": "الهدف 500,000$",
+    "targetValue": "الهدف {amount}",
     "progressPercent": "0%",
     "dashboardNote": "تُحدَّث لوحتك تلقائيًا بمجرد تأكيد نشاط الحساب المؤهّل. فترة التأهيل: 2 فبراير – 31 أكتوبر 2026.",
     "journeySubtext": "تُحدَّث لوحتك تلقائيًا بمجرد تأكيد نشاط الحساب المؤهّل. فترة التأهيل: 2 فبراير – 31 أكتوبر 2026.",
