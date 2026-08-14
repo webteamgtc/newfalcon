@@ -1,14 +1,40 @@
-import { useTranslations } from "next-intl";
+"use client";
 
-type Stage = {
-  number: string;
-  name: string;
-  tier: string;
-};
+import { useTranslations } from "next-intl";
+import { useVipUser } from "@/context/VipUserProvider";
+import { formatCurrency } from "@/data/vipUsers";
+
+function getProgressColors(percent: number) {
+  if (percent >= 100) {
+    return { bar: "#22C55E", text: "#15803D" };
+  }
+  if (percent >= 50) {
+    return { bar: "#F97316", text: "#C2410C" };
+  }
+  if (percent >= 25) {
+    return { bar: "#EAB308", text: "#A16207" };
+  }
+  return { bar: "#EF4444", text: "#B91C1C" };
+}
 
 export default function VipProgressSection() {
   const t = useTranslations("vipPage");
-  const stages = t.raw("stages") as Stage[];
+  const { user } = useVipUser();
+
+  if (!user) return null;
+
+  const capitalRemaining = Math.max(user.capitalTarget - user.capitalCurrent, 0);
+  const activityRemaining = Math.max(user.activityTarget - user.activityCurrent, 0);
+  const capitalPercent = Math.min(
+    Math.round((user.capitalCurrent / user.capitalTarget) * 100),
+    100
+  );
+  const activityPercent = Math.min(
+    Math.round((user.activityCurrent / user.activityTarget) * 100),
+    100
+  );
+  const summaryPercent = user.progressPercent;
+  const summaryColors = getProgressColors(summaryPercent);
 
   return (
     <section id="progress" className="scroll-mt-4 bg-[#FFFDF8] py-12 md:py-16">
@@ -32,30 +58,33 @@ export default function VipProgressSection() {
         </div>
 
         <div className="mt-8 grid border-s border-t border-ink/20 md:mt-14 md:grid-cols-3">
-          {stages.map((stage, index) => (
+          {user.stages.map((stage, index) => (
             <article
               key={stage.number}
-              className={`border-b border-e border-[#3829104D] px-5 py-5 md:px-7`}
-
-              style={index === 0 ? {
-                background: "linear-gradient(117deg, #E8CB8F 0.63%, #FEF3DA 100%)",
-              } : {
-                background: "#F8F0E4",
+              className="border-b border-e border-[#3829104D] px-5 py-5 md:px-7"
+              style={
+                index === user.activeStageIndex
+                  ? {
+                      background:
+                        "linear-gradient(117deg, #E8CB8F 0.63%, #FEF3DA 100%)",
+                    }
+                  : {
+                      background: "#F8F0E4",
+                    }
               }
-              }>
-              <div className="flex items-center  gap-4">
-                <span className="font-poppins w-8 h-8 flex items-center justify-center rounded-full border border-[#382910] text-xs tracking-[0.14em] text-ink">
+            >
+              <div className="flex items-center gap-4">
+                <span className="font-poppins flex h-8 w-8 items-center justify-center rounded-full border border-[#382910] text-xs tracking-[0.14em] text-ink">
                   {stage.number}
                 </span>
 
                 <div>
-                  <p className="text-xs mb-1 !font-poppins !text-ink">{stage.tier}</p>
+                  <p className="mb-1 text-xs !font-poppins !text-ink">{stage.tier}</p>
                   <h3 className="font-display HeadingH5 !font-medium !text-ink">
                     {stage.name}
                   </h3>
                 </div>
               </div>
-
             </article>
           ))}
         </div>
@@ -64,54 +93,72 @@ export default function VipProgressSection() {
           <ProgressCard
             label={t("capitalLabel")}
             title={t("capitalTitle")}
-            current={t("currently")}
-            target={t("capitalTarget")}
+            current={formatCurrency(user.capitalCurrent)}
+            target={formatCurrency(user.capitalTarget)}
             targetLabel={t("targetLabel")}
-            remaining={t("capitalRemaining")}
-            targetText={t("targetValue")}
-            percentText={t("progressPercent")}
+            remaining={t("capitalRemaining", {
+              amount: formatCurrency(capitalRemaining),
+            })}
+            targetText={t("targetValue", {
+              amount: formatCurrency(user.capitalTarget),
+            })}
+            percentText={`${capitalPercent}%`}
+            percent={capitalPercent}
           />
           <ProgressCard
             label={t("activityLabel")}
             title={t("activityTitle")}
-            current={t("currently")}
-            target={t("activityTarget")}
+            current={formatCurrency(user.activityCurrent)}
+            target={formatCurrency(user.activityTarget)}
             targetLabel={t("targetLabel")}
-            remaining={t("activityRemaining")}
-            targetText={t("targetValue")}
-            percentText={t("progressPercent")}
+            remaining={t("activityRemaining", {
+              amount: formatCurrency(activityRemaining),
+            })}
+            targetText={t("targetValue", {
+              amount: formatCurrency(user.activityTarget),
+            })}
+            percentText={`${activityPercent}%`}
+            percent={activityPercent}
           />
         </div>
 
-        <div className="mx-auto mt-6 md:mt-12 flex md:flex-row flex-col max-w-xl items-center justify-between gap-6 px-7 py-5"
+        <div
+          className="mx-auto mt-6 flex max-w-xl flex-col items-center justify-between gap-6 px-7 py-5 md:mt-12 md:flex-row"
           style={{
             borderRadius: "64px",
             border: "1px solid rgba(56, 41, 16, 0.30)",
             background: "#FBF6ED",
           }}
         >
-          <div className=" flex justify-between items-center gap-4">
+          <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-poppins text-xs uppercase tracking-[0.13em] text-[#382910]">
                 {t("summaryLabel")}
               </p>
-              <p className="font-poppins mt-1 text-xs uppercase tracking-[0.13em] text-[#382910]">
+              <p className="mt-1 font-poppins text-xs uppercase tracking-[0.13em] text-[#382910]">
                 {t("progressSubtext")}
               </p>
             </div>
-            <p className="font-display HeadingH3 !font-medium !text-falcon-deep">{t("summaryValue")}</p>
+            <p
+              className="font-display HeadingH3 !font-medium"
+              style={{ color: summaryColors.text }}
+            >
+              {user.summaryValue}
+            </p>
           </div>
-          <span className="md:h-8 h-px w-px hidden md:block bg-ink/15" />
-          <div className=" flex justify-between items-center gap-4">
+          <span className="hidden h-8 w-px bg-ink/15 md:block" />
+          <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-poppins text-xs uppercase tracking-[0.13em] text-[#382910]">
                 {t("daysLabel")}
               </p>
-              <p className="font-poppins mt-1 text-xs uppercase tracking-[0.13em] text-[#382910]">
+              <p className="mt-1 font-poppins text-xs uppercase tracking-[0.13em] text-[#382910]">
                 {t("progressSubtext")}
               </p>
             </div>
-            <p className="font-display HeadingH3 !font-medium !text-falcon-deep">{t("daysValue")}</p>
+            <p className="font-display HeadingH3 !font-medium !text-falcon-deep">
+              {user.daysRemaining}
+            </p>
           </div>
         </div>
       </div>
@@ -124,10 +171,10 @@ function ProgressCard({
   title,
   current,
   target,
-  targetLabel,
   remaining,
   targetText,
-  percentText
+  percentText,
+  percent,
 }: {
   label: string;
   title: string;
@@ -137,9 +184,13 @@ function ProgressCard({
   remaining: string;
   targetText: string;
   percentText: string;
+  percent: number;
 }) {
+  const colors = getProgressColors(percent);
+
   return (
-    <article className=" p-4 md:p-6"
+    <article
+      className="p-4 md:p-6"
       style={{
         border: "1px solid rgba(56, 41, 16, 0.30)",
         background: "linear-gradient(117deg, #FDFCFA 0.63%, #F3E5CB 100%)",
@@ -159,14 +210,21 @@ function ProgressCard({
           <p className="mt-4 font-display text-2xl text-ink">{current}</p>
         </div>
         <div className="text-end">
-
           <p className="mt-1 font-poppins text-sm font-medium text-ink">{target}</p>
         </div>
       </div>
       <div className="mt-6 h-2.5 overflow-hidden rounded-full bg-[#D8C8AE]">
-        <div className="h-full w-[2%] rounded-full bg-falcon-gold" />
+        <div
+          className="h-full rounded-full transition-all duration-500"
+          style={{ width: `${percent}%`, backgroundColor: colors.bar }}
+        />
       </div>
-      <p className="mt-3 HeadingH4 border-b border-[#D8C8AE] pb-2 !text-[#AD7833]">{percentText}</p>
+      <p
+        className="mt-3 HeadingH4 border-b border-[#D8C8AE] pb-2"
+        style={{ color: colors.text }}
+      >
+        {percentText}
+      </p>
       <p className="mt-3 TextSmall !font-poppins !text-[#382910]">{remaining}</p>
     </article>
   );

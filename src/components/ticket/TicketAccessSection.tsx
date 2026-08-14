@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Button from "@/components/Button";
+import { useVipUser } from "@/context/VipUserProvider";
 
 type Field = {
   label: string;
@@ -50,9 +51,6 @@ function AccessCard({
       <div className="mt-6 md:mt-8 flex flex-1 flex-col">
         {fields.map((field) => (
           <label key={field.label} className="block">
-            {/* <span className="font-poppins text-[11px] uppercase tracking-[0.16em] text-ink/55">
-              {field.label}
-            </span> */}
             <select
               defaultValue=""
               className="mt-4 w-full appearance-none border-0 border-b border-ink/25 bg-transparent pb-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep"
@@ -74,15 +72,19 @@ function AccessCard({
   );
 }
 
-export default function TicketAccessSection() {
+type TicketAccessSectionProps = {
+  onOpenForm?: () => void;
+};
+
+export default function TicketAccessSection({ onOpenForm }: TicketAccessSectionProps) {
   const t = useTranslations("ticketPage.access");
+  const { user } = useVipUser();
   const qualifyFields = t.raw("qualify.fields") as Field[];
   const purchaseFields = t.raw("purchase.fields") as Field[];
 
   return (
-    <>  {/* Ticket information */}
+    <>
       <section id="access" className="bg-[#fff] py-8 md:py-12">
-
         <div className="container">
           <p className="eyebrow !capitalize text-[#382910] md:mb-3 mb-2">
             <span className="font-poppins">{t("eyebrow")}</span>
@@ -142,12 +144,22 @@ export default function TicketAccessSection() {
               <p className="text-xs mt-1 !font-poppins !text-[#000000]">{t("vipAssistText")}</p>
             </div>
           </div>
-          <Link
-            href="/ticket"
-            className="shrink-0 font-poppins text-xs uppercase tracking-[0.16em] text-ink transition-colors hover:text-falcon-deep"
-          >
-            {t("vip.cta")} →
-          </Link>
+          {user ? (
+            <Link
+              href="/result"
+              className="shrink-0 font-poppins text-xs uppercase tracking-[0.16em] text-ink transition-colors hover:text-falcon-deep"
+            >
+              {t("vip.viewStatus")} →
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={onOpenForm}
+              className="shrink-0 font-poppins text-xs uppercase tracking-[0.16em] text-ink transition-colors hover:text-falcon-deep"
+            >
+              {t("vip.cta")} →
+            </button>
+          )}
         </div>
       </div>
     </>

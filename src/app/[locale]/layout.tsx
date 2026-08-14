@@ -6,6 +6,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import AppProviders from "@/components/providers/AppProviders";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -45,9 +46,11 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir}>
       <body className="bg-parchment text-ink antialiased">
         <NextIntlClientProvider messages={messages}>
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
+          <AppProviders>
+            <SiteHeader />
+            <main>{children}</main>
+            <SiteFooter />
+          </AppProviders>
         </NextIntlClientProvider>
       </body>
     </html>
