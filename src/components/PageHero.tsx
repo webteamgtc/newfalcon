@@ -56,7 +56,7 @@ export default function PageHero({
   secondaryCta
 }: PageHeroProps) {
   return (
-    <section className="relative flex min-h-[100vh] items-center overflow-hidden pb-16 pt-40 md:min-h-[95vh] md:pb-24 md:pt-48">
+    <section className="relative flex min-h-[100vh] items-center overflow-hidden pb-16 pt-40 md:min-h-[75vh] md:pb-24 md:pt-40">
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
         <Image
           src={imageSrc}

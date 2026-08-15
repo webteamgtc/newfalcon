@@ -385,7 +385,7 @@
       "twoAccessLabel": "طريقان للدخول",
       "twoAccessHint": "اختر مسارًا واحدًا · كلاهما يقود إلى ليلة الصقر الذهبي",
       "complimentaryAccess": "دخول مجاني",
-      "forEligibleClients": "لعملاء GTCFX المؤهّلين",
+      "forEligibleClients": "لشركاء IB/Partners المؤهّلين في GTCFX",
       "qualifyDesc": "حقق أهداف الحملة المؤكدة للحصول على دخول مجاني إلى ليلة جوائز الصقر الذهبي.",
       "falconTicket": "تذكرة الصقر",
       "subjectToAvailability": "رهن بالتوفر",
@@ -419,11 +419,11 @@
       }
     },
     "accessForm": {
-      "eyebrow": "وصول العملاء الحاليين",
+      "eyebrow": "وصول IB/Partner الحاليين",
       "headingPlain": "تحقق من حسابك",
       "headingItalic": "لعرض تقدّمك.",
-      "description": "إذا كنت عميلاً حالياً في GTCFX، أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى التذاكر.",
-      "existingClientLabel": "هل أنت عميل GTCFX حالي؟",
+      "description": "إذا كنت IB/Partner حالياً في GTCFX، أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى التذاكر.",
+      "existingClientLabel": "هل أنت IB/Partner حالي في GTCFX؟",
       "selectPlaceholder": "اختر",
       "existingYes": "نعم",
       "existingNo": "لا",

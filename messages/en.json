@@ -176,7 +176,7 @@
         },
         {
           "title": "Performance",
-          "description": "Honouring partners whose Trading Lot and client acquisition set industry benchmarks."
+          "description": "Honouring partners whose Trading Lot and IB/Partner acquisition set industry benchmarks."
         },
         {
           "title": "Leadership",
@@ -343,7 +343,7 @@
         {
           "name": "James Okonkwo",
           "role": "Industry Judge — Trading Excellence Panel",
-          "bio": "Evaluating performance benchmarks across Trading Lot, client acquisition, and partnership categories.",
+          "bio": "Evaluating performance benchmarks across Trading Lot, IB/Partner acquisition, and partnership categories.",
           "category": "judges"
         },
         {
@@ -385,7 +385,7 @@
       "twoAccessLabel": "Two access routes",
       "twoAccessHint": "Choose one path · Both lead to Golden Falcon Night",
       "complimentaryAccess": "Complimentary access",
-      "forEligibleClients": "For eligible GTCFX clients",
+      "forEligibleClients": "For eligible GTCFX IB/Partners",
       "qualifyDesc": "Reach the confirmed campaign targets to unlock complimentary access to Golden Falcon Awards Night.",
       "falconTicket": "Falcon ticket",
       "subjectToAvailability": "Subject to availability",
@@ -419,11 +419,11 @@
       }
     },
     "accessForm": {
-      "eyebrow": "Existing client access",
+      "eyebrow": "Existing IB/Partner access",
       "headingPlain": "Verify your account to",
       "headingItalic": "view your progress.",
-      "description": "If you are an existing GTCFX client, enter your registered email to check your VIP qualification status and event ticket access.",
-      "existingClientLabel": "Existing GTCFX client?",
+      "description": "If you are an existing GTCFX IB/Partner, enter your registered email to check your VIP qualification status and event ticket access.",
+      "existingClientLabel": "Existing GTCFX IB/Partner?",
       "selectPlaceholder": "Select",
       "existingYes": "Yes",
       "existingNo": "No",
@@ -665,8 +665,8 @@
       },
       {
         "title": "Leadership & Integrity",
-        "description": "Celebrating visionary leadership, client acquisition mastery, and uncompromising ethical standards.",
-        "items": ["Highest Client Acquisition Award", "Elite IB of the Year", "Global Partner of the Year", "Compliance & Integrity Excellence Award"]
+        "description": "Celebrating visionary leadership, IB/Partner acquisition mastery, and uncompromising ethical standards.",
+        "items": ["Highest IB/Partner Acquisition Award", "Elite IB of the Year", "Global Partner of the Year", "Compliance & Integrity Excellence Award"]
       }
     ],
     "certificateEyebrow": "Signature Distinction",

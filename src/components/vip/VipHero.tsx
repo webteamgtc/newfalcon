@@ -4,7 +4,7 @@ export default function VipHero() {
   const t = useTranslations("vipPage");
 
   return (
-    <section className="relative flex min-h-[68vh] items-center overflow-hidden bg-gradient-to-br from-[#FEFCF6] via-[#EAD9B9] to-[#D8BA80] pb-16 pt-36 md:min-h-[78vh] md:pb-24 md:pt-44">
+    <section className="relative flex min-h-[48vh] items-center overflow-hidden bg-gradient-to-br from-[#FEFCF6] via-[#EAD9B9] to-[#D8BA80] pb-16 pt-36 md:min-h-[58vh] md:pb-24 md:pt-28">
       <div
         className="pointer-events-none absolute inset-0 opacity-70"
         aria-hidden
