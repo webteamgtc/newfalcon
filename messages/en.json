@@ -441,6 +441,8 @@
       "otpLabel": "Enter OTP",
       "otpRequired": "Please enter the 6-digit OTP",
       "otpInvalid": "Invalid OTP. Please try again.",
+      "otpSendFailed": "Failed to send OTP. Please try again.",
+      "verifyOtp": "Verify OTP",
       "demoOtpHint": "Demo OTP: 123456",
       "emailVerified": "Your email has been verified successfully.",
       "disclaimer": "By submitting this form, I acknowledge that I have read, understood, and agree to the event terms. I give my consent for GTCFX to contact me regarding my VIP qualification status.",
@@ -449,8 +451,75 @@
       "submit": "Check My Status",
       "submitting": "Submitting...",
       "closeModal": "Close form",
-      "newClientText": "Don't have an IB/Partner account yet? Open one now to start your qualification journey.",
-      "newClientCta": "Open IB/Partner Account Now"
+      "newClientText": "Don't have an IB account yet? Open one now to start your qualification journey.",
+      "newClientCta": "Open IB Account Now",
+      "loadingForm": "Loading form..."
+    },
+    "newClientForm": {
+      "intro": "Create your GTCFX account to begin your IB qualification journey for Golden Falcon Awards.",
+      "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "emailCode": "Email verification code",
+        "password": "Password",
+        "country": "Country of Residence",
+        "phone": "Phone",
+        "partnerCode": "Partner code",
+        "optional": "optional"
+      },
+      "placeholders": {
+        "email": "Please enter a valid email to receive verification code",
+        "emailCode": "Enter email verification code",
+        "passwordHint": "At least 8 characters with letters and numbers"
+      },
+      "countryLoading": "Loading countries...",
+      "countrySelect": "Select your country",
+      "actions": {
+        "getCode": "Get code",
+        "sendingCode": "Sending...",
+        "register": "Register",
+        "registering": "Submitting..."
+      },
+      "a11y": {
+        "showPassword": "Show",
+        "hidePassword": "Hide"
+      },
+      "legal": {
+        "agreePrefix": "I agree to the",
+        "termsOfService": "Terms of Service",
+        "agreeAnd": "and",
+        "privacyPolicy": "Privacy Policy"
+      },
+      "login": {
+        "prefix": "Already have an account?",
+        "link": "Click here to login"
+      },
+      "errors": {
+        "firstName": "First name is required",
+        "firstNameLetters": "First name can only contain letters",
+        "lastName": "Last name is required",
+        "lastNameLetters": "Last name can only contain letters",
+        "email": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "emailRegistered": "This email is already registered",
+        "country": "Country is required",
+        "validCountry": "Please select a valid country",
+        "phone": "Phone is required",
+        "phoneInvalid": "Invalid phone number",
+        "passwordRequired": "Password is required",
+        "passwordMin": "At least 8 characters",
+        "passwordPattern": "Must contain letters and numbers",
+        "otpRequired": "OTP is required",
+        "otpLength": "OTP must be 6 digits",
+        "terms": "You must accept the terms"
+      },
+      "toast": {
+        "otpSent": "OTP sent successfully!",
+        "codeError": "Failed to send verification code",
+        "registrationSuccess": "Registration successful!",
+        "registrationFailed": "Registration failed"
+      }
     },
     "steps": {
       "headingPlain": "Three simple steps to",
@@ -665,6 +734,14 @@
     "memberTier": "Annual VIP Invitation Candidate",
     "memberIdLabel": "Member ID",
     "memberId": "GFN-2026-0241"
+  },
+  "checkStatusPage": {
+    "heroEyebrow": "Check Status",
+    "heroYear": "2026",
+    "heroHeadingPlain": "Verify your account to",
+    "heroHeadingItalic": "view your progress.",
+    "heroSubtext": "Enter your registered email to check your VIP qualification status and Golden Falcon Awards access.",
+    "heroCta": "Start Verification"
   },
   "common": {
     "backToHome": "Back to Home",

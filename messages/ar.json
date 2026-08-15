@@ -441,6 +441,8 @@
       "otpLabel": "أدخل OTP",
       "otpRequired": "يرجى إدخال رمز OTP المكوّن من 6 أرقام",
       "otpInvalid": "رمز OTP غير صحيح. يرجى المحاولة مرة أخرى.",
+      "otpSendFailed": "فشل إرسال OTP. يرجى المحاولة مرة أخرى.",
+      "verifyOtp": "تحقق من OTP",
       "demoOtpHint": "رمز OTP التجريبي: 123456",
       "emailVerified": "تم التحقق من بريدك الإلكتروني بنجاح.",
       "disclaimer": "بإرسال هذا النموذج، أقرّ بأنني قرأتُ الشروط وفهمتها ووافقتُ عليها. أمنح GTCFX موافقتي للتواصل معي بخصوص حالة تأهيل VIP.",
@@ -449,8 +451,75 @@
       "submit": "تحقق من حالتي",
       "submitting": "جارٍ الإرسال...",
       "closeModal": "إغلاق النموذج",
-      "newClientText": "ليس لديك حساب IB/Partner بعد؟ افتح حسابًا الآن لبدء رحلة التأهيل.",
-      "newClientCta": "افتح حساب IB/Partner الآن"
+      "newClientText": "ليس لديك حساب IB بعد؟ افتح حسابًا الآن لبدء رحلة التأهيل.",
+      "newClientCta": "افتح حساب IB الآن",
+      "loadingForm": "جارٍ تحميل النموذج..."
+    },
+    "newClientForm": {
+      "intro": "أنشئ حساب GTCFX الخاص بك لبدء رحلة تأهيل IB لجوائز Golden Falcon.",
+      "fields": {
+        "firstName": "الاسم الأول",
+        "lastName": "اسم العائلة",
+        "email": "البريد الإلكتروني",
+        "emailCode": "رمز التحقق من البريد",
+        "password": "كلمة المرور",
+        "country": "بلد الإقامة",
+        "phone": "الهاتف",
+        "partnerCode": "رمز الشريك",
+        "optional": "اختياري"
+      },
+      "placeholders": {
+        "email": "يرجى إدخال بريد إلكتروني صالح لاستلام رمز التحقق",
+        "emailCode": "أدخل رمز التحقق من البريد",
+        "passwordHint": "8 أحرف على الأقل مع أحرف وأرقام"
+      },
+      "countryLoading": "جارٍ تحميل البلدان...",
+      "countrySelect": "اختر بلدك",
+      "actions": {
+        "getCode": "احصل على الرمز",
+        "sendingCode": "جارٍ الإرسال...",
+        "register": "تسجيل",
+        "registering": "جارٍ الإرسال..."
+      },
+      "a11y": {
+        "showPassword": "إظهار",
+        "hidePassword": "إخفاء"
+      },
+      "legal": {
+        "agreePrefix": "أوافق على",
+        "termsOfService": "شروط الخدمة",
+        "agreeAnd": "و",
+        "privacyPolicy": "سياسة الخصوصية"
+      },
+      "login": {
+        "prefix": "لديك حساب بالفعل؟",
+        "link": "اضغط هنا لتسجيل الدخول"
+      },
+      "errors": {
+        "firstName": "الاسم الأول مطلوب",
+        "firstNameLetters": "يجب أن يحتوي الاسم الأول على أحرف فقط",
+        "lastName": "اسم العائلة مطلوب",
+        "lastNameLetters": "يجب أن يحتوي اسم العائلة على أحرف فقط",
+        "email": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "بريد إلكتروني غير صالح",
+        "emailRegistered": "هذا البريد مسجل بالفعل",
+        "country": "البلد مطلوب",
+        "validCountry": "يرجى اختيار بلد صالح",
+        "phone": "الهاتف مطلوب",
+        "phoneInvalid": "رقم هاتف غير صالح",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "passwordMin": "8 أحرف على الأقل",
+        "passwordPattern": "يجب أن تحتوي على أحرف وأرقام",
+        "otpRequired": "OTP مطلوب",
+        "otpLength": "يجب أن يكون OTP 6 أرقام",
+        "terms": "يجب الموافقة على الشروط"
+      },
+      "toast": {
+        "otpSent": "تم إرسال OTP بنجاح!",
+        "codeError": "فشل إرسال رمز التحقق",
+        "registrationSuccess": "تم التسجيل بنجاح!",
+        "registrationFailed": "فشل التسجيل"
+      }
     },
     "steps": {
       "headingPlain": "ثلاث خطوات بسيطة",
@@ -665,6 +734,14 @@
     "memberTier": "مرشّح دعوة VIP السنوية",
     "memberIdLabel": "رقم العضو",
     "memberId": "GFN-2026-0241"
+  },
+  "checkStatusPage": {
+    "heroEyebrow": "تحقق من الحالة",
+    "heroYear": "2026",
+    "heroHeadingPlain": "تحقق من حسابك",
+    "heroHeadingItalic": "لعرض تقدّمك.",
+    "heroSubtext": "أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى جوائز Golden Falcon.",
+    "heroCta": "ابدأ التحقق"
   },
   "common": {
     "backToHome": "العودة للرئيسية",

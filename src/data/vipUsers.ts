@@ -28,7 +28,7 @@ export const DEMO_OTP = "123456";
 export const VIP_USERS: VipUser[] = [
   {
     id: "1",
-    email: "webteam1@gtcfx.com",
+    email: "zeeshan@gtcfx.com",
     ibId: "12782512",
     firstName: "James",
     lastName: "Delaney",
@@ -50,7 +50,7 @@ export const VIP_USERS: VipUser[] = [
   },
   {
     id: "2",
-    email: "webteam2@gtcfx.com",
+    email: "webteam@gtcfx.com",
     ibId: "14567890",
     firstName: "Sarah",
     lastName: "Mitchell",
@@ -94,7 +94,7 @@ export const VIP_USERS: VipUser[] = [
   },
   {
     id: "4",
-    email: "webteam4@gtcfx.com",
+    email: "adeelcomsats070@gmail.com",
     ibId: "18901234",
     firstName: "Elena",
     lastName: "Vasquez",
