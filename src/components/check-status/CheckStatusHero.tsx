@@ -4,16 +4,8 @@ export default function CheckStatusHero() {
   const t = useTranslations("checkStatusPage");
 
   return (
-    <section className="relative flex min-h-[68vh] items-center overflow-hidden bg-gradient-to-br from-[#FEFCF6] via-[#EAD9B9] to-[#D8BA80] pb-16 pt-36 md:min-h-[78vh] md:pb-24 md:pt-44">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-70"
-        aria-hidden
-        style={{
-          background:
-            "radial-gradient(circle at 82% 14%, rgba(255,255,255,.66), transparent 30%), radial-gradient(circle at 75% 100%, rgba(181,137,69,.32), transparent 42%)",
-        }}
-      />
-      <div className="container relative">
+    <section className="relative flex min-h-[52vh] items-center pb-8 pt-32 md:min-h-[58vh] md:pb-12 md:pt-40">
+      <div className="container relative z-[1]">
         <div className="max-w-2xl">
           <p className="eyebrow !capitalize text-ink/65">
             <span className="font-poppins">
@@ -22,6 +14,7 @@ export default function CheckStatusHero() {
               {t("heroYear")}
             </span>
           </p>
+          <div className="mt-4 h-px w-12 bg-falcon-deep/50" aria-hidden />
           <h1 className="mt-5 font-display HeadingH1 !font-medium !text-ink">
             {t("heroHeadingPlain")}
             <br />
@@ -32,7 +25,7 @@ export default function CheckStatusHero() {
           </p>
           <a
             href="#access-form"
-            className="mt-8 inline-flex items-center gap-4 rounded-full bg-ink py-1.5 ps-6 pe-3 font-poppins text-sm uppercase tracking-[0.14em] text-white transition-colors hover:bg-falcon-deep"
+            className="mt-8 inline-flex items-center gap-4 rounded-full bg-ink py-1.5 ps-6 pe-3 font-poppins text-sm uppercase tracking-[0.14em] text-white shadow-[0_12px_30px_-12px_rgba(28,25,18,0.55)] transition-colors hover:bg-falcon-deep"
           >
             <span>{t("heroCta")}</span>
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-ink">

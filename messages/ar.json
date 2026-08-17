@@ -804,7 +804,15 @@
     "heroHeadingPlain": "تحقق من حسابك",
     "heroHeadingItalic": "لعرض تقدّمك.",
     "heroSubtext": "أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى جوائز Golden Falcon.",
-    "heroCta": "ابدأ التحقق"
+    "heroCta": "ابدأ التحقق",
+    "formEyebrow": "التحقق من الحساب",
+    "formHeadingPlain": "أدخل بيانات اعتمادك",
+    "formHeadingItalic": "لفتح لوحة التحكم.",
+    "formDescription": "استخدم بريد GTCFX المسجّل وبيانات IB. ستتلقى رمزاً لمرة واحدة لتأكيد هويتك.",
+    "trustSecure": "تشفير 256-bit",
+    "trustInstant": "تحقق فوري",
+    "trustVerified": "موثّق من GTCFX",
+    "bottomNote": "تواجه مشكلة في تسجيل الدخول؟ تواصل مع support@gtcfx.com"
   },
   "common": {
     "backToHome": "العودة للرئيسية",
