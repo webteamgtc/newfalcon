@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useVipUser } from "@/context/VipUserProvider";
 import { formatCurrency } from "@/data/vipUsers";
+import VipTicketBookingModal from "@/components/vip/VipTicketBookingModal";
+import { hasTicketBooking } from "@/components/vip/VipTicketBookingForm";
 
 function getProgressColors(percent: number) {
   if (percent >= 100) {
@@ -20,6 +23,14 @@ function getProgressColors(percent: number) {
 export default function VipProgressSection() {
   const t = useTranslations("vipPage");
   const { user } = useVipUser();
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [hasRegistered, setHasRegistered] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setHasRegistered(hasTicketBooking(user.id));
+    }
+  }, [user, bookingModalOpen]);
 
   if (!user) return null;
 
@@ -68,16 +79,16 @@ export default function VipProgressSection() {
                 style={
                   isQualifiedStage
                     ? {
-                        background:
-                          "linear-gradient(117deg, #DCFCE7 0.63%, #F0FDF4 100%)",
-                        borderColor: "#22C55E",
-                      }
+                      background:
+                        "linear-gradient(117deg, #DCFCE7 0.63%, #F0FDF4 100%)",
+                      borderColor: "#22C55E",
+                    }
                     : index === user.activeStageIndex
-                    ? {
+                      ? {
                         background:
                           "linear-gradient(117deg, #E8CB8F 0.63%, #FEF3DA 100%)",
                       }
-                    : {
+                      : {
                         background: "#F8F0E4",
                       }
                 }
@@ -131,46 +142,68 @@ export default function VipProgressSection() {
             percent={activityPercent}
           />
         </div>
+        {!isFullyQualified &&
 
-        <div
-          className="mx-auto mt-6 flex max-w-xl flex-col items-center justify-between gap-6 px-7 py-5 md:mt-12 md:flex-row"
-          style={{
-            borderRadius: "64px",
-            border: isFullyQualified ? "2px solid #22C55E" : "1px solid rgba(56, 41, 16, 0.30)",
-            background: isFullyQualified ? "#F0FDF4" : "#FBF6ED",
-          }}
-        >
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className={`font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-700" : "text-[#382910]"}`}>
-                {isFullyQualified ? "Fully Qualified" : t("summaryLabel")}
-              </p>
-              <p className={`mt-1 font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-600" : "text-[#382910]"}`}>
-                {isFullyQualified ? "VIP Status Achieved" : t("progressSubtext")}
-              </p>
+          <div
+            className={`mx-auto mt-6 flex max-w-3xl flex-col gap-6 px-7 py-5 md:mt-12 ${isFullyQualified ? "" : "md:flex-row md:items-center md:justify-between"}`}
+            style={{
+              borderRadius: "64px",
+              border: isFullyQualified ? "2px solid #22C55E" : "1px solid rgba(56, 41, 16, 0.30)",
+              background: isFullyQualified ? "#F0FDF4" : "#FBF6ED",
+            }}
+          >
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-4">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className={`font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-700" : "text-[#382910]"}`}>
+                    {isFullyQualified ? t("fullyQualifiedLabel") : t("summaryLabel")}
+                  </p>
+                  <p className={`mt-1 font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-600" : "text-[#382910]"}`}>
+                    {isFullyQualified ? t("fullyQualifiedSubtext") : t("progressSubtext")}
+                  </p>
+                </div>
+                <p
+                  className="font-display HeadingH3 !font-medium"
+                  style={{ color: isFullyQualified ? "#15803D" : summaryColors.text }}
+                >
+                  {user.summaryValue}
+                </p>
+              </div>
+              <span className="hidden h-8 w-px bg-ink/15 md:block" />
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className={`font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-700" : "text-[#382910]"}`}>
+                    {t("daysLabel")}
+                  </p>
+                  <p className={`mt-1 font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-600" : "text-[#382910]"}`}>
+                    {isFullyQualified ? t("fullyQualifiedSubtext") : t("progressSubtext")}
+                  </p>
+                </div>
+                <p className={`font-display HeadingH3 !font-medium ${isFullyQualified ? "!text-green-700" : "!text-falcon-deep"}`}>
+                  {user.daysRemaining}
+                </p>
+              </div>
             </div>
-            <p
-              className="font-display HeadingH3 !font-medium"
-              style={{ color: isFullyQualified ? "#15803D" : summaryColors.text }}
-            >
-              {user.summaryValue}
-            </p>
           </div>
-          <span className="hidden h-8 w-px bg-ink/15 md:block" />
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className={`font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-700" : "text-[#382910]"}`}>
-                {t("daysLabel")}
-              </p>
-              <p className={`mt-1 font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-600" : "text-[#382910]"}`}>
-                {isFullyQualified ? "VIP Status Achieved" : t("progressSubtext")}
-              </p>
-            </div>
-            <p className={`font-display HeadingH3 !font-medium ${isFullyQualified ? "!text-green-700" : "!text-falcon-deep"}`}>
-              {user.daysRemaining}
-            </p>
+        }
+        {isFullyQualified && (
+          <div className="mt-6 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setBookingModalOpen(true)}
+            disabled={hasRegistered}
+            className="inline-flex h-12 min-w-[180px] max-w-md items-center justify-center rounded-full bg-green-700 px-8 font-poppins text-xs uppercase tracking-[0.14em] text-white transition-colors hover:bg-green-800 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {hasRegistered ? t("registeredCta") : t("registerCta")}
+          </button>
           </div>
-        </div>
+        )}
+
+        <VipTicketBookingModal
+          open={bookingModalOpen}
+          onClose={() => setBookingModalOpen(false)}
+          user={user}
+        />
       </div>
     </section>
   );
