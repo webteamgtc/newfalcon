@@ -32,6 +32,7 @@ export default function TicketAccessForm({
   const [terms, setTerms] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [otpInput, setOtpInput] = useState("");
+  const [verificationToken, setVerificationToken] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [ibIdError, setIbIdError] = useState("");
@@ -55,6 +56,7 @@ export default function TicketAccessForm({
   const resetOtpState = () => {
     setShowOtp(false);
     setOtpInput("");
+    setVerificationToken("");
     setOtpVerified(false);
     setOtpError("");
     setEmailError("");
@@ -111,6 +113,7 @@ export default function TicketAccessForm({
 
       setShowOtp(true);
       setOtpInput("");
+      setVerificationToken(data.verificationToken || "");
       setOtpVerified(false);
     } catch (error) {
       setOtpError(
@@ -129,6 +132,11 @@ export default function TicketAccessForm({
       return false;
     }
 
+    if (!verificationToken) {
+      setOtpError(t("otpSendFailed"));
+      return false;
+    }
+
     setOtpVerifying(true);
 
     try {
@@ -138,6 +146,7 @@ export default function TicketAccessForm({
         body: JSON.stringify({
           email: email.trim(),
           otp: otpInput.trim(),
+          verificationToken,
         }),
       });
 
