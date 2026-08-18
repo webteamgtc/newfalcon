@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Button from "@/components/Button";
 import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhoneInput";
 import OtpBoxes from "@/components/ui/OtpBoxes";
+import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 
 const STAFF_EMAIL_DOMAIN = "@gtcfx.com";
 
@@ -235,6 +236,13 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
 
         throw new Error(data?.message || t("errors.submitFailed"));
       }
+
+      await sendConfirmationEmail({
+        email: email.trim(),
+        first_name: firstName.trim(),
+        formType: "staff_registration",
+        referenceId: data.id,
+      });
 
       setSubmitted(true);
       toast.success(t("successMessage"));
