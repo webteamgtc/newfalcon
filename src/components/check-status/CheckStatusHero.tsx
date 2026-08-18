@@ -10,15 +10,7 @@ export default function CheckStatusHero() {
 
   return (
     <>
-      <section className="relative flex min-h-[68vh] items-center overflow-hidden bg-gradient-to-br from-[#FEFCF6] via-[#EAD9B9] to-[#D8BA80] pb-16 pt-36 md:min-h-[78vh] md:pb-24 md:pt-44">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-70"
-          aria-hidden
-          style={{
-            background:
-              "radial-gradient(circle at 82% 14%, rgba(255,255,255,.66), transparent 30%), radial-gradient(circle at 75% 100%, rgba(181,137,69,.32), transparent 42%)",
-          }}
-        />
+      <section className="relative flex min-h-[52vh] items-center pb-8 pt-32 md:min-h-[58vh] md:pb-12 md:pt-40">
         <div className="container relative">
           <div className="max-w-2xl">
             <p className="eyebrow !capitalize text-ink/65">

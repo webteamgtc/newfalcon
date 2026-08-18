@@ -850,7 +850,15 @@
         "emailAlreadyExists": "This email is already registered.",
         "submitFailed": "Failed to save registration. Please try again."
       }
-    }
+    },
+    "formEyebrow": "Account Verification",
+    "formHeadingPlain": "Enter your credentials to",
+    "formHeadingItalic": "unlock your dashboard.",
+    "formDescription": "Use your registered GTCFX email and IB credentials. You will receive a one-time passcode to confirm your identity.",
+    "trustSecure": "256-bit encrypted",
+    "trustInstant": "Instant verification",
+    "trustVerified": "GTCFX verified",
+    "bottomNote": "Having trouble signing in? Contact support@gtcfx.com"
   },
   "common": {
     "backToHome": "Back to Home",

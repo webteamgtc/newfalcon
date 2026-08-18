@@ -60,12 +60,14 @@ function OtpBoxes({
 type TicketAccessFormProps = {
   compact?: boolean;
   pageLayout?: boolean;
+  embedded?: boolean;
   onSuccess?: () => void;
 };
 
 export default function TicketAccessForm({
   compact = false,
   pageLayout = false,
+  embedded = false,
   onSuccess,
 }: TicketAccessFormProps) {
   const t = useTranslations("ticketPage.accessForm");
@@ -86,6 +88,17 @@ export default function TicketAccessForm({
   const [termsError, setTermsError] = useState("");
   const [otpLoading, setOtpLoading] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const inputClass =
+    "mt-2 h-12 w-full rounded-lg border border-[#382910]/15 bg-white/95 px-4 font-poppins text-sm text-ink shadow-sm outline-none transition-all placeholder:text-ink/35 focus:border-falcon-deep focus:ring-2 focus:ring-falcon-deep/10 disabled:opacity-70";
+  const selectClass =
+    "mt-2 h-12 w-full rounded-lg border border-[#382910]/15 bg-white/95 px-4 font-poppins text-sm text-ink shadow-sm outline-none transition-all focus:border-falcon-deep focus:ring-2 focus:ring-falcon-deep/10";
+  const legacyInputClass =
+    "mt-2 h-12 w-full rounded-md border border-ink/20 bg-white px-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 focus:border-falcon-deep disabled:opacity-70";
+  const legacySelectClass =
+    "mt-2 h-12 w-full rounded-md border border-ink/20 bg-white px-3 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep";
+  const fieldInputClass = embedded ? inputClass : legacyInputClass;
+  const fieldSelectClass = embedded ? selectClass : legacySelectClass;
 
   const resetOtpState = () => {
     setShowOtp(false);
@@ -219,7 +232,7 @@ export default function TicketAccessForm({
 
   const formContent = (
     <>
-      {!compact && !pageLayout && (
+      {!compact && !pageLayout && !embedded && (
         <div className="mb-6 md:mb-8">
           <p className="eyebrow !capitalize text-[#382910]">
             <span className="font-poppins">{t("eyebrow")}</span>
@@ -239,9 +252,15 @@ export default function TicketAccessForm({
       )}
 
       <div
-        className={compact && !pageLayout ? "" : "mx-auto max-w-2xl p-4 md:p-8"}
+        className={
+          embedded
+            ? ""
+            : compact && !pageLayout
+              ? ""
+              : "mx-auto max-w-2xl p-4 md:p-8"
+        }
         style={
-          compact && !pageLayout
+          embedded || (compact && !pageLayout)
             ? undefined
             : {
                 border: "1px solid rgba(56, 41, 16, 0.30)",
@@ -250,7 +269,7 @@ export default function TicketAccessForm({
         }
       >
         <div>
-          <label className="font-poppins text-sm text-ink/70">{t("existingClientLabel")}</label>
+          <label className="font-poppins text-sm font-medium text-ink/75">{t("existingClientLabel")}</label>
           <select
             value={existingClient}
             onChange={(event) => {
@@ -260,7 +279,7 @@ export default function TicketAccessForm({
               setTerms(false);
               setTermsError("");
             }}
-            className="mt-2 h-12 w-full rounded-md border border-ink/20 bg-white px-3 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep"
+            className={fieldSelectClass}
           >
             <option value="">{t("selectPlaceholder")}</option>
             <option value="yes">{t("existingYes")}</option>
@@ -282,14 +301,14 @@ export default function TicketAccessForm({
                   }}
                   placeholder={t("emailPlaceholder")}
                   disabled={otpVerified}
-                  className="mt-2 h-12 w-full rounded-md border border-ink/20 bg-white px-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 focus:border-falcon-deep disabled:opacity-70"
+                  className={fieldInputClass}
                 />
               </div>
               <button
                 type="button"
                 onClick={handleGetOtp}
                 disabled={otpLoading || otpVerified || !email.trim()}
-                className="h-12 shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                className="h-12 shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep shadow-sm transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {otpLoading ? t("sendingOtp") : t("getOtp")}
               </button>
@@ -333,7 +352,7 @@ export default function TicketAccessForm({
                       setIbIdError("");
                     }}
                     placeholder={t("ibIdPlaceholder")}
-                    className="mt-2 h-12 w-full rounded-md border border-ink/20 bg-white px-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 focus:border-falcon-deep"
+                    className={fieldInputClass}
                   />
                   {ibIdError && <p className="mt-1 text-xs text-red-600">{ibIdError}</p>}
                 </div>
@@ -394,6 +413,10 @@ export default function TicketAccessForm({
       </div>
     </>
   );
+
+  if (embedded) {
+    return formContent;
+  }
 
   if (compact) {
     return formContent;
