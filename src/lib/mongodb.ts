@@ -20,12 +20,6 @@ function getConnectionUri(): string {
     throw new Error("Missing MONGODB_URI environment variable");
   }
 
-  if (uri.startsWith("mongodb+srv://")) {
-    throw new Error(
-      "mongodb+srv is not supported on this network. Use a standard mongodb:// URI in MONGODB_URI (see .env.example)."
-    );
-  }
-
   return uri;
 }
 

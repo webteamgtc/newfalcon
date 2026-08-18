@@ -18,7 +18,7 @@ export async function POST(req) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
-    // 6-digit numeric OTP
+    // Store OTP before sending email so verification always works if email is delivered.
     const otp = otpGenerator.generate(6, {
       upperCaseAlphabets: false,
       specialChars: false,
@@ -113,7 +113,23 @@ export async function POST(req) {
 </body>
 </html>`;
 
-    const res = await mailgunClient.messages.create(MAILGUN_DOMAIN, {
+    try {
+      await storeOtp(email, otp);
+    } catch (storeError) {
+      console.error("OTP store error:", storeError?.message || storeError);
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            storeError?.message?.includes("OTP_SECRET")
+              ? "OTP service is not configured. Set OTP_SECRET in production."
+              : "Failed to prepare OTP verification",
+        },
+        { status: 500 }
+      );
+    }
+
+    await mailgunClient.messages.create(MAILGUN_DOMAIN, {
       from: MAILGUN_FROM,
       to: email,
       subject,
@@ -121,14 +137,15 @@ export async function POST(req) {
       html,
     });
 
-    await storeOtp(email, otp);
-
     return NextResponse.json(
       { success: true, message: "OTP sent successfully" },
       { status: 200 }
     );
   } catch (error) {
-    console.error("Mailgun error:", error?.message || error);
-    return NextResponse.json({ message: "Error Sending OTP" }, { status: 500 });
+    console.error("OTP send error:", error?.message || error);
+    return NextResponse.json(
+      { success: false, message: "Error sending OTP" },
+      { status: 500 }
+    );
   }
 }
