@@ -12,6 +12,7 @@ export default function HomePage() {
     <>
       <Hero />
       <HistorySection />
+      
       {/* <GuestsSection /> */}
       <TicketCtaSection />
       {/* <AwardsSection /> */}
