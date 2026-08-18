@@ -438,6 +438,7 @@
       "credentialsNotFound": "البريد الإلكتروني ومعرّف IB / رمز الإحالة لا يطابقان سجلاتنا.",
       "getOtp": "احصل على OTP",
       "sendingOtp": "جارٍ الإرسال...",
+      "verifyingOtp": "جارٍ التحقق...",
       "otpLabel": "أدخل OTP",
       "otpRequired": "يرجى إدخال رمز OTP المكوّن من 6 أرقام",
       "otpInvalid": "رمز OTP غير صحيح. يرجى المحاولة مرة أخرى.",
@@ -781,6 +782,7 @@
       "errors": {
         "fullName": "الاسم الكامل مطلوب",
         "phone": "رقم الهاتف مطلوب",
+        "phoneInvalid": "أدخل رقم هاتف صالحًا",
         "passportNumber": "رقم جواز السفر مطلوب",
         "passportExpiry": "تاريخ انتهاء جواز السفر مطلوب",
         "nationality": "الجنسية مطلوبة",
@@ -793,7 +795,8 @@
         "terms": "يجب تأكيد الشروط للمتابعة",
         "passportPhoto": "صورة جواز السفر مطلوبة",
         "passportPhotoType": "يجب أن تكون صورة جواز السفر JPG أو PNG أو WEBP",
-        "passportPhotoSize": "يجب ألا تتجاوز صورة جواز السفر 5MB"
+        "passportPhotoSize": "يجب ألا تتجاوز صورة جواز السفر 5MB",
+        "emailAlreadyExists": "هذا البريد الإلكتروني مسجل بالفعل."
       },
       "submitFailed": "فشل حفظ التسجيل. يرجى المحاولة مرة أخرى."
     }
@@ -805,6 +808,51 @@
     "heroHeadingItalic": "لعرض تقدّمك.",
     "heroSubtext": "أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى جوائز Golden Falcon.",
     "heroCta": "ابدأ التحقق",
+    "staffRegistrationCta": "تسجيل الموظفين",
+    "staffRegistration": {
+      "eyebrow": "تسجيل الموظفين",
+      "headingPlain": "سجّل كـ",
+      "headingItalic": "موظف GTCFX.",
+      "description": "تحقق من بريد @gtcfx.com عبر OTP، ثم أكمل بيانات تسجيل الموظف.",
+      "closeModal": "إغلاق النموذج",
+      "getOtp": "احصل على OTP",
+      "sendingOtp": "جارٍ الإرسال...",
+      "verifyingOtp": "جارٍ التحقق...",
+      "verifyOtp": "تحقق من OTP",
+      "emailVerified": "تم التحقق من البريد الإلكتروني بنجاح.",
+      "submit": "إرسال التسجيل",
+      "submitting": "جارٍ الإرسال...",
+      "successTitle": "تم إرسال التسجيل",
+      "successDescription": "تم حفظ تسجيل الموظف بنجاح.",
+      "successMessage": "تم إرسال تسجيل الموظف بنجاح.",
+      "fields": {
+        "email": "البريد الوظيفي",
+        "otp": "رمز OTP",
+        "firstName": "الاسم الأول",
+        "phone": "رقم الهاتف",
+        "lineManagerName": "اسم المدير المباشر"
+      },
+      "placeholders": {
+        "email": "name@gtcfx.com",
+        "firstName": "أدخل اسمك الأول",
+        "phone": "يشمل رمز الدولة",
+        "lineManagerName": "أدخل اسم المدير المباشر"
+      },
+      "errors": {
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا",
+        "emailDomain": "يجب أن يكون البريد @gtcfx.com",
+        "otpRequired": "أدخل رمز OTP المكوّن من 6 أرقام",
+        "otpInvalid": "رمز OTP غير صحيح. حاول مرة أخرى.",
+        "otpSendFailed": "فشل إرسال OTP. حاول مرة أخرى.",
+        "firstNameRequired": "الاسم الأول مطلوب",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "phoneInvalid": "أدخل رقم هاتف صالحًا",
+        "lineManagerRequired": "اسم المدير المباشر مطلوب",
+        "emailAlreadyExists": "هذا البريد الإلكتروني مسجل بالفعل.",
+        "submitFailed": "فشل حفظ التسجيل. حاول مرة أخرى."
+      }
+    },
     "formEyebrow": "التحقق من الحساب",
     "formHeadingPlain": "أدخل بيانات اعتمادك",
     "formHeadingItalic": "لفتح لوحة التحكم.",

@@ -52,3 +52,6 @@ export async function getRegistrationDb(): Promise<Db> {
 
 export const REGISTRATION_COLLECTION =
   process.env.MONGODB_COLLECTION || "form";
+
+export const STAFF_REGISTRATION_COLLECTION =
+  process.env.MONGODB_STAFF_COLLECTION || "staff_registration";

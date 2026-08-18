@@ -438,6 +438,7 @@
       "credentialsNotFound": "Email and ID / Referral Code do not match our records.",
       "getOtp": "Get OTP",
       "sendingOtp": "Sending...",
+      "verifyingOtp": "Verifying...",
       "otpLabel": "Enter OTP",
       "otpRequired": "Please enter the 6-digit OTP",
       "otpInvalid": "Invalid OTP. Please try again.",
@@ -781,6 +782,7 @@
       "errors": {
         "fullName": "Full name is required",
         "phone": "Phone number is required",
+        "phoneInvalid": "Enter a valid phone number",
         "passportNumber": "Passport number is required",
         "passportExpiry": "Passport expiry date is required",
         "nationality": "Nationality is required",
@@ -793,7 +795,8 @@
         "terms": "You must confirm the terms to continue",
         "passportPhoto": "Passport photo is required",
         "passportPhotoType": "Passport photo must be JPG, PNG, or WEBP",
-        "passportPhotoSize": "Passport photo must be 5MB or less"
+        "passportPhotoSize": "Passport photo must be 5MB or less",
+        "emailAlreadyExists": "This email is already registered."
       },
       "submitFailed": "Failed to save registration. Please try again."
     }
@@ -805,6 +808,51 @@
     "heroHeadingItalic": "view your progress.",
     "heroSubtext": "Enter your registered email to check your VIP qualification status and Golden Falcon Awards access.",
     "heroCta": "Start Verification",
+    "staffRegistrationCta": "Staff Registration",
+    "staffRegistration": {
+      "eyebrow": "Staff registration",
+      "headingPlain": "Register as",
+      "headingItalic": "GTCFX staff.",
+      "description": "Verify your @gtcfx.com email with OTP, then complete your staff registration details.",
+      "closeModal": "Close form",
+      "getOtp": "Get OTP",
+      "sendingOtp": "Sending...",
+      "verifyingOtp": "Verifying...",
+      "verifyOtp": "Verify OTP",
+      "emailVerified": "Email verified successfully.",
+      "submit": "Submit Registration",
+      "submitting": "Submitting...",
+      "successTitle": "Registration submitted",
+      "successDescription": "Your staff registration has been saved successfully.",
+      "successMessage": "Staff registration submitted successfully.",
+      "fields": {
+        "email": "Work email",
+        "otp": "OTP code",
+        "firstName": "First name",
+        "phone": "Phone number",
+        "lineManagerName": "Line manager name"
+      },
+      "placeholders": {
+        "email": "name@gtcfx.com",
+        "firstName": "Enter your first name",
+        "phone": "Include country code",
+        "lineManagerName": "Enter line manager name"
+      },
+      "errors": {
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email address",
+        "emailDomain": "Email must be a @gtcfx.com address",
+        "otpRequired": "Enter the 6-digit OTP",
+        "otpInvalid": "Invalid OTP. Please try again.",
+        "otpSendFailed": "Failed to send OTP. Please try again.",
+        "firstNameRequired": "First name is required",
+        "phoneRequired": "Phone number is required",
+        "phoneInvalid": "Enter a valid phone number",
+        "lineManagerRequired": "Line manager name is required",
+        "emailAlreadyExists": "This email is already registered.",
+        "submitFailed": "Failed to save registration. Please try again."
+      }
+    },
     "formEyebrow": "Account Verification",
     "formHeadingPlain": "Enter your credentials to",
     "formHeadingItalic": "unlock your dashboard.",

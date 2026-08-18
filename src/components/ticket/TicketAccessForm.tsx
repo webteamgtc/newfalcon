@@ -7,55 +7,7 @@ import Button from "@/components/Button";
 import { useVipUser } from "@/context/VipUserProvider";
 import { findVipUserByCredentials, findVipUserByEmail } from "@/data/vipUsers";
 import TicketNewClientForm from "@/components/ticket/TicketNewClientForm";
-
-function OtpBoxes({
-  value,
-  onChange,
-  disabled,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-  disabled?: boolean;
-}) {
-  const digits = value.padEnd(6, " ").split("").slice(0, 6);
-
-  return (
-    <div className="flex justify-between gap-2">
-      {digits.map((digit, index) => (
-        <input
-          key={index}
-          type="tel"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          maxLength={1}
-          value={digit.trim()}
-          disabled={disabled}
-          onChange={(event) => {
-            const nextChar = event.target.value.replace(/\D/g, "").slice(-1);
-            const next = value.split("");
-            next[index] = nextChar;
-            const joined = next.join("").replace(/\s/g, "").slice(0, 6);
-            onChange(joined);
-
-            if (nextChar && event.target.nextElementSibling instanceof HTMLInputElement) {
-              event.target.nextElementSibling.focus();
-            }
-          }}
-          onKeyDown={(event) => {
-            if (
-              event.key === "Backspace" &&
-              !digit.trim() &&
-              event.currentTarget.previousElementSibling instanceof HTMLInputElement
-            ) {
-              event.currentTarget.previousElementSibling.focus();
-            }
-          }}
-          className="h-12 w-full min-w-[44px] rounded-md border border-ink/20 bg-white text-center font-display text-lg font-medium text-ink outline-none transition-colors focus:border-falcon-deep disabled:opacity-60"
-        />
-      ))}
-    </div>
-  );
-}
+import OtpBoxes from "@/components/ui/OtpBoxes";
 
 type TicketAccessFormProps = {
   compact?: boolean;
@@ -80,13 +32,13 @@ export default function TicketAccessForm({
   const [terms, setTerms] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [otpInput, setOtpInput] = useState("");
-  const [emailOtpFromApi, setEmailOtpFromApi] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [ibIdError, setIbIdError] = useState("");
   const [otpError, setOtpError] = useState("");
   const [termsError, setTermsError] = useState("");
   const [otpLoading, setOtpLoading] = useState(false);
+  const [otpVerifying, setOtpVerifying] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const inputClass =
@@ -103,7 +55,6 @@ export default function TicketAccessForm({
   const resetOtpState = () => {
     setShowOtp(false);
     setOtpInput("");
-    setEmailOtpFromApi("");
     setOtpVerified(false);
     setOtpError("");
     setEmailError("");
@@ -154,11 +105,10 @@ export default function TicketAccessForm({
 
       const data = await response.json();
 
-      if (!response.ok || !data?.message) {
+      if (!response.ok || !data?.success) {
         throw new Error(data?.message || data?.error || t("otpSendFailed"));
       }
 
-      setEmailOtpFromApi(String(data.message).trim());
       setShowOtp(true);
       setOtpInput("");
       setOtpVerified(false);
@@ -171,20 +121,41 @@ export default function TicketAccessForm({
     }
   };
 
-  const handleVerifyOtp = () => {
+  const handleVerifyOtp = async () => {
     setOtpError("");
 
     if (!showOtp || otpInput.length !== 6) {
       setOtpError(t("otpRequired"));
-      return;
+      return false;
     }
 
-    if (otpInput.trim() !== emailOtpFromApi) {
+    setOtpVerifying(true);
+
+    try {
+      const response = await fetch("/api/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          otp: otpInput.trim(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data?.success) {
+        setOtpError(t("otpInvalid"));
+        return false;
+      }
+
+      setOtpVerified(true);
+      return true;
+    } catch {
       setOtpError(t("otpInvalid"));
-      return;
+      return false;
+    } finally {
+      setOtpVerifying(false);
     }
-
-    setOtpVerified(true);
   };
 
   const validateIbCredentials = () => {
@@ -208,11 +179,11 @@ export default function TicketAccessForm({
     return matchedUser;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setTermsError("");
 
     if (!otpVerified) {
-      handleVerifyOtp();
+      await handleVerifyOtp();
       return;
     }
 
@@ -329,10 +300,10 @@ export default function TicketAccessForm({
                   <button
                     type="button"
                     onClick={handleVerifyOtp}
-                    disabled={otpInput.length !== 6}
+                    disabled={otpInput.length !== 6 || otpVerifying}
                     className="h-12 shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    {t("verifyOtp")}
+                    {otpVerifying ? t("verifyingOtp") : t("verifyOtp")}
                   </button>
                 </div>
               </div>
@@ -386,6 +357,7 @@ export default function TicketAccessForm({
               textClassName="text-white flex-1"
               disabled={
                 loading ||
+                otpVerifying ||
                 (otpVerified
                   ? !terms || !ibId.trim()
                   : !showOtp || otpInput.length !== 6)
@@ -394,9 +366,11 @@ export default function TicketAccessForm({
             >
               {loading
                 ? t("submitting")
-                : otpVerified
-                  ? t("submit")
-                  : t("verifyOtp")}
+                : otpVerifying
+                  ? t("verifyingOtp")
+                  : otpVerified
+                    ? t("submit")
+                    : t("verifyOtp")}
             </Button>
           </div>
         )}

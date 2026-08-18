@@ -11,10 +11,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <HistorySection />
-      <GuestsSection />
+      {/* <HistorySection />
+      <GuestsSection /> */}
       <TicketCtaSection />
-      <AwardsSection />
+      {/* <AwardsSection /> */}
       <MediaPartnersSection />
       <FaqSection />
       {/* <FooterCtaSection /> */}

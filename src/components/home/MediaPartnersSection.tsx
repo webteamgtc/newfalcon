@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl";
-import Image from "next/image";
+
+const YOUTUBE_EMBED_URL =
+  "https://www.youtube.com/embed/kGvHQmUq5vI?list=PLBcUUM130URxCFx0-scx5vhwEgx40Pxmg";
 
 const partnerLogoFiles = [
   "/images/one.webp",
@@ -35,12 +37,14 @@ export default function MediaPartnersSection() {
         <h2 className="mt-3 font-display HeadingH1 !font-medium !text-ink">{t("heading")}</h2>
         <p className="mt-3 max-w-2xl Text !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
 
-        <div className="relative mt-6 aspect-[16/6] overflow-hidden md:mt-8">
-          <Image
-            src="/images/video-icon.png"
-            alt={t("heading")}
-            fill
-            className="object-cover object-center"
+        <div className="relative mt-6 aspect-video overflow-hidden rounded-lg md:mt-8">
+          <iframe
+            src={YOUTUBE_EMBED_URL}
+            title={t("heading")}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0"
           />
         </div>
       </div>
