@@ -29,7 +29,7 @@ export default function FooterCtaSection() {
           {t("headingPlain")} <span className="italic text-falcon-deep">{t("headingItalic")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-sm text-ink/65">{t("subtext")}</p>
-        <Button href="/ticket" className="mt-8">
+        <Button href="/check-status" className="mt-8">
           {t("cta")}
         </Button>
       </div>

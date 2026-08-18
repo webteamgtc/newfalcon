@@ -72,11 +72,7 @@ function AccessCard({
   );
 }
 
-type TicketAccessSectionProps = {
-  onOpenForm?: () => void;
-};
-
-export default function TicketAccessSection({ onOpenForm }: TicketAccessSectionProps) {
+export default function TicketAccessSection() {
   const t = useTranslations("ticketPage.access");
   const { user } = useVipUser();
   const qualifyFields = t.raw("qualify.fields") as Field[];
@@ -152,13 +148,12 @@ export default function TicketAccessSection({ onOpenForm }: TicketAccessSectionP
               {t("vip.viewStatus")} →
             </Link>
           ) : (
-            <button
-              type="button"
-              onClick={onOpenForm}
+            <Link
+              href="/check-status"
               className="shrink-0 font-poppins text-xs uppercase tracking-[0.16em] text-ink transition-colors hover:text-falcon-deep"
             >
               {t("vip.cta")} →
-            </button>
+            </Link>
           )}
         </div>
       </div>

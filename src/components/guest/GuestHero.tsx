@@ -11,7 +11,7 @@ export default function GuestHero() {
       headingPlain={t("headingPlain")}
       headingItalic={t("headingItalic")}
       subtext={t("subtext")}
-      primaryCta={{ label: t("cta"), href: "/ticket" }}
+      primaryCta={{ label: t("cta"), href: "/check-status" }}
     />
   );
 }
