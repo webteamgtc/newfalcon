@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { startOfDay } from "date-fns";
 import Button from "@/components/Button";
 import FalconDatePicker from "@/components/ui/FalconDatePicker";
+import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhoneInput";
 import type { VipUser } from "@/data/vipUsers";
 
 const BOOKING_STORAGE_KEY = "gfn_vip_ticket_booking";
@@ -63,6 +64,8 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
     terms: false,
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  const [emailAlreadyRegistered, setEmailAlreadyRegistered] = useState(false);
+  const [checkingEmail, setCheckingEmail] = useState(true);
   const today = useMemo(() => startOfDay(new Date()), []);
   const arrivalMinDate = useMemo(
     () => (form.arrivalDate ? startOfDay(new Date(form.arrivalDate)) : today),
@@ -77,6 +80,36 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
       // ignore
     }
   }, [user.id]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function checkExistingEmail() {
+      setCheckingEmail(true);
+      try {
+        const response = await fetch(
+          `/api/vip-ticket-booking/check-email?email=${encodeURIComponent(user.email)}`
+        );
+        const data = await response.json();
+
+        if (cancelled) return;
+
+        if (response.ok && data?.exists) {
+          setEmailAlreadyRegistered(true);
+          setErrors((prev) => ({ ...prev, email: t("errors.emailAlreadyExists") }));
+        }
+      } catch {
+        // ignore — submit path will re-check
+      } finally {
+        if (!cancelled) setCheckingEmail(false);
+      }
+    }
+
+    checkExistingEmail();
+    return () => {
+      cancelled = true;
+    };
+  }, [user.email, t]);
 
   useEffect(() => {
     return () => {
@@ -121,7 +154,11 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
     const nextErrors: FormErrors = {};
 
     if (!form.fullName.trim()) nextErrors.fullName = t("errors.fullName");
-    if (!form.phone.trim()) nextErrors.phone = t("errors.phone");
+    if (!form.phone.trim()) {
+      nextErrors.phone = t("errors.phone");
+    } else if (!isValidPhoneNumber(form.phone)) {
+      nextErrors.phone = t("errors.phoneInvalid");
+    }
     if (!form.passportNumber.trim()) nextErrors.passportNumber = t("errors.passportNumber");
     if (!form.passportExpiry) nextErrors.passportExpiry = t("errors.passportExpiry");
     if (!form.nationality.trim()) nextErrors.nationality = t("errors.nationality");
@@ -133,6 +170,8 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
     }
     if (!form.emergencyContactPhone.trim()) {
       nextErrors.emergencyContactPhone = t("errors.emergencyContactPhone");
+    } else if (!isValidPhoneNumber(form.emergencyContactPhone)) {
+      nextErrors.emergencyContactPhone = t("errors.phoneInvalid");
     }
     if (!passportPhoto) nextErrors.passportPhoto = t("errors.passportPhoto");
     if (!form.terms) nextErrors.terms = t("errors.terms");
@@ -147,11 +186,27 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (emailAlreadyRegistered) {
+      toast.error(t("errors.emailAlreadyExists"));
+      return;
+    }
     if (!validate() || !passportPhoto) return;
 
     setLoading(true);
 
     try {
+      const checkResponse = await fetch(
+        `/api/vip-ticket-booking/check-email?email=${encodeURIComponent(form.email)}`
+      );
+      const checkData = await checkResponse.json();
+
+      if (checkResponse.ok && checkData?.exists) {
+        setEmailAlreadyRegistered(true);
+        setErrors((prev) => ({ ...prev, email: t("errors.emailAlreadyExists") }));
+        toast.error(t("errors.emailAlreadyExists"));
+        return;
+      }
+
       const payload = new FormData();
       payload.append("fullName", form.fullName);
       payload.append("email", form.email);
@@ -179,6 +234,13 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
       const data = await response.json();
 
       if (!response.ok || !data?.success) {
+        if (data?.code === "EMAIL_ALREADY_EXISTS") {
+          setEmailAlreadyRegistered(true);
+          setErrors((prev) => ({ ...prev, email: t("errors.emailAlreadyExists") }));
+          toast.error(t("errors.emailAlreadyExists"));
+          return;
+        }
+
         throw new Error(data?.message || t("submitFailed"));
       }
 
@@ -235,17 +297,24 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
 
         <div>
           <label className="font-poppins text-sm text-ink/70">{t("fields.email")} *</label>
-          <input type="email" value={form.email} readOnly className={`${fieldClass()} bg-ink/5`} />
+          <input
+            type="email"
+            value={form.email}
+            readOnly
+            className={`${fieldClass(errors.email)} bg-ink/5`}
+          />
+          {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
         </div>
 
         <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.phone")} *</label>
-          <input
-            type="tel"
+          <label htmlFor="vip-phone" className="font-poppins text-sm text-ink/70">
+            {t("fields.phone")} *
+          </label>
+          <FalconPhoneInput
+            id="vip-phone"
             value={form.phone}
-            onChange={(e) => updateField("phone", e.target.value)}
-            className={fieldClass(errors.phone)}
-            placeholder={t("placeholders.phone")}
+            onChange={(value) => updateField("phone", value)}
+            error={errors.phone}
           />
           {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
         </div>
@@ -376,13 +445,14 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.emergencyContactPhone")} *</label>
-          <input
-            type="tel"
+          <label htmlFor="vip-emergency-phone" className="font-poppins text-sm text-ink/70">
+            {t("fields.emergencyContactPhone")} *
+          </label>
+          <FalconPhoneInput
+            id="vip-emergency-phone"
             value={form.emergencyContactPhone}
-            onChange={(e) => updateField("emergencyContactPhone", e.target.value)}
-            className={fieldClass(errors.emergencyContactPhone)}
-            placeholder={t("placeholders.emergencyContactPhone")}
+            onChange={(value) => updateField("emergencyContactPhone", value)}
+            error={errors.emergencyContactPhone}
           />
           {errors.emergencyContactPhone && (
             <p className="mt-1 text-xs text-red-600">{errors.emergencyContactPhone}</p>
@@ -417,7 +487,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         variant="gold"
         className="w-full justify-between"
         textClassName="text-white flex-1"
-        disabled={loading}
+        disabled={loading || checkingEmail || emailAlreadyRegistered}
       >
         {loading ? t("submitting") : t("submit")}
       </Button>

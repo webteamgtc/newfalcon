@@ -11,6 +11,15 @@ const ALLOWED_IMAGE_TYPES = new Set([
   "image/webp",
 ]);
 
+function isDuplicateEmailError(error: unknown) {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    (error as { code?: number }).code === 11000
+  );
+}
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -85,11 +94,31 @@ export async function POST(request: Request) {
 
     const photoBuffer = Buffer.from(await passportPhoto.arrayBuffer());
     const photoBase64 = photoBuffer.toString("base64");
+    const normalizedEmail = getField("email").toLowerCase();
+
+    const db = await getRegistrationDb();
+    const collection = db.collection(REGISTRATION_COLLECTION);
+
+    const existingRegistration = await collection.findOne({
+      email: normalizedEmail,
+      formType: "vip_ticket_booking",
+    });
+
+    if (existingRegistration) {
+      return NextResponse.json(
+        {
+          success: false,
+          code: "EMAIL_ALREADY_EXISTS",
+          message: "This email is already registered.",
+        },
+        { status: 409 }
+      );
+    }
 
     const document = {
       formType: "vip_ticket_booking",
       fullName: getField("fullName"),
-      email: getField("email"),
+      email: normalizedEmail,
       phone: getField("phone"),
       passportNumber: getField("passportNumber"),
       passportExpiry: getField("passportExpiry"),
@@ -112,8 +141,7 @@ export async function POST(request: Request) {
       submittedAt: new Date(),
     };
 
-    const db = await getRegistrationDb();
-    const result = await db.collection(REGISTRATION_COLLECTION).insertOne(document);
+    const result = await collection.insertOne(document);
 
     return NextResponse.json({
       success: true,
@@ -121,6 +149,17 @@ export async function POST(request: Request) {
       message: "Registration saved successfully",
     });
   } catch (error) {
+    if (isDuplicateEmailError(error)) {
+      return NextResponse.json(
+        {
+          success: false,
+          code: "EMAIL_ALREADY_EXISTS",
+          message: "This email is already registered.",
+        },
+        { status: 409 }
+      );
+    }
+
     console.error("VIP ticket booking save error:", error);
     return NextResponse.json(
       {
