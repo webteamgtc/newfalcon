@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { verifyStoredOtp } from "@/lib/otpStore";
+import { verifyOtpWithToken } from "@/lib/otpStore";
 
 export const runtime = "nodejs";
 
@@ -8,6 +8,8 @@ export async function POST(request: Request) {
     const body = await request.json();
     const email = typeof body.email === "string" ? body.email.trim() : "";
     const otp = typeof body.otp === "string" ? body.otp.trim() : "";
+    const verificationToken =
+      typeof body.verificationToken === "string" ? body.verificationToken.trim() : "";
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
@@ -23,7 +25,14 @@ export async function POST(request: Request) {
       );
     }
 
-    const isValid = await verifyStoredOtp(email, otp);
+    if (!verificationToken) {
+      return NextResponse.json(
+        { success: false, message: "Verification session expired. Request a new OTP." },
+        { status: 400 }
+      );
+    }
+
+    const isValid = verifyOtpWithToken(email, otp, verificationToken);
 
     if (!isValid) {
       return NextResponse.json(

@@ -1,30 +1,15 @@
 import crypto from "crypto";
-import { getRegistrationDb } from "@/lib/mongodb";
 
-export const OTP_COLLECTION = "otp_verifications";
-const OTP_TTL_MS = 10 * 60 * 1000;
-
-type OtpRecord = {
-  otpHash: string;
-  expiresAt: number;
-};
-
-declare global {
-  // eslint-disable-next-line no-var
-  var _otpMemoryStore: Map<string, OtpRecord> | undefined;
-}
-
-function getMemoryStore() {
-  if (!global._otpMemoryStore) {
-    global._otpMemoryStore = new Map();
-  }
-  return global._otpMemoryStore;
-}
+export const OTP_TTL_MS = 10 * 60 * 1000;
 
 function getOtpSecret() {
   const secret = process.env.OTP_SECRET?.trim();
   if (secret) return secret;
   throw new Error("Missing OTP_SECRET environment variable");
+}
+
+function getEncryptionKey() {
+  return crypto.createHash("sha256").update(getOtpSecret()).digest();
 }
 
 function hashOtp(email: string, otp: string) {
@@ -34,90 +19,73 @@ function hashOtp(email: string, otp: string) {
     .digest("hex");
 }
 
-async function storeOtpInMongo(email: string, otp: string) {
-  const normalizedEmail = email.trim().toLowerCase();
-  const db = await getRegistrationDb();
-
-  await db.collection(OTP_COLLECTION).updateOne(
-    { email: normalizedEmail },
-    {
-      $set: {
-        email: normalizedEmail,
-        otpHash: hashOtp(normalizedEmail, otp),
-        expiresAt: new Date(Date.now() + OTP_TTL_MS),
-        createdAt: new Date(),
-      },
-    },
-    { upsert: true }
-  );
+export function generateRandomOtp() {
+  return crypto.randomInt(0, 1_000_000).toString().padStart(6, "0");
 }
 
-function storeOtpInMemory(email: string, otp: string) {
+export function createVerificationToken(email: string, otp: string) {
   const normalizedEmail = email.trim().toLowerCase();
-  getMemoryStore().set(normalizedEmail, {
-    otpHash: hashOtp(normalizedEmail, otp),
-    expiresAt: Date.now() + OTP_TTL_MS,
+  const payload = JSON.stringify({
+    e: normalizedEmail,
+    h: hashOtp(normalizedEmail, otp),
+    exp: Date.now() + OTP_TTL_MS,
   });
+
+  const iv = crypto.randomBytes(12);
+  const cipher = crypto.createCipheriv("aes-256-gcm", getEncryptionKey(), iv);
+  const encrypted = Buffer.concat([cipher.update(payload, "utf8"), cipher.final()]);
+  const authTag = cipher.getAuthTag();
+
+  return Buffer.concat([iv, authTag, encrypted]).toString("base64url");
 }
 
-export async function storeOtp(email: string, otp: string) {
-  try {
-    await storeOtpInMongo(email, otp);
-  } catch (mongoError) {
-    console.warn("MongoDB OTP store failed, using memory fallback:", mongoError);
-    storeOtpInMemory(email, otp);
-  }
-}
-
-async function verifyOtpFromMongo(email: string, otp: string) {
+export function verifyOtpWithToken(email: string, otp: string, token: string) {
   const normalizedEmail = email.trim().toLowerCase();
-  const db = await getRegistrationDb();
-  const doc = await db.collection(OTP_COLLECTION).findOne({ email: normalizedEmail });
-
-  if (!doc?.expiresAt || new Date(doc.expiresAt) < new Date()) {
-    return false;
-  }
-
-  const isValid = doc.otpHash === hashOtp(normalizedEmail, otp);
-
-  if (isValid) {
-    await db.collection(OTP_COLLECTION).deleteOne({ email: normalizedEmail });
-  }
-
-  return isValid;
-}
-
-function verifyOtpFromMemory(email: string, otp: string) {
-  const normalizedEmail = email.trim().toLowerCase();
-  const doc = getMemoryStore().get(normalizedEmail);
-
-  if (!doc || doc.expiresAt < Date.now()) {
-    getMemoryStore().delete(normalizedEmail);
-    return false;
-  }
-
-  const isValid = doc.otpHash === hashOtp(normalizedEmail, otp);
-
-  if (isValid) {
-    getMemoryStore().delete(normalizedEmail);
-  }
-
-  return isValid;
-}
-
-export async function verifyStoredOtp(email: string, otp: string) {
   const normalizedOtp = otp.trim();
 
-  if (!/^\d{6}$/.test(normalizedOtp)) {
+  if (!/^\d{6}$/.test(normalizedOtp) || !token?.trim()) {
     return false;
   }
 
   try {
-    const verified = await verifyOtpFromMongo(email, normalizedOtp);
-    if (verified) return true;
-  } catch (mongoError) {
-    console.warn("MongoDB OTP verify failed, trying memory fallback:", mongoError);
-  }
+    const data = Buffer.from(token, "base64url");
+    const iv = data.subarray(0, 12);
+    const authTag = data.subarray(12, 28);
+    const encrypted = data.subarray(28);
 
-  return verifyOtpFromMemory(email, normalizedOtp);
+    const decipher = crypto.createDecipheriv("aes-256-gcm", getEncryptionKey(), iv);
+    decipher.setAuthTag(authTag);
+
+    const decrypted = Buffer.concat([decipher.update(encrypted), decipher.final()]).toString(
+      "utf8"
+    );
+    const payload = JSON.parse(decrypted) as {
+      e: string;
+      h: string;
+      exp: number;
+    };
+
+    if (payload.e !== normalizedEmail) return false;
+    if (Date.now() > payload.exp) return false;
+    if (payload.h !== hashOtp(normalizedEmail, normalizedOtp)) return false;
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** @deprecated Use verifyOtpWithToken instead. */
+export async function verifyStoredOtp(email: string, otp: string) {
+  return verifyOtpWithToken(email, otp, "");
+}
+
+/** @deprecated Stateless OTP no longer needs storage. */
+export async function storeOtp(_email: string, _otp: string) {
+  return;
+}
+
+/** @deprecated Use generateRandomOtp instead. */
+export function generateOtp(_email: string) {
+  return generateRandomOtp();
 }

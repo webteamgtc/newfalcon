@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
-import otpGenerator from "otp-generator";
 import {
   MAILGUN_DOMAIN,
   MAILGUN_FROM,
   mailgunClient,
 } from "@/config/nodemailer";
-import { storeOtp } from "@/lib/otpStore";
+import { generateRandomOtp, createVerificationToken } from "@/lib/otpStore";
 
 export const runtime = "nodejs";
 
@@ -18,13 +17,24 @@ export async function POST(req) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
-    // Store OTP before sending email so verification always works if email is delivered.
-    const otp = otpGenerator.generate(6, {
-      upperCaseAlphabets: false,
-      specialChars: false,
-      digits: true,
-      lowerCaseAlphabets: false,
-    });
+    let otp;
+    let verificationToken;
+    try {
+      otp = generateRandomOtp();
+      verificationToken = createVerificationToken(email, otp);
+    } catch (storeError) {
+      console.error("OTP generate error:", storeError?.message || storeError);
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            storeError?.message?.includes("OTP_SECRET")
+              ? "OTP service is not configured. Set OTP_SECRET in production."
+              : "Failed to prepare OTP verification",
+        },
+        { status: 500 }
+      );
+    }
 
     const subject = "Your GTCFX OTP Code";
 
@@ -113,22 +123,6 @@ export async function POST(req) {
 </body>
 </html>`;
 
-    try {
-      await storeOtp(email, otp);
-    } catch (storeError) {
-      console.error("OTP store error:", storeError?.message || storeError);
-      return NextResponse.json(
-        {
-          success: false,
-          message:
-            storeError?.message?.includes("OTP_SECRET")
-              ? "OTP service is not configured. Set OTP_SECRET in production."
-              : "Failed to prepare OTP verification",
-        },
-        { status: 500 }
-      );
-    }
-
     await mailgunClient.messages.create(MAILGUN_DOMAIN, {
       from: MAILGUN_FROM,
       to: email,
@@ -138,7 +132,7 @@ export async function POST(req) {
     });
 
     return NextResponse.json(
-      { success: true, message: "OTP sent successfully" },
+      { success: true, message: "OTP sent successfully", verificationToken },
       { status: 200 }
     );
   } catch (error) {

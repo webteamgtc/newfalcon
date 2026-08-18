@@ -44,6 +44,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
   const [lineManagerName, setLineManagerName] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [otpInput, setOtpInput] = useState("");
+  const [verificationToken, setVerificationToken] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [emailError, setEmailError] = useState("");
@@ -58,6 +59,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
   const resetOtpState = () => {
     setShowOtp(false);
     setOtpInput("");
+    setVerificationToken("");
     setOtpVerified(false);
     setOtpError("");
   };
@@ -125,6 +127,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
 
       setShowOtp(true);
       setOtpInput("");
+      setVerificationToken(data.verificationToken || "");
       setOtpVerified(false);
     } catch (error) {
       setOtpError(error instanceof Error ? error.message : t("errors.otpSendFailed"));
@@ -141,6 +144,11 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
       return false;
     }
 
+    if (!verificationToken) {
+      setOtpError(t("errors.otpSendFailed"));
+      return false;
+    }
+
     setOtpVerifying(true);
 
     try {
@@ -150,6 +158,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
         body: JSON.stringify({
           email: email.trim().toLowerCase(),
           otp: otpInput.trim(),
+          verificationToken,
         }),
       });
 
