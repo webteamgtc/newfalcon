@@ -176,7 +176,7 @@
         },
         {
           "title": "Performance",
-          "description": "Honouring partners whose Trading Lot and IB/Partner acquisition set industry benchmarks."
+          "description": "Honouring partners whose Trading Lot and Partner acquisition set industry benchmarks."
         },
         {
           "title": "Leadership",
@@ -343,7 +343,7 @@
         {
           "name": "James Okonkwo",
           "role": "Industry Judge — Trading Excellence Panel",
-          "bio": "Evaluating performance benchmarks across Trading Lot, IB/Partner acquisition, and partnership categories.",
+          "bio": "Evaluating performance benchmarks across Trading Lot, Partner acquisition, and partnership categories.",
           "category": "judges"
         },
         {
@@ -419,11 +419,11 @@
       }
     },
     "accessForm": {
-      "eyebrow": "Existing IB/Partner access",
+      "eyebrow": "Existing Partner access",
       "headingPlain": "Verify your account to",
       "headingItalic": "view your progress.",
-      "description": "If you are an existing GTCFX IB/Partner, enter your registered email to check your VIP qualification status and event ticket access.",
-      "existingClientLabel": "Existing GTCFX IB/Partner?",
+      "description": "If you are an existing GTCFX Partner, enter your registered email to check your VIP qualification status and event ticket access.",
+      "existingClientLabel": "Existing GTCFX Partner?",
       "selectPlaceholder": "Select",
       "existingYes": "Yes",
       "existingNo": "No",
@@ -432,10 +432,10 @@
       "emailRequired": "Email is required",
       "emailInvalid": "Please enter a valid email address",
       "emailNotFound": "This email is not registered. Please use one of the demo accounts or contact support.",
-      "ibIdLabel": "ID / Referral Code*",
-      "ibIdPlaceholder": "Enter your ID or referral code",
-      "ibIdRequired": "ID / Referral Code is required",
-      "credentialsNotFound": "Email and ID / Referral Code do not match our records.",
+      "ibIdLabel": "Partner ID / Referral Code*",
+      "ibIdPlaceholder": "Enter your Partner ID or referral code",
+      "ibIdRequired": "Partner ID / Referral Code is required",
+      "credentialsNotFound": "Email and Partner ID / Referral Code do not match our records.",
       "getOtp": "Get OTP",
       "sendingOtp": "Sending...",
       "verifyingOtp": "Verifying...",
@@ -666,8 +666,8 @@
       },
       {
         "title": "Leadership & Integrity",
-        "description": "Celebrating visionary leadership, IB/Partner acquisition mastery, and uncompromising ethical standards.",
-        "items": ["Highest IB/Partner Acquisition Award", "Elite IB of the Year", "Global Partner of the Year", "Compliance & Integrity Excellence Award"]
+        "description": "Celebrating visionary leadership, Partner acquisition mastery, and uncompromising ethical standards.",
+        "items": ["Highest Partner Acquisition Award", "Elite Partner of the Year", "Global Partner of the Year", "Compliance & Integrity Excellence Award"]
       }
     ],
     "certificateEyebrow": "Signature Distinction",

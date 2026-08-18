@@ -7,6 +7,7 @@ import { startOfDay } from "date-fns";
 import Button from "@/components/Button";
 import FalconDatePicker from "@/components/ui/FalconDatePicker";
 import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhoneInput";
+import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 import type { VipUser } from "@/data/vipUsers";
 
 const BOOKING_STORAGE_KEY = "gfn_vip_ticket_booking";
@@ -258,6 +259,13 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
       } catch {
         // ignore
       }
+
+      await sendConfirmationEmail({
+        email: form.email,
+        first_name: form.fullName,
+        formType: "vip_ticket_booking",
+        referenceId: data.id,
+      });
 
       setSubmitted(true);
       toast.success(t("successMessage"));

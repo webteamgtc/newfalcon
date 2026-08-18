@@ -419,11 +419,11 @@
       }
     },
     "accessForm": {
-      "eyebrow": "وصول IB/Partner الحاليين",
+      "eyebrow": "وصول Partner الحاليين",
       "headingPlain": "تحقق من حسابك",
       "headingItalic": "لعرض تقدّمك.",
-      "description": "إذا كنت IB/Partner حالياً في GTCFX، أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى التذاكر.",
-      "existingClientLabel": "هل أنت IB/Partner حالي في GTCFX؟",
+      "description": "إذا كنت Partner حالياً في GTCFX، أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى التذاكر.",
+      "existingClientLabel": "هل أنت Partner حالي في GTCFX؟",
       "selectPlaceholder": "اختر",
       "existingYes": "نعم",
       "existingNo": "لا",
