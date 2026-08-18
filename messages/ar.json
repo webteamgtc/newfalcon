@@ -438,6 +438,7 @@
       "credentialsNotFound": "البريد الإلكتروني ومعرّف IB / رمز الإحالة لا يطابقان سجلاتنا.",
       "getOtp": "احصل على OTP",
       "sendingOtp": "جارٍ الإرسال...",
+      "verifyingOtp": "جارٍ التحقق...",
       "otpLabel": "أدخل OTP",
       "otpRequired": "يرجى إدخال رمز OTP المكوّن من 6 أرقام",
       "otpInvalid": "رمز OTP غير صحيح. يرجى المحاولة مرة أخرى.",
@@ -816,6 +817,7 @@
       "closeModal": "إغلاق النموذج",
       "getOtp": "احصل على OTP",
       "sendingOtp": "جارٍ الإرسال...",
+      "verifyingOtp": "جارٍ التحقق...",
       "verifyOtp": "تحقق من OTP",
       "emailVerified": "تم التحقق من البريد الإلكتروني بنجاح.",
       "submit": "إرسال التسجيل",
@@ -828,13 +830,13 @@
         "otp": "رمز OTP",
         "firstName": "الاسم الأول",
         "phone": "رقم الهاتف",
-        "lineManagerNumber": "رقم المدير المباشر"
+        "lineManagerName": "اسم المدير المباشر"
       },
       "placeholders": {
         "email": "name@gtcfx.com",
         "firstName": "أدخل اسمك الأول",
         "phone": "يشمل رمز الدولة",
-        "lineManagerNumber": "أدخل رقم المدير المباشر"
+        "lineManagerName": "أدخل اسم المدير المباشر"
       },
       "errors": {
         "emailRequired": "البريد الإلكتروني مطلوب",
@@ -846,7 +848,7 @@
         "firstNameRequired": "الاسم الأول مطلوب",
         "phoneRequired": "رقم الهاتف مطلوب",
         "phoneInvalid": "أدخل رقم هاتف صالحًا",
-        "lineManagerRequired": "رقم المدير المباشر مطلوب",
+        "lineManagerRequired": "اسم المدير المباشر مطلوب",
         "emailAlreadyExists": "هذا البريد الإلكتروني مسجل بالفعل.",
         "submitFailed": "فشل حفظ التسجيل. حاول مرة أخرى."
       }

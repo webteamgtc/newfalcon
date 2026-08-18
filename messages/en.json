@@ -438,6 +438,7 @@
       "credentialsNotFound": "Email and ID / Referral Code do not match our records.",
       "getOtp": "Get OTP",
       "sendingOtp": "Sending...",
+      "verifyingOtp": "Verifying...",
       "otpLabel": "Enter OTP",
       "otpRequired": "Please enter the 6-digit OTP",
       "otpInvalid": "Invalid OTP. Please try again.",
@@ -816,6 +817,7 @@
       "closeModal": "Close form",
       "getOtp": "Get OTP",
       "sendingOtp": "Sending...",
+      "verifyingOtp": "Verifying...",
       "verifyOtp": "Verify OTP",
       "emailVerified": "Email verified successfully.",
       "submit": "Submit Registration",
@@ -828,13 +830,13 @@
         "otp": "OTP code",
         "firstName": "First name",
         "phone": "Phone number",
-        "lineManagerNumber": "Line manager number"
+        "lineManagerName": "Line manager name"
       },
       "placeholders": {
         "email": "name@gtcfx.com",
         "firstName": "Enter your first name",
         "phone": "Include country code",
-        "lineManagerNumber": "Enter line manager number"
+        "lineManagerName": "Enter line manager name"
       },
       "errors": {
         "emailRequired": "Email is required",
@@ -846,7 +848,7 @@
         "firstNameRequired": "First name is required",
         "phoneRequired": "Phone number is required",
         "phoneInvalid": "Enter a valid phone number",
-        "lineManagerRequired": "Line manager number is required",
+        "lineManagerRequired": "Line manager name is required",
         "emailAlreadyExists": "This email is already registered.",
         "submitFailed": "Failed to save registration. Please try again."
       }

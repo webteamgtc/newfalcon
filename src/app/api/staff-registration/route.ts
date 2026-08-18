@@ -28,10 +28,8 @@ export async function POST(request: Request) {
       typeof body.firstName === "string" ? body.firstName.trim() : "";
     const email = typeof body.email === "string" ? body.email.trim() : "";
     const phone = typeof body.phone === "string" ? body.phone.trim() : "";
-    const lineManagerNumber =
-      typeof body.lineManagerNumber === "string"
-        ? body.lineManagerNumber.trim()
-        : "";
+    const lineManagerName =
+      typeof body.lineManagerName === "string" ? body.lineManagerName.trim() : "";
 
     if (!firstName) {
       return NextResponse.json(
@@ -64,9 +62,9 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!lineManagerNumber) {
+    if (!lineManagerName) {
       return NextResponse.json(
-        { success: false, message: "Line manager number is required" },
+        { success: false, message: "Line manager name is required" },
         { status: 400 }
       );
     }
@@ -93,7 +91,7 @@ export async function POST(request: Request) {
       firstName,
       email: normalizedEmail,
       phone,
-      lineManagerNumber,
+      lineManagerName,
       submittedAt: new Date(),
     };
 

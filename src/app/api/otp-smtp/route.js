@@ -5,6 +5,9 @@ import {
   MAILGUN_FROM,
   mailgunClient,
 } from "@/config/nodemailer";
+import { storeOtp } from "@/lib/otpStore";
+
+export const runtime = "nodejs";
 
 export async function POST(req) {
   try {
@@ -118,8 +121,12 @@ export async function POST(req) {
       html,
     });
 
-    // Return OTP (adjust to your security model; often you don't return the OTP)
-    return NextResponse.json({ id: res.id, message: otp }, { status: 200 });
+    await storeOtp(email, otp);
+
+    return NextResponse.json(
+      { success: true, message: "OTP sent successfully" },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Mailgun error:", error?.message || error);
     return NextResponse.json({ message: "Error Sending OTP" }, { status: 500 });

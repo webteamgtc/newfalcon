@@ -5,57 +5,9 @@ import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import Button from "@/components/Button";
 import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhoneInput";
+import OtpBoxes from "@/components/ui/OtpBoxes";
 
 const STAFF_EMAIL_DOMAIN = "@gtcfx.com";
-
-function OtpBoxes({
-  value,
-  onChange,
-  disabled,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-  disabled?: boolean;
-}) {
-  const digits = value.padEnd(6, " ").split("").slice(0, 6);
-
-  return (
-    <div className="flex justify-between gap-2">
-      {digits.map((digit, index) => (
-        <input
-          key={index}
-          type="tel"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          maxLength={1}
-          value={digit.trim()}
-          disabled={disabled}
-          onChange={(event) => {
-            const nextChar = event.target.value.replace(/\D/g, "").slice(-1);
-            const next = value.split("");
-            next[index] = nextChar;
-            const joined = next.join("").replace(/\s/g, "").slice(0, 6);
-            onChange(joined);
-
-            if (nextChar && event.target.nextElementSibling instanceof HTMLInputElement) {
-              event.target.nextElementSibling.focus();
-            }
-          }}
-          onKeyDown={(event) => {
-            if (
-              event.key === "Backspace" &&
-              !digit.trim() &&
-              event.currentTarget.previousElementSibling instanceof HTMLInputElement
-            ) {
-              event.currentTarget.previousElementSibling.focus();
-            }
-          }}
-          className="h-12 w-full min-w-[44px] rounded-md border border-ink/20 bg-white text-center font-display text-lg font-medium text-ink outline-none transition-colors focus:border-falcon-deep disabled:opacity-60"
-        />
-      ))}
-    </div>
-  );
-}
 
 function fieldClass(error?: string) {
   return `mt-2 h-12 w-full rounded-md border bg-white px-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 transition-colors focus:border-falcon-deep ${
@@ -88,10 +40,9 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
-  const [lineManagerNumber, setLineManagerNumber] = useState("");
+  const [lineManagerName, setLineManagerName] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [otpInput, setOtpInput] = useState("");
-  const [emailOtpFromApi, setEmailOtpFromApi] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [emailError, setEmailError] = useState("");
@@ -100,12 +51,12 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
   const [phoneError, setPhoneError] = useState("");
   const [lineManagerError, setLineManagerError] = useState("");
   const [otpLoading, setOtpLoading] = useState(false);
+  const [otpVerifying, setOtpVerifying] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const resetOtpState = () => {
     setShowOtp(false);
     setOtpInput("");
-    setEmailOtpFromApi("");
     setOtpVerified(false);
     setOtpError("");
   };
@@ -167,11 +118,10 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
 
       const data = await response.json();
 
-      if (!response.ok || !data?.message) {
+      if (!response.ok || !data?.success) {
         throw new Error(data?.message || data?.error || t("errors.otpSendFailed"));
       }
 
-      setEmailOtpFromApi(String(data.message).trim());
       setShowOtp(true);
       setOtpInput("");
       setOtpVerified(false);
@@ -182,7 +132,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
     }
   };
 
-  const handleVerifyOtp = () => {
+  const handleVerifyOtp = async () => {
     setOtpError("");
 
     if (!showOtp || otpInput.length !== 6) {
@@ -190,16 +140,36 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
       return false;
     }
 
-    if (otpInput.trim() !== emailOtpFromApi) {
+    setOtpVerifying(true);
+
+    try {
+      const response = await fetch("/api/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+          otp: otpInput.trim(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data?.success) {
+        setOtpError(t("errors.otpInvalid"));
+        return false;
+      }
+
+      setOtpVerified(true);
+      if (!firstName.trim()) {
+        setFirstName(firstNameFromEmail(email.trim()));
+      }
+      return true;
+    } catch {
       setOtpError(t("errors.otpInvalid"));
       return false;
+    } finally {
+      setOtpVerifying(false);
     }
-
-    setOtpVerified(true);
-    if (!firstName.trim()) {
-      setFirstName(firstNameFromEmail(email.trim()));
-    }
-    return true;
   };
 
   const validateRegistration = () => {
@@ -222,11 +192,8 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
       setPhoneError("");
     }
 
-    if (!lineManagerNumber.trim()) {
+    if (!lineManagerName.trim()) {
       setLineManagerError(t("errors.lineManagerRequired"));
-      valid = false;
-    } else if (!isValidPhoneNumber(lineManagerNumber)) {
-      setLineManagerError(t("errors.phoneInvalid"));
       valid = false;
     } else {
       setLineManagerError("");
@@ -237,7 +204,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
 
   const handleSubmit = async () => {
     if (!otpVerified) {
-      handleVerifyOtp();
+      await handleVerifyOtp();
       return;
     }
 
@@ -253,7 +220,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
           firstName: firstName.trim(),
           email: email.trim(),
           phone: phone.trim(),
-          lineManagerNumber: lineManagerNumber.trim(),
+          lineManagerName: lineManagerName.trim(),
         }),
       });
 
@@ -382,17 +349,19 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
           </div>
 
           <div>
-            <label htmlFor="staff-line-manager-phone" className="font-poppins text-sm text-ink/70">
-              {t("fields.lineManagerNumber")} *
+            <label htmlFor="staff-line-manager-name" className="font-poppins text-sm text-ink/70">
+              {t("fields.lineManagerName")} *
             </label>
-            <FalconPhoneInput
-              id="staff-line-manager-phone"
-              value={lineManagerNumber}
-              onChange={(value) => {
-                setLineManagerNumber(value);
+            <input
+              id="staff-line-manager-name"
+              type="text"
+              value={lineManagerName}
+              onChange={(event) => {
+                setLineManagerName(event.target.value);
                 setLineManagerError("");
               }}
-              error={lineManagerError}
+              placeholder={t("placeholders.lineManagerName")}
+              className={fieldClass(lineManagerError)}
             />
             {lineManagerError && (
               <p className="mt-1 text-xs text-red-600">{lineManagerError}</p>
@@ -408,17 +377,23 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
         textClassName="text-white flex-1"
         disabled={
           loading ||
+          otpVerifying ||
           (otpVerified
             ? !firstName.trim() ||
               !phone.trim() ||
               !isValidPhoneNumber(phone) ||
-              !lineManagerNumber.trim() ||
-              !isValidPhoneNumber(lineManagerNumber)
+              !lineManagerName.trim()
             : !showOtp || otpInput.length !== 6)
         }
         onClick={handleSubmit}
       >
-        {loading ? t("submitting") : otpVerified ? t("submit") : t("verifyOtp")}
+        {loading
+          ? t("submitting")
+          : otpVerifying
+            ? t("verifyingOtp")
+            : otpVerified
+              ? t("submit")
+              : t("verifyOtp")}
       </Button>
     </div>
   );
