@@ -217,10 +217,10 @@
       ]
     },
     "moments": {
-      "eyebrow": "Moments",
-      "headingPlain": "The evening through",
-      "headingItalic": "a thousand moments.",
-      "subtext": "From red-carpet arrivals to the final standing ovation — snapshots of the connections, celebrations, and triumphs that bring our community together."
+      "eyebrow": "Time line",
+      "headingPlain": "A journey told through",
+      "headingItalic": "moments.",
+      "subtext": "Explore global events, behind-the-scenes stories, community highlights, media features, and the milestones that define our presence."
     }
   },
   "agenda": {
@@ -676,12 +676,12 @@
     "certificateDesc": "The pinnacle honour of the evening — presented to a partner or leader whose vision, influence, and sustained contribution have created transformative impact across the global trading community."
   },
   "vipPage": {
-    "heroEyebrow": "VIP QUALIFICATION",
+    "heroEyebrow": "VIP Annual Invitation",
     "heroYear": "2026",
-    "heroHeadingPlain": "Your journey to",
-    "heroHeadingName": "VIP status.",
-    "heroSubtext": "Your personal dashboard tracking progress toward complimentary VIP access to the Golden Falcon Awards — including flights, five-star accommodation, and exclusive event privileges.",
-    "heroCta": "VIEW YOUR PROGRESS",
+    "heroHeadingPlain": "Welcome,",
+    "heroHeadingName": "Guest.",
+    "heroSubtext": "Your private view of the journey toward complimentary VIP access to Golden Falcon Awards Night.",
+    "heroCta": "View Progress",
     "journeyEyebrow": "QUALIFICATION JOURNEY",
     "journeyHeadingPlain": "Three stages.",
     "journeyHeadingItalic": "One invitation.",
