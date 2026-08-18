@@ -48,7 +48,6 @@ export default function MediaPartnersSection() {
           />
         </div>
       </div>
-
    
     </section>
   );
