@@ -11,8 +11,8 @@ export default function HistorySection() {
   }[];
 
   return (
-    <section className="relative py-6 md:py-14">
-      <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
+    <section className="relative isolate py-6 md:py-14">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
         <Image
           src="/images/home-section2-bg.webp"
           alt=""
@@ -22,7 +22,7 @@ export default function HistorySection() {
           sizes="100vw"
         />
       </div>
-      <div className="container min-w-0 max-w-full text-center">
+      <div className="container relative z-10 min-w-0 max-w-full text-center">
         <div className="max-w-xl mx-auto">
           <p className="eyebrow text-[#382910] !capitalize">{t("eyebrow")}</p>
           <h2 className="mt-3 font-display leading-snug text-ink HeadingH1">
@@ -33,7 +33,7 @@ export default function HistorySection() {
         </div>
       </div>
 
-      <div className="container mt-6 md:mt-14 grid gap-6 md:gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
+      <div className="container relative z-10 mt-6 md:mt-14 grid gap-6 md:gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
         <div className="relative overflow-hidden aspect-[16/9]">
           <div className="absolute inset-0 flex items-center justify-center">
             <Image

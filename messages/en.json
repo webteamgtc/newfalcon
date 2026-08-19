@@ -220,7 +220,8 @@
       "eyebrow": "Time line",
       "headingPlain": "A journey told through",
       "headingItalic": "moments.",
-      "subtext": "Explore global events, behind-the-scenes stories, community highlights, media features, and the milestones that define our presence."
+      "subtext": "Explore global events, behind-the-scenes stories, community highlights, media features, and the milestones that define our presence.",
+      "imageAlt": "Golden Falcon Awards gallery moment {number}"
     }
   },
   "agenda": {
