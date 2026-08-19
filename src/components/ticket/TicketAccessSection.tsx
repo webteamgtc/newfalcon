@@ -51,6 +51,9 @@ function AccessCard({
       <div className="mt-6 md:mt-8 flex flex-1 flex-col">
         {fields.map((field) => (
           <label key={field.label} className="block">
+            <span className="form-field-label font-poppins text-xs uppercase tracking-[0.08em] text-ink/55">
+              {field.label}
+            </span>
             <select
               defaultValue=""
               className="mt-4 w-full appearance-none border-0 border-b border-ink/25 bg-transparent pb-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep"

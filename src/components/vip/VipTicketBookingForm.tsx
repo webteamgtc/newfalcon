@@ -12,7 +12,6 @@ import type { VipUser } from "@/data/vipUsers";
 
 const BOOKING_STORAGE_KEY = "gfn_vip_ticket_booking";
 const PASSPORT_EXAMPLE_SRC = "/images/passport.jpeg";
-const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_PASSPORT_TYPES = [
   "image/jpeg",
   "image/jpg",
@@ -88,9 +87,6 @@ function fieldClass(error?: string) {
 function validatePhotoFile(file: File) {
   if (!ALLOWED_PASSPORT_TYPES.includes(file.type)) {
     return "type" as const;
-  }
-  if (file.size > MAX_FILE_SIZE) {
-    return "size" as const;
   }
   return null;
 }
@@ -249,14 +245,6 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
       setErrors((prev) => ({
         ...prev,
         [errorKey]: t("errors.passportPhotoType"),
-      }));
-      event.target.value = "";
-      return;
-    }
-    if (photoError === "size") {
-      setErrors((prev) => ({
-        ...prev,
-        [errorKey]: t("errors.passportPhotoSize"),
       }));
       event.target.value = "";
       return;
@@ -436,7 +424,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="md:col-span-2">
-          <label className="font-poppins text-sm text-ink/70">{t("fields.fullName")} *</label>
+          <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.fullName")} *</label>
           <input
             type="text"
             value={form.fullName}
@@ -448,7 +436,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.email")} *</label>
+          <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.email")} *</label>
           <input
             type="email"
             value={form.email}
@@ -459,7 +447,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div>
-          <label htmlFor="vip-phone" className="font-poppins text-sm text-ink/70">
+          <label htmlFor="vip-phone" className="form-field-label font-poppins text-sm text-ink/70">
             {t("fields.phone")} *
           </label>
           <FalconPhoneInput
@@ -472,7 +460,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div className="md:col-span-2">
-          <label className="font-poppins text-sm text-ink/70">{t("fields.passportPhoto")} *</label>
+          <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.passportPhoto")} *</label>
           <div
             className={`mt-2 rounded-md border border-dashed bg-white p-4 ${
               errors.passportPhoto ? "border-red-500" : "border-ink/25"
@@ -527,7 +515,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.passportNumber")} *</label>
+          <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.passportNumber")} *</label>
           <input
             type="text"
             value={form.passportNumber}
@@ -541,7 +529,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.passportExpiry")} *</label>
+          <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.passportExpiry")} *</label>
           <FalconDatePicker
             value={form.passportExpiry}
             onChange={(value) => updateField("passportExpiry", value)}
@@ -555,7 +543,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.nationality")} *</label>
+          <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.nationality")} *</label>
           <input
             type="text"
             value={form.nationality}
@@ -569,7 +557,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.dateOfBirth")} *</label>
+          <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.dateOfBirth")} *</label>
           <FalconDatePicker
             value={form.dateOfBirth}
             onChange={(value) => updateField("dateOfBirth", value)}
@@ -583,7 +571,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         </div>
 
         <div className="md:col-span-2">
-          <label className="font-poppins text-sm text-ink/70">{t("fields.invitingGuest")} *</label>
+          <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.invitingGuest")} *</label>
           <select
             value={form.invitingGuest}
             onChange={(e) => updateField("invitingGuest", e.target.value as InviteChoice)}
@@ -607,7 +595,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
 
             <div className="grid gap-4 md:grid-cols-2">
               <div>
-                <label className="font-poppins text-sm text-ink/70">{t("fields.guestFirstName")} *</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.guestFirstName")} *</label>
                 <input
                   type="text"
                   value={guest.firstName}
@@ -621,7 +609,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               </div>
 
               <div>
-                <label className="font-poppins text-sm text-ink/70">{t("fields.guestEmail")} *</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.guestEmail")} *</label>
                 <input
                   type="email"
                   value={guest.email}
@@ -635,7 +623,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               </div>
 
               <div>
-                <label htmlFor="vip-guest-phone" className="font-poppins text-sm text-ink/70">
+                <label htmlFor="vip-guest-phone" className="form-field-label font-poppins text-sm text-ink/70">
                   {t("fields.guestPhone")} *
                 </label>
                 <FalconPhoneInput
@@ -650,7 +638,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               </div>
 
               <div>
-                <label className="font-poppins text-sm text-ink/70">{t("fields.guestPassportNumber")} *</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.guestPassportNumber")} *</label>
                 <input
                   type="text"
                   value={guest.passportNumber}
@@ -664,7 +652,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               </div>
 
               <div>
-                <label className="font-poppins text-sm text-ink/70">{t("fields.guestPassportExpiry")} *</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.guestPassportExpiry")} *</label>
                 <FalconDatePicker
                   value={guest.passportExpiry}
                   onChange={(value) => updateGuestField("passportExpiry", value)}
@@ -678,7 +666,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               </div>
 
               <div>
-                <label className="font-poppins text-sm text-ink/70">{t("fields.guestNationality")} *</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.guestNationality")} *</label>
                 <input
                   type="text"
                   value={guest.nationality}
@@ -692,7 +680,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               </div>
 
               <div className="md:col-span-2">
-                <label className="font-poppins text-sm text-ink/70">{t("fields.guestPassportPhoto")} *</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.guestPassportPhoto")} *</label>
                 <div
                   className={`mt-2 rounded-md border border-dashed bg-white p-4 ${
                     errors.guestPassportPhoto ? "border-red-500" : "border-ink/25"
@@ -725,7 +713,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               </div>
 
               <div className="md:col-span-2">
-                <label className="font-poppins text-sm text-ink/70">{t("fields.bedroomPreference")} *</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.bedroomPreference")} *</label>
                 <select
                   value={form.bedroomPreference}
                   onChange={(e) =>
@@ -742,7 +730,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               </div>
 
               {/* <div className="md:col-span-2">
-                <label className="font-poppins text-sm text-ink/70">{t("fields.specialRequirements")}</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.specialRequirements")}</label>
                 <textarea
                   value={form.specialRequirements}
                   onChange={(e) => updateField("specialRequirements", e.target.value)}

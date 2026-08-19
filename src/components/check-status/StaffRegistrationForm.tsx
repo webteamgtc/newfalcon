@@ -324,7 +324,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
         <>
           <div className="flex flex-col gap-3 md:flex-row md:items-end">
             <div className="min-w-0 flex-1">
-              <label className="font-poppins text-sm text-ink/70">{t("fields.email")} *</label>
+              <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.email")} *</label>
               <input
                 type="email"
                 value={email}
@@ -358,7 +358,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
           {otpSessionActive && (
             <div className="space-y-3">
               <div>
-                <label className="font-poppins text-sm text-ink/70">{t("fields.otp")} *</label>
+                <label className="form-field-label form-field-label--literal font-poppins text-sm text-ink/70">{t("fields.otp")} *</label>
                 <div className="mt-2">
                   <OtpBoxes value={otpInput} onChange={setOtpInput} />
                 </div>
@@ -374,7 +374,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
           <p className="text-sm font-medium text-green-700">{t("emailVerified")}</p>
 
           <div>
-            <label className="font-poppins text-sm text-ink/70">{t("fields.firstName")} *</label>
+            <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.firstName")} *</label>
             <input
               type="text"
               value={firstName}
@@ -389,7 +389,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
           </div>
 
           <div>
-            <label htmlFor="staff-phone" className="font-poppins text-sm text-ink/70">
+            <label htmlFor="staff-phone" className="form-field-label font-poppins text-sm text-ink/70">
               {t("fields.phone")} *
             </label>
             <FalconPhoneInput
@@ -405,7 +405,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
           </div>
 
           <div>
-            <label className="font-poppins text-sm text-ink/70">{t("fields.email")} *</label>
+            <label className="form-field-label font-poppins text-sm text-ink/70">{t("fields.email")} *</label>
             <input
               type="email"
               value={email}
@@ -416,7 +416,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
           </div>
 
           <div>
-            <label htmlFor="staff-line-manager-name" className="font-poppins text-sm text-ink/70">
+            <label htmlFor="staff-line-manager-name" className="form-field-label font-poppins text-sm text-ink/70">
               {t("fields.lineManagerName")} *
             </label>
             <input

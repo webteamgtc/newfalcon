@@ -30,13 +30,16 @@ export function VipUserProvider({ children }: { children: ReactNode }) {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    setUser(getVipSessionUser());
+    const sessionUser = getVipSessionUser();
+    if (sessionUser) {
+      setUser(setVipSessionUser(sessionUser));
+    }
     setIsReady(true);
   }, []);
 
   const login = useCallback((nextUser: VipUser) => {
-    setVipSessionUser(nextUser);
-    setUser(nextUser);
+    const normalizedUser = setVipSessionUser(nextUser);
+    setUser(normalizedUser);
   }, []);
 
   const logout = useCallback(() => {

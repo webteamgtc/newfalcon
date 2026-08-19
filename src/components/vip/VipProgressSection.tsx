@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useVipUser } from "@/context/VipUserProvider";
-import { formatCurrency } from "@/data/vipUsers";
+import { formatActivity, formatCurrency, VIP_QUALIFICATION_TARGETS } from "@/data/vipUsers";
 import VipTicketBookingModal from "@/components/vip/VipTicketBookingModal";
 import { hasTicketBooking } from "@/components/vip/VipTicketBookingForm";
 
@@ -34,14 +34,16 @@ export default function VipProgressSection() {
 
   if (!user) return null;
 
-  const capitalRemaining = Math.max(user.capitalTarget - user.capitalCurrent, 0);
-  const activityRemaining = Math.max(user.activityTarget - user.activityCurrent, 0);
+  const capitalTarget = VIP_QUALIFICATION_TARGETS.capital;
+  const activityTarget = VIP_QUALIFICATION_TARGETS.activity;
+  const capitalRemaining = Math.max(capitalTarget - user.capitalCurrent, 0);
+  const activityRemaining = Math.max(activityTarget - user.activityCurrent, 0);
   const capitalPercent = Math.min(
-    Math.round((user.capitalCurrent / user.capitalTarget) * 100),
+    Math.round((user.capitalCurrent / capitalTarget) * 100),
     100
   );
   const activityPercent = Math.min(
-    Math.round((user.activityCurrent / user.activityTarget) * 100),
+    Math.round((user.activityCurrent / activityTarget) * 100),
     100
   );
   const summaryPercent = user.progressPercent;
@@ -115,13 +117,13 @@ export default function VipProgressSection() {
             label={t("capitalLabel")}
             title={t("capitalTitle")}
             current={formatCurrency(user.capitalCurrent)}
-            target={formatCurrency(user.capitalTarget)}
+            target={formatCurrency(capitalTarget)}
             targetLabel={t("targetLabel")}
             remaining={t("capitalRemaining", {
               amount: formatCurrency(capitalRemaining),
             })}
             targetText={t("targetValue", {
-              amount: formatCurrency(user.capitalTarget),
+              amount: formatCurrency(capitalTarget),
             })}
             percentText={`${capitalPercent}%`}
             percent={capitalPercent}
@@ -129,14 +131,14 @@ export default function VipProgressSection() {
           <ProgressCard
             label={t("activityLabel")}
             title={t("activityTitle")}
-            current={(user.activityCurrent)}
-            target={(user.activityTarget)}
+            current={formatActivity(user.activityCurrent)}
+            target={formatActivity(activityTarget)}
             targetLabel={t("targetLabel")}
             remaining={t("activityRemaining", {
-              amount: (activityRemaining),
+              amount: formatActivity(activityRemaining),
             })}
             targetText={t("targetValue", {
-              amount: (user.activityTarget),
+              amount: formatActivity(activityTarget),
             })}
             percentText={`${activityPercent}%`}
             percent={activityPercent}

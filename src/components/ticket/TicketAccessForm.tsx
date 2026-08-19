@@ -293,7 +293,7 @@ export default function TicketAccessForm({
         }
       >
         <div>
-          <label className="font-poppins text-sm font-medium text-ink/75">{t("existingClientLabel")}</label>
+          <label className="form-field-label font-poppins text-sm font-medium text-ink/75">{t("existingClientLabel")}</label>
           <select
             value={existingClient}
             onChange={(event) => {
@@ -315,7 +315,7 @@ export default function TicketAccessForm({
           <div className="mt-6 space-y-5">
             <div className="flex flex-col gap-3 md:flex-row md:items-end">
               <div className="min-w-0 flex-1">
-                <label className="font-poppins text-sm text-ink/70">{t("emailLabel")}</label>
+                <label className="form-field-label font-poppins text-sm text-ink/70">{t("emailLabel")}</label>
                 <input
                   type="email"
                   value={email}
@@ -349,7 +349,7 @@ export default function TicketAccessForm({
             {otpSessionActive && (
               <div className="space-y-3">
                 <div>
-                  <label className="font-poppins text-sm text-ink/70">{t("otpLabel")}</label>
+                  <label className="form-field-label form-field-label--literal font-poppins text-sm text-ink/70">{t("otpLabel")}</label>
                   <div className="mt-2">
                     <OtpBoxes value={otpInput} onChange={setOtpInput} />
                   </div>
@@ -373,7 +373,7 @@ export default function TicketAccessForm({
                 <p className="text-sm font-medium text-green-700">{t("emailVerified")}</p>
 
                 <div className="min-w-0">
-                  <label className="font-poppins text-sm text-ink/70">{t("ibIdLabel")}</label>
+                  <label className="form-field-label form-field-label--literal font-poppins text-sm text-ink/70">{t("ibIdLabel")}</label>
                   <input
                     type="text"
                     value={ibId}

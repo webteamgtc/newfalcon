@@ -46,7 +46,7 @@ export default function AdminLoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="admin-email" className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/55">
+        <label htmlFor="admin-email" className="form-field-label font-poppins text-xs uppercase tracking-[0.08em] text-ink/55">
           Email
         </label>
         <input
@@ -62,7 +62,7 @@ export default function AdminLoginForm() {
       </div>
 
       <div>
-        <label htmlFor="admin-password" className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/55">
+        <label htmlFor="admin-password" className="form-field-label font-poppins text-xs uppercase tracking-[0.08em] text-ink/55">
           Password
         </label>
         <input

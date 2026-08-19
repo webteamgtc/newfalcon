@@ -33,7 +33,7 @@ export default function TicketContactSection() {
 
           <form className="mt-6 md:mt-10 space-y-8" onSubmit={(e) => e.preventDefault()}>
             <label className="block">
-              <span className="font-poppins text-[11px] uppercase tracking-[0.16em] text-ink/55">
+              <span className="form-field-label font-poppins text-[11px] uppercase tracking-[0.16em] text-ink/55">
                 {t("nameLabel")}
               </span>
               <input
@@ -43,7 +43,7 @@ export default function TicketContactSection() {
               />
             </label>
             <label className="block">
-              <span className="font-poppins text-[11px] uppercase tracking-[0.16em] text-ink/55">
+              <span className="form-field-label font-poppins text-[11px] uppercase tracking-[0.16em] text-ink/55">
                 {t("emailLabel")}
               </span>
               <input

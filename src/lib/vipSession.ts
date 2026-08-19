@@ -1,4 +1,5 @@
 import type { VipUser } from "@/data/vipUsers";
+import { normalizeVipUser } from "@/data/vipUsers";
 
 export const VIP_SESSION_KEY = "gfn_vip_user";
 
@@ -8,15 +9,18 @@ export function getVipSessionUser(): VipUser | null {
   try {
     const raw = sessionStorage.getItem(VIP_SESSION_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as VipUser;
+    return normalizeVipUser(JSON.parse(raw) as VipUser);
   } catch {
     return null;
   }
 }
 
-export function setVipSessionUser(user: VipUser): void {
-  if (typeof window === "undefined") return;
-  sessionStorage.setItem(VIP_SESSION_KEY, JSON.stringify(user));
+export function setVipSessionUser(user: VipUser): VipUser {
+  const normalizedUser = normalizeVipUser(user);
+  if (typeof window !== "undefined") {
+    sessionStorage.setItem(VIP_SESSION_KEY, JSON.stringify(normalizedUser));
+  }
+  return normalizedUser;
 }
 
 export function clearVipSessionUser(): void {

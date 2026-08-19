@@ -243,7 +243,7 @@ export default function TicketNewClientForm() {
       <form onSubmit={formik.handleSubmit} className="space-y-4">
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label htmlFor="nickname" className="font-poppins text-sm text-ink/70">
+            <label htmlFor="nickname" className="form-field-label font-poppins text-sm text-ink/70">
               {t("fields.firstName")} *
             </label>
             <input
@@ -258,7 +258,7 @@ export default function TicketNewClientForm() {
             )}
           </div>
           <div>
-            <label htmlFor="lastname" className="font-poppins text-sm text-ink/70">
+            <label htmlFor="lastname" className="form-field-label font-poppins text-sm text-ink/70">
               {t("fields.lastName")} *
             </label>
             <input
@@ -275,7 +275,7 @@ export default function TicketNewClientForm() {
         </div>
 
         <div>
-          <label htmlFor="email" className="font-poppins text-sm text-ink/70">
+          <label htmlFor="email" className="form-field-label font-poppins text-sm text-ink/70">
             {t("fields.email")} *
           </label>
           <input
@@ -291,7 +291,7 @@ export default function TicketNewClientForm() {
         </div>
 
         <div>
-          <label htmlFor="otp" className="font-poppins text-sm text-ink/70">
+          <label htmlFor="otp" className="form-field-label font-poppins text-sm text-ink/70">
             {t("fields.emailCode")} *
           </label>
           <div className="relative mt-2">
@@ -319,7 +319,7 @@ export default function TicketNewClientForm() {
         </div>
 
         <div>
-          <label htmlFor="password" className="font-poppins text-sm text-ink/70">
+          <label htmlFor="password" className="form-field-label font-poppins text-sm text-ink/70">
             {t("fields.password")} *
           </label>
           <div className="relative mt-2">
@@ -345,7 +345,7 @@ export default function TicketNewClientForm() {
         </div>
 
         <div>
-          <label htmlFor="country" className="font-poppins text-sm text-ink/70">
+          <label htmlFor="country" className="form-field-label font-poppins text-sm text-ink/70">
             {t("fields.country")} *
           </label>
           <select
@@ -372,7 +372,7 @@ export default function TicketNewClientForm() {
         </div>
 
         <div>
-          <label htmlFor="phone" className="font-poppins text-sm text-ink/70">
+          <label htmlFor="phone" className="form-field-label font-poppins text-sm text-ink/70">
             {t("fields.phone")} *
           </label>
           <div
@@ -404,7 +404,7 @@ export default function TicketNewClientForm() {
             className="flex w-full items-center justify-between text-left"
             aria-expanded={partnerCodeOpen}
           >
-            <span className="font-poppins text-sm text-ink/70">
+            <span className="form-field-label font-poppins text-sm text-ink/70">
               {t("fields.partnerCode")}{" "}
               <span className="text-ink/45">({t("fields.optional")})</span>
             </span>

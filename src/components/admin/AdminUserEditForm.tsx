@@ -17,7 +17,7 @@ function textareaClass() {
 }
 
 function labelClass(required?: boolean) {
-  return `font-poppins text-xs uppercase tracking-[0.08em] text-ink/55${required ? " after:ml-0.5 after:text-red-500 after:content-['*']" : ""}`;
+  return `form-field-label font-poppins text-xs uppercase tracking-[0.08em] text-ink/55${required ? " after:ml-0.5 after:text-red-500 after:content-['*']" : ""}`;
 }
 
 function buildDocumentUrl(registrationId: string, s3Key?: string) {

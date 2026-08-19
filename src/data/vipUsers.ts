@@ -25,6 +25,27 @@ export type VipUser = {
 
 export const DEMO_OTP = "123456";
 
+export const VIP_QUALIFICATION_TARGETS = {
+  capital: 1_000_000,
+  activity: 10_000,
+} as const;
+
+function getOverallProgressPercent(
+  capitalCurrent: number,
+  activityCurrent: number
+): number {
+  const capitalPercent = Math.min(
+    Math.round((capitalCurrent / VIP_QUALIFICATION_TARGETS.capital) * 100),
+    100
+  );
+  const activityPercent = Math.min(
+    Math.round((activityCurrent / VIP_QUALIFICATION_TARGETS.activity) * 100),
+    100
+  );
+
+  return Math.min(capitalPercent, activityPercent);
+}
+
 export const VIP_USERS: VipUser[] = [
   {
     id: "1",
@@ -41,12 +62,12 @@ export const VIP_USERS: VipUser[] = [
       { number: "03", name: "Qualified", tier: "Platinum Status" },
     ],
     capitalCurrent: 12500,
-    capitalTarget: 500000,
+    capitalTarget: 1000000,
     activityCurrent: 8200,
-    activityTarget: 1000000,
-    progressPercent: 2,
+    activityTarget: 10000,
+    progressPercent: 1,
     daysRemaining: 241,
-    summaryValue: "2%",
+    summaryValue: "1%",
   },
   {
     id: "2",
@@ -63,12 +84,12 @@ export const VIP_USERS: VipUser[] = [
       { number: "03", name: "Qualified", tier: "Platinum Status" },
     ],
     capitalCurrent: 248000,
-    capitalTarget: 500000,
+    capitalTarget: 1000000,
     activityCurrent: 620000,
-    activityTarget: 1000000,
-    progressPercent: 42,
+    activityTarget: 10000,
+    progressPercent: 25,
     daysRemaining: 198,
-    summaryValue: "42%",
+    summaryValue: "25%",
   },
   {
     id: "3",
@@ -84,10 +105,10 @@ export const VIP_USERS: VipUser[] = [
       { number: "02", name: "Active Trader", tier: "Gold Status" },
       { number: "03", name: "Qualified", tier: "Platinum Status" },
     ],
-    capitalCurrent: 512000,
-    capitalTarget: 500000,
-    activityCurrent: 1000000,
-    activityTarget: 1000000,
+    capitalCurrent: 1000000,
+    capitalTarget: 1000000,
+    activityCurrent: 10000,
+    activityTarget: 10000,
     progressPercent: 100,
     daysRemaining: 156,
     summaryValue: "100%",
@@ -107,33 +128,65 @@ export const VIP_USERS: VipUser[] = [
       { number: "03", name: "Qualified", tier: "Platinum Status" },
     ],
     capitalCurrent: 89000,
-    capitalTarget: 500000,
+    capitalTarget: 1000000,
     activityCurrent: 215000,
-    activityTarget: 1000000,
-    progressPercent: 18,
+    activityTarget: 10000,
+    progressPercent: 9,
     daysRemaining: 220,
-    summaryValue: "18%",
+    summaryValue: "9%",
   },
 ];
 
+function findCatalogUser(email: string, ibId?: string): VipUser | undefined {
+  const normalizedEmail = email.trim().toLowerCase();
+
+  if (ibId) {
+    const normalizedIbId = ibId.trim().toUpperCase();
+    return VIP_USERS.find(
+      (user) =>
+        user.email.toLowerCase() === normalizedEmail &&
+        user.ibId.toUpperCase() === normalizedIbId
+    );
+  }
+
+  return VIP_USERS.find((user) => user.email.toLowerCase() === normalizedEmail);
+}
+
+export function normalizeVipUser(user: VipUser): VipUser {
+  const catalogUser =
+    findCatalogUser(user.email, user.ibId) ?? findCatalogUser(user.email);
+  const base = catalogUser ?? user;
+  const progressPercent = getOverallProgressPercent(
+    base.capitalCurrent,
+    base.activityCurrent
+  );
+
+  return {
+    ...base,
+    capitalTarget: VIP_QUALIFICATION_TARGETS.capital,
+    activityTarget: VIP_QUALIFICATION_TARGETS.activity,
+    progressPercent,
+    summaryValue: `${progressPercent}%`,
+  };
+}
+
 export function findVipUserByEmail(email: string): VipUser | undefined {
-  const normalized = email.trim().toLowerCase();
-  return VIP_USERS.find((user) => user.email.toLowerCase() === normalized);
+  const user = findCatalogUser(email);
+  return user ? normalizeVipUser(user) : undefined;
 }
 
 export function findVipUserByCredentials(
   email: string,
   ibId: string
 ): VipUser | undefined {
-  const normalizedEmail = email.trim().toLowerCase();
-  const normalizedIbId = ibId.trim().toUpperCase();
-  return VIP_USERS.find(
-    (user) =>
-      user.email.toLowerCase() === normalizedEmail &&
-      user.ibId.toUpperCase() === normalizedIbId
-  );
+  const user = findCatalogUser(email, ibId);
+  return user ? normalizeVipUser(user) : undefined;
 }
 
 export function formatCurrency(value: number): string {
   return `$${value.toLocaleString("en-US")}`;
+}
+
+export function formatActivity(value: number): string {
+  return value.toLocaleString("en-US");
 }

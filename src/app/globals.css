@@ -66,6 +66,10 @@ input:focus-visible {
   font-family: var(--font-body-ar);
 }
 
+[dir="ltr"] .form-field-label:not(.form-field-label--literal) {
+  text-transform: capitalize;
+}
+
 .gold-underline {
   position: relative;
 }

@@ -4,7 +4,6 @@ import { uploadPassportFile } from "@/lib/s3";
 
 export const runtime = "nodejs";
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_PASSPORT_TYPES = new Set([
   "image/jpeg",
   "image/jpg",
@@ -30,10 +29,6 @@ async function validatePassportFile(file: FormDataEntryValue | null, label: stri
 
   if (!ALLOWED_PASSPORT_TYPES.has(file.type)) {
     return { error: `${label} must be JPG, PNG, WEBP, or PDF` };
-  }
-
-  if (file.size > MAX_FILE_SIZE) {
-    return { error: `${label} must be 5MB or less` };
   }
 
   return { file };

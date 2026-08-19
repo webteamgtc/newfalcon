@@ -1074,7 +1074,7 @@ function EmailLookupForm({
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
             <div>
-              <label htmlFor="user-status-email" className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/55">
+              <label htmlFor="user-status-email" className="form-field-label font-poppins text-xs uppercase tracking-[0.08em] text-ink/55">
                 {t("lookup.emailLabel")}
               </label>
               <input
