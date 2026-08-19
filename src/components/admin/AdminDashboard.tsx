@@ -7,6 +7,18 @@ import type {
   AdminRegistrationListItem,
   AdminRegistrationRecord,
 } from "@/lib/adminRegistration";
+import { SHOW_VISA_SECTION } from "@/lib/featureFlags";
+
+const TABLE_HEADINGS = [
+  "Name",
+  "Email",
+  "Phone",
+  "Submitted",
+  "Qualified",
+  ...(SHOW_VISA_SECTION ? (["Visa"] as const) : []),
+  "Ticket",
+  "",
+] as const;
 
 function formatDate(value: string) {
   if (!value) return "—";
@@ -341,17 +353,19 @@ export default function AdminDashboard({ adminEmail }: Props) {
                   </svg>
                 }
               />
-              <StatCard
-                label="Visa approved"
-                value={stats.visaApproved}
-                subtitle={stats.visaPending > 0 ? `${stats.visaPending} in progress` : "All clear"}
-                tone="blue"
-                icon={
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75Zm-3.75 0a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75Z" />
-                  </svg>
-                }
-              />
+              {SHOW_VISA_SECTION && (
+                <StatCard
+                  label="Visa approved"
+                  value={stats.visaApproved}
+                  subtitle={stats.visaPending > 0 ? `${stats.visaPending} in progress` : "All clear"}
+                  tone="blue"
+                  icon={
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75Zm-3.75 0a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75Z" />
+                    </svg>
+                  }
+                />
+              )}
               <StatCard
                 label="Ticket confirmed"
                 value={stats.ticketConfirmed}
@@ -374,28 +388,32 @@ export default function AdminDashboard({ adminEmail }: Props) {
                   </svg>
                 }
               />
-              <StatCard
-                label="Visa in progress"
-                value={stats.visaPending}
-                subtitle="Applied or processing"
-                tone="blue"
-                icon={
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                  </svg>
-                }
-              />
-              <StatCard
-                label="Visa rejected"
-                value={stats.visaRejected}
-                subtitle="Requires follow-up"
-                tone="red"
-                icon={
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                  </svg>
-                }
-              />
+              {SHOW_VISA_SECTION && (
+                <>
+                  <StatCard
+                    label="Visa in progress"
+                    value={stats.visaPending}
+                    subtitle="Applied or processing"
+                    tone="blue"
+                    icon={
+                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                      </svg>
+                    }
+                  />
+                  <StatCard
+                    label="Visa rejected"
+                    value={stats.visaRejected}
+                    subtitle="Requires follow-up"
+                    tone="red"
+                    icon={
+                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                      </svg>
+                    }
+                  />
+                </>
+              )}
               <StatCard
                 label="Tickets in progress"
                 value={stats.ticketPending}
@@ -459,22 +477,20 @@ export default function AdminDashboard({ adminEmail }: Props) {
               <table className="min-w-full">
                 <thead>
                   <tr className="border-b border-ink/8 bg-[#FFFDF8]">
-                    {["Name", "Email", "Phone", "Submitted", "Qualified", "Visa", "Ticket", ""].map(
-                      (heading) => (
+                    {TABLE_HEADINGS.map((heading) => (
                         <th
                           key={heading || "action"}
                           className="px-5 py-3.5 text-left font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45"
                         >
                           {heading}
                         </th>
-                      )
-                    )}
+                    ))}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-ink/6">
                   {filtered.length === 0 ? (
                     <tr>
-                      <td colSpan={8} className="px-5 py-16 text-center">
+                      <td colSpan={TABLE_HEADINGS.length} className="px-5 py-16 text-center">
                         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 text-ink/30">
                           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -518,9 +534,11 @@ export default function AdminDashboard({ adminEmail }: Props) {
                         <td className="px-5 py-4">
                           <StatusBadge value={item.qualified} type="qualified" />
                         </td>
-                        <td className="px-5 py-4">
-                          <StatusBadge value={item.visaStatus} type="visa" />
-                        </td>
+                        {SHOW_VISA_SECTION && (
+                          <td className="px-5 py-4">
+                            <StatusBadge value={item.visaStatus} type="visa" />
+                          </td>
+                        )}
                         <td className="px-5 py-4">
                           <StatusBadge value={item.ticketStatus} type="ticket" />
                         </td>

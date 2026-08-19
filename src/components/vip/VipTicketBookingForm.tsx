@@ -116,8 +116,8 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
     passportExpiry: "",
     nationality: "",
     dateOfBirth: "",
-    invitingGuest: "",
-    bedroomPreference: "",
+    invitingGuest: "no",
+    bedroomPreference: "single_bed",
     specialRequirements: "",
     terms: false,
   });
@@ -501,15 +501,23 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
                   )
                 )} */}
               </div>
-              <div className="flex justify-end">
-                {/* <p className="font-poppins text-xs font-medium uppercase tracking-[0.08em] text-ink/55">
+              <div className="flex flex-col items-end justify-end">
+                <a
+                  href={PASSPORT_EXAMPLE_SRC}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-opacity hover:opacity-80"
+                  aria-label={t("placeholders.passportExample")}
+                >
+                  <img
+                    src={PASSPORT_EXAMPLE_SRC}
+                    alt={t("placeholders.passportExample")}
+                    className="h-28 w-28 cursor-pointer rounded-md border border-ink/15 object-contain"
+                  />
+                </a>
+                <p className="mt-1 font-poppins text-[10px] font-normal tracking-[0.08em] text-ink/55">
                   {t("placeholders.passportExample")}
-                </p> */}
-                <img
-                  src={PASSPORT_EXAMPLE_SRC}
-                  alt={t("placeholders.passportExample")}
-                  className=" h-28 w-28 rounded-md border border-ink/15 object-contain"
-                />
+                </p>
               </div>
             </div>
           </div>
@@ -581,7 +589,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
             onChange={(e) => updateField("invitingGuest", e.target.value as InviteChoice)}
             className={fieldClass(errors.invitingGuest)}
           >
-            <option value="">{t("placeholders.selectOption")}</option>
+            {/* <option value="">{t("placeholders.selectOption")}</option> */}
             <option value="no">{t("options.invitingGuestNo")}</option>
             <option value="yes">{t("options.invitingGuestYes")}</option>
           </select>
@@ -725,7 +733,6 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
                   }
                   className={fieldClass(errors.bedroomPreference)}
                 >
-                  <option value="">{t("placeholders.selectBedroom")}</option>
                   <option value="single_bed">{t("options.singleBed")}</option>
                   <option value="master_bed">{t("options.masterBed")}</option>
                 </select>

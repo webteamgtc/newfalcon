@@ -23,7 +23,7 @@ function getProgressColors(percent: number) {
 export default function VipProgressSection() {
   const t = useTranslations("vipPage");
   const { user } = useVipUser();
-  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(true);
   const [hasRegistered, setHasRegistered] = useState(false);
 
   useEffect(() => {
@@ -129,14 +129,14 @@ export default function VipProgressSection() {
           <ProgressCard
             label={t("activityLabel")}
             title={t("activityTitle")}
-            current={formatCurrency(user.activityCurrent)}
-            target={formatCurrency(user.activityTarget)}
+            current={(user.activityCurrent)}
+            target={(user.activityTarget)}
             targetLabel={t("targetLabel")}
             remaining={t("activityRemaining", {
-              amount: formatCurrency(activityRemaining),
+              amount: (activityRemaining),
             })}
             targetText={t("targetValue", {
-              amount: formatCurrency(user.activityTarget),
+              amount: (user.activityTarget),
             })}
             percentText={`${activityPercent}%`}
             percent={activityPercent}
@@ -236,8 +236,8 @@ function ProgressCard({
 }: {
   label: string;
   title: string;
-  current: string;
-  target: string;
+  current: any;
+  target: any;
   targetLabel: string;
   remaining: string;
   targetText: string;

@@ -1,6 +1,7 @@
 import crypto from "crypto";
+import { OTP_TTL_MS } from "@/lib/otpConstants";
 
-export const OTP_TTL_MS = 10 * 60 * 1000;
+export { OTP_TTL_MS };
 
 function getOtpSecret() {
   const secret = process.env.OTP_SECRET?.trim();
