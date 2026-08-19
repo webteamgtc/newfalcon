@@ -6,8 +6,8 @@ export default function TicketCtaSection() {
   const t = useTranslations("home.ticketCta");
 
   return (
-    <section className="relative flex min-h-[500px] items-center overflow-hidden py-8 md:min-h-[650px] md:py-20">
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+    <section className="relative isolate flex min-h-[500px] items-center overflow-hidden py-8 md:min-h-[650px] md:py-20">
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
         <Image
           src="/images/dubai-crop.png"
           alt=""
@@ -24,7 +24,7 @@ export default function TicketCtaSection() {
         {t("dateRange")}
       </span>
 
-      <div className="relative container">
+      <div className="relative z-10 container">
         <div className="max-w-xl">
           <p className="eyebrow text-falcon-light !capitalize">
             <span className="font-poppins">{t("eyebrow")}</span>

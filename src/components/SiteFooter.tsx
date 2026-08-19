@@ -28,13 +28,13 @@ import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import Button from "@/components/Button";
 
-export default function FooterCtaSection() {
+export default function SiteFooter() {
   const t = useTranslations("home.footerCta");
   const t2 = useTranslations("footer");
 
   return (
-    <section className="relative overflow-hidden md:pt-24 pt-8">
-      <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
+    <section className="relative isolate overflow-hidden md:pt-24 pt-8">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
         <Image
           src="/images/footer-bg.webp"
           alt=""
@@ -44,7 +44,7 @@ export default function FooterCtaSection() {
           sizes="100vw"
         />
       </div>
-      <div className="relative container text-left">
+      <div className="relative z-10 container text-left">
         <p className="eyebrow text-[#382910] !capitalize"><span >{t("eyebrow")}</span></p>
         <h2 className="mt-3 max-w-lg font-display HeadingH1 !font-medium !text-ink">
           {t("headingPlain")} <span className="italic text-falcon-deep">{t("headingItalic")}</span>
@@ -54,7 +54,7 @@ export default function FooterCtaSection() {
           {t("cta")}
         </Button>
       </div>
-      <footer className="border-t md:mt-24 mt-16 border-[#382910]">
+      <footer className="relative z-10 border-t md:mt-24 mt-16 border-[#382910]">
       <div className="container font-poppins flex flex-col md:items-center justify-between md:gap-4 gap-2 md:py-8 py-4 text-xs font-medium uppercase tracking-[0.12em] text-[#382910] md:flex-row">
         <p className="!font-medium text-xs !text-[#382910]">{t2("dateLocation")}</p>
         <p className="md:text-center">{t2("brand")}</p>

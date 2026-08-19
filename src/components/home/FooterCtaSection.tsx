@@ -6,8 +6,8 @@ export default function FooterCtaSection() {
   const t = useTranslations("home.footerCta");
 
   return (
-    <section className="relative overflow-hidden py-24">
-      <div className="pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden" aria-hidden>
+    <section className="relative isolate overflow-hidden py-24">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
         <Image
           src="/images/footer-bg.webp"
           alt=""
@@ -23,7 +23,7 @@ export default function FooterCtaSection() {
       >
         GTC
       </span>
-      <div className="relative container text-center">
+      <div className="relative z-10 container text-center">
         <p className="eyebrow text-falcon-deep">{t("eyebrow")}</p>
         <h2 className="mt-6 font-display text-3xl leading-snug text-ink md:text-5xl">
           {t("headingPlain")} <span className="italic text-falcon-deep">{t("headingItalic")}</span>

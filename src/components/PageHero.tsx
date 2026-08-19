@@ -56,8 +56,8 @@ export default function PageHero({
   secondaryCta
 }: PageHeroProps) {
   return (
-    <section className="relative flex min-h-[100vh] items-center overflow-hidden pb-16 pt-40 md:min-h-[75vh] md:pb-24 md:pt-40">
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+    <section className="relative isolate flex min-h-[100vh] items-center overflow-hidden pb-16 pt-40 md:min-h-[75vh] md:pb-24 md:pt-40">
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
         <Image
           src={imageSrc}
           alt=""
@@ -69,7 +69,7 @@ export default function PageHero({
         <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/50 to-ink/25" />
       </div>
 
-      <div className="container">
+      <div className="container relative z-10">
         <div className="max-w-2xl">
           {eyebrow ? (
             <p className="eyebrow !capitalize text-falcon-light">

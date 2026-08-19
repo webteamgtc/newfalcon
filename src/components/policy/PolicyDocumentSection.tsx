@@ -13,8 +13,8 @@ export default function PolicyDocumentSection() {
   const clauses = t.raw("document.clauses") as string[];
 
   return (
-    <section className="relative overflow-hidden py-12 md:py-16">
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+    <section className="relative isolate overflow-hidden py-12 md:py-16">
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
         <Image
           src="/images/bg-policy.webp"
           alt=""
@@ -25,7 +25,7 @@ export default function PolicyDocumentSection() {
         />
       </div>
 
-      <div className="container relative">
+      <div className="container relative z-10">
         <article className="mx-auto max-w-6xl px-6 py-6 sm:px-6 md:px-8 md:py-8"
           style={{
             border: "1px solid rgba(56, 41, 16, 0.30)",

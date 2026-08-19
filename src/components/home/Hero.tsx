@@ -6,24 +6,26 @@ export default function Hero() {
   const t = useTranslations("home.hero");
 
   return (
-    <section className="relative overflow-hidden pb-20 pt-40 md:pb-32 md:pt-48">
-      <div className="pointer-events-none absolute inset-0 -z-10 md:h-full h-full overflow-hidden" aria-hidden>
+    <section className="relative isolate overflow-hidden pb-20 pt-40 md:pb-32 md:pt-48">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
         <Image
           src="/images/home-banner.webp"
           alt=""
           fill
           priority
-          className="h-full w-full object-fill object-center hidden md:block"
+          className="hidden h-full w-full object-cover object-center md:block"
+          sizes="100vw"
         />
-         <Image
+        <Image
           src="/images/tra-mobile.webp"
           alt=""
           fill
           priority
-          className="h-full w-full object-fill object-center block md:hidden"
+          className="block h-full w-full object-cover object-center md:hidden"
+          sizes="100vw"
         />
       </div>
-      <div className="container grid items-center gap-12 md:grid-cols-2">
+      <div className="container relative z-10 grid items-center gap-12 md:grid-cols-2">
         <div>
           {/* Eyebrow */}
           <p className="font-poppins text-sm md:text-base uppercase tracking-[0.35em] text-falcon-deep font-semibold">
