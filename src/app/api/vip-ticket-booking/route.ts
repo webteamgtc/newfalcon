@@ -10,6 +10,7 @@ const ALLOWED_IMAGE_TYPES = new Set([
   "image/png",
   "image/webp",
 ]);
+const BEDROOM_PREFERENCES = new Set(["single_bed", "master_bed", "extra_room"]);
 
 function isDuplicateEmailError(error: unknown) {
   return (
@@ -18,6 +19,31 @@ function isDuplicateEmailError(error: unknown) {
     "code" in error &&
     (error as { code?: number }).code === 11000
   );
+}
+
+async function parsePassportPhoto(file: FormDataEntryValue | null, label: string) {
+  if (!(file instanceof File) || file.size === 0) {
+    return { error: `${label} is required` };
+  }
+
+  if (!ALLOWED_IMAGE_TYPES.has(file.type)) {
+    return { error: `${label} must be JPG, PNG, or WEBP` };
+  }
+
+  if (file.size > MAX_FILE_SIZE) {
+    return { error: `${label} must be 5MB or less` };
+  }
+
+  const photoBuffer = Buffer.from(await file.arrayBuffer());
+
+  return {
+    data: {
+      fileName: file.name,
+      mimeType: file.type,
+      size: file.size,
+      data: photoBuffer.toString("base64"),
+    },
+  };
 }
 
 export async function POST(request: Request) {
@@ -37,10 +63,7 @@ export async function POST(request: Request) {
       "passportExpiry",
       "nationality",
       "dateOfBirth",
-      "arrivalDate",
-      "departureDate",
-      "emergencyContactName",
-      "emergencyContactPhone",
+      "invitingGuest",
       "memberId",
       "userId",
     ];
@@ -54,6 +77,14 @@ export async function POST(request: Request) {
       }
     }
 
+    const invitingGuest = getField("invitingGuest");
+    if (invitingGuest !== "yes" && invitingGuest !== "no") {
+      return NextResponse.json(
+        { success: false, message: "Invalid inviting guest selection" },
+        { status: 400 }
+      );
+    }
+
     if (getField("terms") !== "true") {
       return NextResponse.json(
         { success: false, message: "Terms must be accepted" },
@@ -61,39 +92,69 @@ export async function POST(request: Request) {
       );
     }
 
-    const passportPhoto = formData.get("passportPhoto");
-    if (!(passportPhoto instanceof File) || passportPhoto.size === 0) {
-      return NextResponse.json(
-        { success: false, message: "Passport photo is required" },
-        { status: 400 }
-      );
+    const primaryPhoto = await parsePassportPhoto(formData.get("passportPhoto"), "Passport photo");
+    if ("error" in primaryPhoto) {
+      return NextResponse.json({ success: false, message: primaryPhoto.error }, { status: 400 });
     }
 
-    if (!ALLOWED_IMAGE_TYPES.has(passportPhoto.type)) {
-      return NextResponse.json(
-        { success: false, message: "Passport photo must be JPG, PNG, or WEBP" },
-        { status: 400 }
+    let guestDetails: Record<string, unknown> | null = null;
+
+    if (invitingGuest === "yes") {
+      const guestRequiredFields = [
+        "bedroomPreference",
+        "guestFirstName",
+        "guestEmail",
+        "guestPhone",
+        "guestPassportNumber",
+        "guestPassportExpiry",
+        "guestNationality",
+      ];
+
+      for (const field of guestRequiredFields) {
+        if (!getField(field)) {
+          return NextResponse.json(
+            { success: false, message: `Missing required field: ${field}` },
+            { status: 400 }
+          );
+        }
+      }
+
+      const bedroomPreference = getField("bedroomPreference");
+      if (!BEDROOM_PREFERENCES.has(bedroomPreference)) {
+        return NextResponse.json(
+          { success: false, message: "Invalid bedroom preference" },
+          { status: 400 }
+        );
+      }
+
+      const guestEmail = getField("guestEmail").toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(guestEmail)) {
+        return NextResponse.json(
+          { success: false, message: "Guest email is invalid" },
+          { status: 400 }
+        );
+      }
+
+      const guestPhoto = await parsePassportPhoto(
+        formData.get("guestPassportPhoto"),
+        "Guest passport photo"
       );
+      if ("error" in guestPhoto) {
+        return NextResponse.json({ success: false, message: guestPhoto.error }, { status: 400 });
+      }
+
+      guestDetails = {
+        firstName: getField("guestFirstName"),
+        email: guestEmail,
+        phone: getField("guestPhone"),
+        passportNumber: getField("guestPassportNumber"),
+        passportExpiry: getField("guestPassportExpiry"),
+        nationality: getField("guestNationality"),
+        bedroomPreference,
+        passportPhoto: guestPhoto.data,
+      };
     }
 
-    if (passportPhoto.size > MAX_FILE_SIZE) {
-      return NextResponse.json(
-        { success: false, message: "Passport photo must be 5MB or less" },
-        { status: 400 }
-      );
-    }
-
-    const arrivalDate = getField("arrivalDate");
-    const departureDate = getField("departureDate");
-    if (arrivalDate > departureDate) {
-      return NextResponse.json(
-        { success: false, message: "Departure date must be on or after arrival date" },
-        { status: 400 }
-      );
-    }
-
-    const photoBuffer = Buffer.from(await passportPhoto.arrayBuffer());
-    const photoBase64 = photoBuffer.toString("base64");
     const normalizedEmail = getField("email").toLowerCase();
 
     const db = await getRegistrationDb();
@@ -124,20 +185,13 @@ export async function POST(request: Request) {
       passportExpiry: getField("passportExpiry"),
       nationality: getField("nationality"),
       dateOfBirth: getField("dateOfBirth"),
-      arrivalDate,
-      departureDate,
-      emergencyContactName: getField("emergencyContactName"),
-      emergencyContactPhone: getField("emergencyContactPhone"),
+      invitingGuest: invitingGuest === "yes",
+      guest: guestDetails,
       specialRequirements: getField("specialRequirements"),
       memberId: getField("memberId"),
       userId: getField("userId"),
       ibId: getField("ibId"),
-      passportPhoto: {
-        fileName: passportPhoto.name,
-        mimeType: passportPhoto.type,
-        size: passportPhoto.size,
-        data: photoBase64,
-      },
+      passportPhoto: primaryPhoto.data,
       submittedAt: new Date(),
     };
 

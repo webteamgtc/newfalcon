@@ -50,7 +50,7 @@ export const VIP_USERS: VipUser[] = [
   },
   {
     id: "2",
-    email: "webteam@gtcfx.com",
+    email: "adeel.nazeer@gtcfx.com",
     ibId: "14567890",
     firstName: "Sarah",
     lastName: "Mitchell",

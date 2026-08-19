@@ -11,8 +11,12 @@ import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 import type { VipUser } from "@/data/vipUsers";
 
 const BOOKING_STORAGE_KEY = "gfn_vip_ticket_booking";
+const PASSPORT_EXAMPLE_SRC = "/images/passport.jpeg";
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+
+type InviteChoice = "" | "yes" | "no";
+type BedroomPreference = "" | "single_bed" | "master_bed" | "extra_room";
 
 type VipTicketBookingFormProps = {
   user: VipUser;
@@ -27,20 +31,60 @@ type FormState = {
   passportExpiry: string;
   nationality: string;
   dateOfBirth: string;
-  arrivalDate: string;
-  departureDate: string;
-  emergencyContactName: string;
-  emergencyContactPhone: string;
+  invitingGuest: InviteChoice;
+  bedroomPreference: BedroomPreference;
   specialRequirements: string;
   terms: boolean;
 };
 
-type FormErrors = Partial<Record<keyof FormState | "passportPhoto", string>>;
+type GuestFormState = {
+  firstName: string;
+  email: string;
+  phone: string;
+  passportNumber: string;
+  passportExpiry: string;
+  nationality: string;
+};
+
+type FormErrors = Partial<
+  Record<
+    | keyof FormState
+    | keyof GuestFormState
+    | "passportPhoto"
+    | "guestPassportPhoto"
+    | "guestFirstName"
+    | "guestEmail"
+    | "guestPhone"
+    | "guestPassportNumber"
+    | "guestPassportExpiry"
+    | "guestNationality",
+    string
+  >
+>;
+
+const emptyGuest: GuestFormState = {
+  firstName: "",
+  email: "",
+  phone: "",
+  passportNumber: "",
+  passportExpiry: "",
+  nationality: "",
+};
 
 function fieldClass(error?: string) {
   return `mt-2 h-12 w-full rounded-md border bg-white px-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 transition-colors focus:border-falcon-deep ${
     error ? "border-red-500" : "border-ink/20"
   }`;
+}
+
+function validatePhotoFile(file: File) {
+  if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+    return "type" as const;
+  }
+  if (file.size > MAX_FILE_SIZE) {
+    return "size" as const;
+  }
+  return null;
 }
 
 export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBookingFormProps) {
@@ -49,6 +93,9 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
   const [submitted, setSubmitted] = useState(false);
   const [passportPhoto, setPassportPhoto] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [guestPassportPhoto, setGuestPassportPhoto] = useState<File | null>(null);
+  const [guestPhotoPreview, setGuestPhotoPreview] = useState<string | null>(null);
+  const [guest, setGuest] = useState<GuestFormState>(emptyGuest);
   const [form, setForm] = useState<FormState>({
     fullName: `${user.firstName} ${user.lastName}`.trim(),
     email: user.email,
@@ -57,10 +104,8 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
     passportExpiry: "",
     nationality: "",
     dateOfBirth: "",
-    arrivalDate: "",
-    departureDate: "",
-    emergencyContactName: "",
-    emergencyContactPhone: "",
+    invitingGuest: "",
+    bedroomPreference: "",
     specialRequirements: "",
     terms: false,
   });
@@ -68,10 +113,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
   const [emailAlreadyRegistered, setEmailAlreadyRegistered] = useState(false);
   const [checkingEmail, setCheckingEmail] = useState(true);
   const today = useMemo(() => startOfDay(new Date()), []);
-  const arrivalMinDate = useMemo(
-    () => (form.arrivalDate ? startOfDay(new Date(form.arrivalDate)) : today),
-    [form.arrivalDate, today]
-  );
+  const invitingGuest = form.invitingGuest === "yes";
 
   useEffect(() => {
     try {
@@ -115,40 +157,110 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
   useEffect(() => {
     return () => {
       if (photoPreview) URL.revokeObjectURL(photoPreview);
+      if (guestPhotoPreview) URL.revokeObjectURL(guestPhotoPreview);
     };
-  }, [photoPreview]);
+  }, [photoPreview, guestPhotoPreview]);
 
   const updateField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
-    setForm((prev) => ({ ...prev, [key]: value }));
+    setForm((prev) => {
+      const next = { ...prev, [key]: value };
+
+      if (key === "invitingGuest" && value === "no") {
+        next.bedroomPreference = "";
+        next.specialRequirements = "";
+      }
+
+      return next;
+    });
+
     setErrors((prev) => ({ ...prev, [key]: undefined }));
+
+    if (key === "invitingGuest" && value === "no") {
+      setGuest(emptyGuest);
+      setGuestPassportPhoto(null);
+      if (guestPhotoPreview) URL.revokeObjectURL(guestPhotoPreview);
+      setGuestPhotoPreview(null);
+      setErrors((prev) => ({
+        ...prev,
+        bedroomPreference: undefined,
+        guestFirstName: undefined,
+        guestEmail: undefined,
+        guestPhone: undefined,
+        guestPassportNumber: undefined,
+        guestPassportExpiry: undefined,
+        guestNationality: undefined,
+        guestPassportPhoto: undefined,
+      }));
+    }
   };
 
-  const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const updateGuestField = <K extends keyof GuestFormState>(key: K, value: GuestFormState[K]) => {
+    setGuest((prev) => ({ ...prev, [key]: value }));
+    const errorKey =
+      key === "firstName"
+        ? "guestFirstName"
+        : key === "email"
+          ? "guestEmail"
+          : key === "phone"
+            ? "guestPhone"
+            : key === "passportNumber"
+              ? "guestPassportNumber"
+              : key === "passportExpiry"
+                ? "guestPassportExpiry"
+                : "guestNationality";
+    setErrors((prev) => ({ ...prev, [errorKey]: undefined }));
+  };
+
+  const handlePhotoChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    target: "primary" | "guest"
+  ) => {
     const file = event.target.files?.[0];
-    setErrors((prev) => ({ ...prev, passportPhoto: undefined }));
+    const errorKey = target === "primary" ? "passportPhoto" : "guestPassportPhoto";
+    setErrors((prev) => ({ ...prev, [errorKey]: undefined }));
 
     if (!file) {
-      setPassportPhoto(null);
+      if (target === "primary") {
+        setPassportPhoto(null);
+        if (photoPreview) URL.revokeObjectURL(photoPreview);
+        setPhotoPreview(null);
+      } else {
+        setGuestPassportPhoto(null);
+        if (guestPhotoPreview) URL.revokeObjectURL(guestPhotoPreview);
+        setGuestPhotoPreview(null);
+      }
+      return;
+    }
+
+    const photoError = validatePhotoFile(file);
+    if (photoError === "type") {
+      setErrors((prev) => ({
+        ...prev,
+        [errorKey]: t("errors.passportPhotoType"),
+      }));
+      event.target.value = "";
+      return;
+    }
+    if (photoError === "size") {
+      setErrors((prev) => ({
+        ...prev,
+        [errorKey]: t("errors.passportPhotoSize"),
+      }));
+      event.target.value = "";
+      return;
+    }
+
+    const previewUrl = URL.createObjectURL(file);
+
+    if (target === "primary") {
       if (photoPreview) URL.revokeObjectURL(photoPreview);
-      setPhotoPreview(null);
-      return;
+      setPassportPhoto(file);
+      setPhotoPreview(previewUrl);
+    } else {
+      if (guestPhotoPreview) URL.revokeObjectURL(guestPhotoPreview);
+      setGuestPassportPhoto(file);
+      setGuestPhotoPreview(previewUrl);
     }
-
-    if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
-      setErrors((prev) => ({ ...prev, passportPhoto: t("errors.passportPhotoType") }));
-      event.target.value = "";
-      return;
-    }
-
-    if (file.size > MAX_FILE_SIZE) {
-      setErrors((prev) => ({ ...prev, passportPhoto: t("errors.passportPhotoSize") }));
-      event.target.value = "";
-      return;
-    }
-
-    if (photoPreview) URL.revokeObjectURL(photoPreview);
-    setPassportPhoto(file);
-    setPhotoPreview(URL.createObjectURL(file));
   };
 
   const validate = () => {
@@ -164,21 +276,31 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
     if (!form.passportExpiry) nextErrors.passportExpiry = t("errors.passportExpiry");
     if (!form.nationality.trim()) nextErrors.nationality = t("errors.nationality");
     if (!form.dateOfBirth) nextErrors.dateOfBirth = t("errors.dateOfBirth");
-    if (!form.arrivalDate) nextErrors.arrivalDate = t("errors.arrivalDate");
-    if (!form.departureDate) nextErrors.departureDate = t("errors.departureDate");
-    if (!form.emergencyContactName.trim()) {
-      nextErrors.emergencyContactName = t("errors.emergencyContactName");
-    }
-    if (!form.emergencyContactPhone.trim()) {
-      nextErrors.emergencyContactPhone = t("errors.emergencyContactPhone");
-    } else if (!isValidPhoneNumber(form.emergencyContactPhone)) {
-      nextErrors.emergencyContactPhone = t("errors.phoneInvalid");
-    }
+    if (!form.invitingGuest) nextErrors.invitingGuest = t("errors.invitingGuest");
     if (!passportPhoto) nextErrors.passportPhoto = t("errors.passportPhoto");
     if (!form.terms) nextErrors.terms = t("errors.terms");
 
-    if (form.arrivalDate && form.departureDate && form.arrivalDate > form.departureDate) {
-      nextErrors.departureDate = t("errors.departureBeforeArrival");
+    if (invitingGuest) {
+      if (!form.bedroomPreference) {
+        nextErrors.bedroomPreference = t("errors.bedroomPreference");
+      }
+      if (!guest.firstName.trim()) nextErrors.guestFirstName = t("errors.guestFirstName");
+      if (!guest.email.trim()) {
+        nextErrors.guestEmail = t("errors.guestEmail");
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(guest.email.trim())) {
+        nextErrors.guestEmail = t("errors.guestEmailInvalid");
+      }
+      if (!guest.phone.trim()) {
+        nextErrors.guestPhone = t("errors.guestPhone");
+      } else if (!isValidPhoneNumber(guest.phone)) {
+        nextErrors.guestPhone = t("errors.phoneInvalid");
+      }
+      if (!guest.passportNumber.trim()) {
+        nextErrors.guestPassportNumber = t("errors.guestPassportNumber");
+      }
+      if (!guest.passportExpiry) nextErrors.guestPassportExpiry = t("errors.guestPassportExpiry");
+      if (!guest.nationality.trim()) nextErrors.guestNationality = t("errors.guestNationality");
+      if (!guestPassportPhoto) nextErrors.guestPassportPhoto = t("errors.guestPassportPhoto");
     }
 
     setErrors(nextErrors);
@@ -192,6 +314,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
       return;
     }
     if (!validate() || !passportPhoto) return;
+    if (invitingGuest && !guestPassportPhoto) return;
 
     setLoading(true);
 
@@ -216,16 +339,24 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
       payload.append("passportExpiry", form.passportExpiry);
       payload.append("nationality", form.nationality);
       payload.append("dateOfBirth", form.dateOfBirth);
-      payload.append("arrivalDate", form.arrivalDate);
-      payload.append("departureDate", form.departureDate);
-      payload.append("emergencyContactName", form.emergencyContactName);
-      payload.append("emergencyContactPhone", form.emergencyContactPhone);
+      payload.append("invitingGuest", form.invitingGuest);
       payload.append("specialRequirements", form.specialRequirements);
       payload.append("memberId", user.memberId);
       payload.append("userId", user.id);
       payload.append("ibId", user.ibId);
       payload.append("terms", String(form.terms));
       payload.append("passportPhoto", passportPhoto);
+
+      if (invitingGuest && guestPassportPhoto) {
+        payload.append("bedroomPreference", form.bedroomPreference);
+        payload.append("guestFirstName", guest.firstName);
+        payload.append("guestEmail", guest.email);
+        payload.append("guestPhone", guest.phone);
+        payload.append("guestPassportNumber", guest.passportNumber);
+        payload.append("guestPassportExpiry", guest.passportExpiry);
+        payload.append("guestNationality", guest.nationality);
+        payload.append("guestPassportPhoto", guestPassportPhoto);
+      }
 
       const response = await fetch("/api/vip-ticket-booking", {
         method: "POST",
@@ -250,6 +381,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
           `${BOOKING_STORAGE_KEY}_${user.id}`,
           JSON.stringify({
             ...form,
+            guest: invitingGuest ? guest : null,
             memberId: user.memberId,
             passportPhotoName: passportPhoto.name,
             submittedAt: new Date().toISOString(),
@@ -334,20 +466,34 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               errors.passportPhoto ? "border-red-500" : "border-ink/25"
             }`}
           >
-            <input
-              type="file"
-              accept="image/jpeg,image/jpg,image/png,image/webp"
-              onChange={handlePhotoChange}
-              className="block w-full font-poppins text-sm text-ink file:mr-4 file:rounded-full file:border-0 file:bg-[#382910] file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.12em] file:text-white"
-            />
-            <p className="mt-2 text-xs text-ink/55">{t("placeholders.passportPhoto")}</p>
-            {photoPreview && (
-              <img
-                src={photoPreview}
-                alt={t("fields.passportPhoto")}
-                className="mt-3 h-32 w-auto rounded-md border border-ink/15 object-cover"
-              />
-            )}
+            <div className="grid gap-4 md:grid-cols-2 md:items-start">
+              <div>
+                <input
+                  type="file"
+                  accept="image/jpeg,image/jpg,image/png,image/webp"
+                  onChange={(e) => handlePhotoChange(e, "primary")}
+                  className="block w-full font-poppins text-sm text-ink file:mr-4 file:rounded-full file:border-0 file:bg-[#382910] file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.12em] file:text-white"
+                />
+                <p className="mt-2 text-xs text-ink/55">{t("placeholders.passportPhoto")}</p>
+                {photoPreview && (
+                  <img
+                    src={photoPreview}
+                    alt={t("fields.passportPhoto")}
+                    className="mt-3 h-32 w-auto rounded-md border border-ink/15 object-cover"
+                  />
+                )}
+              </div>
+              <div className="flex justify-end">
+                {/* <p className="font-poppins text-xs font-medium uppercase tracking-[0.08em] text-ink/55">
+                  {t("placeholders.passportExample")}
+                </p> */}
+                <img
+                  src={PASSPORT_EXAMPLE_SRC}
+                  alt={t("placeholders.passportExample")}
+                  className=" w-full max-w-[220px] rounded-md border border-ink/15 object-cover"
+                />
+              </div>
+            </div>
           </div>
           {errors.passportPhoto && (
             <p className="mt-1 text-xs text-red-600">{errors.passportPhoto}</p>
@@ -410,73 +556,173 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
           )}
         </div>
 
-        <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.arrivalDate")} *</label>
-          <FalconDatePicker
-            value={form.arrivalDate}
-            onChange={(value) => updateField("arrivalDate", value)}
-            error={errors.arrivalDate}
-            placeholder={t("placeholders.selectDate")}
-            minDate={today}
-          />
-          {errors.arrivalDate && (
-            <p className="mt-1 text-xs text-red-600">{errors.arrivalDate}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.departureDate")} *</label>
-          <FalconDatePicker
-            value={form.departureDate}
-            onChange={(value) => updateField("departureDate", value)}
-            error={errors.departureDate}
-            placeholder={t("placeholders.selectDate")}
-            minDate={arrivalMinDate}
-          />
-          {errors.departureDate && (
-            <p className="mt-1 text-xs text-red-600">{errors.departureDate}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="font-poppins text-sm text-ink/70">{t("fields.emergencyContactName")} *</label>
-          <input
-            type="text"
-            value={form.emergencyContactName}
-            onChange={(e) => updateField("emergencyContactName", e.target.value)}
-            className={fieldClass(errors.emergencyContactName)}
-            placeholder={t("placeholders.emergencyContactName")}
-          />
-          {errors.emergencyContactName && (
-            <p className="mt-1 text-xs text-red-600">{errors.emergencyContactName}</p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="vip-emergency-phone" className="font-poppins text-sm text-ink/70">
-            {t("fields.emergencyContactPhone")} *
-          </label>
-          <FalconPhoneInput
-            id="vip-emergency-phone"
-            value={form.emergencyContactPhone}
-            onChange={(value) => updateField("emergencyContactPhone", value)}
-            error={errors.emergencyContactPhone}
-          />
-          {errors.emergencyContactPhone && (
-            <p className="mt-1 text-xs text-red-600">{errors.emergencyContactPhone}</p>
-          )}
-        </div>
-
         <div className="md:col-span-2">
-          <label className="font-poppins text-sm text-ink/70">{t("fields.specialRequirements")}</label>
-          <textarea
-            value={form.specialRequirements}
-            onChange={(e) => updateField("specialRequirements", e.target.value)}
-            rows={3}
-            className="mt-2 w-full rounded-md border border-ink/20 bg-white px-3 py-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 focus:border-falcon-deep"
-            placeholder={t("placeholders.specialRequirements")}
-          />
+          <label className="font-poppins text-sm text-ink/70">{t("fields.invitingGuest")} *</label>
+          <select
+            value={form.invitingGuest}
+            onChange={(e) => updateField("invitingGuest", e.target.value as InviteChoice)}
+            className={fieldClass(errors.invitingGuest)}
+          >
+            <option value="">{t("placeholders.selectOption")}</option>
+            <option value="no">{t("options.invitingGuestNo")}</option>
+            <option value="yes">{t("options.invitingGuestYes")}</option>
+          </select>
+          {errors.invitingGuest && (
+            <p className="mt-1 text-xs text-red-600">{errors.invitingGuest}</p>
+          )}
         </div>
+
+        {invitingGuest && (
+          <div className="md:col-span-2 space-y-4 rounded-xl border border-[#382910]/15 bg-white/60 p-4 md:p-5">
+            <div>
+              <p className="font-display text-lg text-ink">{t("guestSection.title")}</p>
+              <p className="mt-1 TextSmall !font-poppins !text-ink/65">{t("guestSection.description")}</p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <label className="font-poppins text-sm text-ink/70">{t("fields.guestFirstName")} *</label>
+                <input
+                  type="text"
+                  value={guest.firstName}
+                  onChange={(e) => updateGuestField("firstName", e.target.value)}
+                  className={fieldClass(errors.guestFirstName)}
+                  placeholder={t("placeholders.guestFirstName")}
+                />
+                {errors.guestFirstName && (
+                  <p className="mt-1 text-xs text-red-600">{errors.guestFirstName}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="font-poppins text-sm text-ink/70">{t("fields.guestEmail")} *</label>
+                <input
+                  type="email"
+                  value={guest.email}
+                  onChange={(e) => updateGuestField("email", e.target.value)}
+                  className={fieldClass(errors.guestEmail)}
+                  placeholder={t("placeholders.guestEmail")}
+                />
+                {errors.guestEmail && (
+                  <p className="mt-1 text-xs text-red-600">{errors.guestEmail}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="vip-guest-phone" className="font-poppins text-sm text-ink/70">
+                  {t("fields.guestPhone")} *
+                </label>
+                <FalconPhoneInput
+                  id="vip-guest-phone"
+                  value={guest.phone}
+                  onChange={(value) => updateGuestField("phone", value)}
+                  error={errors.guestPhone}
+                />
+                {errors.guestPhone && (
+                  <p className="mt-1 text-xs text-red-600">{errors.guestPhone}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="font-poppins text-sm text-ink/70">{t("fields.guestPassportNumber")} *</label>
+                <input
+                  type="text"
+                  value={guest.passportNumber}
+                  onChange={(e) => updateGuestField("passportNumber", e.target.value.toUpperCase())}
+                  className={fieldClass(errors.guestPassportNumber)}
+                  placeholder={t("placeholders.passportNumber")}
+                />
+                {errors.guestPassportNumber && (
+                  <p className="mt-1 text-xs text-red-600">{errors.guestPassportNumber}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="font-poppins text-sm text-ink/70">{t("fields.guestPassportExpiry")} *</label>
+                <FalconDatePicker
+                  value={guest.passportExpiry}
+                  onChange={(value) => updateGuestField("passportExpiry", value)}
+                  error={errors.guestPassportExpiry}
+                  placeholder={t("placeholders.selectDate")}
+                  minDate={today}
+                />
+                {errors.guestPassportExpiry && (
+                  <p className="mt-1 text-xs text-red-600">{errors.guestPassportExpiry}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="font-poppins text-sm text-ink/70">{t("fields.guestNationality")} *</label>
+                <input
+                  type="text"
+                  value={guest.nationality}
+                  onChange={(e) => updateGuestField("nationality", e.target.value)}
+                  className={fieldClass(errors.guestNationality)}
+                  placeholder={t("placeholders.nationality")}
+                />
+                {errors.guestNationality && (
+                  <p className="mt-1 text-xs text-red-600">{errors.guestNationality}</p>
+                )}
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="font-poppins text-sm text-ink/70">{t("fields.guestPassportPhoto")} *</label>
+                <div
+                  className={`mt-2 rounded-md border border-dashed bg-white p-4 ${
+                    errors.guestPassportPhoto ? "border-red-500" : "border-ink/25"
+                  }`}
+                >
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/jpg,image/png,image/webp"
+                    onChange={(e) => handlePhotoChange(e, "guest")}
+                    className="block w-full font-poppins text-sm text-ink file:mr-4 file:rounded-full file:border-0 file:bg-[#382910] file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.12em] file:text-white"
+                  />
+                  <p className="mt-2 text-xs text-ink/55">{t("placeholders.passportPhoto")}</p>
+                  {guestPhotoPreview && (
+                    <img
+                      src={guestPhotoPreview}
+                      alt={t("fields.guestPassportPhoto")}
+                      className="mt-3 h-32 w-auto rounded-md border border-ink/15 object-cover"
+                    />
+                  )}
+                </div>
+                {errors.guestPassportPhoto && (
+                  <p className="mt-1 text-xs text-red-600">{errors.guestPassportPhoto}</p>
+                )}
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="font-poppins text-sm text-ink/70">{t("fields.bedroomPreference")} *</label>
+                <select
+                  value={form.bedroomPreference}
+                  onChange={(e) =>
+                    updateField("bedroomPreference", e.target.value as BedroomPreference)
+                  }
+                  className={fieldClass(errors.bedroomPreference)}
+                >
+                  <option value="">{t("placeholders.selectBedroom")}</option>
+                  <option value="single_bed">{t("options.singleBed")}</option>
+                  <option value="master_bed">{t("options.masterBed")}</option>
+                </select>
+                {errors.bedroomPreference && (
+                  <p className="mt-1 text-xs text-red-600">{errors.bedroomPreference}</p>
+                )}
+              </div>
+
+              {/* <div className="md:col-span-2">
+                <label className="font-poppins text-sm text-ink/70">{t("fields.specialRequirements")}</label>
+                <textarea
+                  value={form.specialRequirements}
+                  onChange={(e) => updateField("specialRequirements", e.target.value)}
+                  rows={3}
+                  className="mt-2 w-full rounded-md border border-ink/20 bg-white px-3 py-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 focus:border-falcon-deep"
+                  placeholder={t("placeholders.specialRequirements")}
+                />
+              </div> */}
+            </div>
+          </div>
+        )}
       </div>
 
       <label className="flex items-start gap-3 text-sm text-ink/80">

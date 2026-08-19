@@ -17,7 +17,7 @@ export default function SiteHeader() {
     { href: "/gallery", label: t("gallery") },
     // { href: "/awards", label: t("awards") },
     // { href: "/guest", label: t("guest") },
-    ...(user ? [{ href: "/ticket", label: t("ticket") }] : [{ href: "/check-status", label: t("checkStatus") }]),
+    ...(user ? [{ href: "/ticket", label: t("ticket") }] : [{ href: "/check-status", label: t("ticket") }]),
     { href: "/policy", label: t("policy") },
     ...(user ? [{ href: "/vip-status", label: t("vipStatus") }] : []),
   ];
