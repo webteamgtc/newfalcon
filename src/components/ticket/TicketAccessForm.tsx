@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import Button from "@/components/Button";
@@ -8,6 +8,14 @@ import { useVipUser } from "@/context/VipUserProvider";
 import { findVipUserByCredentials, findVipUserByEmail } from "@/data/vipUsers";
 import TicketNewClientForm from "@/components/ticket/TicketNewClientForm";
 import OtpBoxes from "@/components/ui/OtpBoxes";
+import { OTP_TTL_MS } from "@/lib/otpConstants";
+
+function formatOtpCountdown(remainingMs: number) {
+  const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
 
 type TicketAccessFormProps = {
   compact?: boolean;
@@ -41,6 +49,34 @@ export default function TicketAccessForm({
   const [otpLoading, setOtpLoading] = useState(false);
   const [otpVerifying, setOtpVerifying] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [otpExpiresAt, setOtpExpiresAt] = useState<number | null>(null);
+  const [now, setNow] = useState(() => Date.now());
+
+  const otpRemainingMs =
+    otpExpiresAt && otpExpiresAt > now ? otpExpiresAt - now : 0;
+  const otpSessionActive = showOtp && !otpVerified && otpRemainingMs > 0;
+
+  const expireOtpSession = useCallback(() => {
+    setShowOtp(false);
+    setOtpInput("");
+    setVerificationToken("");
+    setOtpExpiresAt(null);
+    setOtpError(t("otpExpired"));
+  }, [t]);
+
+  useEffect(() => {
+    if (!otpExpiresAt || otpVerified) return;
+
+    const interval = window.setInterval(() => {
+      const current = Date.now();
+      setNow(current);
+      if (current >= otpExpiresAt) {
+        expireOtpSession();
+      }
+    }, 1000);
+
+    return () => window.clearInterval(interval);
+  }, [otpExpiresAt, otpVerified, expireOtpSession]);
 
   const inputClass =
     "mt-2 h-12 w-full rounded-lg border border-[#382910]/15 bg-white/95 px-4 font-poppins text-sm text-ink shadow-sm outline-none transition-all placeholder:text-ink/35 focus:border-falcon-deep focus:ring-2 focus:ring-falcon-deep/10 disabled:opacity-70";
@@ -62,6 +98,7 @@ export default function TicketAccessForm({
     setEmailError("");
     setIbId("");
     setIbIdError("");
+    setOtpExpiresAt(null);
   };
 
   const validateEmail = () => {
@@ -115,6 +152,8 @@ export default function TicketAccessForm({
       setOtpInput("");
       setVerificationToken(data.verificationToken || "");
       setOtpVerified(false);
+      setOtpExpiresAt(Date.now() + OTP_TTL_MS);
+      setNow(Date.now());
     } catch (error) {
       setOtpError(
         error instanceof Error ? error.message : t("otpSendFailed")
@@ -126,6 +165,11 @@ export default function TicketAccessForm({
 
   const handleVerifyOtp = async () => {
     setOtpError("");
+
+    if (otpExpiresAt && Date.now() >= otpExpiresAt) {
+      expireOtpSession();
+      return false;
+    }
 
     if (!showOtp || otpInput.length !== 6) {
       setOtpError(t("otpRequired"));
@@ -287,16 +331,22 @@ export default function TicketAccessForm({
               <button
                 type="button"
                 onClick={handleGetOtp}
-                disabled={otpLoading || otpVerified || !email.trim()}
-                className="h-12 shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep shadow-sm transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                disabled={otpLoading || otpVerified || !email.trim() || otpSessionActive}
+                className={`h-12 min-w-[8.5rem] shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep shadow-sm transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50${otpSessionActive ? " font-mono tabular-nums tracking-normal" : ""}`}
               >
-                {otpLoading ? t("sendingOtp") : t("getOtp")}
+                {otpLoading
+                  ? t("sendingOtp")
+                  : otpSessionActive
+                    ? formatOtpCountdown(otpRemainingMs)
+                    : t("getOtp")}
               </button>
             </div>
             {emailError && <p className="mt-0.5 text-xs text-red-600">{emailError}</p>}
+            {otpError && !otpSessionActive && !otpVerified && (
+              <p className="text-xs text-red-600">{otpError}</p>
+            )}
 
-
-            {showOtp && !otpVerified && (
+            {otpSessionActive && (
               <div className="space-y-3">
                 <div>
                   <label className="font-poppins text-sm text-ink/70">{t("otpLabel")}</label>
@@ -369,7 +419,7 @@ export default function TicketAccessForm({
                 otpVerifying ||
                 (otpVerified
                   ? !terms || !ibId.trim()
-                  : !showOtp || otpInput.length !== 6)
+                  : !otpSessionActive || otpInput.length !== 6)
               }
               onClick={handleSubmit}
             >

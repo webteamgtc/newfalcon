@@ -10,6 +10,7 @@ import type {
   PublicPassportDocument,
   PublicUserRegistration,
 } from "@/lib/userStatus";
+import { SHOW_VISA_SECTION } from "@/lib/featureFlags";
 
 /* ─── helpers ─── */
 
@@ -224,7 +225,7 @@ function ProgressTimeline({
         </div>
       </div>
 
-      <div className="relative grid gap-0 md:grid-cols-3">
+      <div className={`relative grid gap-0 ${steps.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
         {steps.map((step, index) => (
           <div key={step.label} className="relative flex md:flex-col md:items-center md:text-center">
             {index < steps.length - 1 && (
@@ -529,18 +530,22 @@ function buildStatusSteps(
           : t("adminStatus.hints.qualificationPending"),
       done: qVal === "qualified",
     },
-    {
-      label: t("adminStatus.fields.visaStatus"),
-      status: vLabel,
-      tone: statusTone(vVal, "visa"),
-      hint:
-        vVal === "approved"
-          ? t("adminStatus.hints.visaApproved")
-          : vVal === "rejected"
-            ? t("adminStatus.hints.visaRejected")
-            : t("adminStatus.hints.visaPending"),
-      done: vVal === "approved",
-    },
+    ...(SHOW_VISA_SECTION
+      ? [
+          {
+            label: t("adminStatus.fields.visaStatus"),
+            status: vLabel,
+            tone: statusTone(vVal, "visa"),
+            hint:
+              vVal === "approved"
+                ? t("adminStatus.hints.visaApproved")
+                : vVal === "rejected"
+                  ? t("adminStatus.hints.visaRejected")
+                  : t("adminStatus.hints.visaPending"),
+            done: vVal === "approved",
+          },
+        ]
+      : []),
     {
       label: t("adminStatus.fields.ticketStatus"),
       status: tLabel,
@@ -583,7 +588,10 @@ function PrimaryDocumentsSection({
   const t = useTranslations("userStatusPage");
 
   const passportDoc = adminStatus?.passportCopy ?? registration.passportPhoto;
-  const showVisa = adminStatus?.visaStatus === "approved" && adminStatus.visaDocument?.uploaded;
+  const showVisa =
+    SHOW_VISA_SECTION &&
+    adminStatus?.visaStatus === "approved" &&
+    adminStatus.visaDocument?.uploaded;
   const showETicket = adminStatus?.ticketStatus === "confirmed" && adminStatus.eTicket?.uploaded;
   const hasAny = passportDoc?.uploaded || showVisa || showETicket;
 
@@ -619,7 +627,10 @@ function GuestDocumentsSection({
   const guestStatus = guest.adminStatus;
 
   const passportDoc = guestStatus?.passportCopy ?? guest.passportPhoto;
-  const showVisa = guestStatus?.visaStatus === "approved" && guestStatus.visaDocument?.uploaded;
+  const showVisa =
+    SHOW_VISA_SECTION &&
+    guestStatus?.visaStatus === "approved" &&
+    guestStatus.visaDocument?.uploaded;
   const showETicket = guestStatus?.ticketStatus === "confirmed" && guestStatus.eTicket?.uploaded;
   const hasAny = passportDoc?.uploaded || showVisa || showETicket;
 

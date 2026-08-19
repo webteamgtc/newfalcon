@@ -1,14 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import Button from "@/components/Button";
 import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhoneInput";
 import OtpBoxes from "@/components/ui/OtpBoxes";
 import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
+import { OTP_TTL_MS } from "@/lib/otpConstants";
 
 const STAFF_EMAIL_DOMAIN = "@gtcfx.com";
+
+function formatOtpCountdown(remainingMs: number) {
+  const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
 
 function fieldClass(error?: string) {
   return `mt-2 h-12 w-full rounded-md border bg-white px-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 transition-colors focus:border-falcon-deep ${
@@ -55,6 +63,34 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
   const [otpLoading, setOtpLoading] = useState(false);
   const [otpVerifying, setOtpVerifying] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [otpExpiresAt, setOtpExpiresAt] = useState<number | null>(null);
+  const [now, setNow] = useState(() => Date.now());
+
+  const otpRemainingMs =
+    otpExpiresAt && otpExpiresAt > now ? otpExpiresAt - now : 0;
+  const otpSessionActive = showOtp && !otpVerified && otpRemainingMs > 0;
+
+  const expireOtpSession = useCallback(() => {
+    setShowOtp(false);
+    setOtpInput("");
+    setVerificationToken("");
+    setOtpExpiresAt(null);
+    setOtpError(t("errors.otpExpired"));
+  }, [t]);
+
+  useEffect(() => {
+    if (!otpExpiresAt || otpVerified) return;
+
+    const interval = window.setInterval(() => {
+      const current = Date.now();
+      setNow(current);
+      if (current >= otpExpiresAt) {
+        expireOtpSession();
+      }
+    }, 1000);
+
+    return () => window.clearInterval(interval);
+  }, [otpExpiresAt, otpVerified, expireOtpSession]);
 
   const resetOtpState = () => {
     setShowOtp(false);
@@ -62,6 +98,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
     setVerificationToken("");
     setOtpVerified(false);
     setOtpError("");
+    setOtpExpiresAt(null);
   };
 
   const validateStaffEmail = () => {
@@ -129,6 +166,8 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
       setOtpInput("");
       setVerificationToken(data.verificationToken || "");
       setOtpVerified(false);
+      setOtpExpiresAt(Date.now() + OTP_TTL_MS);
+      setNow(Date.now());
     } catch (error) {
       setOtpError(error instanceof Error ? error.message : t("errors.otpSendFailed"));
     } finally {
@@ -138,6 +177,11 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
 
   const handleVerifyOtp = async () => {
     setOtpError("");
+
+    if (otpExpiresAt && Date.now() >= otpExpiresAt) {
+      expireOtpSession();
+      return false;
+    }
 
     if (!showOtp || otpInput.length !== 6) {
       setOtpError(t("errors.otpRequired"));
@@ -296,16 +340,22 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
             <button
               type="button"
               onClick={handleGetOtp}
-              disabled={otpLoading || !email.trim()}
-              className="h-12 shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+              disabled={otpLoading || !email.trim() || otpSessionActive}
+              className={`h-12 min-w-[8.5rem] shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50${otpSessionActive ? " font-mono tabular-nums tracking-normal" : ""}`}
             >
-              {otpLoading ? t("sendingOtp") : t("getOtp")}
+              {otpLoading
+                ? t("sendingOtp")
+                : otpSessionActive
+                  ? formatOtpCountdown(otpRemainingMs)
+                  : t("getOtp")}
             </button>
           </div>
           {emailError && <p className="text-xs text-red-600">{emailError}</p>}
-          {otpError && !showOtp && <p className="text-xs text-red-600">{otpError}</p>}
+          {otpError && !otpSessionActive && !otpVerified && (
+            <p className="text-xs text-red-600">{otpError}</p>
+          )}
 
-          {showOtp && (
+          {otpSessionActive && (
             <div className="space-y-3">
               <div>
                 <label className="font-poppins text-sm text-ink/70">{t("fields.otp")} *</label>
@@ -400,7 +450,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
               !phone.trim() ||
               !isValidPhoneNumber(phone) ||
               !lineManagerName.trim()
-            : !showOtp || otpInput.length !== 6)
+            : !otpSessionActive || otpInput.length !== 6)
         }
         onClick={handleSubmit}
       >

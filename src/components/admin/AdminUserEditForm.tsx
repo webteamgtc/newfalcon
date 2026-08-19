@@ -6,6 +6,7 @@ import {
   TICKET_STATUS_OPTIONS,
   VISA_STATUS_OPTIONS,
 } from "@/lib/adminRegistration";
+import { SHOW_VISA_SECTION } from "@/lib/featureFlags";
 
 function fieldClass() {
   return "mt-2 h-11 w-full rounded-md border border-ink/20 bg-white px-3 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep";
@@ -373,6 +374,7 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
               </div>
             </section>
 
+            {SHOW_VISA_SECTION && (
             <section>
               <h3 className="font-display text-xl text-ink">Visa</h3>
               <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -425,6 +427,7 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                 </div>
               </div>
             </section>
+            )}
 
             <section>
               <h3 className="font-display text-xl text-ink">Ticket & travel</h3>
@@ -671,21 +674,25 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                       </a>
                     )}
                   </div>
-                  <div>
-                    <label className={labelClass()}>Guest visa status</label>
-                    <select
-                      value={guestForm.guestVisaStatus}
-                      onChange={(e) => updateGuestField("guestVisaStatus", e.target.value)}
-                      className={fieldClass()}
-                    >
-                      <option value="">Select</option>
-                      {VISA_STATUS_OPTIONS.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  {SHOW_VISA_SECTION && (
+                    <>
+                      <div>
+                        <label className={labelClass()}>Guest visa status</label>
+                        <select
+                          value={guestForm.guestVisaStatus}
+                          onChange={(e) => updateGuestField("guestVisaStatus", e.target.value)}
+                          className={fieldClass()}
+                        >
+                          <option value="">Select</option>
+                          {VISA_STATUS_OPTIONS.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </>
+                  )}
                   <div>
                     <label className={labelClass()}>Guest ticket status</label>
                     <select
@@ -701,30 +708,32 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                       ))}
                     </select>
                   </div>
-                  <div className="md:col-span-2">
-                    <label className={labelClass()}>Guest visa document</label>
-                    <input
-                      type="file"
-                      accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf"
-                      onChange={(e) => setGuestVisaDocument(e.target.files?.[0] ?? null)}
-                      className="mt-2 block w-full font-poppins text-sm text-ink/70 file:mr-4 file:rounded-full file:border-0 file:bg-falcon-deep file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.08em] file:text-white"
-                    />
-                    {registration.guest.visaDocument?.fileName && (
-                      <p className="mt-2 font-poppins text-xs text-ink/55">
-                        Current: {registration.guest.visaDocument.fileName}
-                      </p>
-                    )}
-                    {guestVisaUrl && (
-                      <a
-                        href={guestVisaUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 inline-block font-poppins text-xs text-falcon-deep underline"
-                      >
-                        View guest visa document
-                      </a>
-                    )}
-                  </div>
+                  {SHOW_VISA_SECTION && (
+                    <div className="md:col-span-2">
+                      <label className={labelClass()}>Guest visa document</label>
+                      <input
+                        type="file"
+                        accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf"
+                        onChange={(e) => setGuestVisaDocument(e.target.files?.[0] ?? null)}
+                        className="mt-2 block w-full font-poppins text-sm text-ink/70 file:mr-4 file:rounded-full file:border-0 file:bg-falcon-deep file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.08em] file:text-white"
+                      />
+                      {registration.guest.visaDocument?.fileName && (
+                        <p className="mt-2 font-poppins text-xs text-ink/55">
+                          Current: {registration.guest.visaDocument.fileName}
+                        </p>
+                      )}
+                      {guestVisaUrl && (
+                        <a
+                          href={guestVisaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-block font-poppins text-xs text-falcon-deep underline"
+                        >
+                          View guest visa document
+                        </a>
+                      )}
+                    </div>
+                  )}
                   <div className="md:col-span-2">
                     <label className={labelClass()}>Guest e-ticket</label>
                     <input
@@ -749,16 +758,18 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                       </a>
                     )}
                   </div>
-                  <div className="md:col-span-2">
-                    <label className={labelClass()}>Guest visa rejection reason</label>
-                    <textarea
-                      value={guestForm.guestVisaRejectionReason}
-                      onChange={(e) =>
-                        updateGuestField("guestVisaRejectionReason", e.target.value)
-                      }
-                      className={textareaClass()}
-                    />
-                  </div>
+                  {SHOW_VISA_SECTION && (
+                    <div className="md:col-span-2">
+                      <label className={labelClass()}>Guest visa rejection reason</label>
+                      <textarea
+                        value={guestForm.guestVisaRejectionReason}
+                        onChange={(e) =>
+                          updateGuestField("guestVisaRejectionReason", e.target.value)
+                        }
+                        className={textareaClass()}
+                      />
+                    </div>
+                  )}
                 </div>
               </section>
             )}
