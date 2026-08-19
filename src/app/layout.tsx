@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
   icons: {
@@ -10,5 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return children;
+  return (
+    <html lang="en">
+      <body className="bg-parchment text-ink antialiased">{children}</body>
+    </html>
+  );
 }

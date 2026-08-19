@@ -3,6 +3,8 @@ type ConfirmationEmailOptions = {
   title: string;
   message: string;
   details?: string[];
+  actionLink?: string;
+  actionLabel?: string;
 };
 
 export function buildConfirmationEmailHtml({
@@ -10,6 +12,8 @@ export function buildConfirmationEmailHtml({
   title,
   message,
   details = [],
+  actionLink,
+  actionLabel = "View your registration status",
 }: ConfirmationEmailOptions) {
   const detailsHtml = details
     .map(
@@ -17,6 +21,15 @@ export function buildConfirmationEmailHtml({
         `<p style="margin: 0 0 8px; color: #192055;"><strong>${line}</strong></p>`
     )
     .join("");
+
+  const actionHtml = actionLink
+    ? `<p style="margin: 28px 0 0; text-align: center;">
+        <a href="${actionLink}" style="display: inline-block; background: #192055; color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 999px; font-size: 14px; font-weight: 600;">
+          ${actionLabel}
+        </a>
+      </p>
+      <p style="margin: 16px 0 0; font-size: 12px; color: #666; word-break: break-all;">${actionLink}</p>`
+    : "";
 
   return `<!DOCTYPE html>
 <html>
@@ -47,6 +60,7 @@ export function buildConfirmationEmailHtml({
                                 </h3>
                                 <p>${message}</p>
                                 ${detailsHtml}
+                                ${actionHtml}
                                 <p>Our team will review your submission and contact you if any additional information is required.</p>
                                 <p>If you have any questions, please contact us at <a href="mailto:support@gtcfx.com" style="color: #5166ff; text-decoration: underline;">support@gtcfx.com</a>.</p>
                                 <p style="line-height: 30px; padding-top: 20px;">Best Regards,<br><strong style="color: #192055; margin-top:5px;">GTCFX Team</strong></p>

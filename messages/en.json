@@ -895,5 +895,158 @@
     "backToHome": "Back to Home",
     "readMore": "Read More",
     "close": "Close"
+  },
+  "userStatusPage": {
+    "metaTitle": "Registration Status",
+    "eyebrow": "Registration status",
+    "headingPlain": "Your registration",
+    "headingItalic": "dashboard.",
+    "description": "Review your submitted details and current registration status for Golden Falcon Awards.",
+    "welcome": "Welcome back, {name}",
+    "loading": "Loading your registration details...",
+    "referenceId": "Reference ID",
+    "nextStepsDescription": "Our events team is reviewing your submission. You will be contacted if any additional information is required.",
+    "supportNote": "Need help? Contact",
+    "status": {
+      "under_review": "Under review",
+      "registered": "Registered"
+    },
+    "formTypes": {
+      "vipTicket": "VIP ticket booking",
+      "staff": "Staff registration"
+    },
+    "cards": {
+      "submitted": "Submitted on",
+      "formType": "Registration type",
+      "documents": "Passport document",
+      "documentUploaded": "Uploaded",
+      "noDocument": "Not provided",
+      "viewDocument": "View document",
+      "openDocument": "Open full document",
+      "downloadDocument": "Download document",
+      "legacyDocument": "Document stored from an earlier submission."
+    },
+    "sections": {
+      "personal": "Personal details",
+      "travel": "Travel & passport details",
+      "guest": "Guest details",
+      "adminStatus": "Your registration status",
+      "journey": "Your progress",
+      "travelArrangements": "Travel arrangements",
+      "hotel": "Hotel stay",
+      "flight": "Flight details",
+      "documents": "Your documents",
+      "submission": "Submitted registration",
+      "guestStatus": "Guest progress",
+      "nextSteps": "What happens next",
+      "guestSubmission": "Guest registration details"
+    },
+    "tabs": {
+      "primary": "Your details",
+      "guest": "Guest"
+    },
+    "fields": {
+      "fullName": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "memberId": "Member ID",
+      "ibId": "IB ID",
+      "lineManagerName": "Line manager",
+      "passportNumber": "Passport number",
+      "passportExpiry": "Passport expiry",
+      "nationality": "Nationality",
+      "dateOfBirth": "Date of birth",
+      "passportPhoto": "Passport document",
+      "invitingGuest": "Inviting a guest",
+      "specialRequirements": "Additional notes",
+      "guestFirstName": "Guest first name",
+      "guestEmail": "Guest email",
+      "guestPhone": "Guest phone",
+      "guestPassportNumber": "Guest passport number",
+      "guestPassportExpiry": "Guest passport expiry",
+      "guestNationality": "Guest nationality",
+      "guestPassportPhoto": "Guest passport document",
+      "bedroomPreference": "Bedroom preference"
+    },
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "bedroom": {
+      "singleBed": "Single bed",
+      "masterBed": "Master bed",
+      "extraRoom": "Extra room"
+    },
+    "adminStatus": {
+      "description": "Details updated by our events team based on your registration and travel arrangements.",
+      "journeyDescription": "Track where you are in the qualification, visa, and ticketing process.",
+      "documentsDescription": "Download or view documents shared with you by our team.",
+      "submissionDescription": "Original details from your registration form.",
+      "guestStatusDescription": "Status updates for your guest, {name}.",
+      "pendingReview": "Pending review",
+      "showDetails": "Show details",
+      "hideDetails": "Hide details",
+      "noTravelYet": "Flight, hotel and transport details will appear here once confirmed by our team.",
+      "noDocumentsYet": "Documents will appear here once they are available for you.",
+      "fields": {
+        "partnerId": "Partner ID",
+        "country": "Country",
+        "qualificationStatus": "Qualification",
+        "visaStatus": "Visa",
+        "visaDocument": "Visa document",
+        "ticketStatus": "Ticket",
+        "eTicket": "E-ticket",
+        "hotelName": "Hotel name",
+        "hotelAddress": "Hotel address",
+        "checkInDateTime": "Check-in",
+        "checkOutDateTime": "Check-out",
+        "hotelConfirmationNumber": "Confirmation number",
+        "pickupDropoff": "Pickup / drop-off details",
+        "pickupDetails": "Pickup details",
+        "dropOffDetails": "Drop-off details",
+        "passportCopy": "Passport copy",
+        "airline": "Airline",
+        "flightNumber": "Flight number",
+        "departureDateTime": "Departure",
+        "returnDateTime": "Return",
+        "guestPassportCopy": "Guest passport copy",
+        "guestVisaDocument": "Guest visa document",
+        "guestETicket": "Guest e-ticket"
+      },
+      "hints": {
+        "qualificationPending": "Our team is reviewing your eligibility for the event.",
+        "qualified": "You have been marked as qualified for Golden Falcon Awards.",
+        "visaPending": "Visa processing updates will appear here.",
+        "visaApproved": "Your visa has been approved. You can download your visa document below.",
+        "visaRejected": "Please contact support for next steps regarding your visa.",
+        "ticketPending": "Ticket updates will appear here once processing begins.",
+        "ticketConfirmed": "Your ticket is confirmed. Download your e-ticket from the documents section.",
+        "ticketCancelled": "Please contact support if you need assistance with your ticket."
+      },
+      "qualification": {
+        "notYetReached": "Not yet reached",
+        "qualified": "Qualified"
+      },
+      "visa": {
+        "not_started": "Not started",
+        "applied": "Applied",
+        "under_processing": "Under processing",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      },
+      "ticket": {
+        "not_started": "Not started",
+        "requested": "Requested",
+        "under_process": "Under process",
+        "confirmed": "Confirmed",
+        "cancelled": "Cancelled"
+      }
+    },
+    "errors": {
+      "title": "Unable to load status",
+      "emailRequired": "A valid email address is required in the link.",
+      "notFound": "No registration was found for this email.",
+      "loadFailed": "Failed to load registration status. Please try again later."
+    }
   }
 }
