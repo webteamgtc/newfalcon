@@ -4,11 +4,12 @@ import { getRegistrationDb, REGISTRATION_COLLECTION } from "@/lib/mongodb";
 export const runtime = "nodejs";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
-const ALLOWED_IMAGE_TYPES = new Set([
+const ALLOWED_PASSPORT_TYPES = new Set([
   "image/jpeg",
   "image/jpg",
   "image/png",
   "image/webp",
+  "application/pdf",
 ]);
 const BEDROOM_PREFERENCES = new Set(["single_bed", "master_bed", "extra_room"]);
 
@@ -26,8 +27,8 @@ async function parsePassportPhoto(file: FormDataEntryValue | null, label: string
     return { error: `${label} is required` };
   }
 
-  if (!ALLOWED_IMAGE_TYPES.has(file.type)) {
-    return { error: `${label} must be JPG, PNG, or WEBP` };
+  if (!ALLOWED_PASSPORT_TYPES.has(file.type)) {
+    return { error: `${label} must be JPG, PNG, WEBP, or PDF` };
   }
 
   if (file.size > MAX_FILE_SIZE) {

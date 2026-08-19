@@ -13,7 +13,15 @@ import type { VipUser } from "@/data/vipUsers";
 const BOOKING_STORAGE_KEY = "gfn_vip_ticket_booking";
 const PASSPORT_EXAMPLE_SRC = "/images/passport.jpeg";
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
-const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+const ALLOWED_PASSPORT_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+  "application/pdf",
+];
+const PASSPORT_FILE_ACCEPT =
+  "image/jpeg,image/jpg,image/png,image/webp,application/pdf,.pdf";
 
 type InviteChoice = "" | "yes" | "no";
 type BedroomPreference = "" | "single_bed" | "master_bed" | "extra_room";
@@ -78,13 +86,17 @@ function fieldClass(error?: string) {
 }
 
 function validatePhotoFile(file: File) {
-  if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+  if (!ALLOWED_PASSPORT_TYPES.includes(file.type)) {
     return "type" as const;
   }
   if (file.size > MAX_FILE_SIZE) {
     return "size" as const;
   }
   return null;
+}
+
+function isPassportImage(file: File) {
+  return file.type.startsWith("image/");
 }
 
 export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBookingFormProps) {
@@ -250,7 +262,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
       return;
     }
 
-    const previewUrl = URL.createObjectURL(file);
+    const previewUrl = isPassportImage(file) ? URL.createObjectURL(file) : null;
 
     if (target === "primary") {
       if (photoPreview) URL.revokeObjectURL(photoPreview);
@@ -470,18 +482,24 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
               <div>
                 <input
                   type="file"
-                  accept="image/jpeg,image/jpg,image/png,image/webp"
+                  accept={PASSPORT_FILE_ACCEPT}
                   onChange={(e) => handlePhotoChange(e, "primary")}
                   className="block w-full font-poppins text-sm text-ink file:mr-4 file:rounded-full file:border-0 file:bg-[#382910] file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.12em] file:text-white"
                 />
                 <p className="mt-2 text-xs text-ink/55">{t("placeholders.passportPhoto")}</p>
-                {photoPreview && (
-                  <img
-                    src={photoPreview}
-                    alt={t("fields.passportPhoto")}
-                    className="mt-3 h-32 w-auto rounded-md border border-ink/15 object-cover"
-                  />
-                )}
+                {/* {passportPhoto?.type === "application/pdf" ? (
+                  <p className="mt-3 rounded-md border border-ink/15 bg-[#faf8f5] px-3 py-2 font-poppins text-sm text-ink/75">
+                    {passportPhoto.name}
+                  </p>
+                ) : (
+                  photoPreview && (
+                    <img
+                      src={photoPreview}
+                      alt={t("fields.passportPhoto")}
+                      className="mt-3 h-32 w-auto rounded-md border border-ink/15 object-cover"
+                    />
+                  )
+                )} */}
               </div>
               <div className="flex justify-end">
                 {/* <p className="font-poppins text-xs font-medium uppercase tracking-[0.08em] text-ink/55">
@@ -490,7 +508,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
                 <img
                   src={PASSPORT_EXAMPLE_SRC}
                   alt={t("placeholders.passportExample")}
-                  className=" w-full max-w-[220px] rounded-md border border-ink/15 object-cover"
+                  className=" h-28 w-28 rounded-md border border-ink/15 object-contain"
                 />
               </div>
             </div>
@@ -674,18 +692,24 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
                 >
                   <input
                     type="file"
-                    accept="image/jpeg,image/jpg,image/png,image/webp"
+                    accept={PASSPORT_FILE_ACCEPT}
                     onChange={(e) => handlePhotoChange(e, "guest")}
                     className="block w-full font-poppins text-sm text-ink file:mr-4 file:rounded-full file:border-0 file:bg-[#382910] file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.12em] file:text-white"
                   />
                   <p className="mt-2 text-xs text-ink/55">{t("placeholders.passportPhoto")}</p>
-                  {guestPhotoPreview && (
-                    <img
-                      src={guestPhotoPreview}
-                      alt={t("fields.guestPassportPhoto")}
-                      className="mt-3 h-32 w-auto rounded-md border border-ink/15 object-cover"
-                    />
-                  )}
+                  {/* {guestPassportPhoto?.type === "application/pdf" ? (
+                    <p className="mt-3 rounded-md border border-ink/15 bg-[#faf8f5] px-3 py-2 font-poppins text-sm text-ink/75">
+                      {guestPassportPhoto.name}
+                    </p>
+                  ) : (
+                    guestPhotoPreview && (
+                      <img
+                        src={guestPhotoPreview}
+                        alt={t("fields.guestPassportPhoto")}
+                        className="mt-3 h-32 w-auto rounded-md border border-ink/15 object-cover"
+                      />
+                    )
+                  )} */}
                 </div>
                 {errors.guestPassportPhoto && (
                   <p className="mt-1 text-xs text-red-600">{errors.guestPassportPhoto}</p>

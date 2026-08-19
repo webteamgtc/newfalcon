@@ -794,7 +794,7 @@
         "guestFirstName": "Enter guest full name",
         "guestEmail": "guest@example.com",
         "specialRequirements": "Dietary needs, accessibility, or other notes",
-        "passportPhoto": "Upload JPG, PNG, or WEBP (max 5MB)",
+        "passportPhoto": "Upload JPG, PNG, WEBP, or PDF (max 5MB)",
         "passportExample": "Example passport photo",
         "selectDate": "Select date",
         "selectOption": "Select an option",
@@ -823,7 +823,7 @@
         "guestPassportPhoto": "Guest passport photo is required",
         "terms": "You must confirm the terms to continue",
         "passportPhoto": "Passport photo is required",
-        "passportPhotoType": "Passport photo must be JPG, PNG, or WEBP",
+        "passportPhotoType": "Passport file must be JPG, PNG, WEBP, or PDF",
         "passportPhotoSize": "Passport photo must be 5MB or less",
         "emailAlreadyExists": "This email is already registered."
       },
