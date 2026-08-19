@@ -221,7 +221,13 @@
       "headingPlain": "A journey told through",
       "headingItalic": "moments.",
       "subtext": "Explore global events, behind-the-scenes stories, community highlights, media features, and the milestones that define our presence.",
-      "imageAlt": "Golden Falcon Awards gallery moment {number}"
+      "imageAlt": "Golden Falcon Awards gallery moment {number}",
+      "openImage": "View gallery image {number}",
+      "lightboxLabel": "Gallery image viewer",
+      "closeLightbox": "Close gallery view",
+      "previousImage": "Previous image",
+      "nextImage": "Next image",
+      "imageCounter": "{current} / {total}"
     }
   },
   "agenda": {

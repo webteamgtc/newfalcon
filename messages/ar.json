@@ -221,7 +221,13 @@
       "headingPlain": "رحلة تُروى عبر",
       "headingItalic": "لحظات.",
       "subtext": "استكشف الفعاليات العالمية وقصص الكواليس وأبرز المجتمع والتغطيات الإعلامية والمحطات التي تعرّف حضورنا.",
-      "imageAlt": "لحظة من معرض Golden Falcon Awards رقم {number}"
+      "imageAlt": "لحظة من معرض Golden Falcon Awards رقم {number}",
+      "openImage": "عرض صورة المعرض رقم {number}",
+      "lightboxLabel": "عارض صور المعرض",
+      "closeLightbox": "إغلاق عرض المعرض",
+      "previousImage": "الصورة السابقة",
+      "nextImage": "الصورة التالية",
+      "imageCounter": "{current} / {total}"
     }
   },
   "agenda": {
