@@ -902,6 +902,7 @@
     "headingPlain": "لوحة",
     "headingItalic": "التسجيل الخاصة بك.",
     "description": "راجع بياناتك المُرسلة وحالة التسجيل الحالية لـ Golden Falcon Awards.",
+    "welcome": "مرحبًا بعودتك، {name}",
     "loading": "جارٍ تحميل تفاصيل التسجيل...",
     "referenceId": "رقم المرجع",
     "nextStepsDescription": "يراجع فريق الفعاليات طلبك. سيتم التواصل معك إذا كانت هناك حاجة إلى معلومات إضافية.",
@@ -922,13 +923,27 @@
       "noDocument": "غير متوفر",
       "viewDocument": "عرض المستند",
       "openDocument": "فتح المستند كاملاً",
+      "downloadDocument": "تنزيل المستند",
       "legacyDocument": "تم حفظ المستند من تسجيل سابق."
     },
     "sections": {
       "personal": "البيانات الشخصية",
       "travel": "تفاصيل السفر وجواز السفر",
       "guest": "بيانات الضيف",
-      "nextSteps": "الخطوات التالية"
+      "adminStatus": "حالة التسجيل الخاصة بك",
+      "journey": "تقدمك",
+      "travelArrangements": "ترتيبات السفر",
+      "hotel": "الإقامة الفندقية",
+      "flight": "تفاصيل الرحلة",
+      "documents": "مستنداتك",
+      "submission": "التسجيل المُرسل",
+      "guestStatus": "تقدم الضيف",
+      "nextSteps": "الخطوات التالية",
+      "guestSubmission": "تفاصيل تسجيل الضيف"
+    },
+    "tabs": {
+      "primary": "تفاصيلك",
+      "guest": "الضيف"
     },
     "fields": {
       "fullName": "الاسم الكامل",
@@ -961,6 +976,71 @@
       "singleBed": "سرير مفرد",
       "masterBed": "سرير رئيسي",
       "extraRoom": "غرفة إضافية"
+    },
+    "adminStatus": {
+      "description": "تفاصيل محدّثة من فريق الفعاليات بناءً على تسجيلك وترتيبات السفر.",
+      "journeyDescription": "تابع مرحلتك في التأهل والتأشيرة وحجز التذكرة.",
+      "documentsDescription": "قم بتنزيل أو عرض المستندات التي شاركها فريقنا معك.",
+      "submissionDescription": "التفاصيل الأصلية من نموذج التسجيل الخاص بك.",
+      "guestStatusDescription": "تحديثات الحالة لضيفك، {name}.",
+      "pendingReview": "قيد المراجعة",
+      "showDetails": "عرض التفاصيل",
+      "hideDetails": "إخفاء التفاصيل",
+      "noTravelYet": "ستظهر تفاصيل الرحلة والفندق والنقل هنا بمجرد تأكيدها من فريقنا.",
+      "noDocumentsYet": "ستظهر المستندات هنا عند توفرها.",
+      "fields": {
+        "partnerId": "رقم الشريك",
+        "country": "الدولة",
+        "qualificationStatus": "التأهل",
+        "visaStatus": "التأشيرة",
+        "visaDocument": "مستند التأشيرة",
+        "ticketStatus": "التذكرة",
+        "eTicket": "التذكرة الإلكترونية",
+        "hotelName": "اسم الفندق",
+        "hotelAddress": "عنوان الفندق",
+        "checkInDateTime": "تسجيل الوصول",
+        "checkOutDateTime": "تسجيل المغادرة",
+        "hotelConfirmationNumber": "رقم التأكيد",
+        "pickupDropoff": "تفاصيل الاستقبال / التوصيل",
+        "pickupDetails": "تفاصيل الاستقبال",
+        "dropOffDetails": "تفاصيل التوصيل",
+        "passportCopy": "نسخة جواز السفر",
+        "airline": "شركة الطيران",
+        "flightNumber": "رقم الرحلة",
+        "departureDateTime": "المغادرة",
+        "returnDateTime": "العودة",
+        "guestPassportCopy": "نسخة جواز سفر الضيف",
+        "guestVisaDocument": "مستند تأشيرة الضيف",
+        "guestETicket": "تذكرة الضيف الإلكترونية"
+      },
+      "hints": {
+        "qualificationPending": "يراجع فريقنا أهليتك للفعالية.",
+        "qualified": "تم تأهيلك لـ Golden Falcon Awards.",
+        "visaPending": "ستظهر تحديثات التأشيرة هنا.",
+        "visaApproved": "تمت الموافقة على تأشيرتك. يمكنك تنزيل مستند التأشيرة أدناه.",
+        "visaRejected": "يرجى التواصل مع الدعم للخطوات التالية بخصوص تأشيرتك.",
+        "ticketPending": "ستظهر تحديثات التذكرة هنا عند بدء المعالجة.",
+        "ticketConfirmed": "تم تأكيد تذكرتك. قم بتنزيل التذكرة الإلكترونية من قسم المستندات.",
+        "ticketCancelled": "يرجى التواصل مع الدعم إذا كنت بحاجة إلى مساعدة بخصوص تذكرتك."
+      },
+      "qualification": {
+        "notYetReached": "لم يتحقق بعد",
+        "qualified": "مؤهل"
+      },
+      "visa": {
+        "not_started": "لم يبدأ",
+        "applied": "تم التقديم",
+        "under_processing": "قيد المعالجة",
+        "approved": "موافق عليه",
+        "rejected": "مرفوض"
+      },
+      "ticket": {
+        "not_started": "لم يبدأ",
+        "requested": "مطلوب",
+        "under_process": "قيد المعالجة",
+        "confirmed": "مؤكد",
+        "cancelled": "ملغى"
+      }
     },
     "errors": {
       "title": "تعذر تحميل الحالة",

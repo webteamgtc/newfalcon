@@ -3,6 +3,7 @@ import {
   isStoredPassportFile,
   type StoredPassportFile,
 } from "@/lib/s3";
+import { mergeRegistrationWithAdminDetails, mergeGuestAdminDetails } from "@/lib/adminRegistration";
 
 export type PublicPassportDocument = {
   fileName?: string;
@@ -10,6 +11,19 @@ export type PublicPassportDocument = {
   uploaded: boolean;
   url?: string;
   legacyStored?: boolean;
+};
+
+export type PublicGuestAdminStatus = {
+  fullName: string;
+  email: string;
+  phone: string;
+  country: string;
+  qualificationStatus: "" | "not_yet_reached" | "qualified";
+  visaStatus: string;
+  visaDocument?: PublicPassportDocument;
+  ticketStatus: string;
+  eTicket?: PublicPassportDocument;
+  passportCopy?: PublicPassportDocument;
 };
 
 export type PublicGuestDetails = {
@@ -23,6 +37,7 @@ export type PublicGuestDetails = {
   passportPhotoUploaded: boolean;
   passportPhotoFileName?: string;
   passportPhoto?: PublicPassportDocument;
+  adminStatus?: PublicGuestAdminStatus;
 };
 
 export type PublicUserRegistration = {
@@ -46,6 +61,33 @@ export type PublicUserRegistration = {
   passportPhotoFileName?: string;
   passportPhoto?: PublicPassportDocument;
   submittedAt: string;
+  adminStatus?: PublicAdminStatus;
+};
+
+export type PublicAdminStatus = {
+  hasUpdates: boolean;
+  fullName: string;
+  email: string;
+  partnerId: string;
+  phone: string;
+  country: string;
+  qualificationStatus: "" | "not_yet_reached" | "qualified";
+  visaStatus: string;
+  visaDocument?: PublicPassportDocument;
+  ticketStatus: string;
+  eTicket?: PublicPassportDocument;
+  airline: string;
+  flightNumber: string;
+  departureDateTime: string;
+  returnDateTime: string;
+  hotelName: string;
+  hotelAddress: string;
+  checkInDateTime: string;
+  checkOutDateTime: string;
+  hotelConfirmationNumber: string;
+  pickupDetails: string;
+  dropOffDetails: string;
+  passportCopy?: PublicPassportDocument;
 };
 
 function formatDateValue(value: unknown) {
@@ -118,9 +160,128 @@ async function buildPassportDocument(
   return { uploaded: false };
 }
 
+async function buildAdminStatus(
+  doc: Record<string, unknown>,
+  id: string,
+  ownerEmail: string
+): Promise<PublicAdminStatus> {
+  const merged = mergeRegistrationWithAdminDetails(doc, id);
+  const admin = doc.adminDetails as { updatedAt?: string } | undefined;
+  const hasUpdates = Boolean(admin?.updatedAt);
+
+  const passportCopy = await buildPassportDocument(
+    merged.passportCopy ?? doc.passportPhoto,
+    ownerEmail
+  );
+
+  let visaDocument: PublicPassportDocument | undefined;
+  if (merged.visaStatus === "approved" && merged.visaDocument) {
+    visaDocument = await buildPassportDocument(merged.visaDocument, ownerEmail);
+    if (!visaDocument.uploaded) visaDocument = undefined;
+  }
+
+  let eTicket: PublicPassportDocument | undefined;
+  if (merged.ticketStatus === "confirmed" && merged.eTicket) {
+    eTicket = await buildPassportDocument(merged.eTicket, ownerEmail);
+    if (!eTicket.uploaded) eTicket = undefined;
+  }
+
+  const qualificationStatus =
+    merged.qualified === "yes"
+      ? "qualified"
+      : merged.qualified === "no"
+        ? "not_yet_reached"
+        : "";
+
+  const fullName =
+    [merged.firstName, merged.lastName].filter(Boolean).join(" ") ||
+    merged.registrationFullName;
+
+  return {
+    hasUpdates,
+    fullName,
+    email: merged.email,
+    partnerId: merged.partnerId,
+    phone: merged.phone,
+    country: merged.country,
+    qualificationStatus,
+    visaStatus: merged.visaStatus ?? "",
+    visaDocument,
+    ticketStatus: merged.ticketStatus ?? "",
+    eTicket,
+    airline: merged.airline ?? "",
+    flightNumber: merged.flightNumber ?? "",
+    departureDateTime: merged.departureDateTime ?? "",
+    returnDateTime: merged.returnDateTime ?? "",
+    hotelName: merged.hotelName ?? "",
+    hotelAddress: merged.hotelAddress ?? "",
+    checkInDateTime: merged.checkInDateTime ?? "",
+    checkOutDateTime: merged.checkOutDateTime ?? "",
+    hotelConfirmationNumber: merged.hotelConfirmationNumber ?? "",
+    pickupDetails: merged.pickupDetails ?? "",
+    dropOffDetails: merged.dropOffDetails ?? "",
+    passportCopy: passportCopy.uploaded ? passportCopy : undefined,
+  };
+}
+
+async function buildGuestAdminStatus(
+  doc: Record<string, unknown>,
+  ownerEmail: string
+): Promise<PublicGuestAdminStatus | undefined> {
+  const registrationGuest = doc.guest as Record<string, unknown> | null | undefined;
+  if (!registrationGuest) return undefined;
+
+  const admin = doc.adminDetails as { guest?: Record<string, unknown> } | undefined;
+  const merged = mergeGuestAdminDetails(
+    registrationGuest,
+    admin?.guest as Parameters<typeof mergeGuestAdminDetails>[1]
+  );
+  if (!merged) return undefined;
+
+  const passportCopy = await buildPassportDocument(
+    merged.passportCopy ?? registrationGuest.passportPhoto,
+    ownerEmail
+  );
+
+  let visaDocument: PublicPassportDocument | undefined;
+  if (merged.visaStatus === "approved" && merged.visaDocument) {
+    visaDocument = await buildPassportDocument(merged.visaDocument, ownerEmail);
+    if (!visaDocument.uploaded) visaDocument = undefined;
+  }
+
+  let eTicket: PublicPassportDocument | undefined;
+  if (merged.ticketStatus === "confirmed" && merged.eTicket) {
+    eTicket = await buildPassportDocument(merged.eTicket, ownerEmail);
+    if (!eTicket.uploaded) eTicket = undefined;
+  }
+
+  const qualificationStatus =
+    merged.qualified === "yes"
+      ? "qualified"
+      : merged.qualified === "no"
+        ? "not_yet_reached"
+        : "";
+
+  const fullName = [merged.firstName, merged.lastName].filter(Boolean).join(" ");
+
+  return {
+    fullName,
+    email: merged.email,
+    phone: merged.phone,
+    country: merged.country,
+    qualificationStatus,
+    visaStatus: merged.visaStatus ?? "",
+    visaDocument,
+    ticketStatus: merged.ticketStatus ?? "",
+    eTicket,
+    passportCopy: passportCopy.uploaded ? passportCopy : undefined,
+  };
+}
+
 async function sanitizeGuest(
   guest: Record<string, unknown> | null | undefined,
-  ownerEmail: string
+  ownerEmail: string,
+  doc: Record<string, unknown>
 ): Promise<PublicGuestDetails | null> {
   if (!guest || typeof guest !== "object") return null;
 
@@ -137,6 +298,7 @@ async function sanitizeGuest(
     passportPhotoUploaded: passportPhoto.uploaded,
     passportPhotoFileName: passportPhoto.fileName,
     passportPhoto,
+    adminStatus: await buildGuestAdminStatus(doc, ownerEmail),
   };
 }
 
@@ -178,7 +340,11 @@ export async function sanitizeRegistrationDocument(
     nationality: String(doc.nationality ?? ""),
     dateOfBirth: String(doc.dateOfBirth ?? ""),
     invitingGuest: Boolean(doc.invitingGuest),
-    guest: await sanitizeGuest(doc.guest as Record<string, unknown> | null | undefined, email),
+    guest: await sanitizeGuest(
+      doc.guest as Record<string, unknown> | null | undefined,
+      email,
+      doc
+    ),
     specialRequirements: String(doc.specialRequirements ?? ""),
     memberId: String(doc.memberId ?? ""),
     ibId: String(doc.ibId ?? ""),
@@ -186,6 +352,7 @@ export async function sanitizeRegistrationDocument(
     passportPhotoFileName: passportPhoto.fileName,
     passportPhoto,
     submittedAt: submittedAt || new Date().toISOString(),
+    adminStatus: await buildAdminStatus(doc, id, email),
   };
 }
 

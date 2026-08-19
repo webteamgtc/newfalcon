@@ -74,7 +74,7 @@ function fileExtension(fileName: string, mimeType: string) {
 export async function uploadPassportFile(
   file: File,
   ownerEmail: string,
-  scope: "primary" | "guest"
+  scope: "primary" | "guest" | "admin-passport" | "admin-visa" | "admin-eticket" | "admin-guest-passport" | "admin-guest-visa" | "admin-guest-eticket"
 ): Promise<StoredPassportFile> {
   const bucket = getBucket();
   const prefix = getPrefix();

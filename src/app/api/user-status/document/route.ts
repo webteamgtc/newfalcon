@@ -23,6 +23,48 @@ function collectS3Keys(doc: Record<string, unknown>) {
     keys.add(guest.passportPhoto.s3Key);
   }
 
+  const admin = doc.adminDetails as Record<string, unknown> | null | undefined;
+  if (admin) {
+    if (isStoredPassportFile(admin.passportCopy)) {
+      keys.add(admin.passportCopy.s3Key);
+    }
+
+    if (
+      admin.visaStatus === "approved" &&
+      isStoredPassportFile(admin.visaDocument)
+    ) {
+      keys.add(admin.visaDocument.s3Key);
+    }
+
+    if (
+      admin.ticketStatus === "confirmed" &&
+      isStoredPassportFile(admin.eTicket)
+    ) {
+      keys.add(admin.eTicket.s3Key);
+    }
+
+    const adminGuest = admin.guest as Record<string, unknown> | undefined;
+    if (adminGuest) {
+      if (isStoredPassportFile(adminGuest.passportCopy)) {
+        keys.add(adminGuest.passportCopy.s3Key);
+      }
+
+      if (
+        adminGuest.visaStatus === "approved" &&
+        isStoredPassportFile(adminGuest.visaDocument)
+      ) {
+        keys.add(adminGuest.visaDocument.s3Key);
+      }
+
+      if (
+        adminGuest.ticketStatus === "confirmed" &&
+        isStoredPassportFile(adminGuest.eTicket)
+      ) {
+        keys.add(adminGuest.eTicket.s3Key);
+      }
+    }
+  }
+
   return keys;
 }
 

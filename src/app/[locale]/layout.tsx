@@ -7,7 +7,6 @@ import { routing } from "@/i18n/routing";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AppProviders from "@/components/providers/AppProviders";
-import "../globals.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -48,16 +47,14 @@ export default async function LocaleLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir}>
-      <body className="bg-parchment text-ink antialiased">
-        <NextIntlClientProvider messages={messages}>
-          <AppProviders>
-            <SiteHeader />
-            <main>{children}</main>
-            <SiteFooter />
-          </AppProviders>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <div dir={dir} lang={locale} className="min-h-screen bg-parchment text-ink antialiased">
+      <NextIntlClientProvider messages={messages}>
+        <AppProviders>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </AppProviders>
+      </NextIntlClientProvider>
+    </div>
   );
 }

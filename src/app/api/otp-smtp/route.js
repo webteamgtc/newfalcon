@@ -73,7 +73,7 @@ export async function POST(req) {
                                <p>to complete your further process.</p>
                                 ${
                                   resolvedIbId
-                                    ? `<p>Your IB ID / Referral Code: <strong style="color: #192055;">${resolvedIbId}</strong></p>`
+                                    ? `<p>Your IB ID / Referral Code: <strong style="font-size: 20px;font-weight: 800; color: #192055;">${resolvedIbId}</strong></p>`
                                     : ""
                                 }
                                 
