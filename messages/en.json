@@ -895,5 +895,78 @@
     "backToHome": "Back to Home",
     "readMore": "Read More",
     "close": "Close"
+  },
+  "userStatusPage": {
+    "metaTitle": "Registration Status",
+    "eyebrow": "Registration status",
+    "headingPlain": "Your registration",
+    "headingItalic": "dashboard.",
+    "description": "Review your submitted details and current registration status for Golden Falcon Awards.",
+    "loading": "Loading your registration details...",
+    "referenceId": "Reference ID",
+    "nextStepsDescription": "Our events team is reviewing your submission. You will be contacted if any additional information is required.",
+    "supportNote": "Need help? Contact",
+    "status": {
+      "under_review": "Under review",
+      "registered": "Registered"
+    },
+    "formTypes": {
+      "vipTicket": "VIP ticket booking",
+      "staff": "Staff registration"
+    },
+    "cards": {
+      "submitted": "Submitted on",
+      "formType": "Registration type",
+      "documents": "Passport document",
+      "documentUploaded": "Uploaded",
+      "noDocument": "Not provided",
+      "viewDocument": "View document",
+      "openDocument": "Open full document",
+      "legacyDocument": "Document stored from an earlier submission."
+    },
+    "sections": {
+      "personal": "Personal details",
+      "travel": "Travel & passport details",
+      "guest": "Guest details",
+      "nextSteps": "What happens next"
+    },
+    "fields": {
+      "fullName": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "memberId": "Member ID",
+      "ibId": "IB ID",
+      "lineManagerName": "Line manager",
+      "passportNumber": "Passport number",
+      "passportExpiry": "Passport expiry",
+      "nationality": "Nationality",
+      "dateOfBirth": "Date of birth",
+      "passportPhoto": "Passport document",
+      "invitingGuest": "Inviting a guest",
+      "specialRequirements": "Additional notes",
+      "guestFirstName": "Guest first name",
+      "guestEmail": "Guest email",
+      "guestPhone": "Guest phone",
+      "guestPassportNumber": "Guest passport number",
+      "guestPassportExpiry": "Guest passport expiry",
+      "guestNationality": "Guest nationality",
+      "guestPassportPhoto": "Guest passport document",
+      "bedroomPreference": "Bedroom preference"
+    },
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "bedroom": {
+      "singleBed": "Single bed",
+      "masterBed": "Master bed",
+      "extraRoom": "Extra room"
+    },
+    "errors": {
+      "title": "Unable to load status",
+      "emailRequired": "A valid email address is required in the link.",
+      "notFound": "No registration was found for this email.",
+      "loadFailed": "Failed to load registration status. Please try again later."
+    }
   }
 }

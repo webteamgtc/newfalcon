@@ -9,6 +9,7 @@ import {
   getConfirmationEmailContent,
   type ConfirmationFormType,
 } from "@/lib/emailTemplate";
+import { buildUserStatusUrl } from "@/lib/siteUrl";
 
 export const runtime = "nodejs";
 
@@ -46,16 +47,19 @@ export async function POST(request: Request) {
     }
 
     const content = getConfirmationEmailContent(formType, referenceId || undefined);
+    const statusUrl = buildUserStatusUrl(email, "en", request);
     const html = buildConfirmationEmailHtml({
       firstName: firstName || "Client",
       title: content.title,
       message: content.message,
       details: content.details,
+      actionLink: statusUrl,
+      actionLabel: "View your registration status",
     });
 
     const text = `${content.message}${
       content.details.length ? `\n\n${content.details.join("\n")}` : ""
-    }\n\nOur team will review your submission and contact you if needed.`;
+    }\n\nView your status: ${statusUrl}\n\nOur team will review your submission and contact you if needed.`;
 
     await mailgunClient.messages.create(MAILGUN_DOMAIN, {
       from: MAILGUN_FROM,

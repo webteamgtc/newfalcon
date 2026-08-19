@@ -895,5 +895,78 @@
     "backToHome": "العودة للرئيسية",
     "readMore": "اقرأ المزيد",
     "close": "إغلاق"
+  },
+  "userStatusPage": {
+    "metaTitle": "حالة التسجيل",
+    "eyebrow": "حالة التسجيل",
+    "headingPlain": "لوحة",
+    "headingItalic": "التسجيل الخاصة بك.",
+    "description": "راجع بياناتك المُرسلة وحالة التسجيل الحالية لـ Golden Falcon Awards.",
+    "loading": "جارٍ تحميل تفاصيل التسجيل...",
+    "referenceId": "رقم المرجع",
+    "nextStepsDescription": "يراجع فريق الفعاليات طلبك. سيتم التواصل معك إذا كانت هناك حاجة إلى معلومات إضافية.",
+    "supportNote": "تحتاج مساعدة؟ تواصل مع",
+    "status": {
+      "under_review": "قيد المراجعة",
+      "registered": "مسجل"
+    },
+    "formTypes": {
+      "vipTicket": "حجز تذكرة VIP",
+      "staff": "تسجيل الموظفين"
+    },
+    "cards": {
+      "submitted": "تاريخ الإرسال",
+      "formType": "نوع التسجيل",
+      "documents": "مستند جواز السفر",
+      "documentUploaded": "تم الرفع",
+      "noDocument": "غير متوفر",
+      "viewDocument": "عرض المستند",
+      "openDocument": "فتح المستند كاملاً",
+      "legacyDocument": "تم حفظ المستند من تسجيل سابق."
+    },
+    "sections": {
+      "personal": "البيانات الشخصية",
+      "travel": "تفاصيل السفر وجواز السفر",
+      "guest": "بيانات الضيف",
+      "nextSteps": "الخطوات التالية"
+    },
+    "fields": {
+      "fullName": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "memberId": "رقم العضو",
+      "ibId": "رقم IB",
+      "lineManagerName": "مدير الخط",
+      "passportNumber": "رقم جواز السفر",
+      "passportExpiry": "تاريخ انتهاء جواز السفر",
+      "nationality": "الجنسية",
+      "dateOfBirth": "تاريخ الميلاد",
+      "passportPhoto": "مستند جواز السفر",
+      "invitingGuest": "دعوة ضيف",
+      "specialRequirements": "ملاحظات إضافية",
+      "guestFirstName": "الاسم الأول للضيف",
+      "guestEmail": "البريد الإلكتروني للضيف",
+      "guestPhone": "هاتف الضيف",
+      "guestPassportNumber": "رقم جواز سفر الضيف",
+      "guestPassportExpiry": "تاريخ انتهاء جواز سفر الضيف",
+      "guestNationality": "جنسية الضيف",
+      "guestPassportPhoto": "مستند جواز سفر الضيف",
+      "bedroomPreference": "تفضيل الغرفة"
+    },
+    "options": {
+      "yes": "نعم",
+      "no": "لا"
+    },
+    "bedroom": {
+      "singleBed": "سرير مفرد",
+      "masterBed": "سرير رئيسي",
+      "extraRoom": "غرفة إضافية"
+    },
+    "errors": {
+      "title": "تعذر تحميل الحالة",
+      "emailRequired": "يلزم وجود بريد إلكتروني صالح في الرابط.",
+      "notFound": "لم يتم العثور على تسجيل لهذا البريد الإلكتروني.",
+      "loadFailed": "فشل تحميل حالة التسجيل. يرجى المحاولة لاحقًا."
+    }
   }
 }

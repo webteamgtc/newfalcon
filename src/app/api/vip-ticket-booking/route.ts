@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getRegistrationDb, REGISTRATION_COLLECTION } from "@/lib/mongodb";
+import { uploadPassportFile } from "@/lib/s3";
 
 export const runtime = "nodejs";
 
@@ -22,7 +23,7 @@ function isDuplicateEmailError(error: unknown) {
   );
 }
 
-async function parsePassportPhoto(file: FormDataEntryValue | null, label: string) {
+async function validatePassportFile(file: FormDataEntryValue | null, label: string) {
   if (!(file instanceof File) || file.size === 0) {
     return { error: `${label} is required` };
   }
@@ -35,16 +36,17 @@ async function parsePassportPhoto(file: FormDataEntryValue | null, label: string
     return { error: `${label} must be 5MB or less` };
   }
 
-  const photoBuffer = Buffer.from(await file.arrayBuffer());
+  return { file };
+}
 
-  return {
-    data: {
-      fileName: file.name,
-      mimeType: file.type,
-      size: file.size,
-      data: photoBuffer.toString("base64"),
-    },
-  };
+function isS3AccessDeniedError(error: unknown) {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    ("Code" in error || "name" in error) &&
+    ((error as { Code?: string }).Code === "AccessDenied" ||
+      (error as { name?: string }).name === "AccessDenied")
+  );
 }
 
 export async function POST(request: Request) {
@@ -93,12 +95,17 @@ export async function POST(request: Request) {
       );
     }
 
-    const primaryPhoto = await parsePassportPhoto(formData.get("passportPhoto"), "Passport photo");
+    const normalizedEmail = getField("email").toLowerCase();
+
+    const primaryPhoto = await validatePassportFile(
+      formData.get("passportPhoto"),
+      "Passport photo"
+    );
     if ("error" in primaryPhoto) {
       return NextResponse.json({ success: false, message: primaryPhoto.error }, { status: 400 });
     }
 
-    let guestDetails: Record<string, unknown> | null = null;
+    let guestPhotoFile: File | null = null;
 
     if (invitingGuest === "yes") {
       const guestRequiredFields = [
@@ -136,7 +143,7 @@ export async function POST(request: Request) {
         );
       }
 
-      const guestPhoto = await parsePassportPhoto(
+      const guestPhoto = await validatePassportFile(
         formData.get("guestPassportPhoto"),
         "Guest passport photo"
       );
@@ -144,19 +151,8 @@ export async function POST(request: Request) {
         return NextResponse.json({ success: false, message: guestPhoto.error }, { status: 400 });
       }
 
-      guestDetails = {
-        firstName: getField("guestFirstName"),
-        email: guestEmail,
-        phone: getField("guestPhone"),
-        passportNumber: getField("guestPassportNumber"),
-        passportExpiry: getField("guestPassportExpiry"),
-        nationality: getField("guestNationality"),
-        bedroomPreference,
-        passportPhoto: guestPhoto.data,
-      };
+      guestPhotoFile = guestPhoto.file;
     }
-
-    const normalizedEmail = getField("email").toLowerCase();
 
     const db = await getRegistrationDb();
     const collection = db.collection(REGISTRATION_COLLECTION);
@@ -177,6 +173,33 @@ export async function POST(request: Request) {
       );
     }
 
+    const uploadedPrimaryPassport = await uploadPassportFile(
+      primaryPhoto.file,
+      normalizedEmail,
+      "primary"
+    );
+
+    let guestDetails: Record<string, unknown> | null = null;
+
+    if (invitingGuest === "yes" && guestPhotoFile) {
+      const uploadedGuestPassport = await uploadPassportFile(
+        guestPhotoFile,
+        normalizedEmail,
+        "guest"
+      );
+
+      guestDetails = {
+        firstName: getField("guestFirstName"),
+        email: getField("guestEmail").toLowerCase(),
+        phone: getField("guestPhone"),
+        passportNumber: getField("guestPassportNumber"),
+        passportExpiry: getField("guestPassportExpiry"),
+        nationality: getField("guestNationality"),
+        bedroomPreference: getField("bedroomPreference"),
+        passportPhoto: uploadedGuestPassport,
+      };
+    }
+
     const document = {
       formType: "vip_ticket_booking",
       fullName: getField("fullName"),
@@ -192,7 +215,7 @@ export async function POST(request: Request) {
       memberId: getField("memberId"),
       userId: getField("userId"),
       ibId: getField("ibId"),
-      passportPhoto: primaryPhoto.data,
+      passportPhoto: uploadedPrimaryPassport,
       submittedAt: new Date(),
     };
 
@@ -216,6 +239,19 @@ export async function POST(request: Request) {
     }
 
     console.error("VIP ticket booking save error:", error);
+
+    if (isS3AccessDeniedError(error)) {
+      return NextResponse.json(
+        {
+          success: false,
+          code: "S3_ACCESS_DENIED",
+          message:
+            "Passport upload failed: AWS IAM user needs s3:PutObject permission on gtcfx-bucket/falcon-document/*",
+        },
+        { status: 503 }
+      );
+    }
+
     return NextResponse.json(
       {
         success: false,
