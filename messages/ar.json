@@ -794,7 +794,7 @@
         "guestFirstName": "أدخل الاسم الأول للضيف",
         "guestEmail": "guest@example.com",
         "specialRequirements": "احتياجات غذائية، إمكانية وصول، أو ملاحظات أخرى",
-        "passportPhoto": "ارفع JPG أو PNG أو WEBP (حد أقصى 5MB)",
+        "passportPhoto": "ارفع JPG أو PNG أو WEBP أو PDF (حد أقصى 5MB)",
         "passportExample": "مثال لصورة جواز السفر",
         "selectDate": "اختر التاريخ",
         "selectOption": "اختر خيارًا",
@@ -823,7 +823,7 @@
         "guestPassportPhoto": "صورة جواز سفر الضيف مطلوبة",
         "terms": "يجب تأكيد الشروط للمتابعة",
         "passportPhoto": "صورة جواز السفر مطلوبة",
-        "passportPhotoType": "يجب أن تكون صورة جواز السفر JPG أو PNG أو WEBP",
+        "passportPhotoType": "يجب أن يكون ملف جواز السفر JPG أو PNG أو WEBP أو PDF",
         "passportPhotoSize": "يجب ألا تتجاوز صورة جواز السفر 5MB",
         "emailAlreadyExists": "هذا البريد الإلكتروني مسجل بالفعل."
       },
