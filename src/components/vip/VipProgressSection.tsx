@@ -23,7 +23,7 @@ function getProgressColors(percent: number) {
 export default function VipProgressSection() {
   const t = useTranslations("vipPage");
   const { user } = useVipUser();
-  const [bookingModalOpen, setBookingModalOpen] = useState(true);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [hasRegistered, setHasRegistered] = useState(false);
 
   useEffect(() => {
