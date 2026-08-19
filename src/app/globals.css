@@ -96,15 +96,16 @@ input:focus-visible {
            md:text-[40px]
            xl:text-[45px]
            4xl:text-[50px]
-           6xl:text-[55px];
+           6xl:text-[55x];
+
   }
 
   .HeadingH2 {
     @apply text-[22px] leading-[1.2] font-medium tracking-[-0.02em]
            md:text-[25px]
-             xl:text-[32px]
-           4xl:text-[34px]
-           6xl:text-[36px];
+             xl:text-[35px]
+           4xl:text-[40px]
+           6xl:text-[45px];
 
   }
 

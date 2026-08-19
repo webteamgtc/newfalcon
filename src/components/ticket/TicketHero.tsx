@@ -11,7 +11,7 @@ export default function TicketHero() {
       headingItalic={t("headingItalic")}
       subtext={t("subtext")}
       primaryCta={{ label: t("primaryCta"), href: "#access" }}
-      secondaryCta={{ label: t("secondaryCta"), href: "#steps" }}
+      secondaryCta={{ label: t("secondaryCta"), href: "/check-status" }}
     />
   );
 }

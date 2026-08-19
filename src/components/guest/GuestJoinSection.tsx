@@ -27,7 +27,7 @@ export default function GuestJoinSection() {
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>
           <div className="hidden md:block">
-            <Button href="/ticket" className="mt-8">
+            <Button href="/check-status" className="mt-8">
               {t("cta")}
             </Button>
           </div>

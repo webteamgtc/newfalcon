@@ -60,7 +60,7 @@ export default function Hero() {
           </p>
 
           {/* CTA */}
-          <Button href="/ticket" className="mt-10">
+          <Button href="/check-status" className="mt-10">
             {t("cta")}
           </Button>
         </div>

@@ -35,7 +35,7 @@ export default function TicketCtaSection() {
           <p className="mx-auto mt-5 max-w-2xl Text !leading-snug !font-poppins !text-white">
             {t("description")}
           </p>
-          <Button href="/ticket" variant="light" className="mt-9">
+          <Button href="/check-status" variant="light" className="mt-9">
             {t("cta")}
           </Button>
         </div>

@@ -18,7 +18,7 @@ export default function GalleryJourneySection() {
       </div>
       <div className="container grid gap-6 md:grid-cols-2 md:items-start md:gap-16">
         <div>
-          <h2 className="max-w-sm font-display HeadingH1 !font-medium !text-ink">
+          <h2 className="max-w-xl font-display HeadingH2 !font-medium !text-ink">
             {t("headingPlain")}{" "}
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>

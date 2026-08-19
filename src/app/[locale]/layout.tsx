@@ -22,7 +22,12 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
     title: `${t("siteName")} \u2014 ${t("tagline")}`,
-    description: t("tagline")
+    description: t("tagline"),
+    icons: {
+      icon: [{ url: "/favicon.ico", sizes: "100x100", type: "image/x-icon" }],
+      shortcut: "/favicon.ico",
+      apple: "/favicon.ico",
+    },
   };
 }
 
