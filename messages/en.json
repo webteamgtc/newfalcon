@@ -945,6 +945,18 @@
       "primary": "Your details",
       "guest": "Guest"
     },
+    "lookup": {
+      "title": "Find your registration",
+      "description": "Enter the email address you used when registering to view your status and documents.",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "submit": "Check status",
+      "submitting": "Checking...",
+      "errors": {
+        "emailRequired": "Please enter your email address.",
+        "emailInvalid": "Enter a valid email address."
+      }
+    },
     "fields": {
       "fullName": "Full name",
       "email": "Email",
@@ -1044,7 +1056,7 @@
     },
     "errors": {
       "title": "Unable to load status",
-      "emailRequired": "A valid email address is required in the link.",
+      "emailRequired": "Please enter your email address to check your status.",
       "notFound": "No registration was found for this email.",
       "loadFailed": "Failed to load registration status. Please try again later."
     }
