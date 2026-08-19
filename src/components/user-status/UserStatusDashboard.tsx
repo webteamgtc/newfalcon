@@ -1,8 +1,9 @@
 "use client";
 
-import { Suspense, useEffect, useState, type ReactNode } from "react";
+import { Suspense, useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/routing";
 import type {
   PublicAdminStatus,
   PublicGuestAdminStatus,
@@ -1001,23 +1002,137 @@ function SupportCard() {
   );
 }
 
+/* ─── email lookup ─── */
+
+function EmailLookupForm({
+  initialEmail = "",
+  onSubmit,
+  submitting = false,
+  lookupError,
+}: {
+  initialEmail?: string;
+  onSubmit: (email: string) => void;
+  submitting?: boolean;
+  lookupError?: string;
+}) {
+  const t = useTranslations("userStatusPage");
+  const [email, setEmail] = useState(initialEmail);
+  const [validationError, setValidationError] = useState("");
+
+  useEffect(() => {
+    setEmail(initialEmail);
+  }, [initialEmail]);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const trimmed = email.trim().toLowerCase();
+
+    if (!trimmed) {
+      setValidationError(t("lookup.errors.emailRequired"));
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      setValidationError(t("lookup.errors.emailInvalid"));
+      return;
+    }
+
+    setValidationError("");
+    onSubmit(trimmed);
+  }
+
+  const displayError = validationError || lookupError;
+
+  return (
+    <div className="mx-auto max-w-lg">
+      <div className="relative overflow-hidden rounded-2xl border border-[#382910]/12 bg-gradient-to-br from-[#FDFCFA] via-[#FBF6EB] to-[#F3E5CB] p-6 shadow-[0_28px_70px_-28px_rgba(56,41,16,0.22)] md:p-8">
+        <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-falcon-deep/5" />
+        <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-falcon-gold/10" />
+
+        <div className="relative">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-falcon-deep/10 text-falcon-deep">
+            <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+          </div>
+
+          <h2 className="mt-5 text-center font-display text-2xl text-ink">{t("lookup.title")}</h2>
+          <p className="mt-2 text-center font-poppins text-sm leading-relaxed text-ink/60">
+            {t("lookup.description")}
+          </p>
+
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <div>
+              <label htmlFor="user-status-email" className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/55">
+                {t("lookup.emailLabel")}
+              </label>
+              <input
+                id="user-status-email"
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  if (validationError) setValidationError("");
+                }}
+                placeholder={t("lookup.emailPlaceholder")}
+                disabled={submitting}
+                className="mt-2 h-12 w-full rounded-lg border border-[#382910]/15 bg-white/95 px-4 font-poppins text-sm text-ink shadow-sm outline-none transition-all placeholder:text-ink/35 focus:border-falcon-deep focus:ring-2 focus:ring-falcon-deep/10 disabled:opacity-70"
+              />
+            </div>
+
+            {displayError && (
+              <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-center">
+                <p className="font-poppins text-sm text-red-700">{displayError}</p>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={submitting}
+              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-falcon-deep px-6 font-poppins text-xs uppercase tracking-[0.12em] text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {submitting ? t("lookup.submitting") : t("lookup.submit")}
+              {!submitting && (
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── page ─── */
 
 function UserStatusContent() {
   const t = useTranslations("userStatusPage");
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const email = searchParams.get("email")?.trim() ?? "";
+  const email = searchParams.get("email")?.trim().toLowerCase() ?? "";
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(Boolean(email));
   const [registration, setRegistration] = useState<PublicUserRegistration | null>(null);
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<"primary" | "guest">("primary");
+  const [submittingEmail, setSubmittingEmail] = useState(false);
+
+  function handleEmailSubmit(nextEmail: string) {
+    setSubmittingEmail(true);
+    router.push(`${pathname}?email=${encodeURIComponent(nextEmail)}`);
+  }
 
   useEffect(() => {
     if (!email) {
       setLoading(false);
-      setError(t("errors.emailRequired"));
+      setRegistration(null);
+      setError("");
+      setSubmittingEmail(false);
       return;
     }
 
@@ -1042,7 +1157,10 @@ function UserStatusContent() {
           setError(t("errors.loadFailed"));
         }
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+          setSubmittingEmail(false);
+        }
       }
     }
 
@@ -1084,18 +1202,19 @@ function UserStatusContent() {
           </h1>
         </div>
 
-        {loading && <LoadingSkeleton />}
+        {loading && email && <LoadingSkeleton />}
 
-        {!loading && error && (
-          <div className="rounded-2xl border border-red-200 bg-red-50 p-8 text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
-              <svg className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-              </svg>
-            </div>
-            <p className="mt-4 font-display text-xl text-red-800">{t("errors.title")}</p>
-            <p className="mt-2 font-poppins text-sm text-red-700">{error}</p>
-          </div>
+        {!loading && !email && (
+          <EmailLookupForm onSubmit={handleEmailSubmit} submitting={submittingEmail} />
+        )}
+
+        {!loading && email && error && !registration && (
+          <EmailLookupForm
+            initialEmail={email}
+            onSubmit={handleEmailSubmit}
+            submitting={submittingEmail}
+            lookupError={error}
+          />
         )}
 
         {!loading && registration && (
