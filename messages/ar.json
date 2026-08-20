@@ -1017,9 +1017,12 @@
         "visaStatus": "التأشيرة",
         "visaDocument": "مستند التأشيرة",
         "ticketStatus": "التذكرة",
+        "hotelStatus": "الفندق",
         "eTicket": "التذكرة الإلكترونية",
         "hotelName": "اسم الفندق",
         "hotelAddress": "عنوان الفندق",
+        "hotelFloor": "الطابق",
+        "hotelRoomNumber": "رقم الغرفة",
         "checkInDateTime": "تسجيل الوصول",
         "checkOutDateTime": "تسجيل المغادرة",
         "hotelConfirmationNumber": "رقم التأكيد",
@@ -1043,7 +1046,13 @@
         "visaRejected": "يرجى التواصل مع الدعم للخطوات التالية بخصوص تأشيرتك.",
         "ticketPending": "ستظهر تحديثات التذكرة هنا عند بدء المعالجة.",
         "ticketConfirmed": "تم تأكيد تذكرتك. قم بتنزيل التذكرة الإلكترونية من قسم المستندات.",
-        "ticketCancelled": "يرجى التواصل مع الدعم إذا كنت بحاجة إلى مساعدة بخصوص تذكرتك."
+        "ticketCancelled": "يرجى التواصل مع الدعم إذا كنت بحاجة إلى مساعدة بخصوص تذكرتك.",
+        "hotelConfirmed": "تم تعيين طابق الفندق ورقم الغرفة.",
+        "hotelPending": "ستظهر تفاصيل غرفة الفندق هنا بمجرد تأكيدها من فريقنا."
+      },
+      "hotel": {
+        "confirmed": "مؤكد",
+        "pending": "قيد الانتظار"
       },
       "qualification": {
         "notYetReached": "لم يتحقق بعد",

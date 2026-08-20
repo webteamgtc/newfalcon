@@ -1017,9 +1017,12 @@
         "visaStatus": "Visa",
         "visaDocument": "Visa document",
         "ticketStatus": "Ticket",
+        "hotelStatus": "Hotel",
         "eTicket": "E-ticket",
         "hotelName": "Hotel name",
         "hotelAddress": "Hotel address",
+        "hotelFloor": "Floor",
+        "hotelRoomNumber": "Room number",
         "checkInDateTime": "Check-in",
         "checkOutDateTime": "Check-out",
         "hotelConfirmationNumber": "Confirmation number",
@@ -1043,7 +1046,13 @@
         "visaRejected": "Please contact support for next steps regarding your visa.",
         "ticketPending": "Ticket updates will appear here once processing begins.",
         "ticketConfirmed": "Your ticket is confirmed. Download your e-ticket from the documents section.",
-        "ticketCancelled": "Please contact support if you need assistance with your ticket."
+        "ticketCancelled": "Please contact support if you need assistance with your ticket.",
+        "hotelConfirmed": "Your hotel floor and room number have been assigned.",
+        "hotelPending": "Hotel room details will appear here once confirmed by our team."
+      },
+      "hotel": {
+        "confirmed": "Confirmed",
+        "pending": "Pending"
       },
       "qualification": {
         "notYetReached": "Not yet reached",
