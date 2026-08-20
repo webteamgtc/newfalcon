@@ -157,22 +157,22 @@ function SectionCard({
 }) {
   return (
     <div className={`rounded-2xl border border-[#382910]/10 bg-white shadow-[0_4px_24px_-4px_rgba(56,41,16,0.08)] ${className}`}>
-      <div className="border-b border-ink/8 px-6 py-5 md:px-8">
+      <div className="border-b border-ink/8 px-4 py-4 sm:px-6 sm:py-5 md:px-8">
         <div className="flex items-start gap-3">
           {icon && (
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-falcon-deep/10 text-falcon-deep">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-falcon-deep/10 text-falcon-deep sm:h-10 sm:w-10">
               {icon}
             </div>
           )}
-          <div>
-            <h3 className="font-display text-xl text-ink">{title}</h3>
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display text-lg text-ink sm:text-xl">{title}</h3>
             {subtitle && (
               <p className="mt-1 font-poppins text-sm leading-relaxed text-ink/55">{subtitle}</p>
             )}
           </div>
         </div>
       </div>
-      <div className="px-6 py-5 md:px-8">{children}</div>
+      <div className="px-4 py-4 sm:px-6 sm:py-5 md:px-8">{children}</div>
     </div>
   );
 }
@@ -191,9 +191,9 @@ function EmptyState({ message }: { message: string }) {
 function MetaChip({ label, value }: { label: string; value: string }) {
   if (!value?.trim()) return null;
   return (
-    <div className="rounded-lg bg-white/60 px-3 py-2">
+    <div className="min-w-0 rounded-lg bg-white/60 px-3 py-2 sm:max-w-none">
       <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">{label}</p>
-      <p className="mt-0.5 font-poppins text-sm font-medium text-ink">{value}</p>
+      <p className="mt-0.5 break-words font-poppins text-sm font-medium text-ink">{value}</p>
     </div>
   );
 }
@@ -213,11 +213,11 @@ function ProgressTimeline({
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-poppins text-xs uppercase tracking-[0.1em] text-ink/45">
           {completedCount} / {steps.length} complete
         </p>
-        <div className="h-1.5 w-32 overflow-hidden rounded-full bg-ink/10">
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-ink/10 sm:w-32">
           <div
             className="h-full rounded-full bg-falcon-deep transition-all duration-500"
             style={{ width: `${(completedCount / steps.length) * 100}%` }}
@@ -225,11 +225,25 @@ function ProgressTimeline({
         </div>
       </div>
 
-      <div className={`relative grid gap-0 ${steps.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+      <div
+        className={`relative grid grid-cols-1 gap-0 ${
+          steps.length <= 2
+            ? "md:grid-cols-2"
+            : steps.length === 3
+              ? "md:grid-cols-3"
+              : "md:grid-cols-4"
+        }`}
+      >
         {steps.map((step, index) => (
-          <div key={step.label} className="relative flex md:flex-col md:items-center md:text-center">
+          <div
+            key={step.label}
+            className="relative flex gap-4 pb-8 last:pb-0 md:flex-col md:items-center md:gap-0 md:pb-0 md:text-center"
+          >
             {index < steps.length - 1 && (
-              <div className="absolute left-[19px] top-10 hidden h-full w-px bg-ink/15 md:left-1/2 md:top-5 md:block md:h-px md:w-full md:-translate-x-0" />
+              <>
+                <div className="absolute bottom-0 left-5 top-10 w-px bg-ink/15 md:hidden" />
+                <div className="absolute left-1/2 top-5 hidden h-px w-full bg-ink/15 md:block" />
+              </>
             )}
 
             <div className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 ${toneRing[step.tone]}`}>
@@ -242,7 +256,7 @@ function ProgressTimeline({
               )}
             </div>
 
-            <div className="ms-4 min-w-0 flex-1 pb-6 md:ms-0 md:mt-3 md:pb-0 md:px-2">
+            <div className="min-w-0 flex-1 md:mt-3 md:px-2">
               <p className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/45">
                 Step {index + 1}
               </p>
@@ -278,21 +292,26 @@ function DocumentCard({
       href={document.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center gap-4 rounded-xl border border-ink/10 bg-[#FFFDF8] p-4 transition-all hover:border-falcon-deep/40 hover:shadow-md"
+      className="group flex flex-col gap-3 rounded-xl border border-ink/10 bg-[#FFFDF8] p-4 transition-all hover:border-falcon-deep/40 hover:shadow-md sm:flex-row sm:items-center sm:gap-4"
     >
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-falcon-deep/10 font-poppins text-[10px] font-bold tracking-wider text-falcon-deep">
-        {ext}
+      <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-falcon-deep/10 font-poppins text-[10px] font-bold tracking-wider text-falcon-deep sm:h-12 sm:w-12">
+          {ext}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="font-poppins text-sm font-medium text-ink">{label}</p>
+          {document.fileName && (
+            <p className="mt-0.5 truncate font-poppins text-xs text-ink/50">{document.fileName}</p>
+          )}
+        </div>
+        <svg className="h-4 w-4 shrink-0 text-ink/30 group-hover:text-falcon-deep sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5M10.5 13.5 21 3m0 0h-5.25M21 3v5.25" />
+        </svg>
       </div>
-      <div className="min-w-0 flex-1">
-        <p className="font-poppins text-sm font-medium text-ink">{label}</p>
-        {document.fileName && (
-          <p className="mt-0.5 truncate font-poppins text-xs text-ink/50">{document.fileName}</p>
-        )}
-      </div>
-      <span className="shrink-0 rounded-full bg-falcon-deep px-3 py-1.5 font-poppins text-[10px] uppercase tracking-[0.08em] text-white opacity-0 transition-opacity group-hover:opacity-100">
+      <span className="inline-flex shrink-0 items-center justify-center rounded-full bg-falcon-deep px-3 py-1.5 font-poppins text-[10px] uppercase tracking-[0.08em] text-white sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100">
         {actionLabel}
       </span>
-      <svg className="h-4 w-4 shrink-0 text-ink/30 group-hover:text-falcon-deep" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <svg className="hidden h-4 w-4 shrink-0 text-ink/30 group-hover:text-falcon-deep sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5M10.5 13.5 21 3m0 0h-5.25M21 3v5.25" />
       </svg>
     </a>
@@ -342,7 +361,7 @@ function PersonTabs({
   guestLabel: string;
 }) {
   const tabClass = (tab: "primary" | "guest") =>
-    `flex-1 rounded-lg px-4 py-3 text-center transition-all ${
+    `min-w-0 flex-1 rounded-lg px-3 py-3 text-center transition-all sm:px-4 ${
       activeTab === tab
         ? "bg-white text-ink shadow-sm ring-1 ring-ink/10"
         : "text-ink/55 hover:text-ink/75"
@@ -362,7 +381,7 @@ function PersonTabs({
           onClick={() => onTabChange("primary")}
           className={tabClass("primary")}
         >
-          <span className="block font-poppins text-sm font-semibold">{primaryLabel}</span>
+          <span className="block truncate font-poppins text-xs font-semibold sm:text-sm">{primaryLabel}</span>
         </button>
         <button
           type="button"
@@ -371,7 +390,7 @@ function PersonTabs({
           onClick={() => onTabChange("guest")}
           className={tabClass("guest")}
         >
-          <span className="block font-poppins text-sm font-semibold">{guestLabel}</span>
+          <span className="block truncate font-poppins text-xs font-semibold sm:text-sm">{guestLabel}</span>
         </button>
       </div>
     </div>
@@ -397,17 +416,17 @@ function GuestHero({
       <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-falcon-deep/5" />
       <div className="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-falcon-gold/10" />
 
-      <div className="relative p-6 md:p-8">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-falcon-deep font-display text-2xl text-white shadow-lg">
+      <div className="relative p-4 sm:p-6 md:p-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-falcon-deep font-display text-xl text-white shadow-lg sm:h-16 sm:w-16 sm:text-2xl">
             {getInitials(displayName)}
           </div>
           <div className="min-w-0">
             <p className="font-poppins text-sm text-ink/55">
               {t("adminStatus.guestStatusDescription", { name: firstName })}
             </p>
-            <h2 className="mt-0.5 font-display text-2xl text-ink md:text-3xl">{displayName}</h2>
-            <p className="mt-1 truncate font-poppins text-sm text-ink/60">
+            <h2 className="mt-0.5 break-words font-display text-xl text-ink sm:text-2xl md:text-3xl">{displayName}</h2>
+            <p className="mt-1 break-all font-poppins text-sm text-ink/60">
               {guestStatus?.email || guest.email}
             </p>
             {displayPhone && (
@@ -416,7 +435,7 @@ function GuestHero({
           </div>
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
           {displayCountry && (
             <MetaChip label={t("adminStatus.fields.country")} value={displayCountry} />
           )}
@@ -457,24 +476,24 @@ function WelcomeHero({
       <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-falcon-deep/5" />
       <div className="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-falcon-gold/10" />
 
-      <div className="relative p-6 md:p-8">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-falcon-deep font-display text-2xl text-white shadow-lg">
+      <div className="relative p-4 sm:p-6 md:p-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-falcon-deep font-display text-xl text-white shadow-lg sm:h-16 sm:w-16 sm:text-2xl">
             {getInitials(displayName)}
           </div>
           <div className="min-w-0">
             <p className="font-poppins text-sm text-ink/55">
               {t("welcome", { name: firstName })}
             </p>
-            <h2 className="mt-0.5 font-display text-2xl text-ink md:text-3xl">{displayName}</h2>
-            <p className="mt-1 truncate font-poppins text-sm text-ink/60">{registration.email}</p>
+            <h2 className="mt-0.5 break-words font-display text-xl text-ink sm:text-2xl md:text-3xl">{displayName}</h2>
+            <p className="mt-1 break-all font-poppins text-sm text-ink/60">{registration.email}</p>
             {displayPhone && (
               <p className="font-poppins text-sm text-ink/60">{displayPhone}</p>
             )}
           </div>
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
           <MetaChip label={t("referenceId")} value={registration.id.slice(-8).toUpperCase()} />
           <MetaChip label={t("cards.submitted")} value={formatDisplayDate(registration.submittedAt, locale)} />
           {displayCountry && <MetaChip label={t("adminStatus.fields.country")} value={displayCountry} />}
@@ -499,6 +518,12 @@ function JourneySection({ adminStatus }: { adminStatus?: PublicAdminStatus }) {
   );
 }
 
+function isPrimaryAdminStatus(
+  adminStatus: PublicAdminStatus | PublicGuestAdminStatus | undefined
+): adminStatus is PublicAdminStatus {
+  return Boolean(adminStatus && "hasUpdates" in adminStatus);
+}
+
 function buildStatusSteps(
   adminStatus: PublicAdminStatus | PublicGuestAdminStatus | undefined,
   t: ReturnType<typeof useTranslations>
@@ -506,6 +531,13 @@ function buildStatusSteps(
   const qVal = adminStatus?.qualificationStatus ?? "";
   const vVal = adminStatus?.visaStatus ?? "";
   const tVal = adminStatus?.ticketStatus ?? "";
+  const hotelFloor = isPrimaryAdminStatus(adminStatus)
+    ? adminStatus.hotelFloor?.trim() ?? ""
+    : "";
+  const hotelRoomNumber = isPrimaryAdminStatus(adminStatus)
+    ? adminStatus.hotelRoomNumber?.trim() ?? ""
+    : "";
+  const hotelConfirmed = Boolean(hotelFloor && hotelRoomNumber);
 
   const qLabel = qVal
     ? qVal === "qualified"
@@ -558,6 +590,21 @@ function buildStatusSteps(
             : t("adminStatus.hints.ticketPending"),
       done: tVal === "confirmed",
     },
+    ...(isPrimaryAdminStatus(adminStatus)
+      ? [
+          {
+            label: t("adminStatus.fields.hotelStatus"),
+            status: hotelConfirmed
+              ? t("adminStatus.hotel.confirmed")
+              : t("adminStatus.hotel.pending"),
+            tone: hotelConfirmed ? ("success" as StatusTone) : ("pending" as StatusTone),
+            hint: hotelConfirmed
+              ? t("adminStatus.hints.hotelConfirmed")
+              : t("adminStatus.hints.hotelPending"),
+            done: hotelConfirmed,
+          },
+        ]
+      : []),
   ];
 }
 
@@ -662,6 +709,7 @@ function TravelSection({ adminStatus, locale }: { adminStatus?: PublicAdminStatu
 
   const hasHotel =
     adminStatus?.hotelName || adminStatus?.hotelAddress ||
+    adminStatus?.hotelFloor || adminStatus?.hotelRoomNumber ||
     adminStatus?.checkInDateTime || adminStatus?.checkOutDateTime ||
     adminStatus?.hotelConfirmationNumber;
   const hasFlight =
@@ -688,7 +736,7 @@ function TravelSection({ adminStatus, locale }: { adminStatus?: PublicAdminStatu
     >
       <div className="space-y-4">
         {hasFlight && (
-          <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-5">
+          <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-4 sm:p-5">
             <div className="flex items-start gap-3">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-falcon-deep/10 text-falcon-deep">
                 <IconPlane className="h-4 w-4" />
@@ -698,7 +746,7 @@ function TravelSection({ adminStatus, locale }: { adminStatus?: PublicAdminStatu
                   {t("sections.flight")}
                 </p>
                 {(adminStatus?.airline || adminStatus?.flightNumber) && (
-                  <p className="mt-2 font-display text-lg text-ink">
+                  <p className="mt-2 break-words font-display text-base text-ink sm:text-lg">
                     {[adminStatus?.airline, adminStatus?.flightNumber && `#${adminStatus.flightNumber}`]
                       .filter(Boolean)
                       .join(" · ")}
@@ -750,17 +798,17 @@ function TravelSection({ adminStatus, locale }: { adminStatus?: PublicAdminStatu
         )}
 
         {hasHotel && (
-          <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-5">
+          <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-4 sm:p-5">
             <div className="flex items-start gap-3">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-falcon-deep/10 text-falcon-deep">
                 <IconHotel className="h-4 w-4" />
               </div>
               <div className="min-w-0 flex-1">
                 {adminStatus?.hotelName && (
-                  <p className="font-display text-lg text-ink">{adminStatus.hotelName}</p>
+                  <p className="break-words font-display text-base text-ink sm:text-lg">{adminStatus.hotelName}</p>
                 )}
                 {adminStatus?.hotelAddress && (
-                  <p className="mt-1 font-poppins text-sm text-ink/65">{adminStatus.hotelAddress}</p>
+                  <p className="mt-1 break-words font-poppins text-sm text-ink/65">{adminStatus.hotelAddress}</p>
                 )}
                 <div className="mt-4 grid gap-2 sm:grid-cols-2">
                   {adminStatus?.checkInDateTime && (
@@ -790,6 +838,24 @@ function TravelSection({ adminStatus, locale }: { adminStatus?: PublicAdminStatu
                       </p>
                       <p className="mt-0.5 font-mono text-sm font-medium text-ink">
                         {adminStatus.hotelConfirmationNumber}
+                      </p>
+                    </div>
+                  )}
+                  {adminStatus?.hotelFloor && (
+                    <div className="rounded-lg bg-white px-3 py-2">
+                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
+                        {t("adminStatus.fields.hotelFloor")}
+                      </p>
+                      <p className="mt-0.5 font-poppins text-sm text-ink">{adminStatus.hotelFloor}</p>
+                    </div>
+                  )}
+                  {adminStatus?.hotelRoomNumber && (
+                    <div className="rounded-lg bg-white px-3 py-2">
+                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
+                        {t("adminStatus.fields.hotelRoomNumber")}
+                      </p>
+                      <p className="mt-0.5 font-poppins text-sm text-ink">
+                        {adminStatus.hotelRoomNumber}
                       </p>
                     </div>
                   )}
@@ -860,10 +926,10 @@ function SubmissionSection({
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left md:px-8"
+          className="flex w-full flex-col gap-3 px-4 py-4 text-left sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6 sm:py-5 md:px-8"
         >
-          <div>
-            <h3 className="font-display text-xl text-ink">{t("sections.guestSubmission")}</h3>
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display text-lg text-ink sm:text-xl">{t("sections.guestSubmission")}</h3>
             <p className="mt-1 font-poppins text-sm text-ink/55">{t("adminStatus.submissionDescription")}</p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
@@ -875,7 +941,7 @@ function SubmissionSection({
         </button>
 
         {open && (
-          <div className="border-t border-ink/8 px-6 pb-6 md:px-8">
+          <div className="border-t border-ink/8 px-4 pb-5 sm:px-6 sm:pb-6 md:px-8">
             <div className="pt-5">
               <DetailGrid
                 items={[
@@ -910,10 +976,10 @@ function SubmissionSection({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left md:px-8"
+        className="flex w-full flex-col gap-3 px-4 py-4 text-left sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6 sm:py-5 md:px-8"
       >
-        <div>
-          <h3 className="font-display text-xl text-ink">{t("sections.submission")}</h3>
+        <div className="min-w-0 flex-1">
+          <h3 className="font-display text-lg text-ink sm:text-xl">{t("sections.submission")}</h3>
           <p className="mt-1 font-poppins text-sm text-ink/55">{t("adminStatus.submissionDescription")}</p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
@@ -925,7 +991,7 @@ function SubmissionSection({
       </button>
 
       {open && (
-        <div className="border-t border-ink/8 px-6 pb-6 md:px-8">
+        <div className="border-t border-ink/8 px-4 pb-5 sm:px-6 sm:pb-6 md:px-8">
           <div className="pt-5">
             <DetailGrid items={submissionItems} />
           </div>
@@ -947,10 +1013,10 @@ function PrimaryTabPanel({
   bedroomLabel: (v: string) => string;
 }) {
   return (
-    <div className="space-y-5" role="tabpanel">
+    <div className="space-y-4 sm:space-y-5" role="tabpanel">
       <WelcomeHero registration={registration} adminStatus={adminStatus} locale={locale} />
       <JourneySection adminStatus={adminStatus} />
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-4 sm:gap-5 lg:grid-cols-2">
         <TravelSection adminStatus={adminStatus} locale={locale} />
         <PrimaryDocumentsSection registration={registration} adminStatus={adminStatus} />
       </div>
@@ -977,7 +1043,7 @@ function GuestTabPanel({
   if (!guest) return null;
 
   return (
-    <div className="space-y-5" role="tabpanel">
+    <div className="space-y-4 sm:space-y-5" role="tabpanel">
       <GuestHero guest={guest} locale={locale} />
       <GuestStatusSection guest={guest} />
       <GuestDocumentsSection guest={guest} />
@@ -995,14 +1061,14 @@ function SupportCard() {
   const t = useTranslations("userStatusPage");
 
   return (
-    <div className="rounded-2xl border border-falcon-deep/20 bg-gradient-to-r from-[#FBF6EB] to-[#F3E5CB] p-6 md:p-8">
-      <h3 className="font-display text-xl text-ink">{t("sections.nextSteps")}</h3>
+    <div className="rounded-2xl border border-falcon-deep/20 bg-gradient-to-r from-[#FBF6EB] to-[#F3E5CB] p-4 sm:p-6 md:p-8">
+      <h3 className="font-display text-lg text-ink sm:text-xl">{t("sections.nextSteps")}</h3>
       <p className="mt-2 font-poppins text-sm leading-relaxed text-ink/70">
         {t("nextStepsDescription")}
       </p>
       <a
         href="mailto:support@gtcfx.com"
-        className="mt-5 inline-flex items-center gap-2 rounded-full bg-falcon-deep px-5 py-2.5 font-poppins text-xs uppercase tracking-[0.1em] text-white transition-opacity hover:opacity-90"
+        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-falcon-deep px-5 py-2.5 font-poppins text-xs uppercase tracking-[0.1em] text-white transition-opacity hover:opacity-90 sm:w-auto"
       >
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
@@ -1056,7 +1122,7 @@ function EmailLookupForm({
 
   return (
     <div className="mx-auto max-w-lg">
-      <div className="relative overflow-hidden rounded-2xl border border-[#382910]/12 bg-gradient-to-br from-[#FDFCFA] via-[#FBF6EB] to-[#F3E5CB] p-6 shadow-[0_28px_70px_-28px_rgba(56,41,16,0.22)] md:p-8">
+      <div className="relative overflow-hidden rounded-2xl border border-[#382910]/12 bg-gradient-to-br from-[#FDFCFA] via-[#FBF6EB] to-[#F3E5CB] p-4 shadow-[0_28px_70px_-28px_rgba(56,41,16,0.22)] sm:p-6 md:p-8">
         <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-falcon-deep/5" />
         <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-falcon-gold/10" />
 
@@ -1067,7 +1133,7 @@ function EmailLookupForm({
             </svg>
           </div>
 
-          <h2 className="mt-5 text-center font-display text-2xl text-ink">{t("lookup.title")}</h2>
+          <h2 className="mt-5 text-center font-display text-xl text-ink sm:text-2xl">{t("lookup.title")}</h2>
           <p className="mt-2 text-center font-poppins text-sm leading-relaxed text-ink/60">
             {t("lookup.description")}
           </p>
@@ -1200,14 +1266,13 @@ function UserStatusContent() {
     t("tabs.guest");
 
   return (
-    <section className="relative pb-20 pt-28 md:pb-28 md:pt-36">
+    <section className="relative overflow-x-hidden pb-16 pt-24 sm:pb-20 sm:pt-28 md:pb-28 md:pt-36">
       <div className="container max-w-6xl">
-        {/* page header — compact */}
-        <div className="mb-8 text-center md:mb-10">
+        <div className="mb-6 px-1 text-center sm:mb-8 md:mb-10">
           <p className="eyebrow !capitalize text-ink/55">
             <span className="font-poppins">{t("eyebrow")}</span>
           </p>
-          <h1 className="mt-3 font-display text-3xl !font-medium !text-ink md:text-4xl">
+          <h1 className="mt-3 font-display text-2xl !font-medium !text-ink sm:text-3xl md:text-4xl">
             {t("headingPlain")}
             <span className="italic text-falcon-deep"> {t("headingItalic")}</span>
           </h1>
@@ -1229,7 +1294,7 @@ function UserStatusContent() {
         )}
 
         {!loading && registration && (
-          <div className="space-y-5">
+          <div className="space-y-4 sm:space-y-5">
             {isVip && hasGuest ? (
               <>
                 <PersonTabs
@@ -1261,7 +1326,7 @@ function UserStatusContent() {
                 {isVip && (
                   <>
                     <JourneySection adminStatus={adminStatus} />
-                    <div className="grid gap-5 md:grid-cols-2">
+                    <div className="grid gap-4 sm:gap-5 lg:grid-cols-2">
                       <TravelSection adminStatus={adminStatus} locale={locale} />
                       <PrimaryDocumentsSection registration={registration} adminStatus={adminStatus} />
                     </div>
@@ -1291,8 +1356,8 @@ export default function UserStatusDashboard() {
   return (
     <Suspense
       fallback={
-        <section className="relative pb-20 pt-28 md:pb-28 md:pt-36">
-          <div className="container max-w-3xl">
+        <section className="relative overflow-x-hidden pb-16 pt-24 sm:pb-20 sm:pt-28 md:pb-28 md:pt-36">
+          <div className="container max-w-6xl">
             <LoadingSkeleton />
           </div>
         </section>

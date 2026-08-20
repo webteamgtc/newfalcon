@@ -53,6 +53,8 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
     returnDateTime: registration.returnDateTime ?? "",
     hotelName: registration.hotelName ?? "",
     hotelAddress: registration.hotelAddress ?? "",
+    hotelFloor: registration.hotelFloor ?? "",
+    hotelRoomNumber: registration.hotelRoomNumber ?? "",
     checkInDateTime: registration.checkInDateTime ?? "",
     checkOutDateTime: registration.checkOutDateTime ?? "",
     hotelConfirmationNumber: registration.hotelConfirmationNumber ?? "",
@@ -106,6 +108,8 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
       returnDateTime: registration.returnDateTime ?? "",
       hotelName: registration.hotelName ?? "",
       hotelAddress: registration.hotelAddress ?? "",
+      hotelFloor: registration.hotelFloor ?? "",
+      hotelRoomNumber: registration.hotelRoomNumber ?? "",
       checkInDateTime: registration.checkInDateTime ?? "",
       checkOutDateTime: registration.checkOutDateTime ?? "",
       hotelConfirmationNumber: registration.hotelConfirmationNumber ?? "",
@@ -533,6 +537,22 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                     value={form.hotelAddress}
                     onChange={(e) => updateField("hotelAddress", e.target.value)}
                     className={textareaClass()}
+                  />
+                </div>
+                <div>
+                  <label className={labelClass()}>Floor</label>
+                  <input
+                    value={form.hotelFloor}
+                    onChange={(e) => updateField("hotelFloor", e.target.value)}
+                    className={fieldClass()}
+                  />
+                </div>
+                <div>
+                  <label className={labelClass()}>Room number</label>
+                  <input
+                    value={form.hotelRoomNumber}
+                    onChange={(e) => updateField("hotelRoomNumber", e.target.value)}
+                    className={fieldClass()}
                   />
                 </div>
                 <div>

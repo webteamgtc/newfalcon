@@ -55,6 +55,8 @@ export type AdminDetails = {
   returnDateTime?: string;
   hotelName?: string;
   hotelAddress?: string;
+  hotelFloor?: string;
+  hotelRoomNumber?: string;
   checkInDateTime?: string;
   checkOutDateTime?: string;
   hotelConfirmationNumber?: string;
@@ -184,6 +186,8 @@ export function mergeRegistrationWithAdminDetails(
     returnDateTime: admin.returnDateTime ?? "",
     hotelName: admin.hotelName ?? "",
     hotelAddress: admin.hotelAddress ?? "",
+    hotelFloor: admin.hotelFloor ?? "",
+    hotelRoomNumber: admin.hotelRoomNumber ?? "",
     checkInDateTime: admin.checkInDateTime ?? "",
     checkOutDateTime: admin.checkOutDateTime ?? "",
     hotelConfirmationNumber: admin.hotelConfirmationNumber ?? "",

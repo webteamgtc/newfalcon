@@ -82,6 +82,8 @@ export type PublicAdminStatus = {
   returnDateTime: string;
   hotelName: string;
   hotelAddress: string;
+  hotelFloor: string;
+  hotelRoomNumber: string;
   checkInDateTime: string;
   checkOutDateTime: string;
   hotelConfirmationNumber: string;
@@ -215,6 +217,8 @@ async function buildAdminStatus(
     returnDateTime: merged.returnDateTime ?? "",
     hotelName: merged.hotelName ?? "",
     hotelAddress: merged.hotelAddress ?? "",
+    hotelFloor: merged.hotelFloor ?? "",
+    hotelRoomNumber: merged.hotelRoomNumber ?? "",
     checkInDateTime: merged.checkInDateTime ?? "",
     checkOutDateTime: merged.checkOutDateTime ?? "",
     hotelConfirmationNumber: merged.hotelConfirmationNumber ?? "",

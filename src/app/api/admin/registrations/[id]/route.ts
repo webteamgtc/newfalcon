@@ -325,6 +325,8 @@ export async function PATCH(
       returnDateTime: getField(formData, "returnDateTime"),
       hotelName: getField(formData, "hotelName"),
       hotelAddress: getField(formData, "hotelAddress"),
+      hotelFloor: getField(formData, "hotelFloor"),
+      hotelRoomNumber: getField(formData, "hotelRoomNumber"),
       checkInDateTime: getField(formData, "checkInDateTime"),
       checkOutDateTime: getField(formData, "checkOutDateTime"),
       hotelConfirmationNumber: getField(formData, "hotelConfirmationNumber"),
