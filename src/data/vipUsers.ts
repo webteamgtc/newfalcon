@@ -23,12 +23,16 @@ export type VipUser = {
   summaryValue: string;
 };
 
-export const DEMO_OTP = "123456";
-
 export const VIP_QUALIFICATION_TARGETS = {
   capital: 1_000_000,
   activity: 10_000,
 } as const;
+
+const DEFAULT_STAGES: VipStage[] = [
+  { number: "01", name: "Registered", tier: "Silver Status" },
+  { number: "02", name: "Active Trader", tier: "Gold Status" },
+  { number: "03", name: "Qualified", tier: "Platinum Status" },
+];
 
 function getOverallProgressPercent(
   capitalCurrent: number,
@@ -42,151 +46,98 @@ function getOverallProgressPercent(
     Math.round((activityCurrent / VIP_QUALIFICATION_TARGETS.activity) * 100),
     100
   );
-
   return Math.min(capitalPercent, activityPercent);
 }
 
-export const VIP_USERS: VipUser[] = [
-  {
-    id: "1",
-    email: "mohammad.zeeshan@gtcfx.com",
-    ibId: "12782512",
-    firstName: "James",
-    lastName: "Delaney",
-    memberId: "GFN-2026-0241",
-    memberTier: "Annual VIP Invitation Candidate",
-    activeStageIndex: 0,
-    stages: [
-      { number: "01", name: "Registered", tier: "Silver Status" },
-      { number: "02", name: "Active Trader", tier: "Gold Status" },
-      { number: "03", name: "Qualified", tier: "Platinum Status" },
-    ],
-    capitalCurrent: 12500,
-    capitalTarget: 1000000,
-    activityCurrent: 8200,
-    activityTarget: 10000,
-    progressPercent: 1,
-    daysRemaining: 241,
-    summaryValue: "1%",
-  },
-  {
-    id: "2",
-    email: "adeel.nazeer@gtcfx.com",
-    ibId: "14567890",
-    firstName: "Sarah",
-    lastName: "Mitchell",
-    memberId: "GFN-2026-0187",
-    memberTier: "Gold VIP Invitation Candidate",
-    activeStageIndex: 1,
-    stages: [
-      { number: "01", name: "Registered", tier: "Silver Status" },
-      { number: "02", name: "Active Trader", tier: "Gold Status" },
-      { number: "03", name: "Qualified", tier: "Platinum Status" },
-    ],
-    capitalCurrent: 248000,
-    capitalTarget: 1000000,
-    activityCurrent: 620000,
-    activityTarget: 10000,
-    progressPercent: 25,
-    daysRemaining: 198,
-    summaryValue: "25%",
-  },
-  {
-    id: "3",
-    email: "henrye.huang@gtcfx.com",
-    ibId: "16789012",
-    firstName: "Omar",
-    lastName: "Al-Rashid",
-    memberId: "GFN-2026-0093",
-    memberTier: "Platinum VIP Invitation Candidate",
-    activeStageIndex: 2,
-    stages: [
-      { number: "01", name: "Registered", tier: "Silver Status" },
-      { number: "02", name: "Active Trader", tier: "Gold Status" },
-      { number: "03", name: "Qualified", tier: "Platinum Status" },
-    ],
-    capitalCurrent: 1000000,
-    capitalTarget: 1000000,
-    activityCurrent: 10000,
-    activityTarget: 10000,
-    progressPercent: 100,
-    daysRemaining: 156,
-    summaryValue: "100%",
-  },
-  {
-    id: "4",
-    email: "marketing@gtcfx.com",
-    ibId: "18901234",
-    firstName: "Elena",
-    lastName: "Vasquez",
-    memberId: "GFN-2026-0312",
-    memberTier: "Annual VIP Invitation Candidate",
-    activeStageIndex: 1,
-    stages: [
-      { number: "01", name: "Registered", tier: "Silver Status" },
-      { number: "02", name: "Active Trader", tier: "Gold Status" },
-      { number: "03", name: "Qualified", tier: "Platinum Status" },
-    ],
-    capitalCurrent: 89000,
-    capitalTarget: 1000000,
-    activityCurrent: 215000,
-    activityTarget: 10000,
-    progressPercent: 9,
-    daysRemaining: 220,
-    summaryValue: "9%",
-  },
-];
-
-function findCatalogUser(email: string, ibId?: string): VipUser | undefined {
-  const normalizedEmail = email.trim().toLowerCase();
-
-  if (ibId) {
-    const normalizedIbId = ibId.trim().toUpperCase();
-    return VIP_USERS.find(
-      (user) =>
-        user.email.toLowerCase() === normalizedEmail &&
-        user.ibId.toUpperCase() === normalizedIbId
-    );
-  }
-
-  return VIP_USERS.find((user) => user.email.toLowerCase() === normalizedEmail);
+function getQualificationDaysRemaining() {
+  const end = new Date("2026-10-31T23:59:59");
+  return Math.max(
+    0,
+    Math.ceil((end.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+  );
 }
 
-export function normalizeVipUser(user: VipUser): VipUser {
-  const catalogUser =
-    findCatalogUser(user.email, user.ibId) ?? findCatalogUser(user.email);
-  const base = catalogUser ?? user;
-  const progressPercent = getOverallProgressPercent(
-    base.capitalCurrent,
-    base.activityCurrent
-  );
+function getActiveStageIndex(capital: number, activity: number): number {
+  const pct = getOverallProgressPercent(capital, activity);
+  if (pct >= 100) return 2;
+  if (capital > 0 || activity > 0) return 1;
+  return 0;
+}
+
+export type IbClientData = {
+  email: string;
+  memberId: string;
+  firstName: string;
+  clientStatus?: string;
+  kycStatus?: string;
+  userType?: string;
+};
+
+export type IbPerformanceData = {
+  netDepositUsd: number;
+  tradeLots: number;
+  depositUsd?: number;
+  withdrawalUsd?: number;
+};
+
+export function buildVipUser(
+  client: IbClientData,
+  performance: IbPerformanceData,
+  ibId: string
+): VipUser {
+  const capitalCurrent = Math.max(0, performance.netDepositUsd);
+  const activityCurrent = Math.max(0, performance.tradeLots);
+  const progressPercent = getOverallProgressPercent(capitalCurrent, activityCurrent);
 
   return {
-    ...base,
+    id: client.memberId || ibId.trim(),
+    email: client.email.toLowerCase(),
+    ibId: ibId.trim(),
+    firstName: client.firstName,
+    lastName: "",
+    memberId: client.memberId,
+    memberTier: "GTCFX Partner",
+    activeStageIndex: getActiveStageIndex(capitalCurrent, activityCurrent),
+    stages: DEFAULT_STAGES,
+    capitalCurrent,
     capitalTarget: VIP_QUALIFICATION_TARGETS.capital,
+    activityCurrent,
     activityTarget: VIP_QUALIFICATION_TARGETS.activity,
     progressPercent,
+    daysRemaining: getQualificationDaysRemaining(),
     summaryValue: `${progressPercent}%`,
   };
 }
 
-export function findVipUserByEmail(email: string): VipUser | undefined {
-  const user = findCatalogUser(email);
-  return user ? normalizeVipUser(user) : undefined;
-}
+export function normalizeVipUser(user: VipUser): VipUser {
+  const progressPercent = getOverallProgressPercent(
+    user.capitalCurrent,
+    user.activityCurrent
+  );
 
-export function findVipUserByCredentials(
-  email: string,
-  ibId: string
-): VipUser | undefined {
-  const user = findCatalogUser(email, ibId);
-  return user ? normalizeVipUser(user) : undefined;
+  return {
+    ...user,
+    capitalTarget: VIP_QUALIFICATION_TARGETS.capital,
+    activityTarget: VIP_QUALIFICATION_TARGETS.activity,
+    progressPercent,
+    summaryValue: `${progressPercent}%`,
+    activeStageIndex: getActiveStageIndex(
+      user.capitalCurrent,
+      user.activityCurrent
+    ),
+  };
 }
 
 export function formatCurrency(value: number): string {
-  return `$${value.toLocaleString("en-US")}`;
+  return `$${value.toLocaleString("en-US", {
+    minimumFractionDigits: value % 1 === 0 ? 0 : 2,
+    maximumFractionDigits: 2,
+  })}`;
 }
 
 export function formatActivity(value: number): string {
-  return value.toLocaleString("en-US");
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: value % 1 === 0 ? 0 : 2,
+    maximumFractionDigits: 2,
+  });
 }

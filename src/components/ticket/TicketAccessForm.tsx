@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import Button from "@/components/Button";
 import { useVipUser } from "@/context/VipUserProvider";
-import { findVipUserByCredentials, findVipUserByEmail } from "@/data/vipUsers";
+import { buildVipUser, type IbClientData, type IbPerformanceData } from "@/data/vipUsers";
 import TicketNewClientForm from "@/components/ticket/TicketNewClientForm";
 import OtpBoxes from "@/components/ui/OtpBoxes";
 import { OTP_TTL_MS } from "@/lib/otpConstants";
@@ -51,6 +51,8 @@ export default function TicketAccessForm({
   const [loading, setLoading] = useState(false);
   const [otpExpiresAt, setOtpExpiresAt] = useState<number | null>(null);
   const [now, setNow] = useState(() => Date.now());
+  const [verifiedClient, setVerifiedClient] = useState<IbClientData | null>(null);
+  const [verifiedPerformance, setVerifiedPerformance] = useState<IbPerformanceData | null>(null);
 
   const otpRemainingMs =
     otpExpiresAt && otpExpiresAt > now ? otpExpiresAt - now : 0;
@@ -99,11 +101,13 @@ export default function TicketAccessForm({
     setIbId("");
     setIbIdError("");
     setOtpExpiresAt(null);
+    setVerifiedClient(null);
+    setVerifiedPerformance(null);
   };
 
-  const validateEmail = () => {
+  const validateEmailFormat = () => {
     setEmailError("");
-    const trimmedEmail = email.trim();
+    const trimmedEmail = email.trim().toLowerCase();
 
     if (!trimmedEmail) {
       setEmailError(t("emailRequired"));
@@ -115,30 +119,48 @@ export default function TicketAccessForm({
       return null;
     }
 
-    const matchedUser = findVipUserByEmail(trimmedEmail);
-    if (!matchedUser) {
-      setEmailError(t("emailNotFound"));
-      return null;
-    }
-
-    return matchedUser;
+    return trimmedEmail;
   };
 
   const handleGetOtp = async () => {
-    const matchedUser = validateEmail();
-    if (!matchedUser) return;
+    const trimmedEmail = validateEmailFormat();
+    if (!trimmedEmail) return;
 
     setOtpLoading(true);
     setOtpError("");
+    setEmailError("");
 
     try {
+      const verifyResponse = await fetch("/api/ib-client/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmedEmail }),
+      });
+      const verifyData = await verifyResponse.json();
+
+      if (!verifyResponse.ok || !verifyData?.success) {
+        if (verifyData?.code === "INACTIVE") {
+          setEmailError(t("accountInactive"));
+        } else {
+          setEmailError(verifyData?.message || t("emailNotFound"));
+        }
+        setVerifiedClient(null);
+        setVerifiedPerformance(null);
+        return;
+      }
+
+      const client = verifyData.client as IbClientData;
+      const performance = verifyData.performance as IbPerformanceData;
+      setVerifiedClient(client);
+      setVerifiedPerformance(performance);
+
       const response = await fetch("/api/otp-smtp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: matchedUser.email,
-          first_name: matchedUser.firstName,
-          ibId: matchedUser.ibId,
+          email: client.email,
+          first_name: client.firstName,
+          ibId: client.memberId,
         }),
       });
 
@@ -213,9 +235,7 @@ export default function TicketAccessForm({
 
   const validateIbCredentials = () => {
     setIbIdError("");
-    setEmailError("");
 
-    const trimmedEmail = email.trim();
     const trimmedIbId = ibId.trim();
 
     if (!trimmedIbId) {
@@ -223,13 +243,17 @@ export default function TicketAccessForm({
       return null;
     }
 
-    const matchedUser = findVipUserByCredentials(trimmedEmail, trimmedIbId);
-    if (!matchedUser) {
+    if (!verifiedClient || !verifiedPerformance) {
       setIbIdError(t("credentialsNotFound"));
       return null;
     }
 
-    return matchedUser;
+    if (verifiedClient.memberId !== trimmedIbId) {
+      setIbIdError(t("credentialsNotFound"));
+      return null;
+    }
+
+    return buildVipUser(verifiedClient, verifiedPerformance, trimmedIbId);
   };
 
   const handleSubmit = async () => {

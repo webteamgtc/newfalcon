@@ -518,10 +518,14 @@ function JourneySection({ adminStatus }: { adminStatus?: PublicAdminStatus }) {
   );
 }
 
-function isPrimaryAdminStatus(
+function getHotelAssignment(
   adminStatus: PublicAdminStatus | PublicGuestAdminStatus | undefined
-): adminStatus is PublicAdminStatus {
-  return Boolean(adminStatus && "hasUpdates" in adminStatus);
+) {
+  if (!adminStatus) return { floor: "", room: "" };
+  return {
+    floor: adminStatus.hotelFloor?.trim() ?? "",
+    room: adminStatus.hotelRoomNumber?.trim() ?? "",
+  };
 }
 
 function buildStatusSteps(
@@ -531,12 +535,7 @@ function buildStatusSteps(
   const qVal = adminStatus?.qualificationStatus ?? "";
   const vVal = adminStatus?.visaStatus ?? "";
   const tVal = adminStatus?.ticketStatus ?? "";
-  const hotelFloor = isPrimaryAdminStatus(adminStatus)
-    ? adminStatus.hotelFloor?.trim() ?? ""
-    : "";
-  const hotelRoomNumber = isPrimaryAdminStatus(adminStatus)
-    ? adminStatus.hotelRoomNumber?.trim() ?? ""
-    : "";
+  const { floor: hotelFloor, room: hotelRoomNumber } = getHotelAssignment(adminStatus);
   const hotelConfirmed = Boolean(hotelFloor && hotelRoomNumber);
 
   const qLabel = qVal
@@ -590,21 +589,17 @@ function buildStatusSteps(
             : t("adminStatus.hints.ticketPending"),
       done: tVal === "confirmed",
     },
-    ...(isPrimaryAdminStatus(adminStatus)
-      ? [
-          {
-            label: t("adminStatus.fields.hotelStatus"),
-            status: hotelConfirmed
-              ? t("adminStatus.hotel.confirmed")
-              : t("adminStatus.hotel.pending"),
-            tone: hotelConfirmed ? ("success" as StatusTone) : ("pending" as StatusTone),
-            hint: hotelConfirmed
-              ? t("adminStatus.hints.hotelConfirmed")
-              : t("adminStatus.hints.hotelPending"),
-            done: hotelConfirmed,
-          },
-        ]
-      : []),
+    {
+      label: t("adminStatus.fields.hotelStatus"),
+      status: hotelConfirmed
+        ? t("adminStatus.hotel.confirmed")
+        : t("adminStatus.hotel.pending"),
+      tone: hotelConfirmed ? ("success" as StatusTone) : ("pending" as StatusTone),
+      hint: hotelConfirmed
+        ? t("adminStatus.hints.hotelConfirmed")
+        : t("adminStatus.hints.hotelPending"),
+      done: hotelConfirmed,
+    },
   ];
 }
 
@@ -659,6 +654,49 @@ function PrimaryDocumentsSection({
           {showETicket && (
             <DocumentCard label={t("adminStatus.fields.eTicket")} document={adminStatus?.eTicket} actionLabel={t("cards.downloadDocument")} />
           )}
+        </div>
+      )}
+    </SectionCard>
+  );
+}
+
+function GuestHotelSection({
+  adminStatus,
+}: {
+  adminStatus?: PublicGuestAdminStatus;
+}) {
+  const t = useTranslations("userStatusPage");
+  const { floor, room } = getHotelAssignment(adminStatus);
+  const hasHotel = Boolean(floor || room);
+
+  return (
+    <SectionCard
+      icon={<IconHotel />}
+      title={t("sections.travelArrangements")}
+      subtitle={t("sections.hotel")}
+    >
+      {!hasHotel ? (
+        <EmptyState message={t("adminStatus.noTravelYet")} />
+      ) : (
+        <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-4 sm:p-5">
+          <div className="grid gap-2 sm:grid-cols-2">
+            {floor && (
+              <div className="rounded-lg bg-white px-3 py-2">
+                <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
+                  {t("adminStatus.fields.hotelFloor")}
+                </p>
+                <p className="mt-0.5 font-poppins text-sm text-ink">{floor}</p>
+              </div>
+            )}
+            {room && (
+              <div className="rounded-lg bg-white px-3 py-2">
+                <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
+                  {t("adminStatus.fields.hotelRoomNumber")}
+                </p>
+                <p className="mt-0.5 font-poppins text-sm text-ink">{room}</p>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </SectionCard>
@@ -1046,6 +1084,7 @@ function GuestTabPanel({
     <div className="space-y-4 sm:space-y-5" role="tabpanel">
       <GuestHero guest={guest} locale={locale} />
       <GuestStatusSection guest={guest} />
+      <GuestHotelSection adminStatus={guest.adminStatus} />
       <GuestDocumentsSection guest={guest} />
       <SubmissionSection
         registration={registration}

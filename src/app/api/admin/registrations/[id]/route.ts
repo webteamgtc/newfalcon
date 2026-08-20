@@ -162,6 +162,8 @@ async function buildGuestAdminDetails(
       TICKET_STATUS_OPTIONS.map((option) => option.value)
     ),
     eTicket,
+    hotelFloor: getField(formData, "guestHotelFloor"),
+    hotelRoomNumber: getField(formData, "guestHotelRoomNumber"),
   };
 }
 
