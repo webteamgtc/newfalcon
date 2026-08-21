@@ -23,9 +23,10 @@ export type VipUser = {
   summaryValue: string;
 };
 
+
 export const VIP_QUALIFICATION_TARGETS = {
   capital: 1_000_000,
-  activity: 10_000,
+  activity: 50_000,
 } as const;
 
 const DEFAULT_STAGES: VipStage[] = [
