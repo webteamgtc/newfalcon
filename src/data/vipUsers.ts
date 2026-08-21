@@ -23,6 +23,7 @@ export type VipUser = {
   summaryValue: string;
 };
 
+
 export const VIP_QUALIFICATION_TARGETS = {
   capital: 1_000_000,
   activity: 50_000,
