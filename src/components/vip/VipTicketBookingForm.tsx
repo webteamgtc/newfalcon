@@ -9,6 +9,8 @@ import FalconDatePicker from "@/components/ui/FalconDatePicker";
 import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhoneInput";
 import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 import type { VipUser } from "@/data/vipUsers";
+import { useRouter } from "@/i18n/routing";
+
 
 const BOOKING_STORAGE_KEY = "gfn_vip_ticket_booking";
 const PASSPORT_EXAMPLE_SRC = "/images/passport.jpeg";
@@ -122,7 +124,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
   const [checkingEmail, setCheckingEmail] = useState(true);
   const today = useMemo(() => startOfDay(new Date()), []);
   const invitingGuest = form.invitingGuest === "yes";
-
+  const router = useRouter();
   useEffect(() => {
     try {
       const raw = sessionStorage.getItem(`${BOOKING_STORAGE_KEY}_${user.id}`);
@@ -401,6 +403,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
 
       setSubmitted(true);
       toast.success(t("successMessage"));
+      router.push(`/thank-you?email=${form.email}`);
       onSuccess?.();
     } catch (error) {
       toast.error(error instanceof Error ? error.message : t("submitFailed"));

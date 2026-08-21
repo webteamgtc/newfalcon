@@ -10,6 +10,7 @@ import { parsePhoneNumberFromString } from "libphonenumber-js";
 import "react-phone-number-input/style.css";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/routing";
 import Button from "@/components/Button";
 
 type GtcCountry = {
@@ -43,6 +44,7 @@ function fieldClass(touched?: boolean, error?: string) {
 
 export default function TicketNewClientForm() {
   const t = useTranslations("ticketPage.newClientForm");
+  const router = useRouter();
   const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
   const [otpLoading, setOtpLoading] = useState(false);
@@ -135,9 +137,10 @@ export default function TicketNewClientForm() {
       try {
         const res = await axios.post("/api/gtc/reg", regPayload);
         if (res?.data?.code === 200) {
-          toast.success(res?.data?.message || t("toast.registrationSuccess"));
           formik.resetForm();
           setCodeSent(false);
+          router.push(`/thank-you?email=${values.email}`);
+          return;
         } else {
           toast.error(res?.data?.message || t("toast.registrationFailed"));
         }
