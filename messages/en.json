@@ -1080,5 +1080,22 @@
       "notFound": "No registration was found for this email.",
       "loadFailed": "Failed to load registration status. Please try again later."
     }
+  },
+  "thankYouPage": {
+    "metaTitle": "Thank You — Golden Falcon Awards",
+    "eyebrow": "Registration received",
+    "headingPlain": "Thank you for",
+    "headingItalic": "registering.",
+    "description": "Your GTCFX account registration has been submitted successfully. We are preparing the next steps for your Golden Falcon Awards journey.",
+    "emailNoticeTitle": "Please check your email",
+    "emailNoticeBody": "A confirmation message has been sent to the email address you provided. Please review your inbox — and your spam folder — for login details and further instructions.",
+    "steps": [
+      "Open the confirmation email from GTCFX and follow the sign-in instructions.",
+      "Complete your profile and verify your account if prompted.",
+      "Return here anytime to check your qualification status for Golden Falcon Awards."
+    ],
+    "ctaCheckStatus": "Check My Status",
+    "ctaHome": "Back to Home",
+    "supportNote": "Need help? Contact our support team at"
   }
 }
