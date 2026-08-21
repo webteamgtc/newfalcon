@@ -11,6 +11,7 @@ import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 import type { VipUser } from "@/data/vipUsers";
 import { useRouter } from "@/i18n/routing";
 
+
 const BOOKING_STORAGE_KEY = "gfn_vip_ticket_booking";
 const PASSPORT_EXAMPLE_SRC = "/images/passport.jpeg";
 const ALLOWED_PASSPORT_TYPES = [
