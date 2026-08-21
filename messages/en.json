@@ -706,7 +706,7 @@
     "capitalRemaining": "{amount} remaining to reach qualification",
     "activityLabel": "02 · Trading Activity",
     "activityTitle": "Trading Lot",
-    "activityTarget": "10,000",
+    "activityTarget": "50,000",
     "activityRemaining": "{amount} remaining to reach qualification",
     "currently": "$0",
     "targetLabel": "Target",

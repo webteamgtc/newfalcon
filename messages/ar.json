@@ -706,7 +706,7 @@
     "capitalRemaining": "{amount} متبقٍّ للوصول إلى التأهيل",
     "activityLabel": "02 · نشاط التداول",
     "activityTitle": "حجم التداول",
-    "activityTarget": "10,000",
+    "activityTarget": "50,000",
     "activityRemaining": "{amount} متبقٍّ للوصول إلى التأهيل",
     "currently": "0$",
     "targetLabel": "الهدف",
