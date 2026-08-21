@@ -74,6 +74,8 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
     guestVisaStatus: registration.guest?.visaStatus ?? "",
     guestVisaRejectionReason: registration.guest?.visaRejectionReason ?? "",
     guestTicketStatus: registration.guest?.ticketStatus ?? "",
+    guestHotelFloor: registration.guest?.hotelFloor ?? "",
+    guestHotelRoomNumber: registration.guest?.hotelRoomNumber ?? "",
   });
 
   const [passportCopy, setPassportCopy] = useState<File | null>(null);
@@ -128,6 +130,8 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
       guestVisaStatus: registration.guest?.visaStatus ?? "",
       guestVisaRejectionReason: registration.guest?.visaRejectionReason ?? "",
       guestTicketStatus: registration.guest?.ticketStatus ?? "",
+      guestHotelFloor: registration.guest?.hotelFloor ?? "",
+      guestHotelRoomNumber: registration.guest?.hotelRoomNumber ?? "",
     });
     setPassportCopy(null);
     setVisaDocument(null);
@@ -727,6 +731,22 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                         </option>
                       ))}
                     </select>
+                  </div>
+                  <div>
+                    <label className={labelClass()}>Guest floor</label>
+                    <input
+                      value={guestForm.guestHotelFloor}
+                      onChange={(e) => updateGuestField("guestHotelFloor", e.target.value)}
+                      className={fieldClass()}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass()}>Guest room number</label>
+                    <input
+                      value={guestForm.guestHotelRoomNumber}
+                      onChange={(e) => updateGuestField("guestHotelRoomNumber", e.target.value)}
+                      className={fieldClass()}
+                    />
                   </div>
                   {SHOW_VISA_SECTION && (
                     <div className="md:col-span-2">

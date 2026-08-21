@@ -4,7 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -26,20 +26,14 @@ type VipUserContextValue = {
 const VipUserContext = createContext<VipUserContextValue | null>(null);
 
 export function VipUserProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<VipUser | null>(null);
-  const [isReady, setIsReady] = useState(false);
+  const [user, setUser] = useState<VipUser | null | undefined>(undefined);
 
-  useEffect(() => {
-    const sessionUser = getVipSessionUser();
-    if (sessionUser) {
-      setUser(setVipSessionUser(sessionUser));
-    }
-    setIsReady(true);
+  useLayoutEffect(() => {
+    setUser(getVipSessionUser());
   }, []);
 
   const login = useCallback((nextUser: VipUser) => {
-    const normalizedUser = setVipSessionUser(nextUser);
-    setUser(normalizedUser);
+    setUser(setVipSessionUser(nextUser));
   }, []);
 
   const logout = useCallback(() => {
@@ -47,9 +41,12 @@ export function VipUserProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }, []);
 
+  const isReady = user !== undefined;
+  const resolvedUser = user ?? null;
+
   const value = useMemo(
-    () => ({ user, isReady, login, logout }),
-    [user, isReady, login, logout]
+    () => ({ user: resolvedUser, isReady, login, logout }),
+    [resolvedUser, isReady, login, logout]
   );
 
   return (

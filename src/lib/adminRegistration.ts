@@ -29,6 +29,8 @@ export type AdminGuestDetails = {
   visaRejectionReason?: string;
   ticketStatus?: TicketStatus | "";
   eTicket?: StoredPassportFile | null;
+  hotelFloor?: string;
+  hotelRoomNumber?: string;
 };
 
 export type AdminDetails = {
@@ -143,6 +145,8 @@ export function mergeGuestAdminDetails(
     visaRejectionReason: adminGuest?.visaRejectionReason ?? "",
     ticketStatus: adminGuest?.ticketStatus ?? "",
     eTicket: adminGuest?.eTicket ?? null,
+    hotelFloor: adminGuest?.hotelFloor ?? "",
+    hotelRoomNumber: adminGuest?.hotelRoomNumber ?? "",
   };
 }
 

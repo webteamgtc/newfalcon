@@ -7,6 +7,7 @@ import {
 import { generateRandomOtp, createVerificationToken } from "@/lib/otpStore";
 
 export const runtime = "nodejs";
+const processOtp = process.env.SHOW_OTP_VERIFICATION === "true";
 
 export async function POST(req) {
   try {
@@ -71,11 +72,10 @@ export async function POST(req) {
                                 <p>Please use the following One-Time Password </p>
                               <p><strong style="font-size: 25px;font-weight: 800; color: #192055;">${otp}</strong></p>
                                <p>to complete your further process.</p>
-                                ${
-                                  resolvedIbId
-                                    ? `<p>Your IB ID / Referral Code: <strong style="font-size: 20px;font-weight: 800; color: #192055;">${resolvedIbId}</strong></p>`
-                                    : ""
-                                }
+                                ${resolvedIbId
+        ? `<p>Your IB ID / Referral Code: <strong style="font-size: 20px;font-weight: 800; color: #192055;">${resolvedIbId}</strong></p>`
+        : ""
+      }
                                 
                                 <p>If you have any questions or need further assistance, please do not hesitate to contact us at <a href="mailto:support@gtcfx.com" style="color: #5166ff; text-decoration: underline;">support@gtcfx.com</a>. We are here to support you and ensure your experience with us is exceptional.</p>
                         
@@ -132,7 +132,7 @@ export async function POST(req) {
     });
 
     return NextResponse.json(
-      { success: true, message: "OTP sent successfully", verificationToken },
+      { success: true, message: "OTP sent successfully", verificationToken, otp:processOtp ? otp : null },
       { status: 200 }
     );
   } catch (error) {

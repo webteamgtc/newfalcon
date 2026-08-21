@@ -24,6 +24,8 @@ export type PublicGuestAdminStatus = {
   ticketStatus: string;
   eTicket?: PublicPassportDocument;
   passportCopy?: PublicPassportDocument;
+  hotelFloor: string;
+  hotelRoomNumber: string;
 };
 
 export type PublicGuestDetails = {
@@ -279,6 +281,8 @@ async function buildGuestAdminStatus(
     ticketStatus: merged.ticketStatus ?? "",
     eTicket,
     passportCopy: passportCopy.uploaded ? passportCopy : undefined,
+    hotelFloor: merged.hotelFloor ?? "",
+    hotelRoomNumber: merged.hotelRoomNumber ?? "",
   };
 }
 
