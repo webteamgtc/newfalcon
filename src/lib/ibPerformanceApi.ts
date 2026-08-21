@@ -20,12 +20,11 @@ dns.setDefaultResultOrder("ipv4first");
 const ENDPOINTS = {
   token:
     process.env.IB_TOKEN_URL?.trim() ||
-    "http://dataportal.gtcfx.group/gtcfxbi/api/oauth2/getToken",
+    "",
   registration:
-    process.env.IB_REGISTRATION_URL?.trim() ||
-    "http://dataportal.gtcfx.group/gtcfxbi/GTC_ana/app/dataApi/clientRegistrarion.app/API/queryData.afl",
+    process.env.IB_REGISTRATION_URL?.trim() || "",
   performance:
-    "http://dataportal.gtcfx.group/gtcfxbi/GTC_ana/app/dataApi/emailPerformanceQuery2026.app/API/queryData.afl",
+    process.env.IB_PERFORMANCE_URL?.trim() || "",
 } as const;
 
 function createHttpClient(jar: CookieJar): AxiosInstance {
