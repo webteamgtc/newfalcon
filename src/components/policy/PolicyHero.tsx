@@ -4,22 +4,22 @@ export default function PolicyHero() {
   const t = useTranslations("policyPage.hero");
 
   return (
-    <section className="relative flex min-h-[50vh] items-center overflow-hidden py-12 md:min-h-[55vh] md:py-16"
-      style={{
-        background: "linear-gradient(146deg, #FEFCF6 22.19%, #FCF9F2 38.96%, #EAD9B9 63.19%, #D8BA80 86.31%)",
-      }}
-    >
-      <div className="container relative">
-        <div className="max-w-xl">
-          <p className="eyebrow !capitalize text-ink">
+    <section className="relative flex min-h-[50vh] items-end overflow-hidden bg-[url('/33.webp')] bg-cover bg-center pb-16 pt-16 md:min-h-[80vh] md:bg-[url('/44.webp')] md:bg-cover md:bg-center md:pb-36 md:pt-24">
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/10"
+        aria-hidden
+      />
+      <div className="container relative z-[1]">
+        <div className="max-w-2xl">
+          <p className="eyebrow !capitalize text-white/80">
             <span className="font-poppins">{t("eyebrow")}</span>
           </p>
-          <h1 className="mt-6 font-display HeadingH1 !font-medium !text-ink">
+          <h1 className="mt-6 max-w-sm font-display text-[3.2rem] uppercase leading-[1.05] text-white md:text-[3rem]">
             {t("headingPlain")}
             <br />
-            <span className="italic text-falcon-deep">{t("headingItalic")}</span>
+            <span className="italic text-falcon-light">{t("headingItalic")}</span>
           </h1>
-          <p className="mt-5 max-w-xl Text !leading-snug !font-poppins !text-ink">
+          <p className="mt-5 max-w-lg Text !font-poppins !leading-snug !text-white">
             {t("subtext")}
           </p>
         </div>

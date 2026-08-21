@@ -26,7 +26,7 @@ export default function PolicyDocumentSection() {
       </div>
 
       <div className="container relative z-10">
-        <article className="mx-auto max-w-6xl px-6 py-6 sm:px-6 md:px-8 md:py-8"
+        <article className="px-6 py-6 sm:px-6 md:px-8 md:py-8"
           style={{
             border: "1px solid rgba(56, 41, 16, 0.30)",
             background: "rgba(255, 253, 248, 0.85)",
