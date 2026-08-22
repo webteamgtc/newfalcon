@@ -1,0 +1,1279 @@
+{
+  "meta": {
+    "siteName": "金猎鹰颁奖典礼",
+    "brand": "GTCFX",
+    "brandFull": "GTCFX — 受监管的多资产经纪商",
+    "tagline": "庆祝全球交易伙伴关系的卓越成就",
+    "date": "2026年12月12日",
+    "location": "Conrad Hotel，迪拜，阿联酋"
+  },
+  "nav": {
+    "welcome": "首页",
+    "gallery": "图库",
+    "agenda": "议程",
+    "guest": "嘉宾",
+    "media": "媒体",
+    "ticket": "门票",
+    "policy": "条款与条件",
+    "awards": "奖项",
+    "joinUs": "立即注册",
+    "vipStatus": "VIP 状态",
+    "checkStatus": "查询状态",
+    "ticketAccess": "门票"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "诚挚邀请您出席",
+      "titleLine1": "金",
+      "titleLine2": "猎鹰",
+      "titleLine3": "颁奖典礼",
+      "year": "2 0 2 6",
+      "subtitle": "「卓越，在此绽放」",
+      "description": "诚邀您共度难忘之夜，致敬远见、成就，以及塑造行业未来的杰出人士。",
+      "dateLabel": "2026年12月12日",
+      "locationLabel": "Conrad Hotel，迪拜",
+      "cta": "确认您的邀请"
+    },
+    "history": {
+      "eyebrow": "我们的传承",
+      "headingPlain": "以伙伴关系、",
+      "headingItalic": "业绩与全球雄心铸就的传承。",
+      "cta": "探索历程",
+      "timeline": [
+        {
+          "year": "2025",
+          "title": "史无前例的盛典之夜",
+          "description": "400 余位合作伙伴与行业领袖齐聚，共襄迄今为止最为盛大的典礼。"
+        },
+        {
+          "year": "2024",
+          "title": "全球认可，再攀新高",
+          "description": "奖项扩展至 18 个类别，表彰横跨六大洲的合作伙伴。"
+        },
+        {
+          "year": "2023",
+          "title": "卓越之基",
+          "description": "首届金猎鹰颁奖典礼为交易行业表彰树立了全新标杆。"
+        }
+      ]
+    },
+    "guests": {
+      "eyebrow": "尊贵嘉宾",
+      "headingPlain": "与行业领袖共度的",
+      "headingItalic": "专属交流之夜。",
+      "subtext": "与塑造全球交易未来的远见者、高管与合作伙伴建立联系。",
+      "cta": "查看全部嘉宾",
+      "list": [
+        {
+          "name": "Alexander Delaney",
+          "role": "GTCFX 首席商务官",
+          "country": "英国"
+        },
+        {
+          "name": "Kenji Watanabe",
+          "role": "Apex Capital Partners 董事总经理",
+          "country": "日本"
+        },
+        {
+          "name": "Priya Sharma",
+          "role": "Meridian Global Investments 基金经理",
+          "country": "印度"
+        }
+      ]
+    },
+    "ticketCta": {
+      "eyebrow": "Conrad Hotel · 2026年12月",
+      "dateRange": "12",
+      "watermark": "DUBAI",
+      "headingPlain": "预订您的",
+      "headingItalic": "专属席位。",
+      "description": "与交易精英、流动性合作伙伴及行业先驱共聚年度最负盛名的颁奖之夜。席位有限，敬请尽早预订。",
+      "cta": "预订门票"
+    },
+    "awards": {
+      "eyebrow": "荣誉殿堂",
+      "headingPlain": "至高",
+      "headingItalic": "级别的认可。",
+      "subtext": "二十二项尊贵类别，表彰定义全球交易卓越成就的合作伙伴、领袖与里程碑。",
+      "cta": "探索全部奖项",
+      "list": [
+        {
+          "index": "01",
+          "title": "合作伙伴卓越奖",
+          "country": "越南"
+        },
+        {
+          "index": "02",
+          "title": "合作伙伴卓越奖",
+          "country": "中国"
+        },
+        {
+          "index": "03",
+          "title": "合作伙伴卓越奖",
+          "country": "印度"
+        },
+        {
+          "index": "04",
+          "title": "年度全球合作伙伴",
+          "country": "阿联酋"
+        },
+        {
+          "index": "05",
+          "title": "年度精英 IB",
+          "country": "中国"
+        },
+        {
+          "index": "06",
+          "title": "战略流动性合作伙伴",
+          "country": "中国"
+        }
+      ]
+    },
+    "media": {
+      "eyebrow": "全球报道",
+      "heading": "媒体合作伙伴",
+      "subtext": "国际主流财经媒体与新闻机构，将金猎鹰颁奖典礼的影响力传递至 46 个国家——从广播电视到数字出版物。",
+      "partners": [
+        "TRT World",
+        "Khaleej Times",
+        "Al Arabiya",
+        "WikiFX",
+        "Gulf News",
+        "BBC News",
+        "Lovin Dubai",
+        "France 24",
+        "Al Bayan"
+      ]
+    },
+    "faq": {
+      "heading": "常见问题",
+      "subtext": "盛典之夜前您需要了解的一切",
+      "cta": "提交问题",
+      "list": [
+        {
+          "question": "如何注册参加金猎鹰颁奖典礼？",
+          "answer": "请通过我们的门票页面在线注册。确认后，您将在 48 小时内通过电子邮件收到邀请详情和活动准入信息。"
+        },
+        {
+          "question": "当晚的着装要求是什么？",
+          "answer": "需穿着黑色领结或正式晚礼服。主办方保留在入口处审核着装的权利，以维护活动的优雅标准。"
+        },
+        {
+          "question": "活动在哪里举办？",
+          "answer": "2026 年金猎鹰颁奖典礼将于 Conrad Hotel, Sheikh Zayed Road, Dubai, UAE 举行。VIP 嘉宾可享受代客泊车及免费接送服务。"
+        },
+        {
+          "question": "我可以将门票转赠给同事吗？",
+          "answer": "可以。您可在活动开始前至少 7 天，通过账户更新参会者信息完成转赠。如需协助，请联系 support@gtcfx.com。"
+        }
+      ]
+    },
+    "footerCta": {
+      "eyebrow": "金猎鹰颁奖典礼 2026",
+      "headingPlain": "成为非凡",
+      "headingItalic": "的一部分。",
+      "subtext": "2026 年金猎鹰颁奖典礼汇聚全球交易领域最杰出的人才。无论您是合作伙伴、交易者还是远见者——这是属于您的舞台。",
+      "cta": "探索您的邀请"
+    }
+  },
+  "gallery": {
+    "hero": {
+      "headingPlain": "伟大时刻",
+      "headingItalic": "永载史册。",
+      "subtext": "走进金猎鹰颁奖典礼的标志性瞬间——一部关于雄心实现、伙伴关系庆祝，以及镌刻于全球交易卓越史册的传承的非凡编年史。"
+    },
+    "ambition": {
+      "eyebrow": "特邀嘉宾",
+      "headingPlain": "以雄心铸就。",
+      "headingItalic": "以卓越定义。",
+      "paragraph1": "金猎鹰颁奖典礼已成长为交易行业最负盛名的盛会——汇聚设定全球标准的合作伙伴、高管与领袖。",
+      "paragraph2": "每一届都将标杆推至新高，带来更深层次的连接、更精准的认可，以及配得上所表彰成就的庆典。"
+    },
+    "recognition": {
+      "headingPlain": "至高",
+      "headingItalic": "级别的认可。",
+      "watermark": "22",
+      "items": [
+        {
+          "title": "伙伴关系",
+          "description": "表彰推动全球市场增长与信任的战略联盟。"
+        },
+        {
+          "title": "业绩表现",
+          "description": "致敬以 Trading Lot 与 Partner acquisition 树立行业标杆的合作伙伴。"
+        },
+        {
+          "title": "领导力",
+          "description": "认可引领团队、激励社群、提升标准的远见者。"
+        },
+        {
+          "title": "诚信合规",
+          "description": "珍视维系持久伙伴关系的合规、透明与道德操守。"
+        }
+      ]
+    },
+    "journey": {
+      "eyebrow": "时间线",
+      "headingPlain": "由非凡里程碑",
+      "headingItalic": "塑造的历程。",
+      "subtext": "从首届私密典礼到全球知名盛会——每一届都为金猎鹰传承增添浓墨重彩的一章。",
+      "timeline": [
+        {
+          "year": "2025",
+          "title": "史无前例的盛典之夜",
+          "description": "400 余位合作伙伴与行业领袖齐聚，共襄迄今为止最为盛大的典礼。"
+        },
+        {
+          "year": "2024",
+          "title": "全球认可，再攀新高",
+          "description": "奖项扩展至 18 个类别，表彰横跨六大洲的合作伙伴。"
+        },
+        {
+          "year": "2023",
+          "title": "卓越之基",
+          "description": "首届金猎鹰颁奖典礼为交易行业表彰树立了全新标杆。"
+        },
+        {
+          "year": "2022",
+          "title": "一切从这里开始",
+          "description": "创始合作伙伴的一次私密晚宴，播下了成为全球传统的种子。"
+        }
+      ]
+    },
+    "moments": {
+      "eyebrow": "时间线",
+      "headingPlain": "以瞬间讲述的",
+      "headingItalic": "历程。",
+      "subtext": "探索全球活动、幕后故事、社群亮点、媒体报道，以及定义我们影响力的里程碑。",
+      "imageAlt": "金猎鹰颁奖典礼图库瞬间 {number}",
+      "openImage": "查看图库图片 {number}",
+      "lightboxLabel": "图库图片查看器",
+      "closeLightbox": "关闭图库视图",
+      "previousImage": "上一张",
+      "nextImage": "下一张",
+      "imageCounter": "{current} / {total}"
+    }
+  },
+  "agenda": {
+    "eyebrow": "盛典之夜",
+    "heading": "当晚流程一览。",
+    "subtext": "从红毯入场到闭幕庆典——2026 年金猎鹰颁奖典礼完整行程。",
+    "venueLabel": "场地",
+    "venue": "Conrad Hotel，Sheikh Zayed Road，迪拜，阿联酋",
+    "schedule": [
+      {
+        "time": "6:00 PM",
+        "title": "红毯入场",
+        "description": "嘉宾抵达 Conrad Hotel，沿典礼红毯入场，享用迎宾香槟。"
+      },
+      {
+        "time": "7:00 PM",
+        "title": "交流酒会",
+        "description": "优雅的餐前酒会，供合作伙伴与高管在精选小食与饮品中建立联系。"
+      },
+      {
+        "time": "8:00 PM",
+        "title": "开幕致辞",
+        "description": "GTCFX 领导层发表主题演讲，回顾年度成就及促成这些成就的伙伴关系。"
+      },
+      {
+        "time": "8:30 PM",
+        "title": "晚宴",
+        "description": "五道式正式晚宴，伴随现场音乐及年度最具影响力里程碑回顾。"
+      },
+      {
+        "time": "9:30 PM",
+        "title": "颁奖典礼",
+        "description": "颁发全部 22 个金猎鹰奖项类别，表彰年度最杰出的合作伙伴与成就。"
+      },
+      {
+        "time": "11:00 PM",
+        "title": "闭幕祝酒与派对",
+        "description": "庆典祝酒之后，现场娱乐、音乐及专属派对，为所有嘉宾延续欢庆。"
+      }
+    ]
+  },
+  "guestPage": {
+    "hero": {
+      "eyebrow": "Golden Falcon Awards · 2026年12月12日",
+      "headingPlain": "全球精英",
+      "headingItalic": "专属汇聚。",
+      "subtext": "来自 30 多个国家的 200 余位杰出领袖——CEO、基金经理、首席分析师及远见合作伙伴——齐聚 Dubai Conrad Hotel，共度非凡之夜。庆祝雄心、卓越，以及塑造全球金融未来的伙伴关系。",
+      "cta": "预订席位"
+    },
+    "featured": {
+      "eyebrow": "主题演讲嘉宾",
+      "sectionLabel": "特邀嘉宾",
+      "headingPlain": "远见之声。",
+      "headingItalic": "影响之篇。",
+      "subtext": "每一届金猎鹰颁奖典礼，都因挑战常规、在全球舞台上激励卓越的领袖而升华。",
+      "label": "特邀演讲嘉宾",
+      "tag": "英国 · 首席商务官",
+      "quote": "「当远见转化为他人的机遇，领导力才真正有意义。」",
+      "name": "Alexander Delaney",
+      "role": "首席商务官 — GTCFX",
+      "bio": "全球知名高管，以拓展跨境合作伙伴关系并推动新兴及成熟市场的可衡量增长而闻名。",
+      "cta": "查看完整简介"
+    },
+    "grid": {
+      "eyebrow": "2026 嘉宾",
+      "sectionLabel": "特邀嘉宾",
+      "headingPlain": "2026 年",
+      "headingItalic": "嘉宾名单。",
+      "subtext": "精心遴选的 executives、分析师、基金经理与合作伙伴，齐聚 Conrad Hotel, Dubai。",
+      "description": "汇聚 Dubai 的领袖与声音，精心构建的社群。",
+      "filters": [
+        {
+          "id": "all",
+          "label": "全部"
+        },
+        {
+          "id": "speakers",
+          "label": "演讲嘉宾"
+        },
+        {
+          "id": "judges",
+          "label": "评委"
+        },
+        {
+          "id": "performers",
+          "label": "表演嘉宾"
+        }
+      ],
+      "list": [
+        {
+          "name": "Alexander Delaney",
+          "role": "GTCFX 首席商务官",
+          "bio": "推动全球合作伙伴战略及新兴市场的商业增长。",
+          "category": "speakers"
+        },
+        {
+          "name": "Kenji Watanabe",
+          "role": "Apex Capital Partners 董事总经理",
+          "bio": "领导亚太地区的跨境投资策略及机构客户开发。",
+          "category": "speakers"
+        },
+        {
+          "name": "Priya Sharma",
+          "role": "Meridian Global Investments 基金经理",
+          "bio": "负责多资产组合策略，专注于可持续的长期回报。",
+          "category": "speakers"
+        },
+        {
+          "name": "Omar Al-Rashid",
+          "role": "GTCFX 高级副总裁",
+          "bio": "监督所有类别的奖项评选标准及合规诚信。",
+          "category": "judges"
+        },
+        {
+          "name": "Elena Vasquez",
+          "role": "全球市场部首席分析师",
+          "bio": "提供权威的市场洞察及流动性与风险管理建议。",
+          "category": "judges"
+        },
+        {
+          "name": "Marcus Webb",
+          "role": "Luminary Productions 创意总监",
+          "bio": "通过沉浸式灯光、音效与叙事设计典礼舞台体验。",
+          "category": "performers"
+        },
+        {
+          "name": "Layla Haddad",
+          "role": "Levant Capital Group 首席执行官",
+          "bio": "连接中东及更广泛地区的战略领导力与商业雄心。",
+          "category": "speakers"
+        },
+        {
+          "name": "James Okonkwo",
+          "role": "交易卓越评审团行业评委",
+          "bio": "评估交易手数、合作伙伴拓展及伙伴关系类别的业绩基准。",
+          "category": "judges"
+        },
+        {
+          "name": "Sofia Marin",
+          "role": "国际艺术家舞台表演者",
+          "bio": "为金猎鹰颁奖典礼闭幕庆典带来世界级现场艺术表演。",
+          "category": "performers"
+        }
+      ]
+    },
+    "join": {
+      "eyebrow": "参与其中",
+      "headingPlain": "杰出人士",
+      "headingItalic": "缔结杰出伙伴关系。",
+      "cta": "立即注册"
+    }
+  },
+  "mediaPage": {
+    "eyebrow": "新闻与媒体",
+    "heading": "媒体报道与合作伙伴",
+    "subtext": "国际新闻与财经媒体将金猎鹰颁奖典礼的影响力传递至 46 个国家的受众——从主流广播电视到顶级数字出版物。",
+    "watchHighlights": "观看活动精彩回顾",
+    "pressKit": "下载新闻资料包"
+  },
+  "ticketPage": {
+    "hero": {
+      "headingPlain": "一夜。一舞台。一传承。",
+      "headingItalic": "无限荣耀，静候您来。",
+      "subtext": "2026年12月12日 — Conrad Hotel, Dubai。金猎鹰颁奖典礼汇聚 200 余位交易精英、合作伙伴与远见者，共赴全球交易领域最受期待的夜晚。红毯、世界级演讲嘉宾、22 项大奖。这是通往荣耀的邀请。",
+      "primaryCta": "确认席位",
+      "secondaryCta": "查看资格"
+    },
+    "access": {
+      "headingPlain": "选择适合您的",
+      "headingItalic": "参与方式。",
+      "subtext": "两种出席途径：以 IB 合作伙伴身份通过交易业绩获得资格，或直接购买活动门票供您及宾客使用。",
+      "eyebrow": "门票信息",
+      "descriptionText": "金猎鹰颁奖典礼是一场精心策划的活动。每一份门票申请均经审核，以确保宾客体验周到、相关且个性化。",
+      "twoAccessLabel": "两种准入途径",
+      "twoAccessHint": "选择一种方式 · 均可通往 Golden Falcon Night",
+      "complimentaryAccess": "免费准入",
+      "forEligibleClients": "适用于符合条件的 GTCFX IB/Partners",
+      "qualifyDesc": "达成确认的活动目标，即可解锁 Golden Falcon Awards Night 免费准入资格。",
+      "falconTicket": "Falcon 门票",
+      "subjectToAvailability": "视名额而定",
+      "purchaseDesc": "直接为您或您的宾客购买活动准入。视名额而定。",
+      "vipAssistText": "我们的宾客关系团队可协助安排高管接待、私人引荐及定制化合作伙伴准入。",
+      "qualify": {
+        "title": "通过业绩获得资格",
+        "fields": [
+          {
+            "label": "账户类型",
+            "placeholder": "选择您的账户类型"
+          },
+          {
+            "label": "账户号码",
+            "placeholder": "输入您的账户号码"
+          },
+          {
+            "label": "居住国家",
+            "placeholder": "选择您的国家"
+          },
+          {
+            "label": "交易手数",
+            "placeholder": "选择交易量范围"
+          }
+        ],
+        "cta": "申请资格准入"
+      },
+      "purchase": {
+        "title": "购买活动门票",
+        "fields": [
+          {
+            "label": "门票类型",
+            "placeholder": "选择门票类型"
+          },
+          {
+            "label": "门票数量",
+            "placeholder": "选择数量"
+          },
+          {
+            "label": "宾客姓名",
+            "placeholder": "输入全名"
+          },
+          {
+            "label": "电子邮箱",
+            "placeholder": "输入您的邮箱"
+          }
+        ],
+        "cta": "前往支付"
+      },
+      "vip": {
+        "label": "VIP",
+        "text": "有兴趣了解包含高级权益的 VIP 体验吗？",
+        "cta": "查询状态",
+        "viewStatus": "查看我的状态"
+      }
+    },
+    "accessForm": {
+      "eyebrow": "现有 Partner 准入",
+      "headingPlain": "验证账户以",
+      "headingItalic": "查看进度。",
+      "description": "如果您是现有 GTCFX Partner，请输入注册邮箱以查询 VIP 资格状态及活动门票准入。",
+      "existingClientLabel": "是否为现有 GTCFX Partner？",
+      "selectPlaceholder": "请选择",
+      "existingYes": "是",
+      "existingNo": "否",
+      "emailLabel": "电子邮箱*",
+      "emailPlaceholder": "输入您的注册邮箱",
+      "emailRequired": "请输入邮箱",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "emailNotFound": "该邮箱未在 GTCFX 注册。请联系客服。",
+      "accountInactive": "该账户未激活。请联系客服。",
+      "ibIdLabel": "IB ID / 推荐码*",
+      "ibIdPlaceholder": "输入邮件中的 IB ID / Referral Code",
+      "ibIdRequired": "请输入 IB ID / Referral Code",
+      "credentialsNotFound": "邮箱与 IB ID / Referral Code 与我们的记录不匹配。",
+      "getOtp": "获取 OTP",
+      "sendingOtp": "发送中...",
+      "verifyingOtp": "验证中...",
+      "otpLabel": "输入 OTP",
+      "otpRequired": "请输入 6 位 OTP",
+      "otpInvalid": "OTP 无效。请重试。",
+      "otpSendFailed": "OTP 发送失败。请重试。",
+      "otpExpiresIn": "OTP 将在 {time} 后过期",
+      "otpExpired": "OTP 已过期。请重新获取。",
+      "verifyOtp": "验证 OTP",
+      "demoOtpHint": "演示 OTP：123456",
+      "emailVerified": "邮箱验证成功。请查收邮件获取 IB ID / Referral Code。",
+      "disclaimer": "提交本表单即表示我已阅读、理解并同意活动条款。我同意 GTCFX 就 VIP 资格状态与我联系。",
+      "termsLabel": "我同意活动条款和隐私政策。",
+      "termsRequired": "您必须同意条款才能继续。",
+      "submit": "查询我的状态",
+      "submitting": "提交中...",
+      "closeModal": "关闭表单",
+      "newClientText": "还没有 IB 账户？立即开户，开启您的资格之旅。",
+      "newClientCta": "立即开通 IB 账户",
+      "loadingForm": "加载表单中...",
+      "apiErrors": {
+        "ipNotTrusted": "当前网络 IP 未获系统信任，请联系 support@gtcfx.com。",
+        "verifyFailed": "暂时无法验证账户，请稍后重试。",
+        "serviceUnavailable": "验证服务暂时不可用，请稍后重试。"
+      }
+    },
+    "newClientForm": {
+      "intro": "创建 GTCFX 账户，开启金猎鹰颁奖典礼 IB 资格之旅。",
+      "fields": {
+        "firstName": "名",
+        "lastName": "姓",
+        "email": "电子邮箱",
+        "emailCode": "邮箱验证码",
+        "password": "密码",
+        "country": "居住国家",
+        "phone": "电话号码",
+        "partnerCode": "合作伙伴代码",
+        "optional": "选填"
+      },
+      "placeholders": {
+        "email": "请输入有效邮箱以接收验证码",
+        "emailCode": "输入邮箱验证码",
+        "passwordHint": "至少 8 个字符，包含字母和数字"
+      },
+      "countryLoading": "加载国家列表中...",
+      "countrySelect": "选择您的国家",
+      "actions": {
+        "getCode": "获取验证码",
+        "sendingCode": "发送中...",
+        "register": "注册",
+        "registering": "提交中..."
+      },
+      "a11y": {
+        "showPassword": "显示",
+        "hidePassword": "隐藏"
+      },
+      "legal": {
+        "agreePrefix": "我同意",
+        "termsOfService": "服务条款",
+        "agreeAnd": "和",
+        "privacyPolicy": "隐私政策"
+      },
+      "login": {
+        "prefix": "已有账户？",
+        "link": "点击此处登录"
+      },
+      "errors": {
+        "firstName": "请输入名",
+        "firstNameLetters": "名只能包含字母",
+        "lastName": "请输入姓",
+        "lastNameLetters": "姓只能包含字母",
+        "email": "请输入邮箱",
+        "emailInvalid": "邮箱地址无效",
+        "emailRegistered": "该邮箱已注册",
+        "country": "请选择国家",
+        "validCountry": "请选择有效的国家",
+        "phone": "请输入电话号码",
+        "phoneInvalid": "电话号码无效",
+        "passwordRequired": "请输入密码",
+        "passwordMin": "至少 8 个字符",
+        "passwordPattern": "必须包含字母和数字",
+        "otpRequired": "OTP 为必填项",
+        "otpLength": "OTP 必须为 6 位数字",
+        "terms": "您必须同意条款"
+      },
+      "toast": {
+        "otpSent": "OTP 发送成功！",
+        "codeError": "验证码发送失败",
+        "registrationSuccess": "注册成功！",
+        "registrationFailed": "注册失败"
+      }
+    },
+    "steps": {
+      "headingPlain": "三步简单流程",
+      "headingItalic": "确认您的席位。",
+      "contactCta": "联系我们",
+      "list": [
+        {
+          "title": "选择您的路径",
+          "description": "选择通过业绩获得资格或直接购买门票——选择最适合您的方式。"
+        },
+        {
+          "title": "提交您的信息",
+          "description": "提供所需信息，以便我们的团队及时审核并处理您的注册。"
+        },
+        {
+          "title": "收到确认",
+          "description": "48 小时内，官方邀请及完整活动详情将发送至您的邮箱。"
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "需要帮助？",
+      "headingPlain": "我们助您",
+      "headingItalic": "轻松抵达。",
+      "subtext": "我们的活动团队可协助您安排座位偏好、机场接送、住宿及活动开始前的任何问题。",
+      "nameLabel": "Full Name",
+      "emailLabel": "电子邮箱",
+      "namePlaceholder": "您的全名",
+      "emailPlaceholder": "you@example.com"
+    }
+  },
+  "policyPage": {
+    "hero": {
+      "eyebrow": "金猎鹰颁奖典礼 · 法律条款",
+      "headingPlain": "条款",
+      "headingItalic": "与条件。",
+      "subtext": "请查阅 2026 年金猎鹰颁奖典礼的活动准入、参与、隐私及使用条件相关条款。本活动由 GTC Global Trade Capital Co. Limited 组织。"
+    },
+    "intro": {
+      "eyebrow": "政策概览",
+      "text": "请跳转至与您最相关的章节，或查阅以下完整条款与条件。",
+      "riskLabel": "01 - 了解风险",
+      "reviewSection": "查看章节"
+    },
+    "riskCards": [
+      {
+        "index": "01",
+        "title": "注册免责声明",
+        "text": "了解与活动注册及出席相关的义务与责任。"
+      },
+      {
+        "index": "02",
+        "title": "活动行为准则",
+        "text": "查阅整个活动过程中期望的行为与举止标准。"
+      },
+      {
+        "index": "03",
+        "title": "数据与隐私声明",
+        "text": "了解您的个人信息、媒体授权及出席数据的收集与处理方式。"
+      }
+    ],
+    "document": {
+      "eyebrow": "政策文件",
+      "headingPlain": "清晰条款，",
+      "headingItalic": "顺畅体验。",
+      "updated": "最后更新 · 2026年8月",
+      "labels": [
+        "适用范围",
+        "您的责任",
+        "我们的承诺"
+      ],
+      "clauses": [
+        "本条款适用于您参与 2026 年金猎鹰颁奖典礼之前、期间及之后。",
+        "参会者须提供准确信息，并遵守所有已发布的活动指南及场馆政策。",
+        "GTCFX 致力于透明沟通、负责任的数据处理及优质的宾客体验。"
+      ]
+    },
+    "sections": [
+      {
+        "title": "注册与入场",
+        "body": "所有参会者须在线注册，并在入口处出示有效的确认邮件及政府签发的带照片身份证件。活动准入详情及更新将发送至注册时提供的邮箱。如需协助，请联系 support@gtcfx.com。"
+      },
+      {
+        "title": "着装要求",
+        "body": "所有嘉宾须穿着黑色领结或正式晚礼服。主办方保留在入口处审核着装的权利，以维护活动的优雅标准。不允许穿着休闲正装。"
+      },
+      {
+        "title": "门票转让",
+        "body": "您可在活动日期前至少 7 天，通过账户更新参会者信息将门票转让给他人。截止日期之后提交的转让申请将逐案审核。"
+      },
+      {
+        "title": "隐私政策",
+        "body": "注册期间收集的个人信息仅用于活动管理、宾客沟通及安全目的。所有数据均依照适用的数据保护法规（包括阿联酋联邦数据保护法）进行处理和存储。"
+      },
+      {
+        "title": "媒体与录制授权",
+        "body": "活动期间将进行专业摄影及视频录制，用于编辑、推广及存档目的。出席即表示嘉宾同意 GTCFX 及其媒体合作伙伴在相关发布材料中使用其肖像。"
+      },
+      {
+        "title": "取消与退款",
+        "body": "取消及退款申请将逐案评估。请尽早联系活动团队 support@gtcfx.com 或致电 +971 800 667788。活动前 14 天内提出的退款申请可能收取管理费。"
+      }
+    ]
+  },
+  "footer": {
+    "dateLocation": "2026年12月12日 · Conrad Hotel, Dubai",
+    "brand": "© GTCFX — 受监管的多资产经纪商",
+    "policy": "条款与条件",
+    "contact": "联系我们",
+    "rights": "© 2026 GTC Global Trade Capital Co. Limited. 保留所有权利。"
+  },
+  "awardsPage": {
+    "heroEyebrow": "金猎鹰颁奖典礼 2026",
+    "heroHeadingPlain": "至高",
+    "heroHeadingItalic": "级别的认可。",
+    "heroDescBlack": "表彰定义全球交易社区卓越成就的合作伙伴、领袖与里程碑——从区域专精到全球影响力。",
+    "heroCta": "探索类别",
+    "honoursEyebrow": "荣誉殿堂",
+    "honoursHeadingPlain": "卓越值得",
+    "honoursHeadingItalic": "被庆祝。",
+    "honoursDescBlack": "金猎鹰颁奖典礼所表彰的不仅是结果，更是每一项成就背后的信任、诚信、伙伴关系与不懈奉献。",
+    "honoursDescGold": "我们的 22 个类别旨在聚焦有意义的成就——从区域合作伙伴卓越与流动性领导力，到个人里程碑与合规诚信。",
+    "stats": [
+      {
+        "number": "04",
+        "label": "奖项家族"
+      },
+      {
+        "number": "22",
+        "label": "奖项类别"
+      },
+      {
+        "number": "01",
+        "label": "标志性荣誉"
+      }
+    ],
+    "categoriesEyebrow": "奖项类别",
+    "categoriesHeadingPlain": "四大",
+    "categoriesHeadingItalic": "认可支柱。",
+    "categoriesSubtext": "结构化的类别框架确保每一项成就都独特、相关，并以应有的地位受到庆祝。",
+    "categoryBlocks": [
+      {
+        "title": "区域合作伙伴卓越",
+        "description": "表彰在各自市场推动增长与信任的杰出合作伙伴。",
+        "items": [
+          "土耳其合作伙伴卓越奖",
+          "美国/LM 合作伙伴卓越奖",
+          "独联体合作伙伴卓越奖",
+          "日本合作伙伴卓越奖",
+          "英国合作伙伴卓越奖",
+          "东南亚合作伙伴卓越奖",
+          "印度合作伙伴卓越奖"
+        ]
+      },
+      {
+        "title": "流动性与战略伙伴关系",
+        "description": "认可支撑市场基础设施的战略联盟与流动性提供方。",
+        "items": [
+          "合作伙伴卓越奖 – 自营交易",
+          "战略流动性合作伙伴",
+          "流动性合作伙伴卓越奖",
+          "最值得信赖的长期合作伙伴奖"
+        ]
+      },
+      {
+        "title": "个人与业绩奖项",
+        "description": "表彰以业绩树立行业新标杆的杰出交易者与专业人士。",
+        "items": [
+          "激励女性奖",
+          "2026 年度最年轻七位数交易者",
+          "杰出总入金奖",
+          "年度优质客户冠军",
+          "月度最高 ROI 奖",
+          "月度高级返佣奖",
+          "年度最高返佣与交易奖"
+        ]
+      },
+      {
+        "title": "领导力与诚信",
+        "description": "庆祝远见领导力、合作伙伴拓展 mastery 及不妥协的道德标准。",
+        "items": [
+          "最高合作伙伴拓展奖",
+          "年度精英合作伙伴",
+          "年度全球合作伙伴",
+          "合规与诚信卓越奖"
+        ]
+      }
+    ],
+    "certificateEyebrow": "标志性荣誉",
+    "certificateTitle": "金猎鹰",
+    "certificateTitleItalic": "远见奖。",
+    "certificateDesc": "当晚至高荣誉——授予以远见、影响力及持续贡献在全球交易社区创造变革性影响的合作伙伴或领袖。"
+  },
+  "vipPage": {
+    "heroEyebrow": "VIP 年度邀请",
+    "heroYear": "2026",
+    "heroHeadingPlain": "欢迎，",
+    "heroHeadingName": "嘉宾。",
+    "heroSubtext": "您通往 Golden Falcon Awards Night 免费 VIP 准入的专属进度视图。",
+    "heroCta": "查看进度",
+    "journeyEyebrow": "资格认证旅程",
+    "journeyHeadingPlain": "三个阶段。",
+    "journeyHeadingItalic": "一份邀请。",
+    "stages": [
+      {
+        "number": "01",
+        "name": "已注册",
+        "tier": "银卡状态"
+      },
+      {
+        "number": "02",
+        "name": "活跃交易者",
+        "tier": "金卡状态"
+      },
+      {
+        "number": "03",
+        "name": "已达标",
+        "tier": "白金状态"
+      }
+    ],
+    "capitalLabel": "01 · 净入金",
+    "capitalTitle": "净入金",
+    "capitalTarget": "$1,000,000",
+    "capitalRemaining": "距离达标还差 {amount}",
+    "activityLabel": "02 · 交易活动",
+    "activityTitle": "交易手数",
+    "activityTarget": "50,000",
+    "activityRemaining": "距离达标还差 {amount}",
+    "currently": "$0",
+    "targetLabel": "目标",
+    "campaignMilestone": "资格期",
+    "campaignSubtext": "2026年2月2日 – 10月31日",
+    "campaignValue1": "0%",
+    "campaignValue2": "241",
+    "progressSubtext": "VIP 进度已达 50%",
+    "targetValue": "目标 {amount}",
+    "progressPercent": "0%",
+    "dashboardNote": "符合条件的账户活动确认后，您的面板将自动更新。资格期：2026 年 2 月 2 日 – 10 月 31 日。",
+    "journeySubtext": "符合条件的账户活动确认后，您的面板将自动更新。资格期：2026 年 2 月 2 日 – 10 月 31 日。",
+    "summaryLabel": "当前进度",
+    "summaryValue": "0%",
+    "daysLabel": "剩余天数",
+    "daysValue": "241",
+    "invitationEyebrow": "您的 VIP 权益",
+    "invitationHeadingPlain": "围绕每一个细节",
+    "invitationHeadingItalic": "精心打造的邀请。",
+    "invitationSubtext": "从落地到最后一杯祝酒——为符合条件的 IB 合作伙伴及其同伴专属设计的无缝体验。",
+    "benefits": [
+      {
+        "index": "01",
+        "title": "往返机票",
+        "text": "活动期间周末往返 Dubai 的免费机票。"
+      },
+      {
+        "index": "02",
+        "title": "Conrad Hotel 住宿",
+        "text": "活动期间在 Conrad Hotel 的高级住宿。"
+      },
+      {
+        "index": "03",
+        "title": "机场接送",
+        "text": "机场、酒店与活动场地之间的专属接送服务。"
+      },
+      {
+        "index": "04",
+        "title": "完整活动通行",
+        "text": "VIP 座位、专属酒会、晚宴及派对准入。"
+      }
+    ],
+    "eligibleEyebrow": "您的进度",
+    "eligibleHeadingPlain": "每一步符合条件的进展",
+    "eligibleHeadingItalic": "都让您更近一步。",
+    "eligibleSubtext": "2026 年 2 月 2 日至 10 月 31 日期间，符合条件的净入金（最低 USD 1,000,000）及确认的交易活动将自动推进您的 VIP 邀请状态。",
+    "eligibleMoveEyebrow": "更接近 VIP",
+    "eligibleDescription": "增加符合条件的入金或交易活动以推进达标。最终资格仍须符合确认的活动条款。",
+    "contactNow": "立即联系",
+    "memberLabel": "VIP 候选人档案",
+    "memberName": "James Delaney",
+    "memberTier": "年度 VIP 邀请候选人",
+    "memberIdLabel": "会员 ID",
+    "memberId": "GFN-2026-0241",
+    "fullyQualifiedLabel": "已完全达标",
+    "fullyQualifiedSubtext": "VIP 状态已达成",
+    "registerCta": "注册",
+    "registeredCta": "已注册",
+    "registerPrompt": "预订 UAE 活动门票以完成 VIP 注册。",
+    "registerComplete": "您的门票注册已提交。",
+    "ticketBooking": {
+      "eyebrow": "活动门票注册",
+      "headingPlain": "预订您的",
+      "headingItalic": "UAE 门票。",
+      "description": "请提供 Golden Falcon Awards 在 Dubai, UAE 的出行详情。标有 * 的字段为必填项。",
+      "closeModal": "关闭表单",
+      "submit": "提交注册",
+      "submitting": "提交中...",
+      "successTitle": "注册已提交",
+      "successDescription": "我们的活动团队将审核您的信息，并在 48 小时内联系您确认。",
+      "successMessage": "门票注册提交成功。",
+      "termsLabel": "我确认所提供信息准确无误，并同意活动出行条款。",
+      "fields": {
+        "fullName": "全名（与护照一致）",
+        "email": "电子邮箱",
+        "phone": "电话号码",
+        "passportNumber": "护照号码",
+        "passportExpiry": "护照有效期",
+        "nationality": "国籍",
+        "dateOfBirth": "出生日期",
+        "arrivalDate": "抵达 UAE 日期",
+        "departureDate": "离境 UAE 日期",
+        "invitingGuest": "是否邀请他人？",
+        "bedroomPreference": "房型偏好",
+        "specialRequirements": "附加备注",
+        "passportPhoto": "护照照片",
+        "guestFirstName": "宾客全名",
+        "guestEmail": "宾客邮箱",
+        "guestPhone": "宾客电话号码",
+        "guestPassportNumber": "宾客护照号码",
+        "guestPassportExpiry": "宾客护照有效期",
+        "guestNationality": "宾客国籍",
+        "guestPassportPhoto": "宾客护照照片"
+      },
+      "guestSection": {
+        "title": "宾客信息",
+        "description": "请提供宾客的出行详情及 UAE 住宿的房型偏好。"
+      },
+      "options": {
+        "invitingGuestNo": "否",
+        "invitingGuestYes": "是",
+        "singleBed": "单人床",
+        "masterBed": "双床房",
+        "extraRoom": "额外房间"
+      },
+      "placeholders": {
+        "fullName": "请输入与护照一致的全名",
+        "phone": "请包含国家区号",
+        "passportNumber": "e.g. AB1234567",
+        "nationality": "例如：阿拉伯联合酋长国",
+        "guestFirstName": "请输入宾客全名",
+        "guestEmail": "guest@example.com",
+        "specialRequirements": "饮食需求、无障碍设施或其他备注",
+        "passportPhoto": "上传 JPG、PNG、WEBP 或 PDF",
+        "passportExample": "参考图片",
+        "selectDate": "选择日期",
+        "selectOption": "选择选项",
+        "selectBedroom": "选择房型偏好"
+      },
+      "errors": {
+        "fullName": "请输入全名",
+        "phone": "请输入电话号码",
+        "phoneInvalid": "请输入有效的电话号码",
+        "passportNumber": "请输入护照号码",
+        "passportExpiry": "请输入护照有效期",
+        "nationality": "请输入国籍",
+        "dateOfBirth": "请输入出生日期",
+        "arrivalDate": "请输入抵达日期",
+        "departureDate": "请输入离境日期",
+        "departureBeforeArrival": "离境日期须等于或晚于抵达日期",
+        "invitingGuest": "请选择是否会邀请他人",
+        "bedroomPreference": "请选择房型偏好",
+        "guestFirstName": "请输入宾客全名",
+        "guestEmail": "请输入宾客邮箱",
+        "guestEmailInvalid": "请输入有效的宾客邮箱地址",
+        "guestPhone": "请输入宾客电话号码",
+        "guestPassportNumber": "请输入宾客护照号码",
+        "guestPassportExpiry": "请输入宾客护照有效期",
+        "guestNationality": "请输入宾客国籍",
+        "guestPassportPhoto": "请上传宾客护照照片",
+        "terms": "您必须确认条款才能继续",
+        "passportPhoto": "请上传护照照片",
+        "passportPhotoType": "护照文件须为 JPG、PNG、WEBP 或 PDF",
+        "passportPhotoSize": "护照照片须在 5MB 以内",
+        "emailAlreadyExists": "该邮箱已注册。"
+      },
+      "submitFailed": "保存注册失败，请重试。"
+    }
+  },
+  "checkStatusPage": {
+    "heroEyebrow": "查询状态",
+    "heroYear": "2026",
+    "heroHeadingPlain": "验证账户以",
+    "heroHeadingItalic": "查看进度。",
+    "heroSubtext": "输入注册邮箱以查询 VIP 资格状态及金猎鹰颁奖典礼准入。",
+    "heroCta": "开始验证",
+    "staffRegistrationCta": "员工注册",
+    "staffRegistration": {
+      "eyebrow": "员工注册",
+      "headingPlain": "注册为",
+      "headingItalic": "GTCFX 员工。",
+      "description": "使用 OTP 验证您的 @gtcfx.com 邮箱，然后完成员工注册信息。",
+      "closeModal": "关闭表单",
+      "getOtp": "获取验证码",
+      "sendingOtp": "发送中...",
+      "verifyingOtp": "验证中...",
+      "verifyOtp": "验证验证码",
+      "emailVerified": "邮箱验证成功。",
+      "submit": "提交注册",
+      "submitting": "提交中...",
+      "successTitle": "注册已提交",
+      "successDescription": "您的员工注册已成功保存。",
+      "successMessage": "员工注册提交成功。",
+      "fields": {
+        "email": "工作邮箱",
+        "otp": "验证码",
+        "firstName": "名",
+        "phone": "电话号码",
+        "lineManagerName": "直属经理姓名"
+      },
+      "placeholders": {
+        "email": "name@gtcfx.com",
+        "firstName": "请输入您的名",
+        "phone": "请包含国家区号",
+        "lineManagerName": "请输入直属经理姓名"
+      },
+      "errors": {
+        "emailRequired": "请输入邮箱",
+        "emailInvalid": "请输入有效的邮箱地址",
+        "emailDomain": "邮箱须为 @gtcfx.com 地址",
+        "otpRequired": "请输入 6 位 OTP",
+        "otpInvalid": "OTP 无效，请重试。",
+        "otpSendFailed": "OTP 发送失败，请重试。",
+        "otpExpired": "OTP 已过期，请重新获取。",
+        "firstNameRequired": "请输入名",
+        "phoneRequired": "请输入电话号码",
+        "phoneInvalid": "请输入有效的电话号码",
+        "lineManagerRequired": "请输入直属经理姓名",
+        "emailAlreadyExists": "该邮箱已注册。",
+        "submitFailed": "保存注册失败，请重试。"
+      }
+    },
+    "formEyebrow": "账户验证",
+    "formHeadingPlain": "输入凭证以",
+    "formHeadingItalic": "解锁您的面板。",
+    "formDescription": "使用您注册的 GTCFX 邮箱及 IB 凭证。您将收到一次性验证码以确认身份。",
+    "trustSecure": "256-bit 加密",
+    "trustInstant": "即时验证",
+    "trustVerified": "GTCFX 已验证",
+    "bottomNote": "登录遇到问题？请联系 support@gtcfx.com",
+    "accessForm": {
+      "eyebrow": "现有 Partner 准入",
+      "headingPlain": "验证账户以",
+      "headingItalic": "查看进度。",
+      "description": "如果您是现有 GTCFX Partner，请输入注册邮箱以查询 VIP 资格状态及活动门票准入。",
+      "existingClientLabel": "是否为现有 GTCFX Partner？",
+      "selectPlaceholder": "请选择",
+      "existingYes": "是",
+      "existingNo": "否",
+      "emailLabel": "电子邮箱 *",
+      "emailPlaceholder": "输入您的注册邮箱",
+      "emailRequired": "请输入邮箱",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "emailNotFound": "该邮箱未在 GTCFX 注册。请联系客服。",
+      "accountInactive": "该账户未激活。请联系客服。",
+      "ibIdLabel": "IB ID / 推荐码*",
+      "ibIdPlaceholder": "输入邮件中的 IB ID / Referral Code",
+      "ibIdRequired": "请输入 IB ID / Referral Code",
+      "credentialsNotFound": "邮箱与 IB ID / Referral Code 与我们的记录不匹配。",
+      "getOtp": "获取验证码",
+      "sendingOtp": "发送中...",
+      "verifyingOtp": "验证中...",
+      "otpLabel": "输入验证码",
+      "otpRequired": "请输入 6 位 OTP",
+      "otpInvalid": "OTP 无效。请重试。",
+      "otpSendFailed": "OTP 发送失败。请重试。",
+      "otpExpiresIn": "OTP 将在 {time} 后过期",
+      "otpExpired": "OTP 已过期。请重新获取。",
+      "verifyOtp": "验证验证码",
+      "demoOtpHint": "演示 OTP：123456",
+      "emailVerified": "邮箱验证成功。请查收邮件获取 IB ID / Referral Code。",
+      "disclaimer": "提交本表单即表示我已阅读、理解并同意活动条款。我同意 GTCFX 就 VIP 资格状态与我联系。",
+      "termsLabel": "我同意活动条款和隐私政策。",
+      "termsRequired": "您必须同意条款才能继续。",
+      "submit": "查询我的状态",
+      "submitting": "提交中...",
+      "closeModal": "关闭表单",
+      "newClientText": "还没有 IB 账户？立即开户，开启您的资格之旅。",
+      "newClientCta": "立即开通 IB 账户",
+      "loadingForm": "加载表单中...",
+      "apiErrors": {
+        "ipNotTrusted": "当前网络 IP 未获系统信任，请联系 support@gtcfx.com。",
+        "verifyFailed": "暂时无法验证账户，请稍后重试。",
+        "serviceUnavailable": "验证服务暂时不可用，请稍后重试。"
+      }
+    }
+  },
+  "common": {
+    "backToHome": "返回首页",
+    "readMore": "阅读更多",
+    "close": "关闭"
+  },
+  "userStatusPage": {
+    "metaTitle": "注册状态",
+    "eyebrow": "注册状态",
+    "headingPlain": "您的注册",
+    "headingItalic": "面板。",
+    "description": "查看您已提交的信息及金猎鹰颁奖典礼的当前注册状态。",
+    "welcome": "欢迎回来，{name}",
+    "loading": "正在加载您的注册详情...",
+    "referenceId": "参考编号",
+    "nextStepsDescription": "我们的活动团队正在审核您的提交。如需补充信息，我们将与您联系。",
+    "supportNote": "需要帮助？请联系",
+    "status": {
+      "under_review": "审核中",
+      "registered": "已注册"
+    },
+    "formTypes": {
+      "vipTicket": "VIP 门票预订",
+      "staff": "员工注册"
+    },
+    "cards": {
+      "submitted": "提交日期",
+      "formType": "注册类型",
+      "documents": "护照文件",
+      "documentUploaded": "已上传",
+      "noDocument": "未提供",
+      "viewDocument": "查看文件",
+      "openDocument": "打开完整文件",
+      "downloadDocument": "下载文件",
+      "legacyDocument": "来自较早提交的文件。"
+    },
+    "sections": {
+      "personal": "个人信息",
+      "travel": "出行与护照详情",
+      "guest": "宾客信息",
+      "adminStatus": "您的注册状态",
+      "journey": "您的进度",
+      "travelArrangements": "出行安排",
+      "hotel": "酒店住宿",
+      "flight": "航班详情",
+      "documents": "您的文件",
+      "submission": "已提交的注册",
+      "guestStatus": "宾客进度",
+      "nextSteps": "后续步骤",
+      "guestSubmission": "宾客注册信息"
+    },
+    "tabs": {
+      "primary": "您的详情",
+      "guest": "宾客"
+    },
+    "lookup": {
+      "title": "查找您的注册",
+      "description": "输入注册时使用的邮箱地址以查看状态及文件。",
+      "emailLabel": "电子邮箱",
+      "emailPlaceholder": "you@example.com",
+      "submit": "查询状态",
+      "submitting": "查询中...",
+      "errors": {
+        "emailRequired": "请输入您的邮箱地址。",
+        "emailInvalid": "请输入有效的邮箱地址。"
+      }
+    },
+    "fields": {
+      "fullName": "全名",
+      "email": "电子邮箱",
+      "phone": "电话号码",
+      "memberId": "会员 ID",
+      "ibId": "IB ID",
+      "lineManagerName": "直属经理",
+      "passportNumber": "护照号码",
+      "passportExpiry": "护照有效期",
+      "nationality": "国籍",
+      "dateOfBirth": "出生日期",
+      "passportPhoto": "护照文件",
+      "invitingGuest": "是否邀请宾客",
+      "specialRequirements": "补充说明",
+      "guestFirstName": "宾客名",
+      "guestEmail": "嘉宾电子邮箱",
+      "guestPhone": "宾客电话",
+      "guestPassportNumber": "嘉宾护照号码",
+      "guestPassportExpiry": "嘉宾护照有效期",
+      "guestNationality": "嘉宾国籍",
+      "guestPassportPhoto": "嘉宾护照文件",
+      "bedroomPreference": "房型偏好"
+    },
+    "options": {
+      "yes": "是",
+      "no": "否"
+    },
+    "bedroom": {
+      "singleBed": "单人床",
+      "masterBed": "双床房",
+      "extraRoom": "额外房间"
+    },
+    "adminStatus": {
+      "description": "由活动团队根据您的注册及出行安排更新的详情。",
+      "journeyDescription": "跟踪您在资格、签证及票务流程中的进度。",
+      "documentsDescription": "下载或查看团队与您分享的文件。",
+      "submissionDescription": "来自您注册表的原始详情。",
+      "guestStatusDescription": "宾客 {name} 的状态更新。",
+      "pendingReview": "待审核",
+      "showDetails": "显示详情",
+      "hideDetails": "隐藏详情",
+      "noTravelYet": "航班、酒店及交通详情将在团队确认后显示于此。",
+      "noDocumentsYet": "文件可用后将显示于此。",
+      "fields": {
+        "partnerId": "合作伙伴 ID",
+        "country": "国家",
+        "qualificationStatus": "资格",
+        "visaStatus": "签证",
+        "visaDocument": "签证文件",
+        "ticketStatus": "门票",
+        "hotelStatus": "酒店",
+        "eTicket": "电子票",
+        "hotelName": "酒店名称",
+        "hotelAddress": "酒店地址",
+        "hotelFloor": "楼层",
+        "hotelRoomNumber": "房间号",
+        "checkInDateTime": "入住",
+        "checkOutDateTime": "退房",
+        "hotelConfirmationNumber": "确认号",
+        "pickupDropoff": "接送/送机详情",
+        "pickupDetails": "接机详情",
+        "dropOffDetails": "送机详情",
+        "passportCopy": "护照副本",
+        "airline": "航空公司",
+        "flightNumber": "航班号",
+        "departureDateTime": "出发",
+        "returnDateTime": "返程",
+        "guestPassportCopy": "宾客护照副本",
+        "guestVisaDocument": "宾客签证文件",
+        "guestETicket": "宾客电子票"
+      },
+      "hints": {
+        "qualificationPending": "我们的团队正在审核您的活动资格。",
+        "qualified": "您已被标记为符合金猎鹰颁奖典礼资格。",
+        "visaPending": "签证处理更新将显示于此。",
+        "visaApproved": "您的签证已获批。您可在下方下载签证文件。",
+        "visaRejected": "请联系客服了解签证后续步骤。",
+        "ticketPending": "票务处理开始后将显示更新。",
+        "ticketConfirmed": "您的门票已确认。请从文件区下载电子票。",
+        "ticketCancelled": "如需票务协助，请联系客服。",
+        "hotelConfirmed": "您的酒店楼层及房间号已分配。",
+        "hotelPending": "酒店房间详情将在团队确认后显示于此。"
+      },
+      "hotel": {
+        "confirmed": "已确认",
+        "pending": "待确认"
+      },
+      "qualification": {
+        "notYetReached": "尚未达标",
+        "qualified": "已达标"
+      },
+      "visa": {
+        "not_started": "未开始",
+        "applied": "已申请",
+        "under_processing": "处理中",
+        "approved": "已批准",
+        "rejected": "已拒绝"
+      },
+      "ticket": {
+        "not_started": "未开始",
+        "requested": "已申请",
+        "under_process": "处理中",
+        "confirmed": "已确认",
+        "cancelled": "已取消"
+      }
+    },
+    "errors": {
+      "title": "无法加载状态",
+      "emailRequired": "请输入邮箱地址以查询状态。",
+      "notFound": "未找到该邮箱的注册记录。",
+      "loadFailed": "加载注册状态失败。请稍后重试。"
+    }
+  },
+  "thankYouPage": {
+    "metaTitle": "感谢 — 金猎鹰颁奖典礼",
+    "eyebrow": "注册已收到",
+    "headingPlain": "感谢",
+    "headingItalic": "您的注册。",
+    "description": "您的 GTCFX 账户注册已成功提交。我们正在为您准备金猎鹰颁奖典礼的后续步骤。",
+    "emailNoticeTitle": "请查收邮件",
+    "emailNoticeBody": "确认邮件已发送至您提供的邮箱。请查看收件箱及垃圾邮件文件夹，获取登录详情及后续说明。",
+    "steps": [
+      "打开 GTCFX 发送的确认邮件，按照登录说明操作。",
+      "如有提示，请完善个人资料并验证账户。",
+      "随时返回此处查询金猎鹰颁奖典礼的资格状态。"
+    ],
+    "ctaCheckStatus": "查询我的状态",
+    "ctaHome": "返回首页",
+    "supportNote": "需要帮助？请联系我们的客服团队："
+  }
+}

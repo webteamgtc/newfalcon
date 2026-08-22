@@ -97,12 +97,36 @@
       "subtext": "Twenty-two distinguished categories celebrating the partners, leaders, and achievements that define excellence in global trading.",
       "cta": "Explore All Awards",
       "list": [
-        { "index": "01", "title": "Partner Excellence Award", "country": "Vietnam" },
-        { "index": "02", "title": "Partner Excellence Award", "country": "China" },
-        { "index": "03", "title": "Partner Excellence Award", "country": "India" },
-        { "index": "04", "title": "Global Partner of the Year", "country": "UAE" },
-        { "index": "05", "title": "Elite IB of the Year", "country": "China" },
-        { "index": "06", "title": "Strategic Liquidity Partner", "country": "China" }
+        {
+          "index": "01",
+          "title": "Partner Excellence Award",
+          "country": "Vietnam"
+        },
+        {
+          "index": "02",
+          "title": "Partner Excellence Award",
+          "country": "China"
+        },
+        {
+          "index": "03",
+          "title": "Partner Excellence Award",
+          "country": "India"
+        },
+        {
+          "index": "04",
+          "title": "Global Partner of the Year",
+          "country": "UAE"
+        },
+        {
+          "index": "05",
+          "title": "Elite IB of the Year",
+          "country": "China"
+        },
+        {
+          "index": "06",
+          "title": "Strategic Liquidity Partner",
+          "country": "China"
+        }
       ]
     },
     "media": {
@@ -299,10 +323,22 @@
       "subtext": "A curated assembly of executives, analysts, fund managers, and partners joining us at the Conrad Hotel, Dubai.",
       "description": "A curated community of leaders and voices joining us in Dubai.",
       "filters": [
-        { "id": "all", "label": "All" },
-        { "id": "speakers", "label": "Speakers" },
-        { "id": "judges", "label": "Judges" },
-        { "id": "performers", "label": "Performers" }
+        {
+          "id": "all",
+          "label": "All"
+        },
+        {
+          "id": "speakers",
+          "label": "Speakers"
+        },
+        {
+          "id": "judges",
+          "label": "Judges"
+        },
+        {
+          "id": "performers",
+          "label": "Performers"
+        }
       ],
       "list": [
         {
@@ -401,20 +437,44 @@
       "qualify": {
         "title": "Qualify through performance",
         "fields": [
-          { "label": "Account type", "placeholder": "Select your account type" },
-          { "label": "Account number", "placeholder": "Enter your account number" },
-          { "label": "Country of residence", "placeholder": "Select your country" },
-          { "label": "Trading Lot", "placeholder": "Select volume range" }
+          {
+            "label": "Account type",
+            "placeholder": "Select your account type"
+          },
+          {
+            "label": "Account number",
+            "placeholder": "Enter your account number"
+          },
+          {
+            "label": "Country of residence",
+            "placeholder": "Select your country"
+          },
+          {
+            "label": "Trading Lot",
+            "placeholder": "Select volume range"
+          }
         ],
         "cta": "Request Qualified Access"
       },
       "purchase": {
         "title": "Purchase event access",
         "fields": [
-          { "label": "Ticket type", "placeholder": "Select ticket type" },
-          { "label": "Number of tickets", "placeholder": "Select quantity" },
-          { "label": "Guest name", "placeholder": "Enter full name" },
-          { "label": "Email address", "placeholder": "Enter your email" }
+          {
+            "label": "Ticket type",
+            "placeholder": "Select ticket type"
+          },
+          {
+            "label": "Number of tickets",
+            "placeholder": "Select quantity"
+          },
+          {
+            "label": "Guest name",
+            "placeholder": "Enter full name"
+          },
+          {
+            "label": "Email address",
+            "placeholder": "Enter your email"
+          }
         ],
         "cta": "Proceed to Payment"
       },
@@ -464,7 +524,12 @@
       "closeModal": "Close form",
       "newClientText": "Don't have an IB account yet? Open one now to start your qualification journey.",
       "newClientCta": "Open IB Account Now",
-      "loadingForm": "Loading form..."
+      "loadingForm": "Loading form...",
+      "apiErrors": {
+        "ipNotTrusted": "Your current IP address is not trusted by the system. Please contact support@gtcfx.com.",
+        "verifyFailed": "Unable to verify your account right now. Please try again later.",
+        "serviceUnavailable": "Verification service is temporarily unavailable. Please try again later."
+      }
     },
     "newClientForm": {
       "intro": "Create your GTCFX account to begin your IB qualification journey for Golden Falcon Awards.",
@@ -597,7 +662,11 @@
       "headingPlain": "Clear terms for a",
       "headingItalic": "seamless experience.",
       "updated": "Last updated · August 2026",
-      "labels": ["Scope of Application", "Your Responsibilities", "Our Commitment"],
+      "labels": [
+        "Scope of Application",
+        "Your Responsibilities",
+        "Our Commitment"
+      ],
       "clauses": [
         "These terms apply before, during, and after your participation in the Golden Falcon Awards 2026.",
         "Attendees must provide accurate information and adhere to all published event guidelines and venue policies.",
@@ -650,9 +719,18 @@
     "honoursDescBlack": "The Golden Falcon Awards honour more than results. They recognise the trust, integrity, partnership, and relentless dedication behind every achievement.",
     "honoursDescGold": "Each of our 22 categories is crafted to bring meaningful accomplishment into sharp focus — from regional partner excellence and liquidity leadership to individual milestones and compliance integrity.",
     "stats": [
-      { "number": "04", "label": "Award Families" },
-      { "number": "22", "label": "Award Categories" },
-      { "number": "01", "label": "Signature Distinction" }
+      {
+        "number": "04",
+        "label": "Award Families"
+      },
+      {
+        "number": "22",
+        "label": "Award Categories"
+      },
+      {
+        "number": "01",
+        "label": "Signature Distinction"
+      }
     ],
     "categoriesEyebrow": "Award Categories",
     "categoriesHeadingPlain": "Four pillars of",
@@ -662,22 +740,48 @@
       {
         "title": "Regional Partner Excellence",
         "description": "Celebrating outstanding partners who drive growth and trust in their respective markets.",
-        "items": ["Partner Excellence Award Turkey", "Partner Excellence Award US/LM", "Partner Excellence Award CIS", "Partner Excellence Award Japan", "Partner Excellence Award UK", "Partner Excellence Award Southeast Asia", "Partner Excellence Award India"]
+        "items": [
+          "Partner Excellence Award Turkey",
+          "Partner Excellence Award US/LM",
+          "Partner Excellence Award CIS",
+          "Partner Excellence Award Japan",
+          "Partner Excellence Award UK",
+          "Partner Excellence Award Southeast Asia",
+          "Partner Excellence Award India"
+        ]
       },
       {
         "title": "Liquidity & Strategic Partnerships",
         "description": "Recognising the strategic alliances and liquidity providers that power market infrastructure.",
-        "items": ["Partner Excellence Award – Prop Trading", "Strategic Liquidity Partner", "Liquidity Partner Excellence Award", "Most Trusted & Long-Standing Partner Award"]
+        "items": [
+          "Partner Excellence Award – Prop Trading",
+          "Strategic Liquidity Partner",
+          "Liquidity Partner Excellence Award",
+          "Most Trusted & Long-Standing Partner Award"
+        ]
       },
       {
         "title": "Individual & Performance Awards",
         "description": "Honouring exceptional traders and professionals whose results set new industry benchmarks.",
-        "items": ["Inspiring Women Award", "Youngest Seven-Figure Trader of the Year 2026", "Outstanding Gross Deposit Award", "Quality Customer Champion of the Year", "Top Monthly ROI Award", "Premium Monthly Rebate Award", "Highest Annual Rebate & Trading"]
+        "items": [
+          "Inspiring Women Award",
+          "Youngest Seven-Figure Trader of the Year 2026",
+          "Outstanding Gross Deposit Award",
+          "Quality Customer Champion of the Year",
+          "Top Monthly ROI Award",
+          "Premium Monthly Rebate Award",
+          "Highest Annual Rebate & Trading"
+        ]
       },
       {
         "title": "Leadership & Integrity",
         "description": "Celebrating visionary leadership, Partner acquisition mastery, and uncompromising ethical standards.",
-        "items": ["Highest Partner Acquisition Award", "Elite Partner of the Year", "Global Partner of the Year", "Compliance & Integrity Excellence Award"]
+        "items": [
+          "Highest Partner Acquisition Award",
+          "Elite Partner of the Year",
+          "Global Partner of the Year",
+          "Compliance & Integrity Excellence Award"
+        ]
       }
     ],
     "certificateEyebrow": "Signature Distinction",
@@ -696,9 +800,21 @@
     "journeyHeadingPlain": "Three stages.",
     "journeyHeadingItalic": "One invitation.",
     "stages": [
-      { "number": "01", "name": "Registered", "tier": "Silver Status" },
-      { "number": "02", "name": "Active Trader", "tier": "Gold Status" },
-      { "number": "03", "name": "Qualified", "tier": "Platinum Status" }
+      {
+        "number": "01",
+        "name": "Registered",
+        "tier": "Silver Status"
+      },
+      {
+        "number": "02",
+        "name": "Active Trader",
+        "tier": "Gold Status"
+      },
+      {
+        "number": "03",
+        "name": "Qualified",
+        "tier": "Platinum Status"
+      }
     ],
     "capitalLabel": "01 · Net Deposit",
     "capitalTitle": "Net Deposit",
@@ -728,10 +844,26 @@
     "invitationHeadingItalic": "every detail.",
     "invitationSubtext": "A seamless experience from touchdown to the final toast — designed exclusively for qualified IB partners and their companions.",
     "benefits": [
-      { "index": "01", "title": "Round-Trip Flights", "text": "Complimentary return flights to Dubai for the event weekend." },
-      { "index": "02", "title": "Conrad Hotel Stay", "text": "Premium accommodation at the Conrad Hotel for the duration of the event." },
-      { "index": "03", "title": "Airport Transfers", "text": "Private chauffeur transfers between the airport, hotel, and event venue." },
-      { "index": "04", "title": "Full Event Access", "text": "VIP seating, exclusive reception, gala dinner, and after-party access." }
+      {
+        "index": "01",
+        "title": "Round-Trip Flights",
+        "text": "Complimentary return flights to Dubai for the event weekend."
+      },
+      {
+        "index": "02",
+        "title": "Conrad Hotel Stay",
+        "text": "Premium accommodation at the Conrad Hotel for the duration of the event."
+      },
+      {
+        "index": "03",
+        "title": "Airport Transfers",
+        "text": "Private chauffeur transfers between the airport, hotel, and event venue."
+      },
+      {
+        "index": "04",
+        "title": "Full Event Access",
+        "text": "VIP seating, exclusive reception, gala dinner, and after-party access."
+      }
     ],
     "eligibleEyebrow": "Your Progress",
     "eligibleHeadingPlain": "Every eligible step",
@@ -900,7 +1032,53 @@
     "trustSecure": "256-bit encrypted",
     "trustInstant": "Instant verification",
     "trustVerified": "GTCFX verified",
-    "bottomNote": "Having trouble signing in? Contact support@gtcfx.com"
+    "bottomNote": "Having trouble signing in? Contact support@gtcfx.com",
+    "accessForm": {
+      "eyebrow": "Existing Partner access",
+      "headingPlain": "Verify your account to",
+      "headingItalic": "view your progress.",
+      "description": "If you are an existing GTCFX Partner, enter your registered email to check your VIP qualification status and event ticket access.",
+      "existingClientLabel": "Existing GTCFX Partner?",
+      "selectPlaceholder": "Select",
+      "existingYes": "Yes",
+      "existingNo": "No",
+      "emailLabel": "Email Address*",
+      "emailPlaceholder": "Enter your registered email",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "emailNotFound": "This email is not registered with GTCFX. Please contact support.",
+      "accountInactive": "This account is not active. Please contact support.",
+      "ibIdLabel": "IB ID / Referral Code*",
+      "ibIdPlaceholder": "Enter your IB ID / Referral Code from your email",
+      "ibIdRequired": "IB ID / Referral Code is required",
+      "credentialsNotFound": "Email and IB ID / Referral Code do not match our records.",
+      "getOtp": "Get OTP",
+      "sendingOtp": "Sending...",
+      "verifyingOtp": "Verifying...",
+      "otpLabel": "Enter OTP",
+      "otpRequired": "Please enter the 6-digit OTP",
+      "otpInvalid": "Invalid OTP. Please try again.",
+      "otpSendFailed": "Failed to send OTP. Please try again.",
+      "otpExpiresIn": "OTP expires in {time}",
+      "otpExpired": "Your OTP has expired. Please request a new one.",
+      "verifyOtp": "Verify OTP",
+      "demoOtpHint": "Demo OTP: 123456",
+      "emailVerified": "Your email has been verified successfully. Check your email for your IB ID / Referral Code.",
+      "disclaimer": "By submitting this form, I acknowledge that I have read, understood, and agree to the event terms. I give my consent for GTCFX to contact me regarding my VIP qualification status.",
+      "termsLabel": "I agree to the event terms and privacy policy.",
+      "termsRequired": "You must accept the terms to continue.",
+      "submit": "Check My Status",
+      "submitting": "Submitting...",
+      "closeModal": "Close form",
+      "newClientText": "Don't have an IB account yet? Open one now to start your qualification journey.",
+      "newClientCta": "Open IB Account Now",
+      "loadingForm": "Loading form...",
+      "apiErrors": {
+        "ipNotTrusted": "Your current IP address is not trusted by the system. Please contact support@gtcfx.com.",
+        "verifyFailed": "Unable to verify your account right now. Please try again later.",
+        "serviceUnavailable": "Verification service is temporarily unavailable. Please try again later."
+      }
+    }
   },
   "common": {
     "backToHome": "Back to Home",

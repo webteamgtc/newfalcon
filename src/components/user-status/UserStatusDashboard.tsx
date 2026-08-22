@@ -14,11 +14,17 @@ import { SHOW_VISA_SECTION } from "@/lib/featureFlags";
 
 /* ─── helpers ─── */
 
+function getDateLocale(locale: string) {
+  if (locale === "ar") return "ar-AE";
+  if (locale === "zh") return "zh-CN";
+  return "en-GB";
+}
+
 function formatDisplayDate(value: string, locale: string) {
   if (!value) return "";
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat(locale === "ar" ? "ar-AE" : "en-GB", {
+  return new Intl.DateTimeFormat(getDateLocale(locale), {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -29,7 +35,7 @@ function formatDisplayDateTime(value: string, locale: string) {
   if (!value) return "";
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat(locale === "ar" ? "ar-AE" : "en-GB", {
+  return new Intl.DateTimeFormat(getDateLocale(locale), {
     weekday: "short",
     day: "numeric",
     month: "short",

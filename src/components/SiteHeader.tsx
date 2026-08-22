@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useVipUser } from "@/context/VipUserProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function SiteHeader() {
   const t = useTranslations("nav");
@@ -57,23 +58,20 @@ export default function SiteHeader() {
         >
 
           {links.map((link) => (
-
             <Link
-
               key={link.href}
-
               href={link.href}
-
               className={`text-xs font-medium tracking-[0.12em] transition-colors hover:text-falcon-deep ${isGallery ? "!text-[#fff]" : "!text-[#07111F]"}`}
-
             >
-
               {link.label}
-
             </Link>
-
           ))}
 
+          <span
+            className={`mx-1 h-5 w-px shrink-0 ${isGallery ? "bg-white/30" : "bg-ink/20"}`}
+            aria-hidden
+          />
+          <LanguageSwitcher variant={isGallery ? "light" : "default"} />
         </nav>
 
 
@@ -109,25 +107,18 @@ export default function SiteHeader() {
           <nav className="flex flex-col gap-4">
 
             {links.map((link) => (
-
               <Link
-
                 key={link.href}
-
                 href={link.href}
-
                 onClick={() => setOpen(false)}
-
                 className="TextSmall font-medium tracking-[0.12em] !text-[#07111F]"
-
               >
-
                 {link.label}
-
               </Link>
-
             ))}
 
+            <div className="my-2 h-px bg-ink/10" aria-hidden />
+            <LanguageSwitcher />
           </nav>
 
         </div>

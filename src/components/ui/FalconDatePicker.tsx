@@ -3,7 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { DayPicker, type Matcher } from "react-day-picker";
 import { format, isValid, parse, startOfDay, startOfMonth, endOfMonth } from "date-fns";
-import { ar, enUS } from "date-fns/locale";
+import { ar, enUS, zhCN } from "date-fns/locale";
 import { useLocale } from "next-intl";
 import "react-day-picker/style.css";
 
@@ -64,7 +64,8 @@ export default function FalconDatePicker({
   const locale = useLocale();
   const generatedId = useId();
   const inputId = id ?? generatedId;
-  const dateFnsLocale = locale === "ar" ? ar : enUS;
+  const dateFnsLocale =
+    locale === "ar" ? ar : locale === "zh" ? zhCN : enUS;
   const selected = parseIsoDate(value);
   const today = useMemo(() => startOfDay(new Date()), []);
   const [open, setOpen] = useState(false);

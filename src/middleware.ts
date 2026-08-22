@@ -7,7 +7,7 @@ const intlMiddleware = createMiddleware(routing);
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const localeAdminMatch = pathname.match(/^\/(en|ar)(\/admin(?:\/.*)?)$/);
+  const localeAdminMatch = pathname.match(/^\/(en|ar|zh)(\/admin(?:\/.*)?)$/);
   if (localeAdminMatch) {
     return NextResponse.redirect(new URL(localeAdminMatch[2], request.url));
   }

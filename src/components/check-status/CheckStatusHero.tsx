@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import StaffRegistrationModal from "@/components/check-status/StaffRegistrationModal";
 import CheckStatusTrustBadges from "@/components/check-status/CheckStatusTrustBadges";
 import TicketAccessForm from "@/components/ticket/TicketAccessForm";
 export default function CheckStatusHero() {
   const t = useTranslations("checkStatusPage");
+  const locale = useLocale();
+  const useUppercaseLabels = locale === "en";
   const [staffModalOpen, setStaffModalOpen] = useState(false);
 
   return (
@@ -33,7 +35,7 @@ export default function CheckStatusHero() {
               <button
                 type="button"
                 onClick={() => setStaffModalOpen(true)}
-                className="inline-flex items-center gap-4 rounded-full border border-ink/25 bg-white/80 py-1.5 ps-6 pe-3 font-poppins text-sm uppercase tracking-[0.14em] text-ink transition-colors hover:border-falcon-deep hover:bg-white"
+                className={`inline-flex items-center gap-4 rounded-full border border-ink/25 bg-white/80 py-1.5 ps-6 pe-3 font-poppins text-sm text-ink transition-colors hover:border-falcon-deep hover:bg-white ${useUppercaseLabels ? "uppercase tracking-[0.14em]" : "tracking-wide"}`}
               >
                 <span>{t("staffRegistrationCta")}</span>
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-white">
@@ -70,7 +72,10 @@ export default function CheckStatusHero() {
                   <p id="check-status-form-title" className="sr-only">
                     {t("formEyebrow")}
                   </p>
-                  <TicketAccessForm embedded />
+                  <TicketAccessForm
+                    embedded
+                    translationNamespace="checkStatusPage.accessForm"
+                  />
                 </div>
 
                 <p className="mx-auto mt-6 max-w-md text-center font-poppins text-[11px] leading-relaxed text-ink/50">

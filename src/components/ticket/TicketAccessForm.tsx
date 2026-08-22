@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useCallback, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import Button from "@/components/Button";
 import { useVipUser } from "@/context/VipUserProvider";
@@ -17,11 +17,29 @@ function formatOtpCountdown(remainingMs: number) {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
+function resolveVerifyError(
+  t: (key: string) => string,
+  data: { code?: string; message?: string }
+) {
+  if (data.code === "INACTIVE") return t("accountInactive");
+  if (data.code === "NOT_REGISTERED") return t("emailNotFound");
+  if (data.code === "IP_NOT_TRUSTED") return t("apiErrors.ipNotTrusted");
+  if (data.code === "VERIFY_FAILED") return t("apiErrors.verifyFailed");
+
+  const message = data.message ?? "";
+  if (/不为系统可信任的IP|not trusted|trusted ip/i.test(message)) {
+    return t("apiErrors.ipNotTrusted");
+  }
+
+  return message || t("apiErrors.verifyFailed");
+}
+
 type TicketAccessFormProps = {
   compact?: boolean;
   pageLayout?: boolean;
   embedded?: boolean;
   onSuccess?: () => void;
+  translationNamespace?: "ticketPage.accessForm" | "checkStatusPage.accessForm";
 };
 
 export default function TicketAccessForm({
@@ -29,8 +47,11 @@ export default function TicketAccessForm({
   pageLayout = false,
   embedded = false,
   onSuccess,
+  translationNamespace = "ticketPage.accessForm",
 }: TicketAccessFormProps) {
-  const t = useTranslations("ticketPage.accessForm");
+  const t = useTranslations(translationNamespace);
+  const locale = useLocale();
+  const useUppercaseLabels = locale === "en";
   const router = useRouter();
   const { login } = useVipUser();
 
@@ -142,7 +163,7 @@ export default function TicketAccessForm({
         if (verifyData?.code === "INACTIVE") {
           setEmailError(t("accountInactive"));
         } else {
-          setEmailError(verifyData?.message || t("emailNotFound"));
+          setEmailError(resolveVerifyError(t, verifyData));
         }
         setVerifiedClient(null);
         setVerifiedPerformance(null);
@@ -356,7 +377,7 @@ export default function TicketAccessForm({
                 type="button"
                 onClick={handleGetOtp}
                 disabled={otpLoading || otpVerified || !email.trim() || otpSessionActive}
-                className={`h-12 min-w-[8.5rem] shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep shadow-sm transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50${otpSessionActive ? " font-mono tabular-nums tracking-normal" : ""}`}
+                className={`h-12 min-w-[8.5rem] shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs text-falcon-deep shadow-sm transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50${useUppercaseLabels ? " uppercase tracking-[0.14em]" : " tracking-wide"}${otpSessionActive ? " font-mono tabular-nums tracking-normal" : ""}`}
               >
                 {otpLoading
                   ? t("sendingOtp")
@@ -384,7 +405,7 @@ export default function TicketAccessForm({
                     type="button"
                     onClick={handleVerifyOtp}
                     disabled={otpInput.length !== 6 || otpVerifying}
-                    className="h-12 shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs uppercase tracking-[0.14em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                    className={`h-12 shrink-0 rounded-full border border-falcon-deep bg-white px-6 font-poppins text-xs text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50${useUppercaseLabels ? " uppercase tracking-[0.14em]" : " tracking-wide"}`}
                   >
                     {otpVerifying ? t("verifyingOtp") : t("verifyOtp")}
                   </button>
@@ -436,7 +457,7 @@ export default function TicketAccessForm({
             <Button
               type="button"
               variant="gold"
-              className="mt-2 w-full justify-between"
+              className={`mt-2 w-full justify-between${useUppercaseLabels ? "" : " normal-case tracking-wide"}`}
               textClassName="text-white flex-1"
               disabled={
                 loading ||
