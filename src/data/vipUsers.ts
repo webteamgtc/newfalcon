@@ -51,7 +51,7 @@ function getOverallProgressPercent(
 }
 
 function getQualificationDaysRemaining() {
-  const end = new Date("2026-10-31T23:59:59");
+  const end = new Date("2026-11-30T23:59:59");
   return Math.max(
     0,
     Math.ceil((end.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
