@@ -1,6 +1,6 @@
 {
   "meta": {
-    "siteName": "金猎鹰颁奖典礼",
+    "siteName": "金鹰节颁奖典礼",
     "brand": "GTCFX",
     "brandFull": "GTCFX — 受监管的多资产经纪商",
     "tagline": "庆祝全球交易伙伴关系的卓越成就",
@@ -24,8 +24,8 @@
   "home": {
     "hero": {
       "eyebrow": "诚挚邀请您出席",
-      "titleLine1": "金",
-      "titleLine2": "猎鹰",
+      "titleLine1": "金鹰节",
+      "titleLine2": "",
       "titleLine3": "颁奖典礼",
       "year": "2026",
       "subtitle": "「卓越，在此绽放」",
@@ -53,7 +53,7 @@
         {
           "year": "2023",
           "title": "卓越之基",
-          "description": "首届金猎鹰颁奖典礼为交易行业表彰树立了全新标杆。"
+          "description": "金鹰节奖典礼为交易行业表彰树立了全新标杆。"
         }
       ]
     },
@@ -132,7 +132,7 @@
     "media": {
       "eyebrow": "全球报道",
       "heading": "媒体合作伙伴",
-      "subtext": "国际主流财经媒体与新闻机构，将金猎鹰颁奖典礼的影响力传递至 46 个国家——从广播电视到数字出版物。",
+      "subtext": "国际主流财经媒体与新闻机构，将金鹰节颁奖典礼的影响力传递至 46 个国家——从广播电视到数字出版物。",
       "partners": [
         "TRT World",
         "Khaleej Times",
@@ -151,7 +151,7 @@
       "cta": "提交问题",
       "list": [
         {
-          "question": "如何注册参加金猎鹰颁奖典礼？",
+          "question": "如何注册参加金鹰节颁奖典礼？",
           "answer": "请通过我们的门票页面在线注册。确认后，您将在 48 小时内通过电子邮件收到邀请详情和活动准入信息。"
         },
         {
@@ -160,7 +160,7 @@
         },
         {
           "question": "活动在哪里举办？",
-          "answer": "2026 年金猎鹰颁奖典礼将于 Conrad Hotel, Sheikh Zayed Road, Dubai, UAE 举行。VIP 嘉宾可享受代客泊车及免费接送服务。"
+          "answer": "2026 年金鹰节颁奖典礼将于 Conrad Hotel, Sheikh Zayed Road, Dubai, UAE 举行。VIP 嘉宾可享受代客泊车及免费接送服务。"
         },
         {
           "question": "我可以将门票转赠给同事吗？",
@@ -169,10 +169,10 @@
       ]
     },
     "footerCta": {
-      "eyebrow": "金猎鹰颁奖典礼 2026",
+      "eyebrow": "金鹰节颁奖典礼 2026",
       "headingPlain": "成为非凡",
       "headingItalic": "的一部分。",
-      "subtext": "2026 年金猎鹰颁奖典礼汇聚全球交易领域最杰出的人才。无论您是合作伙伴、交易者还是远见者——这是属于您的舞台。",
+      "subtext": "2026 年金鹰节颁奖典礼汇聚全球交易领域最杰出的人才。无论您是合作伙伴、交易者还是远见者——这是属于您的舞台。",
       "cta": "探索您的邀请"
     }
   },
@@ -180,13 +180,13 @@
     "hero": {
       "headingPlain": "伟大时刻",
       "headingItalic": "永载史册。",
-      "subtext": "走进金猎鹰颁奖典礼的标志性瞬间——一部关于雄心实现、伙伴关系庆祝，以及镌刻于全球交易卓越史册的传承的非凡编年史。"
+      "subtext": "走进金鹰节颁奖典礼的标志性瞬间——一部关于雄心实现、伙伴关系庆祝，以及镌刻于全球交易卓越史册的传承的非凡编年史。"
     },
     "ambition": {
       "eyebrow": "特邀嘉宾",
       "headingPlain": "以雄心铸就。",
       "headingItalic": "以卓越定义。",
-      "paragraph1": "金猎鹰颁奖典礼已成长为交易行业最负盛名的盛会——汇聚设定全球标准的合作伙伴、高管与领袖。",
+      "paragraph1": "金鹰节颁奖典礼已成长为交易行业最负盛名的盛会——汇聚设定全球标准的合作伙伴、高管与领袖。",
       "paragraph2": "每一届都将标杆推至新高，带来更深层次的连接、更精准的认可，以及配得上所表彰成就的庆典。"
     },
     "recognition": {
@@ -216,7 +216,7 @@
       "eyebrow": "时间线",
       "headingPlain": "由非凡里程碑",
       "headingItalic": "塑造的历程。",
-      "subtext": "从首届私密典礼到全球知名盛会——每一届都为金猎鹰传承增添浓墨重彩的一章。",
+      "subtext": "从首届私密典礼到全球知名盛会——每一届都为金鹰节传承增添浓墨重彩的一章。",
       "timeline": [
         {
           "year": "2025",
@@ -231,7 +231,7 @@
         {
           "year": "2023",
           "title": "卓越之基",
-          "description": "首届金猎鹰颁奖典礼为交易行业表彰树立了全新标杆。"
+          "description": "金鹰节奖典礼为交易行业表彰树立了全新标杆。"
         },
         {
           "year": "2022",
@@ -245,7 +245,7 @@
       "headingPlain": "以瞬间讲述的",
       "headingItalic": "历程。",
       "subtext": "探索全球活动、幕后故事、社群亮点、媒体报道，以及定义我们影响力的里程碑。",
-      "imageAlt": "金猎鹰颁奖典礼图库瞬间 {number}",
+      "imageAlt": "金鹰节颁奖典礼图库瞬间 {number}",
       "openImage": "查看图库图片 {number}",
       "lightboxLabel": "图库图片查看器",
       "closeLightbox": "关闭图库视图",
@@ -257,7 +257,7 @@
   "agenda": {
     "eyebrow": "盛典之夜",
     "heading": "当晚流程一览。",
-    "subtext": "从红毯入场到闭幕庆典——2026 年金猎鹰颁奖典礼完整行程。",
+    "subtext": "从红毯入场到闭幕庆典——2026 年金鹰节颁奖典礼完整行程。",
     "venueLabel": "场地",
     "venue": "Conrad Hotel，Sheikh Zayed Road，迪拜，阿联酋",
     "schedule": [
@@ -284,7 +284,7 @@
       {
         "time": "9:30 PM",
         "title": "颁奖典礼",
-        "description": "颁发全部 22 个金猎鹰奖项类别，表彰年度最杰出的合作伙伴与成就。"
+        "description": "颁发全部 22 个金鹰节奖项类别，表彰年度最杰出的合作伙伴与成就。"
       },
       {
         "time": "11:00 PM",
@@ -306,7 +306,7 @@
       "sectionLabel": "特邀嘉宾",
       "headingPlain": "远见之声。",
       "headingItalic": "影响之篇。",
-      "subtext": "每一届金猎鹰颁奖典礼，都因挑战常规、在全球舞台上激励卓越的领袖而升华。",
+      "subtext": "每一届金鹰节颁奖典礼，都因挑战常规、在全球舞台上激励卓越的领袖而升华。",
       "label": "特邀演讲嘉宾",
       "tag": "英国 · 首席商务官",
       "quote": "「当远见转化为他人的机遇，领导力才真正有意义。」",
@@ -392,7 +392,7 @@
         {
           "name": "Sofia Marin",
           "role": "国际艺术家舞台表演者",
-          "bio": "为金猎鹰颁奖典礼闭幕庆典带来世界级现场艺术表演。",
+          "bio": "为金鹰节颁奖典礼闭幕庆典带来世界级现场艺术表演。",
           "category": "performers"
         }
       ]
@@ -407,7 +407,7 @@
   "mediaPage": {
     "eyebrow": "新闻与媒体",
     "heading": "媒体报道与合作伙伴",
-    "subtext": "国际新闻与财经媒体将金猎鹰颁奖典礼的影响力传递至 46 个国家的受众——从主流广播电视到顶级数字出版物。",
+    "subtext": "国际新闻与财经媒体将金鹰节颁奖典礼的影响力传递至 46 个国家的受众——从主流广播电视到顶级数字出版物。",
     "watchHighlights": "观看活动精彩回顾",
     "pressKit": "下载新闻资料包"
   },
@@ -415,7 +415,7 @@
     "hero": {
       "headingPlain": "一夜。一舞台。一传承。",
       "headingItalic": "无限荣耀，静候您来。",
-      "subtext": "2026年12月12日 — Conrad Hotel, Dubai。金猎鹰颁奖典礼汇聚 200 余位交易精英、合作伙伴与远见者，共赴全球交易领域最受期待的夜晚。红毯、世界级演讲嘉宾、22 项大奖。这是通往荣耀的邀请。",
+      "subtext": "2026年12月12日 — Conrad Hotel, Dubai。金鹰节颁奖典礼汇聚 200 余位交易精英、合作伙伴与远见者，共赴全球交易领域最受期待的夜晚。红毯、世界级演讲嘉宾、22 项大奖。这是通往荣耀的邀请。",
       "primaryCta": "确认席位",
       "secondaryCta": "查看资格"
     },
@@ -424,7 +424,7 @@
       "headingItalic": "参与方式。",
       "subtext": "两种出席途径：以 IB 合作伙伴身份通过交易业绩获得资格，或直接购买活动门票供您及宾客使用。",
       "eyebrow": "门票信息",
-      "descriptionText": "金猎鹰颁奖典礼是一场精心策划的活动。每一份门票申请均经审核，以确保宾客体验周到、相关且个性化。",
+      "descriptionText": "金鹰节颁奖典礼是一场精心策划的活动。每一份门票申请均经审核，以确保宾客体验周到、相关且个性化。",
       "twoAccessLabel": "两种准入途径",
       "twoAccessHint": "选择一种方式 · 均可通往 Golden Falcon Night",
       "complimentaryAccess": "免费准入",
@@ -532,7 +532,7 @@
       }
     },
     "newClientForm": {
-      "intro": "创建 GTCFX 账户，开启金猎鹰颁奖典礼 IB 资格之旅。",
+      "intro": "创建 GTCFX 账户，开启金鹰节颁奖典礼 IB 资格之旅。",
       "fields": {
         "firstName": "名",
         "lastName": "姓",
@@ -629,10 +629,10 @@
   },
   "policyPage": {
     "hero": {
-      "eyebrow": "金猎鹰颁奖典礼 · 法律条款",
+      "eyebrow": "金鹰节颁奖典礼 · 法律条款",
       "headingPlain": "条款",
       "headingItalic": "与条件。",
-      "subtext": "请查阅 2026 年金猎鹰颁奖典礼的活动准入、参与、隐私及使用条件相关条款。本活动由 GTC Global Trade Capital Co. Limited 组织。"
+      "subtext": "请查阅 2026 年金鹰节颁奖典礼的活动准入、参与、隐私及使用条件相关条款。本活动由 GTC Global Trade Capital Co. Limited 组织。"
     },
     "intro": {
       "eyebrow": "政策概览",
@@ -668,7 +668,7 @@
         "我们的承诺"
       ],
       "clauses": [
-        "本条款适用于您参与 2026 年金猎鹰颁奖典礼之前、期间及之后。",
+        "本条款适用于您参与 2026 年金鹰节颁奖典礼之前、期间及之后。",
         "参会者须提供准确信息，并遵守所有已发布的活动指南及场馆政策。",
         "GTCFX 致力于透明沟通、负责任的数据处理及优质的宾客体验。"
       ]
@@ -708,7 +708,7 @@
     "rights": "© 2026 GTC Global Trade Capital Co. Limited. 保留所有权利。"
   },
   "awardsPage": {
-    "heroEyebrow": "金猎鹰颁奖典礼 2026",
+    "heroEyebrow": "金鹰节颁奖典礼 2026",
     "heroHeadingPlain": "至高",
     "heroHeadingItalic": "级别的认可。",
     "heroDescBlack": "表彰定义全球交易社区卓越成就的合作伙伴、领袖与里程碑——从区域专精到全球影响力。",
@@ -716,7 +716,7 @@
     "honoursEyebrow": "荣誉殿堂",
     "honoursHeadingPlain": "卓越值得",
     "honoursHeadingItalic": "被庆祝。",
-    "honoursDescBlack": "金猎鹰颁奖典礼所表彰的不仅是结果，更是每一项成就背后的信任、诚信、伙伴关系与不懈奉献。",
+    "honoursDescBlack": "金鹰节颁奖典礼所表彰的不仅是结果，更是每一项成就背后的信任、诚信、伙伴关系与不懈奉献。",
     "honoursDescGold": "我们的 22 个类别旨在聚焦有意义的成就——从区域合作伙伴卓越与流动性领导力，到个人里程碑与合规诚信。",
     "stats": [
       {
@@ -785,7 +785,7 @@
       }
     ],
     "certificateEyebrow": "标志性荣誉",
-    "certificateTitle": "金猎鹰",
+    "certificateTitle": "金鹰节",
     "certificateTitleItalic": "远见奖。",
     "certificateDesc": "当晚至高荣誉——授予以远见、影响力及持续贡献在全球交易社区创造变革性影响的合作伙伴或领袖。"
   },
@@ -985,7 +985,7 @@
     "heroYear": "2026",
     "heroHeadingPlain": "验证账户以",
     "heroHeadingItalic": "查看进度。",
-    "heroSubtext": "输入注册邮箱以查询 VIP 资格状态及金猎鹰颁奖典礼准入。",
+    "heroSubtext": "输入注册邮箱以查询 VIP 资格状态及金鹰节颁奖典礼准入。",
     "heroCta": "开始验证",
     "staffRegistrationCta": "员工注册",
     "staffRegistration": {
@@ -1098,7 +1098,7 @@
     "eyebrow": "注册状态",
     "headingPlain": "您的注册",
     "headingItalic": "面板。",
-    "description": "查看您已提交的信息及金猎鹰颁奖典礼的当前注册状态。",
+    "description": "查看您已提交的信息及金鹰节颁奖典礼的当前注册状态。",
     "welcome": "欢迎回来，{name}",
     "loading": "正在加载您的注册详情...",
     "referenceId": "参考编号",
@@ -1147,7 +1147,7 @@
       "complete": "已完成 {completed} / {total} 个步骤",
       "percentComplete": "已完成 {percent}%",
       "stepLabel": "第 {step} 步",
-      "allComplete": "所有步骤均已完成。期待在金猎鹰颁奖典礼与您相见。"
+      "allComplete": "所有步骤均已完成。期待在金鹰节颁奖典礼与您相见。"
     },
     "lookup": {
       "title": "查找您的注册",
@@ -1235,7 +1235,7 @@
       },
       "hints": {
         "qualificationPending": "我们的团队正在审核您的活动资格。",
-        "qualified": "您已被标记为符合金猎鹰颁奖典礼资格。",
+        "qualified": "您已被标记为符合金鹰节颁奖典礼资格。",
         "visaPending": "签证处理更新将显示于此。",
         "visaApproved": "您的签证已获批。您可在下方下载签证文件。",
         "visaRejected": "请联系客服了解签证后续步骤。",
@@ -1276,17 +1276,17 @@
     }
   },
   "thankYouPage": {
-    "metaTitle": "感谢 — 金猎鹰颁奖典礼",
+    "metaTitle": "感谢 — 金鹰节颁奖典礼",
     "eyebrow": "注册已收到",
     "headingPlain": "感谢",
     "headingItalic": "您的注册。",
-    "description": "您的 GTCFX 账户注册已成功提交。我们正在为您准备金猎鹰颁奖典礼的后续步骤。",
+    "description": "您的 GTCFX 账户注册已成功提交。我们正在为您准备金鹰节颁奖典礼的后续步骤。",
     "emailNoticeTitle": "请查收邮件",
     "emailNoticeBody": "确认邮件已发送至您提供的邮箱。请查看收件箱及垃圾邮件文件夹，获取登录详情及后续说明。",
     "steps": [
       "打开 GTCFX 发送的确认邮件，按照登录说明操作。",
       "如有提示，请完善个人资料并验证账户。",
-      "随时返回此处查询金猎鹰颁奖典礼的资格状态。"
+      "随时返回此处查询金鹰节颁奖典礼的资格状态。"
     ],
     "ctaCheckStatus": "查询我的状态",
     "ctaHome": "返回首页",

@@ -51,8 +51,8 @@ export default function Hero() {
             <>
               <h1 className="max-w-[720px] font-display text-[2.75rem] font-medium leading-[1.12] tracking-[0.02em] text-ink md:text-[4.5rem] lg:text-[5rem]">
                 <span className="text-falcon-deep">{t("titleLine1")}</span>
-                <span className="text-ink">{t("titleLine2")}</span>
-                <span className="text-ink">{t("titleLine3")}</span>
+                {t("titleLine2") ? <span>{t("titleLine2")}</span> : null}
+                {t("titleLine3") ? <span>{t("titleLine3")}</span> : null}
               </h1>
               <p className="mt-3 font-display text-[2rem] font-bold tracking-[0.28em] text-falcon-deep md:text-[3.25rem] lg:text-[3.75rem]">
                 {t("year")}

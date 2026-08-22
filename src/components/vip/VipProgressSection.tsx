@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useVipUser } from "@/context/VipUserProvider";
-import { formatActivity, formatCurrency, VIP_QUALIFICATION_TARGETS } from "@/data/vipUsers";
+import { formatActivity, formatCurrency, isVipQualified, VIP_QUALIFICATION_TARGETS } from "@/data/vipUsers";
 import VipTicketBookingModal from "@/components/vip/VipTicketBookingModal";
 import { hasTicketBooking } from "@/components/vip/VipTicketBookingForm";
 
@@ -68,7 +68,7 @@ export default function VipProgressSection() {
   );
   const summaryPercent = user.progressPercent;
   const summaryColors = getProgressColors(summaryPercent);
-  const isFullyQualified = capitalPercent >= 100 && activityPercent >= 100;
+  const isFullyQualified = isVipQualified(user.capitalCurrent, user.activityCurrent);
   const stageLabels = t.raw("stages") as { number: string; name: string; tier: string }[];
 
   return (

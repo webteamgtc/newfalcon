@@ -35,19 +35,44 @@ const DEFAULT_STAGES: VipStage[] = [
   { number: "03", name: "Qualified", tier: "Platinum Status" },
 ];
 
+function getCapitalProgressPercent(capitalCurrent: number): number {
+  return Math.min(
+    Math.round((capitalCurrent / VIP_QUALIFICATION_TARGETS.capital) * 100),
+    100
+  );
+}
+
+function getActivityProgressPercent(activityCurrent: number): number {
+  return Math.min(
+    Math.round((activityCurrent / VIP_QUALIFICATION_TARGETS.activity) * 100),
+    100
+  );
+}
+
+export function isVipQualified(
+  capitalCurrent: number,
+  activityCurrent: number
+): boolean {
+  return (
+    getCapitalProgressPercent(capitalCurrent) >= 100 ||
+    getActivityProgressPercent(activityCurrent) >= 100
+  );
+}
+
 function getOverallProgressPercent(
   capitalCurrent: number,
   activityCurrent: number
 ): number {
-  const capitalPercent = Math.min(
-    Math.round((capitalCurrent / VIP_QUALIFICATION_TARGETS.capital) * 100),
-    100
+  return Math.max(
+    getCapitalProgressPercent(capitalCurrent),
+    getActivityProgressPercent(activityCurrent)
   );
-  const activityPercent = Math.min(
-    Math.round((activityCurrent / VIP_QUALIFICATION_TARGETS.activity) * 100),
-    100
-  );
-  return Math.min(capitalPercent, activityPercent);
+}
+
+function getActiveStageIndex(capital: number, activity: number): number {
+  if (isVipQualified(capital, activity)) return 2;
+  if (capital > 0 || activity > 0) return 1;
+  return 0;
 }
 
 function getQualificationDaysRemaining() {
@@ -56,13 +81,6 @@ function getQualificationDaysRemaining() {
     0,
     Math.ceil((end.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
   );
-}
-
-function getActiveStageIndex(capital: number, activity: number): number {
-  const pct = getOverallProgressPercent(capital, activity);
-  if (pct >= 100) return 2;
-  if (capital > 0 || activity > 0) return 1;
-  return 0;
 }
 
 export type IbClientData = {
