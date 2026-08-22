@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useVipUser } from "@/context/VipUserProvider";
 import { formatActivity, formatCurrency, VIP_QUALIFICATION_TARGETS } from "@/data/vipUsers";
 import VipTicketBookingModal from "@/components/vip/VipTicketBookingModal";
@@ -20,8 +20,28 @@ function getProgressColors(percent: number) {
   return { bar: "#EF4444", text: "#B91C1C" };
 }
 
+function getMotivationalMessage(
+  percent: number,
+  t: ReturnType<typeof useTranslations<"vipPage">>
+) {
+  if (percent >= 75) return t("motivation75");
+  if (percent >= 50) return t("motivation50");
+  if (percent >= 25) return t("motivation25");
+  if (percent > 0) return t("motivationStarted");
+  return t("motivationStart");
+}
+
+function getNextMilestone(percent: number): { label: string; value: number } {
+  if (percent < 25) return { label: "25%", value: 25 };
+  if (percent < 50) return { label: "50%", value: 50 };
+  if (percent < 75) return { label: "75%", value: 75 };
+  return { label: "100%", value: 100 };
+}
+
 export default function VipProgressSection() {
   const t = useTranslations("vipPage");
+  const locale = useLocale();
+  const useUppercaseLabels = locale === "en";
   const { user } = useVipUser();
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [hasRegistered, setHasRegistered] = useState(false);
@@ -49,6 +69,7 @@ export default function VipProgressSection() {
   const summaryPercent = user.progressPercent;
   const summaryColors = getProgressColors(summaryPercent);
   const isFullyQualified = capitalPercent >= 100 && activityPercent >= 100;
+  const stageLabels = t.raw("stages") as { number: string; name: string; tier: string }[];
 
   return (
     <section id="progress" className="scroll-mt-4 bg-[#FFFDF8] py-12 md:py-16">
@@ -74,6 +95,7 @@ export default function VipProgressSection() {
         <div className="mt-8 grid border-s border-t border-ink/20 md:mt-14 md:grid-cols-3">
           {user.stages.map((stage, index) => {
             const isQualifiedStage = isFullyQualified && index === user.activeStageIndex;
+            const stageLabel = stageLabels[index] ?? stage;
             return (
               <article
                 key={stage.number}
@@ -81,29 +103,37 @@ export default function VipProgressSection() {
                 style={
                   isQualifiedStage
                     ? {
-                      background:
-                        "linear-gradient(117deg, #DCFCE7 0.63%, #F0FDF4 100%)",
-                      borderColor: "#22C55E",
-                    }
+                        background:
+                          "linear-gradient(117deg, #DCFCE7 0.63%, #F0FDF4 100%)",
+                        borderColor: "#22C55E",
+                      }
                     : index === user.activeStageIndex
                       ? {
-                        background:
-                          "linear-gradient(117deg, #E8CB8F 0.63%, #FEF3DA 100%)",
-                      }
+                          background:
+                            "linear-gradient(117deg, #E8CB8F 0.63%, #FEF3DA 100%)",
+                        }
                       : {
-                        background: "#F8F0E4",
-                      }
+                          background: "#F8F0E4",
+                        }
                 }
               >
                 <div className="flex items-center gap-4">
-                  <span className={`font-poppins flex h-8 w-8 items-center justify-center rounded-full border text-xs tracking-[0.14em] ${isQualifiedStage ? "border-green-500 text-green-700 bg-green-50" : "border-[#382910] text-ink"}`}>
+                  <span
+                    className={`font-poppins flex h-8 w-8 items-center justify-center rounded-full border text-xs tracking-[0.14em] ${isQualifiedStage ? "border-green-500 text-green-700 bg-green-50" : "border-[#382910] text-ink"}`}
+                  >
                     {isQualifiedStage ? "✓" : stage.number}
                   </span>
 
                   <div>
-                    <p className={`mb-1 text-xs !font-poppins ${isQualifiedStage ? "!text-green-700" : "!text-ink"}`}>{stage.tier}</p>
-                    <h3 className={`font-display HeadingH5 !font-medium ${isQualifiedStage ? "!text-green-700" : "!text-ink"}`}>
-                      {stage.name}
+                    <p
+                      className={`mb-1 text-xs !font-poppins ${isQualifiedStage ? "!text-green-700" : "!text-ink"}`}
+                    >
+                      {stageLabel.tier}
+                    </p>
+                    <h3
+                      className={`font-display HeadingH5 !font-medium ${isQualifiedStage ? "!text-green-700" : "!text-ink"}`}
+                    >
+                      {stageLabel.name}
                     </h3>
                   </div>
                 </div>
@@ -127,6 +157,8 @@ export default function VipProgressSection() {
             })}
             percentText={`${capitalPercent}%`}
             percent={capitalPercent}
+            t={t}
+            useUppercaseLabels={useUppercaseLabels}
           />
           <ProgressCard
             label={t("activityLabel")}
@@ -142,25 +174,32 @@ export default function VipProgressSection() {
             })}
             percentText={`${activityPercent}%`}
             percent={activityPercent}
+            t={t}
+            useUppercaseLabels={useUppercaseLabels}
           />
         </div>
-        {!isFullyQualified &&
-
+        {!isFullyQualified && (
           <div
             className={`mx-auto mt-6 flex max-w-3xl flex-col gap-6 px-7 py-5 md:mt-12 ${isFullyQualified ? "" : "md:flex-row md:items-center md:justify-between"}`}
             style={{
               borderRadius: "64px",
-              border: isFullyQualified ? "2px solid #22C55E" : "1px solid rgba(56, 41, 16, 0.30)",
+              border: isFullyQualified
+                ? "2px solid #22C55E"
+                : "1px solid rgba(56, 41, 16, 0.30)",
               background: isFullyQualified ? "#F0FDF4" : "#FBF6ED",
             }}
           >
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-4">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className={`font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-700" : "text-[#382910]"}`}>
+                  <p
+                    className={`font-poppins text-xs ${useUppercaseLabels ? "uppercase tracking-[0.13em]" : "tracking-wide"} ${isFullyQualified ? "text-green-700" : "text-[#382910]"}`}
+                  >
                     {isFullyQualified ? t("fullyQualifiedLabel") : t("summaryLabel")}
                   </p>
-                  <p className={`mt-1 font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-600" : "text-[#382910]"}`}>
+                  <p
+                    className={`mt-1 font-poppins text-xs ${useUppercaseLabels ? "uppercase tracking-[0.13em]" : "tracking-wide"} ${isFullyQualified ? "text-green-600" : "text-[#382910]"}`}
+                  >
                     {isFullyQualified ? t("fullyQualifiedSubtext") : t("progressSubtext")}
                   </p>
                 </div>
@@ -174,30 +213,36 @@ export default function VipProgressSection() {
               <span className="hidden h-8 w-px bg-ink/15 md:block" />
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className={`font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-700" : "text-[#382910]"}`}>
+                  <p
+                    className={`font-poppins text-xs ${useUppercaseLabels ? "uppercase tracking-[0.13em]" : "tracking-wide"} ${isFullyQualified ? "text-green-700" : "text-[#382910]"}`}
+                  >
                     {t("daysLabel")}
                   </p>
-                  <p className={`mt-1 font-poppins text-xs uppercase tracking-[0.13em] ${isFullyQualified ? "text-green-600" : "text-[#382910]"}`}>
+                  <p
+                    className={`mt-1 font-poppins text-xs ${useUppercaseLabels ? "uppercase tracking-[0.13em]" : "tracking-wide"} ${isFullyQualified ? "text-green-600" : "text-[#382910]"}`}
+                  >
                     {isFullyQualified ? t("fullyQualifiedSubtext") : t("progressSubtext")}
                   </p>
                 </div>
-                <p className={`font-display HeadingH3 !font-medium ${isFullyQualified ? "!text-green-700" : "!text-falcon-deep"}`}>
+                <p
+                  className={`font-display HeadingH3 !font-medium ${isFullyQualified ? "!text-green-700" : "!text-falcon-deep"}`}
+                >
                   {user.daysRemaining}
                 </p>
               </div>
             </div>
           </div>
-        }
+        )}
         {isFullyQualified && (
           <div className="mt-6 flex justify-center">
-          <button
-            type="button"
-            onClick={() => setBookingModalOpen(true)}
-            disabled={hasRegistered}
-            className="inline-flex h-12 min-w-[180px] max-w-md items-center justify-center rounded-full bg-green-700 px-8 font-poppins text-xs uppercase tracking-[0.14em] text-white transition-colors hover:bg-green-800 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {hasRegistered ? t("registeredCta") : t("registerCta")}
-          </button>
+            <button
+              type="button"
+              onClick={() => setBookingModalOpen(true)}
+              disabled={hasRegistered}
+              className={`inline-flex h-12 min-w-[180px] max-w-md items-center justify-center rounded-full bg-green-700 px-8 font-poppins text-xs text-white transition-colors hover:bg-green-800 disabled:cursor-not-allowed disabled:opacity-60 ${useUppercaseLabels ? "uppercase tracking-[0.14em]" : "tracking-wide"}`}
+            >
+              {hasRegistered ? t("registeredCta") : t("registerCta")}
+            </button>
           </div>
         )}
 
@@ -211,21 +256,6 @@ export default function VipProgressSection() {
   );
 }
 
-function getMotivationalMessage(percent: number): string {
-  if (percent >= 75) return "🔥 Almost there! Final push to qualify.";
-  if (percent >= 50) return "🚀 Halfway there! Keep the momentum going.";
-  if (percent >= 25) return "💪 Great start! You're building strong.";
-  if (percent > 0) return "✨ Journey started! Every step counts.";
-  return "🎯 Start now to qualify for VIP status.";
-}
-
-function getNextMilestone(percent: number): { label: string; value: number } {
-  if (percent < 25) return { label: "25%", value: 25 };
-  if (percent < 50) return { label: "50%", value: 50 };
-  if (percent < 75) return { label: "75%", value: 75 };
-  return { label: "100%", value: 100 };
-}
-
 function ProgressCard({
   label,
   title,
@@ -235,20 +265,24 @@ function ProgressCard({
   targetText,
   percentText,
   percent,
+  t,
+  useUppercaseLabels,
 }: {
   label: string;
   title: string;
-  current: any;
-  target: any;
+  current: string;
+  target: string;
   targetLabel: string;
   remaining: string;
   targetText: string;
   percentText: string;
   percent: number;
+  t: ReturnType<typeof useTranslations<"vipPage">>;
+  useUppercaseLabels: boolean;
 }) {
   const colors = getProgressColors(percent);
   const isComplete = percent >= 100;
-  const motivation = getMotivationalMessage(percent);
+  const motivation = getMotivationalMessage(percent, t);
   const nextMilestone = getNextMilestone(percent);
 
   return (
@@ -262,18 +296,32 @@ function ProgressCard({
       }}
     >
       <div className="flex items-center justify-between gap-2">
-        <p className="font-poppins text-xs uppercase tracking-[0.14em] text-[#382910]">
+        <p
+          className={`font-poppins text-xs text-[#382910] ${useUppercaseLabels ? "uppercase tracking-[0.14em]" : "tracking-wide"}`}
+        >
           {label}
         </p>
         {isComplete ? (
           <div className="flex items-center gap-1.5 rounded-full bg-green-500 px-3 py-1">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M20 6L9 17l-5-5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M20 6L9 17l-5-5"
+                stroke="white"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
-            <span className="font-poppins text-[10px] font-bold uppercase tracking-wider text-white">Eligible</span>
+            <span
+              className={`font-poppins text-[10px] font-bold text-white ${useUppercaseLabels ? "uppercase tracking-wider" : "tracking-wide"}`}
+            >
+              {t("progressEligible")}
+            </span>
           </div>
         ) : (
-          <p className="font-poppins text-xs uppercase tracking-[0.14em] text-[#382910]">
+          <p
+            className={`font-poppins text-xs text-[#382910] ${useUppercaseLabels ? "uppercase tracking-[0.14em]" : "tracking-wide"}`}
+          >
             {targetText}
           </p>
         )}
@@ -281,7 +329,9 @@ function ProgressCard({
       <div className="mt-8 flex items-end justify-between gap-5">
         <div>
           <h3 className="font-display HeadingH4 !font-medium !text-ink">{title}</h3>
-          <p className={`mt-4 font-display text-2xl ${isComplete ? "text-green-700" : "text-ink"}`}>{current}</p>
+          <p className={`mt-4 font-display text-2xl ${isComplete ? "text-green-700" : "text-ink"}`}>
+            {current}
+          </p>
         </div>
         <div className="text-end">
           <p className="mt-1 font-poppins text-sm font-medium text-ink">{target}</p>
@@ -303,7 +353,7 @@ function ProgressCard({
         <div className="mt-2 flex justify-between">
           <span className="font-poppins text-[10px] text-[#382910]/50">0%</span>
           <span className="font-poppins text-[10px] font-medium" style={{ color: colors.text }}>
-            Next: {nextMilestone.label}
+            {t("progressNext", { milestone: nextMilestone.label })}
           </span>
           <span className="font-poppins text-[10px] text-[#382910]/50">100%</span>
         </div>
@@ -312,10 +362,11 @@ function ProgressCard({
         className={`mt-3 HeadingH4 border-b pb-2 ${isComplete ? "border-green-300" : "border-[#D8C8AE]"}`}
         style={{ color: colors.text }}
       >
-        {percentText}{isComplete && " ✓"}
+        {percentText}
+        {isComplete && " ✓"}
       </p>
       <p className="mt-3 TextSmall !font-poppins !text-[#382910]">
-        {isComplete ? "Qualification target achieved!" : remaining}
+        {isComplete ? t("progressTargetAchieved") : remaining}
       </p>
       {!isComplete && (
         <p className="mt-2 font-poppins text-xs leading-snug" style={{ color: colors.text }}>
