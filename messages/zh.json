@@ -1142,6 +1142,13 @@
       "primary": "您的详情",
       "guest": "宾客"
     },
+    "progressSummary": {
+      "label": "整体进度",
+      "complete": "已完成 {completed} / {total} 个步骤",
+      "percentComplete": "已完成 {percent}%",
+      "stepLabel": "第 {step} 步",
+      "allComplete": "所有步骤均已完成。期待在金猎鹰颁奖典礼与您相见。"
+    },
     "lookup": {
       "title": "查找您的注册",
       "description": "输入注册时使用的邮箱地址以查看状态及文件。",
@@ -1189,6 +1196,7 @@
     "adminStatus": {
       "description": "由活动团队根据您的注册及出行安排更新的详情。",
       "journeyDescription": "跟踪您在资格、签证及票务流程中的进度。",
+      "travelDescription": "您已确认的航班、酒店及接送安排。",
       "documentsDescription": "下载或查看团队与您分享的文件。",
       "submissionDescription": "来自您注册表的原始详情。",
       "guestStatusDescription": "宾客 {name} 的状态更新。",

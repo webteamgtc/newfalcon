@@ -1142,6 +1142,13 @@
       "primary": "Your details",
       "guest": "Guest"
     },
+    "progressSummary": {
+      "label": "Overall progress",
+      "complete": "{completed} of {total} steps complete",
+      "percentComplete": "{percent}% complete",
+      "stepLabel": "Step {step}",
+      "allComplete": "All steps are complete. We look forward to welcoming you at Golden Falcon Awards."
+    },
     "lookup": {
       "title": "Find your registration",
       "description": "Enter the email address you used when registering to view your status and documents.",
@@ -1189,6 +1196,7 @@
     "adminStatus": {
       "description": "Details updated by our events team based on your registration and travel arrangements.",
       "journeyDescription": "Track where you are in the qualification, visa, and ticketing process.",
+      "travelDescription": "Your confirmed flight, hotel, and transport arrangements.",
       "documentsDescription": "Download or view documents shared with you by our team.",
       "submissionDescription": "Original details from your registration form.",
       "guestStatusDescription": "Status updates for your guest, {name}.",

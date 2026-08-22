@@ -1142,6 +1142,13 @@
       "primary": "تفاصيلك",
       "guest": "الضيف"
     },
+    "progressSummary": {
+      "label": "التقدم الإجمالي",
+      "complete": "{completed} من {total} خطوات مكتملة",
+      "percentComplete": "{percent}% مكتمل",
+      "stepLabel": "الخطوة {step}",
+      "allComplete": "اكتملت جميع الخطوات. نتطلع إلى الترحيب بك في جوائز الصقر الذهبي."
+    },
     "lookup": {
       "title": "اعثر على تسجيلك",
       "description": "أدخل عنوان البريد الإلكتروني الذي استخدمته عند التسجيل لعرض حالتك ومستنداتك.",
@@ -1189,6 +1196,7 @@
     "adminStatus": {
       "description": "تفاصيل محدّثة من فريق الفعاليات بناءً على تسجيلك وترتيبات السفر.",
       "journeyDescription": "تابع مرحلتك في التأهل والتأشيرة وحجز التذكرة.",
+      "travelDescription": "تفاصيل رحلتك والفندق والنقل المؤكدة.",
       "documentsDescription": "قم بتنزيل أو عرض المستندات التي شاركها فريقنا معك.",
       "submissionDescription": "التفاصيل الأصلية من نموذج التسجيل الخاص بك.",
       "guestStatusDescription": "تحديثات الحالة لضيفك، {name}.",

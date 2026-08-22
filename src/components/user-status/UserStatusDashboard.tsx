@@ -53,6 +53,12 @@ function getInitials(name: string) {
     .join("");
 }
 
+/** Uppercase section headings for EN/AR; leave zh unchanged. */
+function statusHeadingClass(locale: string, extra = "") {
+  if (locale === "zh") return extra;
+  return [extra, "uppercase", "tracking-[0.06em]"].filter(Boolean).join(" ");
+}
+
 type StatusTone = "neutral" | "pending" | "progress" | "success" | "danger";
 
 function statusTone(value: string, type: "qualification" | "visa" | "ticket"): StatusTone {
@@ -90,12 +96,20 @@ const toneRing: Record<StatusTone, string> = {
   danger: "border-red-300 bg-red-50",
 };
 
-const toneText: Record<StatusTone, string> = {
-  neutral: "text-ink/50",
-  pending: "text-amber-800",
-  progress: "text-sky-800",
-  success: "text-emerald-800",
-  danger: "text-red-800",
+const toneCardSurface: Record<StatusTone, string> = {
+  neutral: "border-ink/10 bg-[#FFFDF8]",
+  pending: "border-amber-200/90 bg-gradient-to-br from-amber-50/80 to-[#FFFDF8]",
+  progress: "border-sky-200/90 bg-gradient-to-br from-sky-50/70 to-[#FFFDF8]",
+  success: "border-emerald-200/90 bg-gradient-to-br from-emerald-50/70 to-[#FFFDF8]",
+  danger: "border-red-200/90 bg-gradient-to-br from-red-50/70 to-[#FFFDF8]",
+};
+
+const toneBadge: Record<StatusTone, string> = {
+  neutral: "bg-ink/8 text-ink/60",
+  pending: "bg-amber-100 text-amber-800",
+  progress: "bg-sky-100 text-sky-800",
+  success: "bg-emerald-100 text-emerald-800",
+  danger: "bg-red-100 text-red-800",
 };
 
 /* ─── icons ─── */
@@ -146,6 +160,30 @@ function IconChevron({ open }: { open: boolean }) {
   );
 }
 
+function IconMail({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+    </svg>
+  );
+}
+
+function IconPhone({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+    </svg>
+  );
+}
+
+/* ─── shared surfaces ─── */
+
+const statusPanelClass =
+  "rounded-2xl border border-[#382910]/12 bg-gradient-to-br from-[#FDFCFA] via-[#FBF6EB] to-[#FFFDF8] shadow-[0_20px_50px_-24px_rgba(56,41,16,0.12)]";
+
+const statusInnerClass =
+  "overflow-hidden rounded-xl border border-[#382910]/10 bg-white/80 backdrop-blur-sm";
+
 /* ─── sub-components ─── */
 
 function SectionCard({
@@ -161,24 +199,26 @@ function SectionCard({
   children: ReactNode;
   className?: string;
 }) {
+  const locale = useLocale();
+
   return (
-    <div className={`rounded-2xl border border-[#382910]/10 bg-white shadow-[0_4px_24px_-4px_rgba(56,41,16,0.08)] ${className}`}>
-      <div className="border-b border-ink/8 px-4 py-4 sm:px-6 sm:py-5 md:px-8">
-        <div className="flex items-start gap-3">
+    <div className={`${statusPanelClass} ${className}`}>
+      <div className="border-b border-[#382910]/10 px-4 py-3 sm:px-6 sm:py-5 md:px-8">
+        <div className="flex items-start gap-2.5 sm:gap-3">
           {icon && (
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-falcon-deep/10 text-falcon-deep sm:h-10 sm:w-10">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-falcon-deep/10 text-falcon-deep sm:h-10 sm:w-10 sm:rounded-xl">
               {icon}
             </div>
           )}
           <div className="min-w-0 flex-1">
-            <h3 className="font-display text-lg text-ink sm:text-xl">{title}</h3>
+            <h3 className={statusHeadingClass(locale, "font-display text-base text-ink sm:text-xl")}>{title}</h3>
             {subtitle && (
-              <p className="mt-1 font-poppins text-sm leading-relaxed text-ink/55">{subtitle}</p>
+              <p className="mt-0.5 font-poppins text-xs leading-relaxed text-ink/55 sm:mt-1 sm:text-sm">{subtitle}</p>
             )}
           </div>
         </div>
       </div>
-      <div className="px-4 py-4 sm:px-6 sm:py-5 md:px-8">{children}</div>
+      <div className="px-4 py-3 sm:px-6 sm:py-5 md:px-8">{children}</div>
     </div>
   );
 }
@@ -194,12 +234,87 @@ function EmptyState({ message }: { message: string }) {
   );
 }
 
-function MetaChip({ label, value }: { label: string; value: string }) {
-  if (!value?.trim()) return null;
+function MetaGrid({ items }: { items: { label: string; value: string }[] }) {
+  const visible = items.filter((item) => item.value?.trim());
+  if (!visible.length) return null;
+
   return (
-    <div className="min-w-0 rounded-lg bg-white/60 px-3 py-2 sm:max-w-none">
-      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">{label}</p>
-      <p className="mt-0.5 break-words font-poppins text-sm font-medium text-ink">{value}</p>
+    <dl className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#382910]/10 bg-[#382910]/8 sm:mt-5 sm:grid-cols-3 lg:grid-cols-5">
+      {visible.map((item) => (
+        <div key={item.label} className="min-w-0 bg-white/90 px-3 py-2.5 sm:px-4 sm:py-3">
+          <dt className="font-poppins text-[10px] uppercase tracking-[0.08em] text-ink/45">{item.label}</dt>
+          <dd className="mt-0.5 break-words font-poppins text-xs font-medium leading-snug text-ink sm:text-sm">
+            {item.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function ProfileCardShell({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`relative overflow-hidden rounded-2xl border border-[#382910]/12 bg-gradient-to-br from-[#FDFCFA] via-[#FBF6EB] to-[#F3E5CB] shadow-[0_20px_50px_-24px_rgba(56,41,16,0.18)] ${className}`}
+    >
+      <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-falcon-deep/5 sm:h-40 sm:w-40" />
+      <div className="pointer-events-none absolute -bottom-8 -left-8 h-24 w-24 rounded-full bg-falcon-gold/10 sm:h-28 sm:w-28" />
+      <div className="relative">{children}</div>
+    </div>
+  );
+}
+
+function ProfileHeader({
+  welcomeText,
+  displayName,
+  email,
+  phone,
+  metaItems,
+  paddingClass = "p-4 sm:p-6 md:p-8",
+}: {
+  welcomeText: string;
+  displayName: string;
+  email?: string;
+  phone?: string;
+  metaItems: { label: string; value: string }[];
+  paddingClass?: string;
+}) {
+  return (
+    <div className={paddingClass}>
+      <div className="flex items-start gap-3 sm:items-center sm:gap-5">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-falcon-deep font-display text-lg text-white shadow-md sm:h-16 sm:w-16 sm:rounded-2xl sm:text-2xl">
+          {getInitials(displayName)}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="font-poppins text-xs text-ink/55 sm:text-sm">{welcomeText}</p>
+          <h2 className="mt-0.5 break-words font-display text-lg leading-tight text-ink sm:text-2xl md:text-3xl">
+            {displayName}
+          </h2>
+          {(email || phone) && (
+            <div className="mt-2 space-y-1 sm:mt-1.5">
+              {email && (
+                <p className="flex items-center gap-1.5 font-poppins text-xs text-ink/60 sm:text-sm">
+                  <IconMail className="h-3.5 w-3.5 shrink-0 text-falcon-deep/70" />
+                  <span className="min-w-0 break-all">{email}</span>
+                </p>
+              )}
+              {phone && (
+                <p className="flex items-center gap-1.5 font-poppins text-xs text-ink/60 sm:text-sm">
+                  <IconPhone className="h-3.5 w-3.5 shrink-0 text-falcon-deep/70" />
+                  <span className="break-all">{phone}</span>
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+      <MetaGrid items={metaItems} />
     </div>
   );
 }
@@ -215,64 +330,97 @@ function ProgressTimeline({
     done: boolean;
   }[];
 }) {
+  const t = useTranslations("userStatusPage");
+  const locale = useLocale();
   const completedCount = steps.filter((s) => s.tone === "success").length;
+  const percentComplete = Math.round((completedCount / steps.length) * 100);
+  const gridClass =
+    steps.length === 2
+      ? "sm:grid-cols-2"
+      : steps.length === 3
+        ? "md:grid-cols-3"
+        : "sm:grid-cols-2 xl:grid-cols-4";
 
   return (
-    <div>
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-poppins text-xs uppercase tracking-[0.1em] text-ink/45">
-          {completedCount} / {steps.length} complete
-        </p>
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-ink/10 sm:w-32">
-          <div
-            className="h-full rounded-full bg-falcon-deep transition-all duration-500"
-            style={{ width: `${(completedCount / steps.length) * 100}%` }}
-          />
+    <div className="space-y-4 sm:space-y-5">
+      <div className="rounded-xl border border-[#382910]/10 bg-gradient-to-r from-[#FBF6EB]/90 via-[#FFFDF8] to-[#FBF6EB]/70 p-4 sm:p-5">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+          <div>
+            <p className="font-poppins text-[10px] uppercase tracking-[0.12em] text-ink/45">
+              {t("progressSummary.label")}
+            </p>
+            <p className="mt-1 font-display text-2xl leading-none text-ink sm:text-3xl">
+              {completedCount}
+              <span className="text-lg text-ink/35 sm:text-xl"> / {steps.length}</span>
+            </p>
+            <p className="mt-1 font-poppins text-xs text-ink/55">
+              {t("progressSummary.complete", { completed: completedCount, total: steps.length })}
+            </p>
+          </div>
+
+          <div className="w-full sm:max-w-xs sm:flex-1">
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
+                {t("progressSummary.percentComplete", { percent: percentComplete })}
+              </span>
+            </div>
+            <div className="mt-2 h-2 overflow-hidden rounded-full bg-ink/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-falcon-deep via-falcon-deep to-[#C9A227] transition-all duration-500"
+                style={{ width: `${percentComplete}%` }}
+              />
+            </div>
+          </div>
         </div>
       </div>
 
-      <div
-        className={`relative grid grid-cols-1 gap-0 ${
-          steps.length <= 2
-            ? "md:grid-cols-2"
-            : steps.length === 3
-              ? "md:grid-cols-3"
-              : "md:grid-cols-4"
-        }`}
-      >
+      <div className={`grid grid-cols-1 gap-3 ${gridClass}`}>
         {steps.map((step, index) => (
-          <div
+          <article
             key={step.label}
-            className="relative flex gap-4 pb-8 last:pb-0 md:flex-col md:items-center md:gap-0 md:pb-0 md:text-center"
+            className={`relative rounded-xl border p-4 transition-shadow hover:shadow-[0_8px_24px_-12px_rgba(56,41,16,0.18)] sm:p-5 ${toneCardSurface[step.tone]}`}
           >
-            {index < steps.length - 1 && (
-              <>
-                <div className="absolute bottom-0 left-5 top-10 w-px bg-ink/15 md:hidden" />
-                <div className="absolute left-1/2 top-5 hidden h-px w-full bg-ink/15 md:block" />
-              </>
-            )}
+            <div className="flex items-start gap-3">
+              <div
+                className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 sm:h-11 sm:w-11 ${
+                  step.tone === "success"
+                    ? "border-emerald-500 bg-emerald-500 text-white shadow-sm"
+                    : toneRing[step.tone]
+                }`}
+              >
+                {step.tone === "success" ? (
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                ) : (
+                  <span className={`h-2.5 w-2.5 rounded-full ${toneDot[step.tone]}`} />
+                )}
+              </div>
 
-            <div className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 ${toneRing[step.tone]}`}>
-              {step.tone === "success" ? (
-                <svg className="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              ) : (
-                <span className={`h-2.5 w-2.5 rounded-full ${toneDot[step.tone]}`} />
-              )}
+              <div className="min-w-0 flex-1">
+                <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
+                  {t("progressSummary.stepLabel", { step: index + 1 })}
+                </p>
+                <h4 className={statusHeadingClass(locale, "mt-0.5 font-poppins text-sm font-semibold text-ink sm:text-base")}>
+                  {step.label}
+                </h4>
+                <span
+                  className={`mt-2 inline-flex rounded-full px-2.5 py-1 font-poppins text-[10px] font-semibold uppercase tracking-[0.06em] ${toneBadge[step.tone]}`}
+                >
+                  {step.status}
+                </span>
+                <p className="mt-2.5 font-poppins text-xs leading-relaxed text-ink/60 sm:mt-3 sm:text-sm sm:leading-relaxed">
+                  {step.hint}
+                </p>
+              </div>
             </div>
-
-            <div className="min-w-0 flex-1 md:mt-3 md:px-2">
-              <p className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/45">
-                Step {index + 1}
-              </p>
-              <p className="mt-0.5 font-poppins text-sm font-semibold text-ink">{step.label}</p>
-              <p className={`mt-1 font-poppins text-xs font-medium ${toneText[step.tone]}`}>
-                {step.status}
-              </p>
-              <p className="mt-1.5 font-poppins text-xs leading-relaxed text-ink/50">{step.hint}</p>
-            </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
@@ -290,36 +438,37 @@ function DocumentCard({
 }) {
   if (!document?.uploaded || !document.url) return null;
 
+  const locale = useLocale();
   const isPdf = document.mimeType === "application/pdf";
   const ext = isPdf ? "PDF" : "IMG";
+  const badgeClass = isPdf
+    ? "bg-red-50 text-red-700 ring-red-100"
+    : "bg-sky-50 text-sky-700 ring-sky-100";
 
   return (
     <a
       href={document.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col gap-3 rounded-xl border border-ink/10 bg-[#FFFDF8] p-4 transition-all hover:border-falcon-deep/40 hover:shadow-md sm:flex-row sm:items-center sm:gap-4"
+      className="group flex items-center gap-3 rounded-xl border border-[#382910]/10 bg-white/80 p-3.5 backdrop-blur-sm transition-all hover:border-falcon-deep/30 hover:bg-white hover:shadow-[0_8px_24px_-12px_rgba(56,41,16,0.14)] sm:gap-4 sm:p-4"
     >
-      <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-falcon-deep/10 font-poppins text-[10px] font-bold tracking-wider text-falcon-deep sm:h-12 sm:w-12">
-          {ext}
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="font-poppins text-sm font-medium text-ink">{label}</p>
-          {document.fileName && (
-            <p className="mt-0.5 truncate font-poppins text-xs text-ink/50">{document.fileName}</p>
-          )}
-        </div>
-        <svg className="h-4 w-4 shrink-0 text-ink/30 group-hover:text-falcon-deep sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <div
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl font-poppins text-[10px] font-bold tracking-wider ring-1 sm:h-12 sm:w-12 ${badgeClass}`}
+      >
+        {ext}
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className={statusHeadingClass(locale, "font-poppins text-sm font-semibold text-ink")}>{label}</p>
+        {document.fileName && (
+          <p className="mt-0.5 truncate font-poppins text-xs text-ink/50">{document.fileName}</p>
+        )}
+      </div>
+      <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-falcon-deep/20 bg-falcon-deep/5 px-2.5 py-1.5 font-poppins text-[9px] font-semibold uppercase tracking-[0.06em] text-falcon-deep transition-colors group-hover:border-falcon-deep group-hover:bg-falcon-deep group-hover:text-white sm:px-3 sm:text-[10px]">
+        <span className="max-w-[72px] truncate sm:max-w-none">{actionLabel}</span>
+        <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5M10.5 13.5 21 3m0 0h-5.25M21 3v5.25" />
         </svg>
-      </div>
-      <span className="inline-flex shrink-0 items-center justify-center rounded-full bg-falcon-deep px-3 py-1.5 font-poppins text-[10px] uppercase tracking-[0.08em] text-white sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100">
-        {actionLabel}
       </span>
-      <svg className="hidden h-4 w-4 shrink-0 text-ink/30 group-hover:text-falcon-deep sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5M10.5 13.5 21 3m0 0h-5.25M21 3v5.25" />
-      </svg>
     </a>
   );
 }
@@ -337,6 +486,90 @@ function DetailGrid({ items }: { items: { label: string; value: string }[] }) {
         </div>
       ))}
     </dl>
+  );
+}
+
+function InfoFieldGrid({
+  items,
+}: {
+  items: { label: string; value: string; mono?: boolean }[];
+}) {
+  const visible = items.filter((item) => item.value?.trim());
+  if (!visible.length) return null;
+
+  return (
+    <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[#382910]/10 bg-[#382910]/8 sm:grid-cols-2">
+      {visible.map((item) => (
+        <div key={item.label} className="min-w-0 bg-white/90 px-3 py-2.5 sm:px-4 sm:py-3">
+          <dt className="font-poppins text-[10px] uppercase tracking-[0.08em] text-ink/45">{item.label}</dt>
+          <dd
+            className={`mt-0.5 break-words text-sm text-ink ${
+              item.mono ? "font-mono font-medium" : "font-poppins"
+            }`}
+          >
+            {item.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function TravelBlock({
+  icon,
+  eyebrow,
+  title,
+  subtitle,
+  children,
+}: {
+  icon: ReactNode;
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  children: ReactNode;
+}) {
+  return (
+    <article className={`${statusInnerClass} bg-gradient-to-br from-white/90 to-[#FBF6EB]/40`}>
+      <div className="flex items-start gap-3 border-b border-[#382910]/8 px-4 py-3 sm:px-5 sm:py-4">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-falcon-deep/10 text-falcon-deep">
+          {icon}
+        </div>
+        <div className="min-w-0 flex-1">
+          {eyebrow && (
+            <p className="font-poppins text-[10px] uppercase tracking-[0.12em] text-ink/45">{eyebrow}</p>
+          )}
+          {title && (
+            <h4 className="mt-0.5 break-words font-display text-base text-ink sm:text-lg">{title}</h4>
+          )}
+          {subtitle && (
+            <p className="mt-0.5 break-words font-poppins text-xs text-ink/60 sm:text-sm">{subtitle}</p>
+          )}
+        </div>
+      </div>
+      <div className="px-4 py-3 sm:px-5 sm:py-4">{children}</div>
+    </article>
+  );
+}
+
+function TransportNote({
+  icon,
+  label,
+  details,
+}: {
+  icon: ReactNode;
+  label: string;
+  details: string;
+}) {
+  if (!details?.trim()) return null;
+
+  return (
+    <div className={`${statusInnerClass} bg-gradient-to-br from-white/90 to-[#FBF6EB]/40 p-4`}>
+      <div className="flex items-center gap-2 text-falcon-deep">
+        {icon}
+        <p className="font-poppins text-[10px] uppercase tracking-[0.1em]">{label}</p>
+      </div>
+      <p className="mt-2 font-poppins text-sm leading-relaxed text-ink/75">{details}</p>
+    </div>
   );
 }
 
@@ -360,18 +593,57 @@ function PersonTabs({
   onTabChange,
   primaryLabel,
   guestLabel,
+  variant = "standalone",
 }: {
   activeTab: "primary" | "guest";
   onTabChange: (tab: "primary" | "guest") => void;
   primaryLabel: string;
   guestLabel: string;
+  variant?: "standalone" | "embedded";
 }) {
   const tabClass = (tab: "primary" | "guest") =>
-    `min-w-0 flex-1 rounded-lg px-3 py-3 text-center transition-all sm:px-4 ${
+    `min-w-0 flex-1 rounded-lg px-3 py-2.5 text-center transition-all sm:px-4 sm:py-3 ${
       activeTab === tab
-        ? "bg-white text-ink shadow-sm ring-1 ring-ink/10"
-        : "text-ink/55 hover:text-ink/75"
+        ? variant === "embedded"
+          ? "bg-white/95 text-ink shadow-sm ring-1 ring-falcon-deep/25"
+          : "bg-white text-ink shadow-sm ring-1 ring-falcon-deep/30"
+        : "text-ink/50 hover:bg-white/40 hover:text-ink/70"
     }`;
+
+  const tabs = (
+    <div className="grid grid-cols-2 gap-1.5">
+      <button
+        type="button"
+        role="tab"
+        aria-selected={activeTab === "primary"}
+        onClick={() => onTabChange("primary")}
+        className={tabClass("primary")}
+      >
+        <span className="block truncate font-poppins text-xs font-semibold sm:text-sm">{primaryLabel}</span>
+      </button>
+      <button
+        type="button"
+        role="tab"
+        aria-selected={activeTab === "guest"}
+        onClick={() => onTabChange("guest")}
+        className={tabClass("guest")}
+      >
+        <span className="block truncate font-poppins text-xs font-semibold sm:text-sm">{guestLabel}</span>
+      </button>
+    </div>
+  );
+
+  if (variant === "embedded") {
+    return (
+      <div
+        className="border-b border-[#382910]/10 bg-white/30 px-3 py-2 sm:px-4"
+        role="tablist"
+        aria-label="Registration details"
+      >
+        {tabs}
+      </div>
+    );
+  }
 
   return (
     <div
@@ -379,26 +651,7 @@ function PersonTabs({
       role="tablist"
       aria-label="Registration details"
     >
-      <div className="grid grid-cols-2 gap-1">
-        <button
-          type="button"
-          role="tab"
-          aria-selected={activeTab === "primary"}
-          onClick={() => onTabChange("primary")}
-          className={tabClass("primary")}
-        >
-          <span className="block truncate font-poppins text-xs font-semibold sm:text-sm">{primaryLabel}</span>
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={activeTab === "guest"}
-          onClick={() => onTabChange("guest")}
-          className={tabClass("guest")}
-        >
-          <span className="block truncate font-poppins text-xs font-semibold sm:text-sm">{guestLabel}</span>
-        </button>
-      </div>
+      {tabs}
     </div>
   );
 }
@@ -418,45 +671,30 @@ function GuestHero({
   const firstName = displayName.split(" ")[0];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-[#382910]/12 bg-gradient-to-br from-[#FDFCFA] via-[#FBF6EB] to-[#F3E5CB] shadow-[0_28px_70px_-28px_rgba(56,41,16,0.22)]">
-      <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-falcon-deep/5" />
-      <div className="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-falcon-gold/10" />
-
-      <div className="relative p-4 sm:p-6 md:p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-falcon-deep font-display text-xl text-white shadow-lg sm:h-16 sm:w-16 sm:text-2xl">
-            {getInitials(displayName)}
-          </div>
-          <div className="min-w-0">
-            <p className="font-poppins text-sm text-ink/55">
-              {t("adminStatus.guestStatusDescription", { name: firstName })}
-            </p>
-            <h2 className="mt-0.5 break-words font-display text-xl text-ink sm:text-2xl md:text-3xl">{displayName}</h2>
-            <p className="mt-1 break-all font-poppins text-sm text-ink/60">
-              {guestStatus?.email || guest.email}
-            </p>
-            {displayPhone && (
-              <p className="font-poppins text-sm text-ink/60">{displayPhone}</p>
-            )}
-          </div>
-        </div>
-
-        <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
-          {displayCountry && (
-            <MetaChip label={t("adminStatus.fields.country")} value={displayCountry} />
-          )}
-          {guest.passportNumber && (
-            <MetaChip label={t("fields.guestPassportNumber")} value={guest.passportNumber} />
-          )}
-          {guest.passportExpiry && (
-            <MetaChip
-              label={t("fields.guestPassportExpiry")}
-              value={formatDisplayDate(guest.passportExpiry, locale)}
-            />
-          )}
-        </div>
-      </div>
-    </div>
+    <ProfileCardShell>
+      <ProfileHeader
+        welcomeText={t("adminStatus.guestStatusDescription", { name: firstName })}
+        displayName={displayName}
+        email={guestStatus?.email || guest.email}
+        phone={displayPhone}
+        metaItems={[
+          ...(displayCountry
+            ? [{ label: t("adminStatus.fields.country"), value: displayCountry }]
+            : []),
+          ...(guest.passportNumber
+            ? [{ label: t("fields.guestPassportNumber"), value: guest.passportNumber }]
+            : []),
+          ...(guest.passportExpiry
+            ? [
+                {
+                  label: t("fields.guestPassportExpiry"),
+                  value: formatDisplayDate(guest.passportExpiry, locale),
+                },
+              ]
+            : []),
+        ]}
+      />
+    </ProfileCardShell>
   );
 }
 
@@ -478,48 +716,136 @@ function WelcomeHero({
   const firstName = displayName.split(" ")[0];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-[#382910]/12 bg-gradient-to-br from-[#FDFCFA] via-[#FBF6EB] to-[#F3E5CB] shadow-[0_28px_70px_-28px_rgba(56,41,16,0.22)]">
-      <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-falcon-deep/5" />
-      <div className="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-falcon-gold/10" />
+    <ProfileCardShell>
+      <ProfileHeader
+        welcomeText={t("welcome", { name: firstName })}
+        displayName={displayName}
+        email={registration.email}
+        phone={displayPhone}
+        metaItems={[
+          { label: t("referenceId"), value: registration.id.slice(-8).toUpperCase() },
+          { label: t("cards.submitted"), value: formatDisplayDate(registration.submittedAt, locale) },
+          ...(displayCountry
+            ? [{ label: t("adminStatus.fields.country"), value: displayCountry }]
+            : []),
+          ...(partnerId ? [{ label: t("adminStatus.fields.partnerId"), value: partnerId }] : []),
+          ...(registration.memberId
+            ? [{ label: t("fields.memberId"), value: registration.memberId }]
+            : []),
+        ]}
+      />
+    </ProfileCardShell>
+  );
+}
 
-      <div className="relative p-4 sm:p-6 md:p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-falcon-deep font-display text-xl text-white shadow-lg sm:h-16 sm:w-16 sm:text-2xl">
-            {getInitials(displayName)}
-          </div>
-          <div className="min-w-0">
-            <p className="font-poppins text-sm text-ink/55">
-              {t("welcome", { name: firstName })}
-            </p>
-            <h2 className="mt-0.5 break-words font-display text-xl text-ink sm:text-2xl md:text-3xl">{displayName}</h2>
-            <p className="mt-1 break-all font-poppins text-sm text-ink/60">{registration.email}</p>
-            {displayPhone && (
-              <p className="font-poppins text-sm text-ink/60">{displayPhone}</p>
-            )}
-          </div>
-        </div>
+function ProfileSwitcherCard({
+  activeTab,
+  onTabChange,
+  primaryLabel,
+  guestLabel,
+  registration,
+  adminStatus,
+  locale,
+}: {
+  activeTab: "primary" | "guest";
+  onTabChange: (tab: "primary" | "guest") => void;
+  primaryLabel: string;
+  guestLabel: string;
+  registration: PublicUserRegistration;
+  adminStatus?: PublicAdminStatus;
+  locale: string;
+}) {
+  const t = useTranslations("userStatusPage");
+  const guest = registration.guest;
+  if (!guest) return null;
 
-        <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
-          <MetaChip label={t("referenceId")} value={registration.id.slice(-8).toUpperCase()} />
-          <MetaChip label={t("cards.submitted")} value={formatDisplayDate(registration.submittedAt, locale)} />
-          {displayCountry && <MetaChip label={t("adminStatus.fields.country")} value={displayCountry} />}
-          {partnerId && <MetaChip label={t("adminStatus.fields.partnerId")} value={partnerId} />}
-          {registration.memberId && <MetaChip label={t("fields.memberId")} value={registration.memberId} />}
-        </div>
-      </div>
-    </div>
+  const primaryName = adminStatus?.fullName || registration.fullName;
+  const primaryPhone = adminStatus?.phone || registration.phone;
+  const primaryCountry = adminStatus?.country || registration.nationality || "";
+  const partnerId = adminStatus?.partnerId || registration.ibId || "";
+
+  const guestStatus = guest.adminStatus;
+  const guestName = guestStatus?.fullName || guest.firstName || t("sections.guest");
+  const guestPhone = guestStatus?.phone || guest.phone;
+  const guestCountry = guestStatus?.country || guest.nationality || "";
+
+  const primaryProfile = {
+    welcomeText: t("welcome", { name: primaryName.split(" ")[0] }),
+    displayName: primaryName,
+    email: registration.email,
+    phone: primaryPhone,
+    metaItems: [
+      { label: t("referenceId"), value: registration.id.slice(-8).toUpperCase() },
+      { label: t("cards.submitted"), value: formatDisplayDate(registration.submittedAt, locale) },
+      ...(primaryCountry
+        ? [{ label: t("adminStatus.fields.country"), value: primaryCountry }]
+        : []),
+      ...(partnerId ? [{ label: t("adminStatus.fields.partnerId"), value: partnerId }] : []),
+      ...(registration.memberId
+        ? [{ label: t("fields.memberId"), value: registration.memberId }]
+        : []),
+    ],
+  };
+
+  const guestProfile = {
+    welcomeText: t("adminStatus.guestStatusDescription", { name: guestName.split(" ")[0] }),
+    displayName: guestName,
+    email: guestStatus?.email || guest.email,
+    phone: guestPhone,
+    metaItems: [
+      ...(guestCountry
+        ? [{ label: t("adminStatus.fields.country"), value: guestCountry }]
+        : []),
+      ...(guest.passportNumber
+        ? [{ label: t("fields.guestPassportNumber"), value: guest.passportNumber }]
+        : []),
+      ...(guest.passportExpiry
+        ? [
+            {
+              label: t("fields.guestPassportExpiry"),
+              value: formatDisplayDate(guest.passportExpiry, locale),
+            },
+          ]
+        : []),
+    ],
+  };
+
+  const profile = activeTab === "primary" ? primaryProfile : guestProfile;
+
+  return (
+    <ProfileCardShell>
+      <PersonTabs
+        variant="embedded"
+        activeTab={activeTab}
+        onTabChange={onTabChange}
+        primaryLabel={primaryLabel}
+        guestLabel={guestLabel}
+      />
+      <ProfileHeader
+        {...profile}
+        paddingClass="p-4 pt-3 sm:p-6 sm:pt-4 md:p-8 md:pt-5"
+      />
+    </ProfileCardShell>
   );
 }
 
 function JourneySection({ adminStatus }: { adminStatus?: PublicAdminStatus }) {
   const t = useTranslations("userStatusPage");
+  const steps = buildStatusSteps(adminStatus, t);
+  const completedCount = steps.filter((s) => s.tone === "success").length;
 
   return (
     <SectionCard
       title={t("sections.journey")}
       subtitle={t("adminStatus.journeyDescription")}
+      className="overflow-hidden"
     >
-      <ProgressTimeline steps={buildStatusSteps(adminStatus, t)} />
+      <ProgressTimeline steps={steps} />
+      {completedCount === steps.length && (
+        <p className="mt-4 rounded-lg border border-emerald-200/80 bg-emerald-50/60 px-4 py-3 text-center font-poppins text-xs text-emerald-800 sm:text-sm">
+          {t("progressSummary.allComplete")}
+        </p>
+      )}
     </SectionCard>
   );
 }
@@ -615,13 +941,21 @@ function GuestStatusSection({
   guest: NonNullable<PublicUserRegistration["guest"]>;
 }) {
   const t = useTranslations("userStatusPage");
+  const steps = buildStatusSteps(guest.adminStatus, t);
+  const completedCount = steps.filter((s) => s.tone === "success").length;
 
   return (
     <SectionCard
       title={t("sections.journey")}
       subtitle={t("adminStatus.journeyDescription")}
+      className="overflow-hidden"
     >
-      <ProgressTimeline steps={buildStatusSteps(guest.adminStatus, t)} />
+      <ProgressTimeline steps={steps} />
+      {completedCount === steps.length && (
+        <p className="mt-4 rounded-lg border border-emerald-200/80 bg-emerald-50/60 px-4 py-3 text-center font-poppins text-xs text-emerald-800 sm:text-sm">
+          {t("progressSummary.allComplete")}
+        </p>
+      )}
     </SectionCard>
   );
 }
@@ -652,7 +986,7 @@ function PrimaryDocumentsSection({
       {!hasAny ? (
         <EmptyState message={t("adminStatus.noDocumentsYet")} />
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           <DocumentCard label={t("adminStatus.fields.passportCopy")} document={passportDoc} actionLabel={t("cards.openDocument")} />
           {showVisa && (
             <DocumentCard label={t("adminStatus.fields.visaDocument")} document={adminStatus?.visaDocument} actionLabel={t("cards.downloadDocument")} />
@@ -684,26 +1018,14 @@ function GuestHotelSection({
       {!hasHotel ? (
         <EmptyState message={t("adminStatus.noTravelYet")} />
       ) : (
-        <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-4 sm:p-5">
-          <div className="grid gap-2 sm:grid-cols-2">
-            {floor && (
-              <div className="rounded-lg bg-white px-3 py-2">
-                <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                  {t("adminStatus.fields.hotelFloor")}
-                </p>
-                <p className="mt-0.5 font-poppins text-sm text-ink">{floor}</p>
-              </div>
-            )}
-            {room && (
-              <div className="rounded-lg bg-white px-3 py-2">
-                <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                  {t("adminStatus.fields.hotelRoomNumber")}
-                </p>
-                <p className="mt-0.5 font-poppins text-sm text-ink">{room}</p>
-              </div>
-            )}
-          </div>
-        </div>
+        <TravelBlock icon={<IconHotel className="h-5 w-5" />} eyebrow={t("sections.hotel")}>
+          <InfoFieldGrid
+            items={[
+              ...(floor ? [{ label: t("adminStatus.fields.hotelFloor"), value: floor }] : []),
+              ...(room ? [{ label: t("adminStatus.fields.hotelRoomNumber"), value: room }] : []),
+            ]}
+          />
+        </TravelBlock>
       )}
     </SectionCard>
   );
@@ -734,7 +1056,7 @@ function GuestDocumentsSection({
       {!hasAny ? (
         <EmptyState message={t("adminStatus.noDocumentsYet")} />
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           <DocumentCard label={t("adminStatus.fields.passportCopy")} document={passportDoc} actionLabel={t("cards.openDocument")} />
           {showVisa && (
             <DocumentCard label={t("adminStatus.fields.visaDocument")} document={guestStatus?.visaDocument} actionLabel={t("cards.downloadDocument")} />
@@ -761,6 +1083,74 @@ function TravelSection({ adminStatus, locale }: { adminStatus?: PublicAdminStatu
     adminStatus?.departureDateTime || adminStatus?.returnDateTime;
   const hasTransport = adminStatus?.pickupDetails || adminStatus?.dropOffDetails;
 
+  const flightSummary = [
+    adminStatus?.airline,
+    adminStatus?.flightNumber ? `#${adminStatus.flightNumber}` : "",
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
+  const showFlightIdentityInHeader = Boolean(adminStatus?.airline && adminStatus?.flightNumber);
+
+  const flightGridItems = [
+    ...(adminStatus?.airline && !showFlightIdentityInHeader
+      ? [{ label: t("adminStatus.fields.airline"), value: adminStatus.airline }]
+      : []),
+    ...(adminStatus?.flightNumber && !showFlightIdentityInHeader
+      ? [{ label: t("adminStatus.fields.flightNumber"), value: adminStatus.flightNumber, mono: true }]
+      : []),
+    ...(adminStatus?.departureDateTime
+      ? [
+          {
+            label: t("adminStatus.fields.departureDateTime"),
+            value: formatDisplayDateTime(adminStatus.departureDateTime, locale),
+          },
+        ]
+      : []),
+    ...(adminStatus?.returnDateTime
+      ? [
+          {
+            label: t("adminStatus.fields.returnDateTime"),
+            value: formatDisplayDateTime(adminStatus.returnDateTime, locale),
+          },
+        ]
+      : []),
+  ];
+
+  const hotelGridItems = [
+    ...(adminStatus?.checkInDateTime
+      ? [
+          {
+            label: t("adminStatus.fields.checkInDateTime"),
+            value: formatDisplayDateTime(adminStatus.checkInDateTime, locale),
+          },
+        ]
+      : []),
+    ...(adminStatus?.checkOutDateTime
+      ? [
+          {
+            label: t("adminStatus.fields.checkOutDateTime"),
+            value: formatDisplayDateTime(adminStatus.checkOutDateTime, locale),
+          },
+        ]
+      : []),
+    ...(adminStatus?.hotelConfirmationNumber
+      ? [
+          {
+            label: t("adminStatus.fields.hotelConfirmationNumber"),
+            value: adminStatus.hotelConfirmationNumber,
+            mono: true,
+          },
+        ]
+      : []),
+    ...(adminStatus?.hotelFloor
+      ? [{ label: t("adminStatus.fields.hotelFloor"), value: adminStatus.hotelFloor }]
+      : []),
+    ...(adminStatus?.hotelRoomNumber
+      ? [{ label: t("adminStatus.fields.hotelRoomNumber"), value: adminStatus.hotelRoomNumber }]
+      : []),
+  ];
+
   if (!hasHotel && !hasFlight && !hasTransport) {
     return (
       <SectionCard
@@ -777,166 +1167,42 @@ function TravelSection({ adminStatus, locale }: { adminStatus?: PublicAdminStatu
     <SectionCard
       icon={<IconHotel />}
       title={t("sections.travelArrangements")}
+      subtitle={t("adminStatus.travelDescription")}
     >
-      <div className="space-y-4">
+      <div className="space-y-3">
         {hasFlight && (
-          <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-4 sm:p-5">
-            <div className="flex items-start gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-falcon-deep/10 text-falcon-deep">
-                <IconPlane className="h-4 w-4" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/50">
-                  {t("sections.flight")}
-                </p>
-                {(adminStatus?.airline || adminStatus?.flightNumber) && (
-                  <p className="mt-2 break-words font-display text-base text-ink sm:text-lg">
-                    {[adminStatus?.airline, adminStatus?.flightNumber && `#${adminStatus.flightNumber}`]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </p>
-                )}
-                <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                  {adminStatus?.airline && (
-                    <div className="rounded-lg bg-white px-3 py-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.airline")}
-                      </p>
-                      <p className="mt-0.5 font-poppins text-sm text-ink">{adminStatus.airline}</p>
-                    </div>
-                  )}
-                  {adminStatus?.flightNumber && (
-                    <div className="rounded-lg bg-white px-3 py-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.flightNumber")}
-                      </p>
-                      <p className="mt-0.5 font-mono text-sm font-medium text-ink">
-                        {adminStatus.flightNumber}
-                      </p>
-                    </div>
-                  )}
-                  {adminStatus?.departureDateTime && (
-                    <div className="rounded-lg bg-white px-3 py-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.departureDateTime")}
-                      </p>
-                      <p className="mt-0.5 font-poppins text-sm text-ink">
-                        {formatDisplayDateTime(adminStatus.departureDateTime, locale)}
-                      </p>
-                    </div>
-                  )}
-                  {adminStatus?.returnDateTime && (
-                    <div className="rounded-lg bg-white px-3 py-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.returnDateTime")}
-                      </p>
-                      <p className="mt-0.5 font-poppins text-sm text-ink">
-                        {formatDisplayDateTime(adminStatus.returnDateTime, locale)}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
+          <TravelBlock
+            icon={<IconPlane className="h-5 w-5" />}
+            eyebrow={t("sections.flight")}
+            title={showFlightIdentityInHeader ? flightSummary : undefined}
+          >
+            <InfoFieldGrid items={flightGridItems} />
+          </TravelBlock>
         )}
 
         {hasHotel && (
-          <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-4 sm:p-5">
-            <div className="flex items-start gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-falcon-deep/10 text-falcon-deep">
-                <IconHotel className="h-4 w-4" />
-              </div>
-              <div className="min-w-0 flex-1">
-                {adminStatus?.hotelName && (
-                  <p className="break-words font-display text-base text-ink sm:text-lg">{adminStatus.hotelName}</p>
-                )}
-                {adminStatus?.hotelAddress && (
-                  <p className="mt-1 break-words font-poppins text-sm text-ink/65">{adminStatus.hotelAddress}</p>
-                )}
-                <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                  {adminStatus?.checkInDateTime && (
-                    <div className="rounded-lg bg-white px-3 py-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.checkInDateTime")}
-                      </p>
-                      <p className="mt-0.5 font-poppins text-sm text-ink">
-                        {formatDisplayDateTime(adminStatus.checkInDateTime, locale)}
-                      </p>
-                    </div>
-                  )}
-                  {adminStatus?.checkOutDateTime && (
-                    <div className="rounded-lg bg-white px-3 py-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.checkOutDateTime")}
-                      </p>
-                      <p className="mt-0.5 font-poppins text-sm text-ink">
-                        {formatDisplayDateTime(adminStatus.checkOutDateTime, locale)}
-                      </p>
-                    </div>
-                  )}
-                  {adminStatus?.hotelConfirmationNumber && (
-                    <div className="rounded-lg bg-white px-3 py-2 sm:col-span-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.hotelConfirmationNumber")}
-                      </p>
-                      <p className="mt-0.5 font-mono text-sm font-medium text-ink">
-                        {adminStatus.hotelConfirmationNumber}
-                      </p>
-                    </div>
-                  )}
-                  {adminStatus?.hotelFloor && (
-                    <div className="rounded-lg bg-white px-3 py-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.hotelFloor")}
-                      </p>
-                      <p className="mt-0.5 font-poppins text-sm text-ink">{adminStatus.hotelFloor}</p>
-                    </div>
-                  )}
-                  {adminStatus?.hotelRoomNumber && (
-                    <div className="rounded-lg bg-white px-3 py-2">
-                      <p className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-                        {t("adminStatus.fields.hotelRoomNumber")}
-                      </p>
-                      <p className="mt-0.5 font-poppins text-sm text-ink">
-                        {adminStatus.hotelRoomNumber}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
+          <TravelBlock
+            icon={<IconHotel className="h-5 w-5" />}
+            eyebrow={t("sections.hotel")}
+            title={adminStatus?.hotelName || undefined}
+            subtitle={adminStatus?.hotelAddress || undefined}
+          >
+            <InfoFieldGrid items={hotelGridItems} />
+          </TravelBlock>
         )}
 
         {hasTransport && (
           <div className="grid gap-3 sm:grid-cols-2">
-            {adminStatus?.pickupDetails && (
-              <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-4">
-                <div className="flex items-center gap-2 text-falcon-deep">
-                  <IconCar className="h-4 w-4" />
-                  <p className="font-poppins text-xs uppercase tracking-[0.08em]">
-                    {t("adminStatus.fields.pickupDetails")}
-                  </p>
-                </div>
-                <p className="mt-2 font-poppins text-sm leading-relaxed text-ink/75">
-                  {adminStatus.pickupDetails}
-                </p>
-              </div>
-            )}
-            {adminStatus?.dropOffDetails && (
-              <div className="rounded-xl border border-ink/8 bg-[#FFFDF8] p-4">
-                <div className="flex items-center gap-2 text-falcon-deep">
-                  <IconCar className="h-4 w-4" />
-                  <p className="font-poppins text-xs uppercase tracking-[0.08em]">
-                    {t("adminStatus.fields.dropOffDetails")}
-                  </p>
-                </div>
-                <p className="mt-2 font-poppins text-sm leading-relaxed text-ink/75">
-                  {adminStatus.dropOffDetails}
-                </p>
-              </div>
-            )}
+            <TransportNote
+              icon={<IconCar className="h-4 w-4" />}
+              label={t("adminStatus.fields.pickupDetails")}
+              details={adminStatus?.pickupDetails ?? ""}
+            />
+            <TransportNote
+              icon={<IconCar className="h-4 w-4" />}
+              label={t("adminStatus.fields.dropOffDetails")}
+              details={adminStatus?.dropOffDetails ?? ""}
+            />
           </div>
         )}
       </div>
@@ -973,11 +1239,11 @@ function SubmissionSection({
           className="flex w-full flex-col gap-3 px-4 py-4 text-left sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6 sm:py-5 md:px-8"
         >
           <div className="min-w-0 flex-1">
-            <h3 className="font-display text-lg text-ink sm:text-xl">{t("sections.guestSubmission")}</h3>
+            <h3 className={statusHeadingClass(locale, "font-display text-lg text-ink sm:text-xl")}>{t("sections.guestSubmission")}</h3>
             <p className="mt-1 font-poppins text-sm text-ink/55">{t("adminStatus.submissionDescription")}</p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
-            <span className="hidden font-poppins text-xs uppercase tracking-[0.1em] text-falcon-deep sm:inline">
+            <span className="font-poppins text-[10px] uppercase tracking-[0.1em] text-falcon-deep sm:text-xs">
               {open ? t("adminStatus.hideDetails") : t("adminStatus.showDetails")}
             </span>
             <IconChevron open={open} />
@@ -1023,11 +1289,11 @@ function SubmissionSection({
         className="flex w-full flex-col gap-3 px-4 py-4 text-left sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6 sm:py-5 md:px-8"
       >
         <div className="min-w-0 flex-1">
-          <h3 className="font-display text-lg text-ink sm:text-xl">{t("sections.submission")}</h3>
+          <h3 className={statusHeadingClass(locale, "font-display text-lg text-ink sm:text-xl")}>{t("sections.submission")}</h3>
           <p className="mt-1 font-poppins text-sm text-ink/55">{t("adminStatus.submissionDescription")}</p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
-          <span className="hidden font-poppins text-xs uppercase tracking-[0.1em] text-falcon-deep sm:inline">
+          <span className="font-poppins text-[10px] uppercase tracking-[0.1em] text-falcon-deep sm:text-xs">
             {open ? t("adminStatus.hideDetails") : t("adminStatus.showDetails")}
           </span>
           <IconChevron open={open} />
@@ -1050,17 +1316,21 @@ function PrimaryTabPanel({
   adminStatus,
   locale,
   bedroomLabel,
+  showHero = true,
 }: {
   registration: PublicUserRegistration;
   adminStatus?: PublicAdminStatus;
   locale: string;
   bedroomLabel: (v: string) => string;
+  showHero?: boolean;
 }) {
   return (
     <div className="space-y-4 sm:space-y-5" role="tabpanel">
-      <WelcomeHero registration={registration} adminStatus={adminStatus} locale={locale} />
+      {showHero && (
+        <WelcomeHero registration={registration} adminStatus={adminStatus} locale={locale} />
+      )}
       <JourneySection adminStatus={adminStatus} />
-      <div className="grid gap-4 sm:gap-5 lg:grid-cols-2">
+      <div className="space-y-4 sm:space-y-5">
         <TravelSection adminStatus={adminStatus} locale={locale} />
         <PrimaryDocumentsSection registration={registration} adminStatus={adminStatus} />
       </div>
@@ -1078,17 +1348,19 @@ function GuestTabPanel({
   registration,
   locale,
   bedroomLabel,
+  showHero = true,
 }: {
   registration: PublicUserRegistration;
   locale: string;
   bedroomLabel: (v: string) => string;
+  showHero?: boolean;
 }) {
   const guest = registration.guest;
   if (!guest) return null;
 
   return (
     <div className="space-y-4 sm:space-y-5" role="tabpanel">
-      <GuestHero guest={guest} locale={locale} />
+      {showHero && <GuestHero guest={guest} locale={locale} />}
       <GuestStatusSection guest={guest} />
       <GuestHotelSection adminStatus={guest.adminStatus} />
       <GuestDocumentsSection guest={guest} />
@@ -1104,11 +1376,12 @@ function GuestTabPanel({
 
 function SupportCard() {
   const t = useTranslations("userStatusPage");
+  const locale = useLocale();
 
   return (
     <div className="rounded-2xl border border-falcon-deep/20 bg-gradient-to-r from-[#FBF6EB] to-[#F3E5CB] p-4 sm:p-6 md:p-8">
-      <h3 className="font-display text-lg text-ink sm:text-xl">{t("sections.nextSteps")}</h3>
-      <p className="mt-2 font-poppins text-sm leading-relaxed text-ink/70">
+      <h3 className={statusHeadingClass(locale, "font-display text-base text-ink sm:text-xl")}>{t("sections.nextSteps")}</h3>
+      <p className="mt-1.5 font-poppins text-xs leading-relaxed text-ink/70 sm:mt-2 sm:text-sm">
         {t("nextStepsDescription")}
       </p>
       <a
@@ -1138,6 +1411,7 @@ function EmailLookupForm({
   lookupError?: string;
 }) {
   const t = useTranslations("userStatusPage");
+  const locale = useLocale();
   const [email, setEmail] = useState(initialEmail);
   const [validationError, setValidationError] = useState("");
 
@@ -1178,7 +1452,7 @@ function EmailLookupForm({
             </svg>
           </div>
 
-          <h2 className="mt-5 text-center font-display text-xl text-ink sm:text-2xl">{t("lookup.title")}</h2>
+          <h2 className={statusHeadingClass(locale, "mt-5 text-center font-display text-xl text-ink sm:text-2xl")}>{t("lookup.title")}</h2>
           <p className="mt-2 text-center font-poppins text-sm leading-relaxed text-ink/60">
             {t("lookup.description")}
           </p>
@@ -1311,13 +1585,13 @@ function UserStatusContent() {
     t("tabs.guest");
 
   return (
-    <section className="relative overflow-x-hidden pb-16 pt-24 sm:pb-20 sm:pt-28 md:pb-28 md:pt-36">
+    <section className="relative overflow-x-hidden pb-12 pt-20 sm:pb-20 sm:pt-28 md:pb-28 md:pt-36">
       <div className="container max-w-6xl">
-        <div className="mb-6 px-1 text-center sm:mb-8 md:mb-10">
-          <p className="eyebrow !capitalize text-ink/55">
-            <span className="font-poppins">{t("eyebrow")}</span>
+        <div className="mb-5 px-1 text-center sm:mb-8 md:mb-10">
+          <p className="eyebrow text-ink/55">
+            <span className={statusHeadingClass(locale, "font-poppins")}>{t("eyebrow")}</span>
           </p>
-          <h1 className="mt-3 font-display text-2xl !font-medium !text-ink sm:text-3xl md:text-4xl">
+          <h1 className={statusHeadingClass(locale, "mt-2 font-display text-xl !font-medium !text-ink sm:mt-3 sm:text-3xl md:text-4xl")}>
             {t("headingPlain")}
             <span className="italic text-falcon-deep"> {t("headingItalic")}</span>
           </h1>
@@ -1342,15 +1616,19 @@ function UserStatusContent() {
           <div className="space-y-4 sm:space-y-5">
             {isVip && hasGuest ? (
               <>
-                <PersonTabs
+                <ProfileSwitcherCard
                   activeTab={activeTab}
                   onTabChange={setActiveTab}
                   primaryLabel={primaryTabLabel}
                   guestLabel={guestTabLabel}
+                  registration={registration}
+                  adminStatus={adminStatus}
+                  locale={locale}
                 />
 
                 {activeTab === "primary" ? (
                   <PrimaryTabPanel
+                    showHero={false}
                     registration={registration}
                     adminStatus={adminStatus}
                     locale={locale}
@@ -1358,6 +1636,7 @@ function UserStatusContent() {
                   />
                 ) : (
                   <GuestTabPanel
+                    showHero={false}
                     registration={registration}
                     locale={locale}
                     bedroomLabel={bedroomLabel}
@@ -1371,7 +1650,7 @@ function UserStatusContent() {
                 {isVip && (
                   <>
                     <JourneySection adminStatus={adminStatus} />
-                    <div className="grid gap-4 sm:gap-5 lg:grid-cols-2">
+                    <div className="space-y-4 sm:space-y-5">
                       <TravelSection adminStatus={adminStatus} locale={locale} />
                       <PrimaryDocumentsSection registration={registration} adminStatus={adminStatus} />
                     </div>
@@ -1401,7 +1680,7 @@ export default function UserStatusDashboard() {
   return (
     <Suspense
       fallback={
-        <section className="relative overflow-x-hidden pb-16 pt-24 sm:pb-20 sm:pt-28 md:pb-28 md:pt-36">
+        <section className="relative overflow-x-hidden pb-12 pt-20 sm:pb-20 sm:pt-28 md:pb-28 md:pt-36">
           <div className="container max-w-6xl">
             <LoadingSkeleton />
           </div>
