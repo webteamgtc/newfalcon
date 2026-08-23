@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 import {
   detectMenuLocale,
+  isChineseOnlyRequest,
   isMenuLocale,
   LOCALE_COOKIE_NAME,
   setLocaleCookie,
@@ -27,13 +28,15 @@ function redirectWithLocaleCookie(
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const chineseOnly = isChineseOnlyRequest(request);
 
   const legacyLocaleMatch = pathname.match(/^\/(en|zh|ar)(\/.*)?$/);
   if (legacyLocaleMatch) {
     const localeFromPath = legacyLocaleMatch[1];
     const targetPath = legacyLocaleMatch[2] || "/";
-    const locale =
-      localeFromPath === "en" || localeFromPath === "zh"
+    const locale: MenuLocale | undefined = chineseOnly
+      ? "zh"
+      : localeFromPath === "en" || localeFromPath === "zh"
         ? localeFromPath
         : undefined;
 
@@ -41,6 +44,19 @@ export default function middleware(request: NextRequest) {
   }
 
   const cookieLocale = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
+
+  if (chineseOnly) {
+    if (cookieLocale !== "zh") {
+      return redirectWithLocaleCookie(
+        request,
+        `${pathname}${request.nextUrl.search}`,
+        "zh"
+      );
+    }
+
+    return intlMiddleware(request);
+  }
+
   if (!isMenuLocale(cookieLocale)) {
     const detected = detectMenuLocale(request);
     return redirectWithLocaleCookie(request, `${pathname}${request.nextUrl.search}`, detected);

@@ -142,7 +142,7 @@ export default function VipProgressSection() {
           })}
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <div className="mt-6 flex flex-col md:grid md:grid-cols-[1fr_auto_1fr] md:items-stretch">
           <ProgressCard
             label={t("capitalLabel")}
             title={t("capitalTitle")}
@@ -158,6 +158,11 @@ export default function VipProgressSection() {
             percentText={`${capitalPercent}%`}
             percent={capitalPercent}
             t={t}
+            useUppercaseLabels={useUppercaseLabels}
+          />
+          <QualificationOrDivider
+            label={t("qualificationOr")}
+            hint={t("qualificationOrHint")}
             useUppercaseLabels={useUppercaseLabels}
           />
           <ProgressCard
@@ -253,6 +258,45 @@ export default function VipProgressSection() {
         />
       </div>
     </section>
+  );
+}
+
+function QualificationOrDivider({
+  label,
+  hint,
+  useUppercaseLabels,
+}: {
+  label: string;
+  hint: string;
+  useUppercaseLabels: boolean;
+}) {
+  return (
+    <div
+      className="flex flex-col items-center justify-center px-2 py-4 md:px-4 md:py-0"
+      role="separator"
+      aria-label={hint}
+    >
+      <div className="flex w-full items-center gap-3 md:h-full md:w-auto md:flex-col md:justify-center md:gap-3">
+        <span
+          className="h-px flex-1 bg-[#382910]/20 md:h-auto md:min-h-[3rem] md:w-px md:flex-none"
+          aria-hidden
+        />
+        <div className="flex shrink-0 flex-col items-center gap-1.5">
+          <span
+            className={`flex h-12 w-12 items-center justify-center rounded-full border-2 border-falcon-deep/35 bg-gradient-to-br from-[#FEF3DA] to-[#FBF6ED] font-display text-base font-semibold text-falcon-deep shadow-[0_4px_16px_-4px_rgba(56,41,16,0.18)] ${useUppercaseLabels ? "uppercase tracking-[0.12em]" : "tracking-wide"}`}
+          >
+            {label}
+          </span>
+          <p className="max-w-[140px] text-center font-poppins text-[10px] leading-snug text-[#382910]/65 md:max-w-[88px]">
+            {hint}
+          </p>
+        </div>
+        <span
+          className="h-px flex-1 bg-[#382910]/20 md:h-auto md:min-h-[3rem] md:w-px md:flex-none"
+          aria-hidden
+        />
+      </div>
+    </div>
   );
 }
 

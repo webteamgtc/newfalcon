@@ -4,7 +4,37 @@ export const LOCALE_COOKIE_NAME = "NEXT_LOCALE";
 
 const CHINESE_COUNTRY_CODES = new Set(["CN", "HK", "MO", "TW"]);
 
+/** Hosts that always use Chinese with no language switcher. */
+const DEFAULT_CHINESE_ONLY_HOSTS = ["goldenfalcon.gtcch.com"];
+
 export type MenuLocale = "en" | "zh";
+
+function normalizeHostname(hostname: string) {
+  return hostname.toLowerCase().replace(/^www\./, "");
+}
+
+export function getChineseOnlyHosts(): string[] {
+  const fromEnv = process.env.NEXT_PUBLIC_CHINESE_ONLY_HOSTS?.split(",")
+    .map((host) => host.trim())
+    .filter(Boolean);
+
+  return [...DEFAULT_CHINESE_ONLY_HOSTS, ...(fromEnv ?? [])].map(normalizeHostname);
+}
+
+export function isChineseOnlyHost(hostname: string): boolean {
+  const normalized = normalizeHostname(hostname);
+  return getChineseOnlyHosts().includes(normalized);
+}
+
+export function getRequestHostname(request: NextRequest): string {
+  const host = request.headers.get("x-forwarded-host") || request.headers.get("host");
+  return host?.split(",")[0]?.trim().split(":")[0] ?? "";
+}
+
+export function isChineseOnlyRequest(request: NextRequest): boolean {
+  const hostname = getRequestHostname(request);
+  return hostname ? isChineseOnlyHost(hostname) : false;
+}
 
 export function isMenuLocale(value: string | undefined): value is MenuLocale {
   return value === "en" || value === "zh";
@@ -41,6 +71,10 @@ export function prefersChineseLanguage(request: NextRequest): boolean {
 }
 
 export function detectMenuLocale(request: NextRequest): MenuLocale {
+  if (isChineseOnlyRequest(request)) {
+    return "zh";
+  }
+
   const cookieLocale = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
   if (isMenuLocale(cookieLocale)) {
     return cookieLocale;

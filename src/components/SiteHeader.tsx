@@ -6,12 +6,14 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useVipUser } from "@/context/VipUserProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useChineseOnlySite } from "@/hooks/useChineseOnlySite";
 
 export default function SiteHeader() {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { user } = useVipUser();
+  const chineseOnlySite = useChineseOnlySite();
   const isGallery = pathname.includes('/gallery') || pathname.includes('/guest') || pathname.includes('/ticket');
   const links = [
     { href: "/", label: t("welcome") },
@@ -66,11 +68,15 @@ export default function SiteHeader() {
             </Link>
           ))}
 
-          <span
-            className={`mx-1 h-5 w-px shrink-0 ${isGallery ? "bg-white/30" : "bg-ink/20"}`}
-            aria-hidden
-          />
-          <LanguageSwitcher variant={isGallery ? "light" : "default"} />
+          {!chineseOnlySite && (
+            <>
+              <span
+                className={`mx-1 h-5 w-px shrink-0 ${isGallery ? "bg-white/30" : "bg-ink/20"}`}
+                aria-hidden
+              />
+              <LanguageSwitcher variant={isGallery ? "light" : "default"} />
+            </>
+          )}
         </nav>
 
 
@@ -116,8 +122,12 @@ export default function SiteHeader() {
               </Link>
             ))}
 
-            <div className="my-2 h-px bg-ink/10" aria-hidden />
-            <LanguageSwitcher />
+            {!chineseOnlySite && (
+              <>
+                <div className="my-2 h-px bg-ink/10" aria-hidden />
+                <LanguageSwitcher />
+              </>
+            )}
           </nav>
 
         </div>

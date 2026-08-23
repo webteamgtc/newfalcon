@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
 import { localeLabels, menuLocales, type AppLocale } from "@/i18n/routing";
 import { LOCALE_COOKIE_NAME, type MenuLocale } from "@/lib/localeDetection";
+import { useChineseOnlySite } from "@/hooks/useChineseOnlySite";
 import CN from "country-flag-icons/react/3x2/CN";
 import US from "country-flag-icons/react/3x2/US";
 
@@ -44,6 +45,11 @@ export default function LanguageSwitcher({
   const pathname = usePathname();
   const router = useRouter();
   const isLight = variant === "light";
+  const chineseOnlySite = useChineseOnlySite();
+
+  if (chineseOnlySite) {
+    return null;
+  }
 
   const switchLocale = (code: MenuLocale) => {
     if (locale === code) return;
