@@ -17,7 +17,7 @@ const TABLE_HEADINGS = [
   "Qualified",
   ...(SHOW_VISA_SECTION ? (["Visa"] as const) : []),
   "Ticket",
-  "",
+  "Actions",
 ] as const;
 
 function formatDate(value: string) {
@@ -196,6 +196,12 @@ export default function AdminDashboard({ adminEmail }: Props) {
   const [selectedRegistration, setSelectedRegistration] =
     useState<AdminRegistrationRecord | null>(null);
   const [loadingDetail, setLoadingDetail] = useState(false);
+  const [sendingTravelEmailId, setSendingTravelEmailId] = useState<string | null>(null);
+  const [travelEmailFeedback, setTravelEmailFeedback] = useState<{
+    id: string;
+    message: string;
+    success: boolean;
+  } | null>(null);
 
   const loadRegistrations = useCallback(async () => {
     setLoading(true);
@@ -276,6 +282,59 @@ export default function AdminDashboard({ adminEmail }: Props) {
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });
     router.replace("/admin");
+  }
+
+  async function handleSendTravelConfirmationEmail(item: AdminRegistrationListItem) {
+    const recipientEmail = (item.email || item.registrationEmail).trim().toLowerCase();
+    if (!recipientEmail) {
+      setTravelEmailFeedback({
+        id: item.id,
+        message: "No email available for this registration.",
+        success: false,
+      });
+      return;
+    }
+
+    setSendingTravelEmailId(item.id);
+    setTravelEmailFeedback(null);
+
+    try {
+      const response = await fetch("/api/admin/send-travel-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          registrationId: item.id,
+          email: recipientEmail,
+          firstName: item.firstName.trim(),
+          locale: "en",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        setTravelEmailFeedback({
+          id: item.id,
+          message: data.message || "Failed to send travel confirmation email",
+          success: false,
+        });
+        return;
+      }
+
+      setTravelEmailFeedback({
+        id: item.id,
+        message: `Travel confirmation email sent to ${recipientEmail}.`,
+        success: true,
+      });
+    } catch {
+      setTravelEmailFeedback({
+        id: item.id,
+        message: "Failed to send travel confirmation email. Please try again.",
+        success: false,
+      });
+    } finally {
+      setSendingTravelEmailId(null);
+    }
   }
 
   const filtered = registrations.filter((item) => {
@@ -543,14 +602,33 @@ export default function AdminDashboard({ adminEmail }: Props) {
                           <StatusBadge value={item.ticketStatus} type="ticket" />
                         </td>
                         <td className="px-5 py-4">
-                          <button
-                            type="button"
-                            onClick={() => openRegistration(item.id)}
-                            disabled={loadingDetail && selectedId === item.id}
-                            className="rounded-full bg-falcon-deep px-4 py-1.5 font-poppins text-[10px] uppercase tracking-[0.08em] text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-                          >
-                            {loadingDetail && selectedId === item.id ? "..." : "Edit"}
-                          </button>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => handleSendTravelConfirmationEmail(item)}
+                              disabled={sendingTravelEmailId === item.id}
+                              className="rounded-full border border-falcon-deep px-3 py-1.5 font-poppins text-[10px] uppercase tracking-[0.08em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                              {sendingTravelEmailId === item.id ? "Sending..." : "Send email"}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => openRegistration(item.id)}
+                              disabled={loadingDetail && selectedId === item.id}
+                              className="rounded-full bg-falcon-deep px-4 py-1.5 font-poppins text-[10px] uppercase tracking-[0.08em] text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+                            >
+                              {loadingDetail && selectedId === item.id ? "..." : "Edit"}
+                            </button>
+                          </div>
+                          {travelEmailFeedback?.id === item.id && (
+                            <p
+                              className={`mt-2 max-w-[220px] font-poppins text-[11px] leading-snug ${
+                                travelEmailFeedback.success ? "text-emerald-700" : "text-amber-800"
+                              }`}
+                            >
+                              {travelEmailFeedback.message}
+                            </p>
+                          )}
                         </td>
                       </tr>
                     ))

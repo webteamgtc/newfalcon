@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import { startOfDay } from "date-fns";
 import Button from "@/components/Button";
@@ -99,6 +99,7 @@ function isPassportImage(file: File) {
 
 export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBookingFormProps) {
   const t = useTranslations("vipPage.ticketBooking");
+  const locale = useLocale();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [passportPhoto, setPassportPhoto] = useState<File | null>(null);
@@ -399,6 +400,7 @@ export default function VipTicketBookingForm({ user, onSuccess }: VipTicketBooki
         first_name: form.fullName,
         formType: "vip_ticket_booking",
         referenceId: data.id,
+        locale,
       });
 
       setSubmitted(true);

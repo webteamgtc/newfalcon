@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import Button from "@/components/Button";
 import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhoneInput";
@@ -45,6 +45,7 @@ type StaffRegistrationFormProps = {
 
 export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFormProps) {
   const t = useTranslations("checkStatusPage.staffRegistration");
+  const locale = useLocale();
 
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -153,6 +154,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
         body: JSON.stringify({
           email: trimmedEmail,
           first_name: firstNameFromEmail(trimmedEmail) || "Staff",
+          locale,
         }),
       });
 
@@ -295,6 +297,7 @@ export default function StaffRegistrationForm({ onSuccess }: StaffRegistrationFo
         first_name: firstName.trim(),
         formType: "staff_registration",
         referenceId: data.id,
+        locale,
       });
 
       setSubmitted(true);
