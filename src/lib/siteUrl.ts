@@ -19,7 +19,7 @@ export function getSiteUrl(request?: Request) {
   return "http://localhost:3000";
 }
 
-export function buildUserStatusUrl(email: string, locale = "en", request?: Request) {
+export function buildUserStatusUrl(email: string, _locale = "en", request?: Request) {
   const baseUrl = getSiteUrl(request);
-  return `${baseUrl}/${locale}/user-status?email=${encodeURIComponent(email)}`;
+  return `${baseUrl}/user-status?email=${encodeURIComponent(email)}`;
 }

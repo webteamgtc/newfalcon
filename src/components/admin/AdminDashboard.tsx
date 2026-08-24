@@ -360,7 +360,7 @@ export default function AdminDashboard({ adminEmail }: Props) {
             </div>
             <div>
               <p className="font-poppins text-[10px] uppercase tracking-[0.14em] text-ink/45">
-                Golden Falcon Night
+                金鹰节
               </p>
               <h1 className="font-display text-2xl text-ink">Admin Dashboard</h1>
               <p className="mt-0.5 font-poppins text-xs text-ink/50">{adminEmail}</p>

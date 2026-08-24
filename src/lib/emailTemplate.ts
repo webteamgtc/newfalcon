@@ -84,10 +84,10 @@ export function buildConfirmationEmailHtml({
 
 const FORM_EMAIL_CONTENT = {
   vip_ticket_booking: {
-    subject: "Golden Falcon Awards — Registration Received",
+    subject: "金鹰节 — Registration Received",
     title: "Registration Received",
     message:
-      "Thank you for submitting your Golden Falcon Awards UAE ticket registration. We have successfully received your details.",
+      "Thank you for submitting your 金鹰节 UAE ticket registration. We have successfully received your details.",
     details: (referenceId?: string) =>
       referenceId ? [`Reference ID: ${referenceId}`] : [],
   },

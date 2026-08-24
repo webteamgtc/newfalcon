@@ -5,6 +5,7 @@ import {
   getGoldenFalconEmailSubject,
   sendMailgunHtmlEmail,
 } from "@/app/api/otp-smtp/templates";
+import { getSiteUrl } from "@/lib/siteUrl";
 
 export const runtime = "nodejs";
 
@@ -29,7 +30,7 @@ export async function POST(request: Request) {
     const termsLink =
       typeof body.termsLink === "string" && body.termsLink.trim()
         ? body.termsLink.trim()
-        : undefined;
+        : `${getSiteUrl(request)}/policy`;
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(

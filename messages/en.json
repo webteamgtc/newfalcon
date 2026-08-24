@@ -1,6 +1,6 @@
 {
   "meta": {
-    "siteName": "Golden Falcon Awards",
+    "siteName": "金鹰节",
     "brand": "GTCFX",
     "brandFull": "GTCFX — Regulated Multi-Asset Broker",
     "tagline": "Celebrating Excellence in Global Trading Partnerships",
@@ -53,7 +53,7 @@
         {
           "year": "2023",
           "title": "The Foundation of Excellence",
-          "description": "The inaugural Golden Falcon Awards set a new benchmark for trading industry recognition."
+          "description": "The inaugural 金鹰节 set a new benchmark for trading industry recognition."
         }
       ]
     },
@@ -132,7 +132,7 @@
     "media": {
       "eyebrow": "Global Coverage",
       "heading": "Media Partners",
-      "subtext": "Leading international press and financial outlets amplifying the Golden Falcon Awards across 46 countries — from broadcast networks to digital publications.",
+      "subtext": "Leading international press and financial outlets amplifying the 金鹰节 across 46 countries — from broadcast networks to digital publications.",
       "partners": [
         "TRT World",
         "Khaleej Times",
@@ -151,7 +151,7 @@
       "cta": "Submit a Question",
       "list": [
         {
-          "question": "How do I register for the Golden Falcon Awards?",
+          "question": "How do I register for the 金鹰节?",
           "answer": "Register online through our Tickets page. Once confirmed, you'll receive your invitation details and event access via email within 48 hours."
         },
         {
@@ -160,7 +160,7 @@
         },
         {
           "question": "Where is the event held?",
-          "answer": "The Golden Falcon Awards 2026 will take place at the Conrad Hotel, Sheikh Zayed Road, Dubai, UAE. Valet parking and complimentary transfers are available for VIP guests."
+          "answer": "The 金鹰节 2026 will take place at the Conrad Hotel, Sheikh Zayed Road, Dubai, UAE. Valet parking and complimentary transfers are available for VIP guests."
         },
         {
           "question": "Can I transfer my ticket to a colleague?",
@@ -169,10 +169,10 @@
       ]
     },
     "footerCta": {
-      "eyebrow": "Golden Falcon Awards 2026",
+      "eyebrow": "金鹰节 2026",
       "headingPlain": "Be Part of Something",
       "headingItalic": "Extraordinary.",
-      "subtext": "The Golden Falcon Awards 2026 brings together the most accomplished minds in global trading. Whether you're a partner, trader, or visionary — this is your stage.",
+      "subtext": "The 金鹰节 2026 brings together the most accomplished minds in global trading. Whether you're a partner, trader, or visionary — this is your stage.",
       "cta": "Explore Your Invitation"
     }
   },
@@ -180,13 +180,13 @@
     "hero": {
       "headingPlain": "Where Greatness Was",
       "headingItalic": "Immortalised.",
-      "subtext": "Step into the defining moments of the Golden Falcon Awards — an extraordinary chronicle of ambition realised, partnerships celebrated, and legacies etched into the history of global trading excellence."
+      "subtext": "Step into the defining moments of the 金鹰节 — an extraordinary chronicle of ambition realised, partnerships celebrated, and legacies etched into the history of global trading excellence."
     },
     "ambition": {
       "eyebrow": "Featured guests",
       "headingPlain": "Built on ambition.",
       "headingItalic": "Defined by excellence.",
-      "paragraph1": "The Golden Falcon Awards have grown into the trading industry's most prestigious gathering — uniting partners, executives, and leaders who set the global standard.",
+      "paragraph1": "The 金鹰节 have grown into the trading industry's most prestigious gathering — uniting partners, executives, and leaders who set the global standard.",
       "paragraph2": "Each year raises the benchmark higher, delivering deeper connections, sharper recognition, and a celebration worthy of the achievements it honours."
     },
     "recognition": {
@@ -216,7 +216,7 @@
       "eyebrow": "Timeline",
       "headingPlain": "A journey shaped by",
       "headingItalic": "extraordinary milestones.",
-      "subtext": "From an intimate inaugural ceremony to a globally recognised event — every edition has added a defining chapter to the Golden Falcon legacy.",
+      "subtext": "From an intimate inaugural ceremony to a globally recognised event — every edition has added a defining chapter to the 金鹰节 legacy.",
       "timeline": [
         {
           "year": "2025",
@@ -231,7 +231,7 @@
         {
           "year": "2023",
           "title": "The Foundation of Excellence",
-          "description": "The inaugural Golden Falcon Awards set a new benchmark for trading industry recognition."
+          "description": "The inaugural 金鹰节 set a new benchmark for trading industry recognition."
         },
         {
           "year": "2022",
@@ -245,7 +245,7 @@
       "headingPlain": "A journey told through",
       "headingItalic": "moments.",
       "subtext": "Explore global events, behind-the-scenes stories, community highlights, media features, and the milestones that define our presence.",
-      "imageAlt": "Golden Falcon Awards gallery moment {number}",
+      "imageAlt": "金鹰节 gallery moment {number}",
       "openImage": "View gallery image {number}",
       "lightboxLabel": "Gallery image viewer",
       "closeLightbox": "Close gallery view",
@@ -257,7 +257,7 @@
   "agenda": {
     "eyebrow": "The Evening",
     "heading": "How the evening unfolds.",
-    "subtext": "From red-carpet arrivals to the closing celebration — your complete itinerary for the Golden Falcon Awards 2026.",
+    "subtext": "From red-carpet arrivals to the closing celebration — your complete itinerary for the 金鹰节 2026.",
     "venueLabel": "Venue",
     "venue": "Conrad Hotel, Sheikh Zayed Road, Dubai, UAE",
     "schedule": [
@@ -284,7 +284,7 @@
       {
         "time": "9:30 PM",
         "title": "Awards Ceremony",
-        "description": "The presentation of all 22 Golden Falcon Award categories, honouring the year's most distinguished partners and achievements."
+        "description": "The presentation of all 22 金鹰节 categories, honouring the year's most distinguished partners and achievements."
       },
       {
         "time": "11:00 PM",
@@ -295,7 +295,7 @@
   },
   "guestPage": {
     "hero": {
-      "eyebrow": "Golden Falcon Awards · December 12, 2026",
+      "eyebrow": "金鹰节 · December 12, 2026",
       "headingPlain": "An exclusive gathering of",
       "headingItalic": "the world's finest minds.",
       "subtext": "Over 200 distinguished leaders from 30+ countries — CEOs, fund managers, chief analysts, and visionary partners — converge at the Conrad Hotel, Dubai for one extraordinary evening. A celebration of ambition, excellence, and the partnerships shaping the future of global finance.",
@@ -306,7 +306,7 @@
       "sectionLabel": "Featured guests",
       "headingPlain": "A voice of vision.",
       "headingItalic": "A story of impact.",
-      "subtext": "Every Golden Falcon Awards ceremony is elevated by leaders who challenge convention and inspire excellence on a global stage.",
+      "subtext": "Every 金鹰节 ceremony is elevated by leaders who challenge convention and inspire excellence on a global stage.",
       "label": "Featured Speaker",
       "tag": "United Kingdom · Chief Commercial Officer",
       "quote": "“Leadership becomes meaningful when vision turns into opportunity for others.”",
@@ -392,7 +392,7 @@
         {
           "name": "Sofia Marin",
           "role": "Stage Performer — International Artist",
-          "bio": "Bringing world-class live artistry to the closing celebration of the Golden Falcon Awards.",
+          "bio": "Bringing world-class live artistry to the closing celebration of the 金鹰节.",
           "category": "performers"
         }
       ]
@@ -407,7 +407,7 @@
   "mediaPage": {
     "eyebrow": "Press & Media",
     "heading": "Coverage & Media Partners",
-    "subtext": "The international press and financial media outlets amplifying the Golden Falcon Awards to audiences across 46 countries — from leading broadcast networks to premier digital publications.",
+    "subtext": "The international press and financial media outlets amplifying the 金鹰节 to audiences across 46 countries — from leading broadcast networks to premier digital publications.",
     "watchHighlights": "Watch Event Highlights",
     "pressKit": "Download Press Kit"
   },
@@ -415,7 +415,7 @@
     "hero": {
       "headingPlain": "One night. One stage. One legacy.",
       "headingItalic": "Infinite recognition awaits.",
-      "subtext": "December 12, 2026 — Conrad Hotel, Dubai. The Golden Falcon Awards brings together 200+ elite traders, partners, and visionaries for the most anticipated evening in global trading. Red carpet. World-class speakers. 22 awards. This is your invitation to greatness.",
+      "subtext": "December 12, 2026 — Conrad Hotel, Dubai. The 金鹰节 brings together 200+ elite traders, partners, and visionaries for the most anticipated evening in global trading. Red carpet. World-class speakers. 22 awards. This is your invitation to greatness.",
       "primaryCta": "Secure Your Seat",
       "secondaryCta": "View Qualification"
     },
@@ -424,12 +424,12 @@
       "headingItalic": "evening.",
       "subtext": "Two ways to attend: qualify through your trading performance as an IB partner, or purchase event access directly for yourself and your guests.",
       "eyebrow": "Ticket information",
-      "descriptionText": "Golden Falcon Awards is a curated event. Every ticket request is reviewed so the guest experience remains considered, relevant, and personal.",
+      "descriptionText": "金鹰节 is a curated event. Every ticket request is reviewed so the guest experience remains considered, relevant, and personal.",
       "twoAccessLabel": "Two access routes",
-      "twoAccessHint": "Choose one path · Both lead to Golden Falcon Night",
+      "twoAccessHint": "Choose one path · Both lead to 金鹰节",
       "complimentaryAccess": "Complimentary access",
       "forEligibleClients": "For eligible GTCFX IB/Partners",
-      "qualifyDesc": "Reach the confirmed campaign targets to unlock complimentary access to Golden Falcon Awards Night.",
+      "qualifyDesc": "Reach the confirmed campaign targets to unlock complimentary access to 金鹰节.",
       "falconTicket": "Falcon ticket",
       "subjectToAvailability": "Subject to availability",
       "purchaseDesc": "Purchase event access directly for yourself or your guests. Subject to availability.",
@@ -532,7 +532,7 @@
       }
     },
     "newClientForm": {
-      "intro": "Create your GTCFX account to begin your IB qualification journey for Golden Falcon Awards.",
+      "intro": "Create your GTCFX account to begin your IB qualification journey for 金鹰节.",
       "fields": {
         "firstName": "First Name",
         "lastName": "Last Name",
@@ -629,10 +629,10 @@
   },
   "policyPage": {
     "hero": {
-      "eyebrow": "Golden Falcon Awards · Legal",
+      "eyebrow": "金鹰节 · Legal",
       "headingPlain": "Terms",
       "headingItalic": "& Conditions.",
-      "subtext": "Please review the terms governing event access, participation, privacy, and conditions of use for the Golden Falcon Awards 2026, organised by GTC Global Trade Capital Co. Limited."
+      "subtext": "Please review the terms governing event access, participation, privacy, and conditions of use for the 金鹰节 2026, organised by GTC Global Trade Capital Co. Limited."
     },
     "intro": {
       "eyebrow": "Policy Overview",
@@ -668,7 +668,7 @@
         "Our Commitment"
       ],
       "clauses": [
-        "These terms apply before, during, and after your participation in the Golden Falcon Awards 2026.",
+        "These terms apply before, during, and after your participation in the 金鹰节 2026.",
         "Attendees must provide accurate information and adhere to all published event guidelines and venue policies.",
         "GTCFX is committed to transparent communication, responsible data handling, and a premium guest experience."
       ]
@@ -716,7 +716,7 @@
     "honoursEyebrow": "The Honours",
     "honoursHeadingPlain": "Excellence deserves to be",
     "honoursHeadingItalic": "celebrated.",
-    "honoursDescBlack": "The Golden Falcon Awards honour more than results. They recognise the trust, integrity, partnership, and relentless dedication behind every achievement.",
+    "honoursDescBlack": "The 金鹰节 honour more than results. They recognise the trust, integrity, partnership, and relentless dedication behind every achievement.",
     "honoursDescGold": "Each of our 22 categories is crafted to bring meaningful accomplishment into sharp focus — from regional partner excellence and liquidity leadership to individual milestones and compliance integrity.",
     "stats": [
       {
@@ -785,7 +785,7 @@
       }
     ],
     "certificateEyebrow": "Signature Distinction",
-    "certificateTitle": "The Golden Falcon",
+    "certificateTitle": "金鹰节",
     "certificateTitleItalic": "Visionary Award.",
     "certificateDesc": "The pinnacle honour of the evening — presented to a partner or leader whose vision, influence, and sustained contribution have created transformative impact across the global trading community."
   },
@@ -794,7 +794,7 @@
     "heroYear": "2026",
     "heroHeadingPlain": "Welcome,",
     "heroHeadingName": "Guest.",
-    "heroSubtext": "Your private view of the journey toward complimentary VIP access to Golden Falcon Awards Night.",
+    "heroSubtext": "Your private view of the journey toward complimentary VIP access to 金鹰节.",
     "heroCta": "View Progress",
     "journeyEyebrow": "QUALIFICATION JOURNEY",
     "journeyHeadingPlain": "Three stages.",
@@ -897,7 +897,7 @@
       "eyebrow": "Event ticket registration",
       "headingPlain": "Book your ticket",
       "headingItalic": "for UAE.",
-      "description": "Please provide your travel details for Golden Falcon Awards in Dubai, UAE. All fields marked with * are required.",
+      "description": "Please provide your travel details for 金鹰节 in Dubai, UAE. All fields marked with * are required.",
       "closeModal": "Close form",
       "submit": "Submit Registration",
       "submitting": "Submitting...",
@@ -987,7 +987,7 @@
     "heroYear": "2026",
     "heroHeadingPlain": "Verify your account to",
     "heroHeadingItalic": "view your progress.",
-    "heroSubtext": "Enter your registered email to check your VIP qualification status and Golden Falcon Awards access.",
+    "heroSubtext": "Enter your registered email to check your VIP qualification status and 金鹰节 access.",
     "heroCta": "Start Verification",
     "staffRegistrationCta": "Staff Registration",
     "staffRegistration": {
@@ -1100,7 +1100,7 @@
     "eyebrow": "Registration status",
     "headingPlain": "Your registration",
     "headingItalic": "dashboard.",
-    "description": "Review your submitted details and current registration status for Golden Falcon Awards.",
+    "description": "Review your submitted details and current registration status for 金鹰节.",
     "welcome": "Welcome back, {name}",
     "loading": "Loading your registration details...",
     "referenceId": "Reference ID",
@@ -1149,7 +1149,7 @@
       "complete": "{completed} of {total} steps complete",
       "percentComplete": "{percent}% complete",
       "stepLabel": "Step {step}",
-      "allComplete": "All steps are complete. We look forward to welcoming you at Golden Falcon Awards."
+      "allComplete": "All steps are complete. We look forward to welcoming you at 金鹰节."
     },
     "lookup": {
       "title": "Find your registration",
@@ -1237,7 +1237,7 @@
       },
       "hints": {
         "qualificationPending": "Our team is reviewing your eligibility for the event.",
-        "qualified": "You have been marked as qualified for Golden Falcon Awards.",
+        "qualified": "You have been marked as qualified for 金鹰节.",
         "visaPending": "Visa processing updates will appear here.",
         "visaApproved": "Your visa has been approved. You can download your visa document below.",
         "visaRejected": "Please contact support for next steps regarding your visa.",
@@ -1278,17 +1278,17 @@
     }
   },
   "thankYouPage": {
-    "metaTitle": "Thank You — Golden Falcon Awards",
+    "metaTitle": "Thank You — 金鹰节",
     "eyebrow": "Registration received",
     "headingPlain": "Thank you for",
     "headingItalic": "registering.",
-    "description": "Your GTCFX account registration has been submitted successfully. We are preparing the next steps for your Golden Falcon Awards journey.",
+    "description": "Your GTCFX account registration has been submitted successfully. We are preparing the next steps for your 金鹰节 journey.",
     "emailNoticeTitle": "Please check your email",
     "emailNoticeBody": "A confirmation message has been sent to the email address you provided. Please review your inbox — and your spam folder — for login details and further instructions.",
     "steps": [
       "Open the confirmation email from GTCFX and follow the sign-in instructions.",
       "Complete your profile and verify your account if prompted.",
-      "Return here anytime to check your qualification status for Golden Falcon Awards."
+      "Return here anytime to check your qualification status for 金鹰节."
     ],
     "ctaCheckStatus": "Check My Status",
     "ctaHome": "Back to Home",
