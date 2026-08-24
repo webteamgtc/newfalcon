@@ -3,6 +3,9 @@ export async function sendConfirmationEmail(payload: {
   first_name: string;
   formType: "vip_ticket_booking" | "staff_registration";
   referenceId?: string;
+  locale?: string;
+  registrationLink?: string;
+  statusSiteUrl?: string;
 }) {
   try {
     await fetch("/api/send-email", {

@@ -5,7 +5,6 @@ import {
   getGoldenFalconEmailSubject,
   sendMailgunHtmlEmail,
 } from "@/app/api/otp-smtp/templates";
-import { buildUserStatusUrl, getSiteUrl } from "@/lib/siteUrl";
 
 export const runtime = "nodejs";
 
@@ -27,14 +26,10 @@ export async function POST(request: Request) {
           ? body.firstName.trim()
           : "";
     const locale = normalizeLocale(body.locale);
-    const registrationLink =
-      typeof body.registrationLink === "string" && body.registrationLink.trim()
-        ? body.registrationLink.trim()
-        : buildUserStatusUrl(email, locale, request);
-    const statusSiteUrl =
-      typeof body.statusSiteUrl === "string" && body.statusSiteUrl.trim()
-        ? body.statusSiteUrl.trim()
-        : getSiteUrl(request);
+    const termsLink =
+      typeof body.termsLink === "string" && body.termsLink.trim()
+        ? body.termsLink.trim()
+        : undefined;
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
@@ -43,17 +38,14 @@ export async function POST(request: Request) {
       );
     }
 
-    const subject = getGoldenFalconEmailSubject("invitation_earned", locale);
-    const html = buildGoldenFalconEmailHtml("invitation_earned", locale, {
+    const vars = {
       firstName: firstName || undefined,
-      registrationLink,
-      statusSiteUrl,
-    });
-    const text = getGoldenFalconEmailPlainText("invitation_earned", locale, {
-      firstName: firstName || undefined,
-      registrationLink,
-      statusSiteUrl,
-    });
+      termsLink,
+    };
+
+    const subject = getGoldenFalconEmailSubject("registration_started", locale);
+    const html = buildGoldenFalconEmailHtml("registration_started", locale, vars);
+    const text = getGoldenFalconEmailPlainText("registration_started", locale, vars);
 
     await sendMailgunHtmlEmail({
       to: email,
@@ -64,12 +56,12 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Invitation email sent successfully",
+      message: "Registration started email sent successfully",
     });
   } catch (error) {
-    console.error("Send email error:", error);
+    console.error("Send registration email error:", error);
     return NextResponse.json(
-      { success: false, message: "Failed to send invitation email" },
+      { success: false, message: "Failed to send registration started email" },
       { status: 500 }
     );
   }

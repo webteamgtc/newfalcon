@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/routing";
 import Button from "@/components/Button";
 import { useVipUser } from "@/context/VipUserProvider";
 import { buildVipUser, type IbClientData, type IbPerformanceData } from "@/data/vipUsers";
+import { sendRegistrationStartedEmail } from "@/lib/sendRegistrationStartedEmail";
 import TicketNewClientForm from "@/components/ticket/TicketNewClientForm";
 import OtpBoxes from "@/components/ui/OtpBoxes";
 import { OTP_TTL_MS } from "@/lib/otpConstants";
@@ -182,6 +183,7 @@ export default function TicketAccessForm({
           email: client.email,
           first_name: client.firstName,
           ibId: client.memberId,
+          locale,
         }),
       });
 
@@ -281,8 +283,8 @@ export default function TicketAccessForm({
     setTermsError("");
 
     if (!otpVerified) {
-      await handleVerifyOtp();
-      return;
+      const verified = await handleVerifyOtp();
+      if (!verified) return;
     }
 
     if (!terms) {
@@ -295,6 +297,17 @@ export default function TicketAccessForm({
 
     setLoading(true);
     login(matchedUser);
+
+    try {
+      await sendRegistrationStartedEmail({
+        email: email.trim().toLowerCase(),
+        firstName: matchedUser.firstName,
+        locale,
+      });
+    } catch (emailError) {
+      console.error("Registration started email failed:", emailError);
+    }
+
     onSuccess?.();
     router.push("/result");
   };
