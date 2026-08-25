@@ -39,7 +39,7 @@ export default function AdminPage() {
       <div className="w-full max-w-md rounded-2xl border border-ink/10 bg-white p-8 shadow-[0_28px_70px_-28px_rgba(56,41,16,0.2)]">
         <div className="mb-8 text-center">
           <p className="font-poppins text-xs uppercase tracking-[0.12em] text-ink/50">
-            金鹰节
+            Golden Falcon Night
           </p>
           <h1 className="mt-2 font-display text-3xl text-ink">Admin Portal</h1>
           <p className="mt-2 font-poppins text-sm text-ink/65">

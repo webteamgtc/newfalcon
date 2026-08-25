@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 export const metadata = {
-  title: "Admin Portal — 金鹰节",
+  title: "Admin Portal — Golden Falcon Night",
 };
 
 export default function AdminLayout({ children }: { children: ReactNode }) {

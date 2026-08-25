@@ -31,6 +31,7 @@ const EMAIL_BANNER_URL =
 
 const DEFAULT_TERMS_LINK = "https://www.goldenfalcon.com/policy";
 const DEFAULT_STATUS_SITE = "https://www.goldenfalcon.com";
+const EN_EVENT_NAME = "Golden Falcon Awards 2026";
 const ZH_EVENT_NAME = "金鹰节 2026";
 
 function normalizeLocale(locale?: string): EmailLocale {
@@ -286,7 +287,7 @@ function buildWelcomeOtpBody(vars: EmailTemplateVars, locale: EmailLocale) {
   return `
     <p style="margin:0 0 20px;padding:0;">Dear ${name},</p>
     <p style="margin:0 0 20px;padding:0;">
-      Welcome to <strong style="font-weight:700;">金鹰节 2026.</strong>
+      Welcome to <strong style="font-weight:700;">${EN_EVENT_NAME}.</strong>
     </p>
     <p style="margin:0 0 20px;padding:0;">
       We are delighted to have you join this exclusive journey with GTCFX. To begin your registration, please find your personal information below:
@@ -327,7 +328,7 @@ function buildRegistrationStartedBody(vars: EmailTemplateVars, locale: EmailLoca
   return `
     <p style="margin:0 0 20px;padding:0;">Dear ${name},</p>
     <p style="margin:0 0 20px;padding:0;">
-      Thank you for joining <strong style="font-weight:700;">金鹰节 2026.</strong>
+      Thank you for joining <strong style="font-weight:700;">${EN_EVENT_NAME}.</strong>
     </p>
     <p style="margin:0 0 20px;padding:0;">
       Your event registration journey has started. Please review the required target and Terms &amp; Conditions to continue your qualification.
@@ -381,7 +382,7 @@ function buildInvitationEarnedBody(vars: EmailTemplateVars, locale: EmailLocale)
     <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">Congratulations!</strong></p>
     <p style="margin:0 0 20px;padding:0;">
       You have successfully completed the required target and earned your exclusive invitation to
-      <strong style="font-weight:700;">金鹰节 2026.</strong>
+      <strong style="font-weight:700;">${EN_EVENT_NAME}.</strong>
     </p>
     <p style="margin:0 0 20px;padding:0;">Please complete your personal and travel information below:</p>
     <p style="margin:0 0 6px;padding:0;"><strong style="font-weight:700;">Registration Link:</strong></p>
@@ -436,7 +437,7 @@ function buildTravelConfirmedBody(vars: EmailTemplateVars, locale: EmailLocale) 
     <p style="margin:0 0 20px;padding:0;">Dear ${name},</p>
     <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">Welcome to Dubai!</strong></p>
     <p style="margin:0 0 20px;padding:0;">
-      Your 金鹰节 2026 travel arrangements have been completed.
+      Your ${EN_EVENT_NAME} travel arrangements have been completed.
     </p>
     <p style="margin:0 0 20px;padding:0;">
       Your flight, hotel, and event information are now available:
@@ -449,7 +450,7 @@ function buildTravelConfirmedBody(vars: EmailTemplateVars, locale: EmailLocale) 
       We are excited to welcome you and create an unforgettable experience together.
     </p>
     <p style="margin:0 0 20px;padding:0;">
-      See you soon at <strong style="font-weight:700;">金鹰节 2026.</strong>
+      See you soon at <strong style="font-weight:700;">${EN_EVENT_NAME}.</strong>
     </p>
     <p style="margin:0;padding:0;">Warm regards,</p>
     <p style="margin:0;padding:0;"><strong style="font-weight:700;">The GTCFX Team</strong></p>`;
@@ -464,29 +465,29 @@ const EMAIL_META: Record<
 > = {
   en: {
     welcome_otp: {
-      subject: "Welcome to 金鹰节 2026 - Your OTP & IB Details",
-      pageTitle: "金鹰节 2026 - Your OTP & IB Details",
+      subject: `Welcome to ${EN_EVENT_NAME} - Your OTP & IB Details`,
+      pageTitle: "Golden Falcon Night 2026 - Your OTP & IB Details",
       eyebrow: "YOU ARE INVITED",
       plainText: ({ otp = "XXXXX", ibId = "XXXXX" }) =>
-        `Welcome to 金鹰节 2026. OTP: ${otp}. IB ID / Referral Code: ${ibId}.`,
+        `Welcome to ${EN_EVENT_NAME}. OTP: ${otp}. IB ID / Referral Code: ${ibId}.`,
     },
     registration_started: {
-      subject: "Thank You for Joining 金鹰节 2026",
-      pageTitle: "金鹰节 2026 - Registration Started",
+      subject: `Thank You for Joining ${EN_EVENT_NAME}`,
+      pageTitle: "Golden Falcon Night 2026 - Registration Started",
       eyebrow: "REGISTRATION STARTED",
       plainText: () =>
-        "Thank you for joining 金鹰节 2026. Your registration journey has started.",
+        `Thank you for joining ${EN_EVENT_NAME}. Your registration journey has started.`,
     },
     invitation_earned: {
-      subject: "Congratulations! Your 金鹰节 2026 Invitation Is Ready",
-      pageTitle: "金鹰节 2026 - Invitation Earned",
+      subject: `Congratulations! Your ${EN_EVENT_NAME} Invitation Is Ready`,
+      pageTitle: "Golden Falcon Night 2026 - Invitation Earned",
       eyebrow: "YOU ARE INVITED",
       plainText: ({ registrationLink = DEFAULT_STATUS_SITE }) =>
         `Congratulations! Complete your registration: ${registrationLink}`,
     },
     travel_confirmed: {
-      subject: "Welcome to Dubai – Your 金鹰节 2026 Details",
-      pageTitle: "金鹰节 2026 - Travel Confirmed",
+      subject: `Welcome to Dubai – Your ${EN_EVENT_NAME} Details`,
+      pageTitle: "Golden Falcon Night 2026 - Travel Confirmed",
       eyebrow: "YOU ARE INVITED",
       plainText: ({ bookingLink, statusSiteUrl }) => {
         const link = bookingLink || statusSiteUrl || DEFAULT_STATUS_SITE;

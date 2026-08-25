@@ -155,7 +155,7 @@ export default async function AwardsPage() {
             <div className="flex justify-center">
               <Image
                 src="/award/sidebar.png"
-                alt="金鹰节 Visionary Award"
+                alt="Golden Falcon Visionary Award"
                 width={500}
                 height={500}
                 className="h-auto w-auto max-w-[320px] object-contain md:max-w-[500px]"
