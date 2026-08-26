@@ -75,17 +75,15 @@ export default function VipProgressSection() {
     <section id="progress" className="scroll-mt-4 bg-[#FFFDF8] py-12 md:py-16">
       <div className="container">
         <div className="grid gap-6 md:grid-cols-12 md:items-center md:gap-14">
-          <div className="col-span-12 md:col-span-4">
-           
-            <h2 className="mt-4 font-display HeadingH2 !font-medium !text-ink">
-              {t("journeyHeadingPlain")}
-             
+          <div className="col-span-12 flex items-center md:col-span-5">
+            <h2 className="font-display HeadingH2 !font-medium !text-ink">
+              {t("journeyHeadingPlain")}{" "}
               <span className="italic text-falcon-deep">
                 {t("journeyHeadingItalic")}
               </span>
             </h2>
           </div>
-          <p className="col-span-12 TextSmall !leading-snug !font-poppins !text-[#382910] md:col-span-8">
+          <p className="col-span-12 flex items-center TextSmall !leading-snug !font-poppins !text-[#382910] md:col-span-7">
             {t("journeySubtext")}
           </p>
         </div>
