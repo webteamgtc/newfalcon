@@ -6,41 +6,31 @@ export default function GalleryAmbitionSection() {
 
   return (
     <section className="relative bg-[#F7F2E8] py-8 md:py-16">
-      <div className="pointer-events-none w-2/5 right-0 top-2 h-[180px] absolute " aria-hidden>
-        <Image
-          src="/images/logo-yellow.svg"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-      </div>
+ 
 
       <div className="container">
-        <p className="eyebrow mb-4 text-[#382910] !capitalize">
-          <span className=" font-poppins ">{t("eyebrow")}</span>
-        </p>
-        <div className="grid gap-8 md:grid-cols-2 md:items-start md:gap-16">
-          <h2 className="font-display HeadingH1 !font-medium !text-ink">
+      
+        <div className="grid gap-8 md:grid-cols-12 md:items-center md:gap-16">
+          <h2 className="col-span-12 font-display HeadingH2 !font-medium !text-ink md:col-span-3">
             {t("headingPlain")}
             <br />
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>
-          <div className="space-y-4">
+          <div className="col-span-12 space-y-4 md:col-span-9">
             <p className="Text !leading-snug !font-poppins !text-ink">{t("paragraph1")}</p>
             <p className="Text !leading-snug !font-poppins !text-ink">{t("paragraph2")}</p>
           </div>
         </div>
 
-        <div className="relative mt-10 aspect-[16/6] overflow-hidden md:mt-14">
-          <Image
-            src="/images/gallery-section2.svg"
-            alt=""
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 1280px) 100vw, 1280px"
-          />
+        <div className="mt-10 md:mt-14">
+          <div className="relative w-full h-[400px] md:h-[700px] overflow-hidden">
+            <Image
+              src="/gallery/banner-new.png"
+              alt=""
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       </div>
     </section>

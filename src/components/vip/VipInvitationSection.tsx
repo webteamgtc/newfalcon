@@ -23,17 +23,14 @@ export default function VipInvitationSection() {
       {/* <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#F6E8CC]/95 via-[#EACF9A]/80 to-[#D5A75C]/55" /> */}
 
       <div className="container">
-        <div className="max-w-xl">
-          <p className="eyebrow !capitalize text-[#382910]">
-            <span className="font-poppins">{t("invitationEyebrow")}</span>
-          </p>
-          <h2 className="mt-3 font-display HeadingH1 !font-medium !text-[#382910]">
+        <div className="w-full">
+          <h2 className="mt-3 w-full font-display HeadingH1 !font-medium !text-[#382910] md:whitespace-nowrap">
             {t("invitationHeadingPlain")}{" "}
             <span className="italic text-falcon-deep">
               {t("invitationHeadingItalic")}
             </span>
           </h2>
-          <p className="mt-6  Text !leading-snug !font-poppins !text-[#382910]">
+          <p className="mt-6 w-full Text !leading-snug !font-poppins !text-[#382910] md:whitespace-nowrap">
             {t("invitationSubtext")}
           </p>
         </div>

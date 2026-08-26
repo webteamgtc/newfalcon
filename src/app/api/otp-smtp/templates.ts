@@ -33,6 +33,7 @@ const DEFAULT_TERMS_LINK = "https://www.goldenfalcon.com/policy";
 const DEFAULT_STATUS_SITE = "https://www.goldenfalcon.com";
 const EN_EVENT_NAME = "Golden Falcon Awards 2026";
 const ZH_EVENT_NAME = "金鹰节 2026";
+const ZH_OTP_LABEL = "OTP/验证码:";
 
 function normalizeLocale(locale?: string): EmailLocale {
   const normalized = locale?.trim().toLowerCase() ?? "";
@@ -272,7 +273,7 @@ function buildWelcomeOtpBody(vars: EmailTemplateVars, locale: EmailLocale) {
     <p style="margin:0 0 20px;padding:0;">
       请查收以下个人信息以开始注册：
     </p>
-    <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">OTP：</strong> ${otp}</p>
+    <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">${ZH_OTP_LABEL}</strong> ${otp}</p>
     <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">IB ID / 推荐码：</strong> ${ibId}</p>
     <p style="margin:0 0 20px;padding:0;">
       请妥善保管这些信息，用于完成活动注册。您的 ${ZH_EVENT_NAME} 之旅由此开启。
@@ -501,7 +502,7 @@ const EMAIL_META: Record<
       pageTitle: `${ZH_EVENT_NAME} - OTP 和 IB 详情`,
       eyebrow: "诚挚邀请",
       plainText: ({ otp = "XXXXX", ibId = "XXXXX" }) =>
-        `欢迎加入${ZH_EVENT_NAME}。OTP：${otp}。IB ID / 推荐码：${ibId}。`,
+        `欢迎加入${ZH_EVENT_NAME}。${ZH_OTP_LABEL} ${otp}。IB ID / 推荐码：${ibId}。`,
     },
     registration_started: {
       subject: `感谢您加入${ZH_EVENT_NAME} – 注册已开始`,

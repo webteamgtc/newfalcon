@@ -45,9 +45,9 @@ export default function SiteFooter() {
         />
       </div>
       <div className="relative z-10 container text-left">
-        <p className="eyebrow text-[#382910] !capitalize"><span >{t("eyebrow")}</span></p>
+   
         <h2 className="mt-3 max-w-lg font-display HeadingH1 !font-medium !text-ink">
-          {t("headingPlain")} <span className="italic text-falcon-deep">{t("headingItalic")}</span>
+          {t("headingPlain")}<span className="italic text-falcon-deep">{t("headingItalic")}</span>
         </h2>
         <p className=" mt-6 max-w-lg Text !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
         <Button href="/check-status" className="mt-10">

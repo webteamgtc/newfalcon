@@ -7,15 +7,15 @@ export default function GalleryMomentsSection() {
   return (
     <section className="bg-[#F9F7F2] py-10 md:py-16">
       <div className="container">
-        <p className="eyebrow mb-3 text-[#382910] !capitalize">
-          <span className="font-poppins">{t("eyebrow")}</span>
-        </p>
-        <div className="grid gap-6 md:grid-cols-[1fr_0.85fr] md:items-end md:gap-12">
-          <h2 className="max-w-sm font-display HeadingH1 !font-medium !text-ink">
+       
+        <div className="grid gap-6 md:grid-cols-12 md:items-center md:gap-12">
+          <h2 className="col-span-12 font-display HeadingH2 !font-medium !text-ink md:col-span-5">
             {t("headingPlain")}{" "}
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>
-          <p className="Text !font-poppins !leading-snug !text-ink">{t("subtext")}</p>
+          <p className="col-span-12 Text !font-poppins !leading-snug !text-ink md:col-span-7">
+            {t("subtext")}
+          </p>
         </div>
 
         <GalleryMasonryGrid />

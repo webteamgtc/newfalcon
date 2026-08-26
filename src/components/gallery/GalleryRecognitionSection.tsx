@@ -12,12 +12,7 @@ export default function GalleryRecognitionSection() {
             {t("headingPlain")}{" "}
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>
-          <span
-            aria-hidden
-            className="hidden font-display HeadingH2 leading-none text-[#382910] md:block"
-          >
-            {t("watermark")}
-          </span>
+     
         </div>
 
         <div className="mt-6 md:mt-10 grid grid-cols-1 border-s border-t border-[#434343]/25 sm:grid-cols-2 md:grid-cols-4">

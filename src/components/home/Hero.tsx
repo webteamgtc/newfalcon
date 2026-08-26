@@ -49,7 +49,7 @@ export default function Hero() {
 
           {isZh ? (
             <>
-              <h1 className="max-w-[720px] font-display text-[2.75rem] font-medium leading-[1.12] tracking-[0.02em] text-ink md:text-[4.5rem] lg:text-[5rem]">
+              <h1 className="max-w-[720px] font-display text-[2.75rem] font-medium leading-[1.12] tracking-[0.02em] text-ink md:text-[4rem] lg:text-[4.5rem]">
                 <span className="text-falcon-deep">{t("titleLine1")}</span>
                 {t("titleLine2") ? <span>{t("titleLine2")}</span> : null}
                 {t("titleLine3") ? <span>{t("titleLine3")}</span> : null}

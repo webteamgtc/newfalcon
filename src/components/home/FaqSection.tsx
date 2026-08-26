@@ -4,6 +4,30 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Button from "@/components/Button";
 
+const FAQ_CHECK_STATUS_URL = "https://goldenfalcon.gtcch.com/check-status";
+const FAQ_LINK_PHRASES = ["在线注册", "our Tickets page"] as const;
+const linkClassName =
+  "font-medium text-falcon-deep underline decoration-falcon-deep/40 underline-offset-2 transition-colors hover:text-falcon-deep/80";
+
+function renderFaqAnswer(answer: string) {
+  const linkPhrase = FAQ_LINK_PHRASES.find((phrase) => answer.includes(phrase));
+  if (!linkPhrase) {
+    return answer;
+  }
+
+  const [before, after] = answer.split(linkPhrase);
+
+  return (
+    <>
+      {before}
+      <a href={FAQ_CHECK_STATUS_URL} className={linkClassName}>
+        {linkPhrase}
+      </a>
+      {after}
+    </>
+  );
+}
+
 export default function FaqSection() {
   const t = useTranslations("home.faq");
   const faqs = t.raw("list") as { question: string; answer: string }[];
@@ -40,7 +64,9 @@ export default function FaqSection() {
                   </span>
                 </button>
                 {isOpen && (
-                  <p className="pb-5 TextSmall !leading-snug !font-poppins !text-ink">{faq.answer}</p>
+                  <p className="pb-5 TextSmall !leading-snug !font-poppins !text-ink">
+                    {renderFaqAnswer(faq.answer)}
+                  </p>
                 )}
               </div>
             );

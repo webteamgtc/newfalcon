@@ -4,10 +4,14 @@ export default function GalleryHero() {
   const t = useTranslations("gallery.hero");
 
   return (
-    <section className="relative flex min-h-[50vh] items-end overflow-hidden bg-[url('/gallery.jpg')] bg-cover bg-center pb-16 pt-16 md:min-h-[80vh] md:pb-36 md:pt-24">
-      <div className="container">
-        <div className="max-w-2xl">
-          <h1 className="max-w-sm font-display text-[3.2rem] uppercase leading-[1.05] text-white md:text-[3rem]">
+    <section className="relative flex min-h-[50vh] items-end overflow-hidden bg-[url('/55.webp')] bg-cover bg-center pb-16 pt-16 md:min-h-[80vh] md:pb-36 md:pt-24">
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"
+        aria-hidden
+      />
+      <div className="container relative z-[1]">
+        <div className="max-w-3xl">
+          <h1 className="max-w-xl font-display text-[3.2rem] uppercase leading-[1.05] text-white md:text-[3rem]">
             {t("headingPlain")}
           
             <span className="italic text-falcon-light"> {t("headingItalic")}</span>

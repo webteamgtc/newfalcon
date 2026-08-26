@@ -31,11 +31,9 @@ export default function MediaPartnersSection() {
       }}
     >
       <div className="container">
-        <p className="eyebrow text-falcon-deep !capitalize">
-          <span className="font-poppins">{t("eyebrow")}</span>
-        </p>
+      
         <h2 className="mt-3 font-display HeadingH1 !font-medium !text-ink">{t("heading")}</h2>
-        <p className="mt-3 max-w-2xl Text !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
+       
 
         <div className="relative mt-6 aspect-video overflow-hidden rounded-lg md:mt-8">
           <iframe

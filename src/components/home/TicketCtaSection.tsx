@@ -29,10 +29,16 @@ export default function TicketCtaSection() {
           <p className="eyebrow text-falcon-light !capitalize">
             <span className="font-poppins">{t("eyebrow")}</span>
           </p>
-          <h2 className="mt-6 font-display max-w-sm HeadingH1 !font-medium !text-white">
-            {t("headingPlain")} <span className="italic text-falcon-light">{t("headingItalic")}</span>
+          <h2 className="mt-6 font-display max-w-sm HeadingH2 !font-medium !text-white">
+            {t("headingPlain")}
+            {t("headingItalic") ? (
+              <>
+                {" "}
+                <span className="italic text-falcon-light">{t("headingItalic")}</span>
+              </>
+            ) : null}
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl Text !leading-snug !font-poppins !text-white">
+          <p className="mx-auto mt-5 max-w-2xl whitespace-pre-line Text !leading-snug !font-poppins !text-white">
             {t("description")}
           </p>
           <Button href="/check-status" variant="light" className="mt-9">

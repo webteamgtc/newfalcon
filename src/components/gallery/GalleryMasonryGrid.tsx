@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-const GALLERY_IMAGES = Array.from({ length: 16 }, (_, index) => ({
+const GALLERY_IMAGES = Array.from({ length: 15 }, (_, index) => ({
   id: index + 1,
   src: `/gallery/img${index + 1}.jpg`,
 }));
@@ -23,7 +23,6 @@ const MASONRY_LAYOUT = [
   { cols: 1, rows: 2 },
   { cols: 1, rows: 1 },
   { cols: 1, rows: 1 },
-  { cols: 2, rows: 1 },
   { cols: 1, rows: 1 },
   { cols: 1, rows: 1 },
 ] as const;

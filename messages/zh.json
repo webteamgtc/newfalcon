@@ -43,7 +43,7 @@
         {
           "year": "2025",
           "title": "史无前例的盛典之夜",
-          "description": "400 余位合作伙伴与行业领袖齐聚，共襄迄今为止最为盛大的典礼。"
+          "description": "1000 余位合作伙伴与行业领袖齐聚，共襄迄今为止最为盛大的典礼。"
         },
         {
           "year": "2024",
@@ -85,9 +85,9 @@
       "eyebrow": "Conrad Hotel · 2026年12月",
       "dateRange": "12",
       "watermark": "DUBAI",
-      "headingPlain": "预订您的",
-      "headingItalic": "专属席位。",
-      "description": "与交易精英、流动性合作伙伴及行业先驱共聚年度最负盛名的颁奖之夜。席位有限，敬请尽早预订。",
+      "headingPlain": "预定您的专属席位",
+      "headingItalic": "",
+      "description": "同交易精英、流动性合作伙伴及行业先驱共聚年度最负盛名的颁奖之夜。\n席位有限，敬请尽早预订。",
       "cta": "预订门票"
     },
     "awards": {
@@ -156,38 +156,34 @@
         },
         {
           "question": "当晚的着装要求是什么？",
-          "answer": "需穿着黑色领结或正式晚礼服。主办方保留在入口处审核着装的权利，以维护活动的优雅标准。"
+          "answer": "需穿着西装或正式晚礼服。主办方保留在入口处审核着装的权利，以维护活动的优雅标准."
         },
         {
           "question": "活动在哪里举办？",
           "answer": "2026 年金鹰节将于 Conrad Hotel, Sheikh Zayed Road, Dubai, UAE 举行。VIP 嘉宾可享受代客泊车及免费接送服务。"
-        },
-        {
-          "question": "我可以将门票转赠给同事吗？",
-          "answer": "可以。您可在活动开始前至少 7 天，通过账户更新参会者信息完成转赠。如需协助，请联系 support@gtcfx.com。"
         }
       ]
     },
     "footerCta": {
       "eyebrow": "金鹰节 2026",
-      "headingPlain": "成为非凡",
-      "headingItalic": "的一部分。",
-      "subtext": "2026 年金鹰节汇聚全球交易领域最杰出的人才。无论您是合作伙伴、交易者还是远见者——这是属于您的舞台。",
+      "headingPlain": "卓越汇聚,",
+      "headingItalic": "荣耀启幕。",
+      "subtext": "2026 金鹰节汇聚全球交易行业的杰出力量，为合作伙伴、交易者与行业先锋打造一场属于卓越者的荣耀盛典。",
       "cta": "探索您的邀请"
     }
   },
   "gallery": {
     "hero": {
-      "headingPlain": "伟大时刻",
+      "headingPlain": "伟大时刻,",
       "headingItalic": "永载史册。",
-      "subtext": "走进金鹰节的标志性瞬间——一部关于雄心实现、伙伴关系庆祝，以及镌刻于全球交易卓越史册的传承的非凡编年史。"
+      "subtext": "见证金鹰节的荣耀瞬间——一段关于梦想成就、伙伴同行与卓越传承的非凡篇章，共同书写全球交易领域的新篇章。"
     },
     "ambition": {
       "eyebrow": "特邀嘉宾",
       "headingPlain": "以雄心铸就。",
       "headingItalic": "以卓越定义。",
-      "paragraph1": "金鹰节已成长为交易行业最负盛名的盛会——汇聚设定全球标准的合作伙伴、高管与领袖。",
-      "paragraph2": "每一届都将标杆推至新高，带来更深层次的连接、更精准的认可，以及配得上所表彰成就的庆典。"
+      "paragraph1": "金鹰节已成为交易行业备受瞩目的年度盛典——汇聚全球领先合作伙伴、行业高管与意见领袖，共同见证卓越成就。",
+      "paragraph2": "每一届金鹰节都持续突破高度，创造更深层次的交流、更具价值的认可，以及一场与非凡成就相匹配的荣耀盛典。"
     },
     "recognition": {
       "headingPlain": "至高",
@@ -214,14 +210,14 @@
     },
     "journey": {
       "eyebrow": "时间线",
-      "headingPlain": "由非凡里程碑",
-      "headingItalic": "塑造的历程。",
-      "subtext": "从首届私密典礼到全球知名盛会——每一届都为金鹰节传承增添浓墨重彩的一章。",
+      "headingPlain": "由非凡里程碑，",
+      "headingItalic": "铸就荣耀历程。",
+      "subtext": "从首届私享盛典，到如今享誉全球的行业盛会——每一届金鹰节都承载着新的突破，续写属于卓越者的荣耀篇章。",
       "timeline": [
         {
           "year": "2025",
           "title": "史无前例的盛典之夜",
-          "description": "400 余位合作伙伴与行业领袖齐聚，共襄迄今为止最为盛大的典礼。"
+          "description": "1000 余位合作伙伴与行业领袖齐聚，共襄迄今为止最为盛大的典礼。"
         },
         {
           "year": "2024",
@@ -242,9 +238,9 @@
     },
     "moments": {
       "eyebrow": "时间线",
-      "headingPlain": "以瞬间讲述的",
-      "headingItalic": "历程。",
-      "subtext": "探索全球活动、幕后故事、社群亮点、媒体报道，以及定义我们影响力的里程碑。",
+      "headingPlain": "每一瞬间，",
+      "headingItalic": "皆为历程。",
+      "subtext": "回顾全球盛典足迹，探索幕后故事、精彩时刻与媒体见证，共同感受金鹰节不断延续的影响力。",
       "imageAlt": "金鹰节图库瞬间 {number}",
       "openImage": "查看图库图片 {number}",
       "lightboxLabel": "图库图片查看器",
@@ -840,9 +836,9 @@
     "daysLabel": "剩余天数",
     "daysValue": "241",
     "invitationEyebrow": "您的 VIP 权益",
-    "invitationHeadingPlain": "围绕每一个细节",
-    "invitationHeadingItalic": "精心打造的邀请。",
-    "invitationSubtext": "从落地到最后一杯祝酒——为符合条件的 IB 合作伙伴及其同伴专属设计的无缝体验。",
+    "invitationHeadingPlain": "围绕每一处细节，",
+    "invitationHeadingItalic": "打造专属尊享体验。",
+    "invitationSubtext": "从抵达接待到晚宴举杯，每一个环节都经过精心设计，为符合资格的 IB 合作伙伴及其同行嘉宾呈现一场专属而难忘的尊贵体验。",
     "benefits": [
       {
         "index": "01",

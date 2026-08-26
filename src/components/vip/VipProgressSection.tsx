@@ -125,11 +125,6 @@ export default function VipProgressSection() {
                   </span>
 
                   <div>
-                    <p
-                      className={`mb-1 text-xs !font-poppins ${isQualifiedStage ? "!text-green-700" : "!text-ink"}`}
-                    >
-                      {stageLabel.tier}
-                    </p>
                     <h3
                       className={`font-display HeadingH5 !font-medium ${isQualifiedStage ? "!text-green-700" : "!text-ink"}`}
                     >
