@@ -2,7 +2,6 @@ import { getTranslations } from "next-intl/server";
 import VipHero from "@/components/vip/VipHero";
 import VipProgressSection from "@/components/vip/VipProgressSection";
 import VipInvitationSection from "@/components/vip/VipInvitationSection";
-import VipEligibilitySection from "@/components/vip/VipEligibilitySection";
 import VipStatusGuard from "@/components/vip/VipStatusGuard";
 
 export async function generateMetadata({
@@ -22,7 +21,6 @@ export default function VipStatusPage() {
       <VipHero />
       <VipProgressSection />
       <VipInvitationSection />
-      <VipEligibilitySection />
     </VipStatusGuard>
   );
 }

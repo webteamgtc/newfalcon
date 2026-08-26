@@ -12,7 +12,7 @@ export default function VipInvitationSection() {
   const benefits = t.raw("benefits") as Benefit[];
 
   return (
-    <section className="relative min-h-[700px] md:min-h-[800px] flex items-center justify-center overflow-hidden py-10 md:py-16">
+    <section className="relative flex min-h-[700px] items-center justify-center overflow-hidden py-12 md:min-h-[800px] md:py-16">
       <Image
         src="/images/vip-bg-dubai.webp"
         alt=""
