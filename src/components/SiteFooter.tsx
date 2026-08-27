@@ -44,6 +44,14 @@ export default function SiteFooter() {
           sizes="100vw"
         />
       </div>
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#FBF6ED]/95 via-[#FBF6ED]/80 to-[#FBF6ED]/45"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-[#FBF6ED]/90 to-transparent"
+        aria-hidden
+      />
       <div className="relative z-10 container text-left">
    
         <h2 className="mt-3 max-w-lg font-display HeadingH1 !font-medium !text-ink">
@@ -54,7 +62,7 @@ export default function SiteFooter() {
           {t("cta")}
         </Button>
       </div>
-      <footer className="relative z-10 border-t md:mt-24 mt-16 border-[#382910]">
+      <footer className="relative z-10 border-t md:mt-24 mt-16 border-[#382910]/40 bg-[#FBF6ED]/92 backdrop-blur-[2px]">
       <div className="container font-poppins flex flex-col md:items-center justify-between md:gap-4 gap-2 md:py-8 py-4 text-xs font-medium uppercase tracking-[0.12em] text-[#382910] md:flex-row">
         <p className="!font-medium text-xs !text-[#382910]">{t2("dateLocation")}</p>
         <p className="md:text-center">{t2("brand")}</p>

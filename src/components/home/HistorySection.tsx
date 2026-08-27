@@ -23,7 +23,7 @@ export default function HistorySection() {
         />
       </div>
       <div className="container relative z-10 min-w-0 max-w-full text-center">
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <p className="eyebrow text-[#382910] !capitalize">{t("eyebrow")}</p>
           <h2 className="mt-3 font-display leading-snug text-ink HeadingH1">
             {t("headingPlain")}

@@ -1,28 +1,15 @@
 import { useTranslations } from "next-intl";
 import Button from "@/components/Button";
-import Image from "next/image";
 
 export default function TicketCtaSection() {
   const t = useTranslations("home.ticketCta");
 
   return (
-    <section className="relative isolate flex min-h-[500px] items-center overflow-hidden py-8 md:min-h-[650px] md:py-20">
-      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
-        <Image
-          src="/images/dubai-crop.png"
-          alt=""
-          fill
-          className="object-cover object-right-top"
-          sizes="100vw"
-        />
-      </div>
-
-      <span
+    <section className="relative isolate flex min-h-[500px] items-center overflow-hidden bg-[url('/banner-17.webp')] bg-cover bg-center py-8 md:min-h-[650px] md:py-20">
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/65 via-black/45 to-black/25"
         aria-hidden
-        className="pointer-events-none absolute md:end-20 end-10 md:top-20 top-10 font-display text-3xl text-white"
-      >
-        {t("dateRange")}
-      </span>
+      />
 
       <div className="relative z-10 container">
         <div className="max-w-xl">

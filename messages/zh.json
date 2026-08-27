@@ -210,7 +210,7 @@
     },
     "journey": {
       "eyebrow": "时间线",
-      "headingPlain": "由非凡里程碑，",
+      "headingPlain": "由非凡里程碑,",
       "headingItalic": "铸就荣耀历程。",
       "subtext": "从首届私享盛典，到如今享誉全球的行业盛会——每一届金鹰节都承载着新的突破，续写属于卓越者的荣耀篇章。",
       "timeline": [
@@ -238,7 +238,7 @@
     },
     "moments": {
       "eyebrow": "时间线",
-      "headingPlain": "每一瞬间，",
+      "headingPlain": "每一瞬间,",
       "headingItalic": "皆为历程。",
       "subtext": "回顾全球盛典足迹，探索幕后故事、精彩时刻与媒体见证，共同感受金鹰节不断延续的影响力。",
       "imageAlt": "金鹰节图库瞬间 {number}",
