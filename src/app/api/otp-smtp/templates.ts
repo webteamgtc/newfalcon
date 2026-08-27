@@ -34,6 +34,13 @@ const DEFAULT_STATUS_SITE = "https://www.goldenfalcon.com";
 const EN_EVENT_NAME = "Golden Falcon Awards 2026";
 const ZH_EVENT_NAME = "金鹰节 2026";
 const ZH_OTP_LABEL = "OTP/验证码:";
+const EMAIL_HERO_TEXT_COLOR = "#342412";
+const EMAIL_HERO_TEXT_BG = "#f5ead7";
+const EMAIL_EYEBROW_COLOR = "#746a5c";
+const EMAIL_BODY_TEXT_COLOR = "#3b2c1c";
+const EMAIL_BODY_TEXT_BG = "#fff8ec";
+const EMAIL_FOOTER_TEXT_COLOR = "#6f6253";
+const EMAIL_FOOTER_STRONG_COLOR = "#4b3a28";
 
 function normalizeLocale(locale?: string): EmailLocale {
   const normalized = locale?.trim().toLowerCase() ?? "";
@@ -47,45 +54,166 @@ function resolveName(name: string | undefined, locale: EmailLocale) {
   return locale === "zh" ? "合作伙伴" : "Partner";
 }
 
+function heroTitleCell(
+  text: string,
+  {
+    padding = "0",
+    fontSize = "67px",
+    lineHeight = "58px",
+    fontWeight = "400",
+    valign,
+  }: {
+    padding?: string;
+    fontSize?: string;
+    lineHeight?: string;
+    fontWeight?: string;
+    valign?: "bottom";
+  } = {}
+) {
+  const valignAttr = valign ? ` valign="${valign}"` : "";
+
+  return `<td align="left"${valignAttr} class="email-hero-title email-hero-title-bg" style="padding:${padding};font-family:Georgia,'Times New Roman',serif;font-size:${fontSize};line-height:${lineHeight};font-weight:${fontWeight};letter-spacing:-2px;color:${EMAIL_HERO_TEXT_COLOR};background-color:${EMAIL_HERO_TEXT_BG};">
+          <span style="color:${EMAIL_HERO_TEXT_COLOR};background-color:${EMAIL_HERO_TEXT_BG};">${text}</span>
+        </td>`;
+}
+
+function buildEmailHeadExtras() {
+  const darkModeLocks = `
+    .email-hero-title,
+    .email-hero-title span,
+    .email-hero-title td {
+      color: ${EMAIL_HERO_TEXT_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_HERO_TEXT_COLOR} !important;
+    }
+    .email-hero-title-bg,
+    .email-hero-title-bg span {
+      background-color: ${EMAIL_HERO_TEXT_BG} !important;
+    }
+    .email-eyebrow {
+      color: ${EMAIL_EYEBROW_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_EYEBROW_COLOR} !important;
+    }
+    .email-content,
+    .email-content p,
+    .email-content strong,
+    .email-content a,
+    .email-content span,
+    .email-content td {
+      color: ${EMAIL_BODY_TEXT_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_BODY_TEXT_COLOR} !important;
+    }
+    .email-content-bg {
+      background-color: ${EMAIL_BODY_TEXT_BG} !important;
+    }
+    .email-footer,
+    .email-footer p,
+    .email-footer a,
+    .email-footer span,
+    .email-footer td {
+      color: ${EMAIL_FOOTER_TEXT_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_FOOTER_TEXT_COLOR} !important;
+    }
+    .email-footer strong {
+      color: ${EMAIL_FOOTER_STRONG_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_FOOTER_STRONG_COLOR} !important;
+    }`;
+
+  return `
+  <meta name="color-scheme" content="light only">
+  <meta name="supported-color-schemes" content="light only">
+  <style type="text/css">
+    :root {
+      color-scheme: light only;
+      supported-color-schemes: light only;
+    }
+    ${darkModeLocks}
+    @media (prefers-color-scheme: dark) {
+      ${darkModeLocks}
+    }
+    [data-ogsc] .email-hero-title,
+    [data-ogsc] .email-hero-title span,
+    [data-ogsb] .email-hero-title,
+    [data-ogsb] .email-hero-title span,
+    u + .body .email-hero-title,
+    u + .body .email-hero-title span {
+      color: ${EMAIL_HERO_TEXT_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_HERO_TEXT_COLOR} !important;
+    }
+    [data-ogsc] .email-eyebrow,
+    [data-ogsb] .email-eyebrow,
+    u + .body .email-eyebrow {
+      color: ${EMAIL_EYEBROW_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_EYEBROW_COLOR} !important;
+    }
+    [data-ogsc] .email-content,
+    [data-ogsc] .email-content p,
+    [data-ogsc] .email-content strong,
+    [data-ogsc] .email-content a,
+    [data-ogsb] .email-content,
+    [data-ogsb] .email-content p,
+    [data-ogsb] .email-content strong,
+    [data-ogsb] .email-content a,
+    u + .body .email-content,
+    u + .body .email-content p,
+    u + .body .email-content strong,
+    u + .body .email-content a {
+      color: ${EMAIL_BODY_TEXT_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_BODY_TEXT_COLOR} !important;
+    }
+    [data-ogsc] .email-footer,
+    [data-ogsc] .email-footer p,
+    [data-ogsc] .email-footer a,
+    [data-ogsb] .email-footer,
+    [data-ogsb] .email-footer p,
+    [data-ogsb] .email-footer a,
+    u + .body .email-footer,
+    u + .body .email-footer p,
+    u + .body .email-footer a {
+      color: ${EMAIL_FOOTER_TEXT_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_FOOTER_TEXT_COLOR} !important;
+    }
+    [data-ogsc] .email-footer strong,
+    [data-ogsb] .email-footer strong,
+    u + .body .email-footer strong {
+      color: ${EMAIL_FOOTER_STRONG_COLOR} !important;
+      -webkit-text-fill-color: ${EMAIL_FOOTER_STRONG_COLOR} !important;
+    }
+  </style>`;
+}
+
 function buildHeroTitle(locale: EmailLocale) {
   if (locale === "zh") {
     return `
-    <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+    <table role="presentation" border="0" cellspacing="0" cellpadding="0" class="email-hero-title" style="border-collapse:collapse;">
       <tr>
-        <td align="left" style="padding:0;font-family:Georgia,'Times New Roman',serif;font-size:67px;line-height:58px;font-weight:400;letter-spacing:-2px;color:#342412;">
-          金鹰节
-        </td>
+        ${heroTitleCell("金鹰节")}
       </tr>
       <tr>
-        <td align="left" style="padding:0 0 0 58px;font-family:Georgia,'Times New Roman',serif;font-size:67px;line-height:58px;font-weight:400;letter-spacing:-2px;color:#342412;">
-          2026
-        </td>
+        ${heroTitleCell("2026", { padding: "0 0 0 58px" })}
       </tr>
     </table>`;
   }
 
   return `
-    <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+    <table role="presentation" border="0" cellspacing="0" cellpadding="0" class="email-hero-title" style="border-collapse:collapse;">
       <tr>
-        <td align="left" style="padding:0;font-family:Georgia,'Times New Roman',serif;font-size:67px;line-height:58px;font-weight:400;letter-spacing:-2px;color:#342412;">
-          GOLDEN
-        </td>
+        ${heroTitleCell("GOLDEN")}
       </tr>
       <tr>
-        <td align="left" style="padding:0 0 0 58px;font-family:Georgia,'Times New Roman',serif;font-size:67px;line-height:58px;font-weight:400;letter-spacing:-2px;color:#342412;">
-          FALCON
-        </td>
+        ${heroTitleCell("FALCON", { padding: "0 0 0 58px" })}
       </tr>
       <tr>
         <td align="left" style="padding:0;">
           <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
             <tr>
-              <td valign="bottom" style="padding:0;font-family:Georgia,'Times New Roman',serif;font-size:67px;line-height:58px;font-weight:400;letter-spacing:-2px;color:#342412;">
-                NIGHT
-              </td>
-              <td valign="bottom" style="padding:0 0 0 8px;font-family:Georgia,'Times New Roman',serif;font-size:56px;line-height:56px;font-weight:300;letter-spacing:-2px;color:#342412;">
-                2026
-              </td>
+              ${heroTitleCell("NIGHT", { valign: "bottom" })}
+              ${heroTitleCell("2026", {
+                padding: "0 0 0 8px",
+                fontSize: "56px",
+                lineHeight: "56px",
+                fontWeight: "300",
+                valign: "bottom",
+              })}
             </tr>
           </table>
         </td>
@@ -100,7 +228,7 @@ function buildEmailFooter(locale: EmailLocale) {
       <td align="center" style="padding:0 40px 35px 40px;">
         <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;background-color:rgba(255,255,255,0.72);border:1px solid #ead8ba;border-radius:12px;">
           <tr>
-            <td align="left" style="padding:18px 22px;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:17px;font-weight:400;color:#6f6253;">
+            <td align="left" class="email-footer" style="padding:18px 22px;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:17px;font-weight:400;color:#6f6253;">
               <p style="margin:0 0 8px 0;padding:0;">
                 <strong style="font-weight:700;color:#4b3a28;">GTCFX</strong>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -136,7 +264,7 @@ function buildEmailFooter(locale: EmailLocale) {
       <td align="center" style="padding:0 40px 35px 40px;">
         <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;background-color:rgba(255,255,255,0.72);border:1px solid #ead8ba;border-radius:12px;">
           <tr>
-            <td align="left" style="padding:18px 22px;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:17px;font-weight:400;color:#6f6253;">
+            <td align="left" class="email-footer" style="padding:18px 22px;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:17px;font-weight:400;color:#6f6253;">
               <p style="margin:0 0 8px 0;padding:0;">
                 <strong style="font-weight:700;color:#4b3a28;">GTCFX</strong>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -173,7 +301,7 @@ function buildContentCard(contentHtml: string) {
       <td align="left" style="padding:0 40px 30px 40px;">
         <table role="presentation" width="455" border="0" cellspacing="0" cellpadding="0" style="width:455px;max-width:455px;border-collapse:separate;background-color:#fff8ec;border:1px solid #ead8ba;border-radius:15px;">
           <tr>
-            <td style="padding:20px 24px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:18px;font-weight:400;color:#3b2c1c;">
+            <td class="email-content email-content-bg" style="padding:20px 24px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:18px;font-weight:400;color:#3b2c1c;background-color:#fff8ec;">
               ${contentHtml}
             </td>
           </tr>
@@ -182,7 +310,7 @@ function buildContentCard(contentHtml: string) {
     </tr>`;
 }
 
-/** Shared Golden Falcon email shell — background hero, logo, title, content slot, footer. */
+/** Shared Golden Falcon email shell used by welcome OTP, registration, invitation, and travel emails. */
 export function buildGoldenFalconEmailLayout({
   pageTitle,
   eyebrow,
@@ -204,8 +332,9 @@ export function buildGoldenFalconEmailLayout({
   <meta name="x-apple-disable-message-reformatting">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>${pageTitle}</title>
+  ${buildEmailHeadExtras()}
 </head>
-<body style="margin:0;padding:0;width:100%;background-color:#292929;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<body class="body" style="margin:0;padding:0;width:100%;background-color:#292929;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
   <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="width:100%;margin:0;padding:0;border-collapse:collapse;background-color:#292929;">
     <tr>
       <td align="center" style="margin:0;padding:0;">
@@ -227,7 +356,7 @@ export function buildGoldenFalconEmailLayout({
                   <td height="30" style="height:30px;padding:0;font-size:0;line-height:30px;">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td align="left" style="padding:0 58px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:20px;font-weight:400;letter-spacing:8px;color:#746a5c;text-transform:uppercase;">
+                  <td align="left" class="email-eyebrow" style="padding:0 58px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:20px;font-weight:400;letter-spacing:8px;color:#746a5c;text-transform:uppercase;">
                     ${eyebrow}
                   </td>
                 </tr>
