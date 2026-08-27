@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 import { useVipUser } from "@/context/VipUserProvider";
 import { buildVipUser, type IbClientData, type IbPerformanceData } from "@/data/vipUsers";
 import { sendRegistrationStartedEmail } from "@/lib/sendRegistrationStartedEmail";
+import { saveIbEmailAccessClient } from "@/lib/saveIbEmailAccess";
 import TicketNewClientForm from "@/components/ticket/TicketNewClientForm";
 import OtpBoxes from "@/components/ui/OtpBoxes";
 import { OTP_TTL_MS } from "@/lib/otpConstants";
@@ -296,6 +297,26 @@ export default function TicketAccessForm({
     if (!matchedUser) return;
 
     setLoading(true);
+
+    const saveResult = await saveIbEmailAccessClient({
+      email: email.trim().toLowerCase(),
+      ibId: matchedUser.ibId,
+      firstName: matchedUser.firstName,
+      locale,
+    });
+
+    if (!saveResult.success) {
+      if (saveResult.code === "EMAIL_IN_USE") {
+        setEmailError(t("emailAlreadyLinked"));
+      } else if (saveResult.code === "IB_ID_IN_USE") {
+        setIbIdError(t("ibIdAlreadyLinked"));
+      } else {
+        setIbIdError(saveResult.message || t("ibAccessSaveFailed"));
+      }
+      setLoading(false);
+      return;
+    }
+
     login(matchedUser);
 
     try {
