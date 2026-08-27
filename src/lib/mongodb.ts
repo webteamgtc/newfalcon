@@ -53,3 +53,6 @@ export const REGISTRATION_COLLECTION =
 
 export const STAFF_REGISTRATION_COLLECTION =
   process.env.MONGODB_STAFF_COLLECTION || "staff_registration";
+
+export const IB_EMAIL_COLLECTION =
+  process.env.MONGODB_IB_EMAIL_COLLECTION || "ib_email";
