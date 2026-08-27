@@ -48,14 +48,26 @@ export default function Hero() {
           </div>
 
           {isZh ? (
-            <>
-              <h1 className="max-w-[720px] font-display text-[2.75rem] font-medium leading-normal tracking-[0.02em] text-ink md:text-[4rem] lg:text-[4.5rem]">
+            <h1 className="font-display text-[2rem] font-medium leading-[3.5rem] tracking-[0.02em] text-ink md:leading-[4rem] md:text-[4.75rem] lg:leading-[4.9rem] lg:text-[5rem]">
+              <span className="whitespace-nowrap md:hidden">
                 <span className="text-falcon-deep">{t("titleLine1")}</span>
                 {t("titleLine2") ? <span>{t("titleLine2")}</span> : null}
-                {t("titleLine3") ? <span>{t("titleLine3")}</span> : null}  {t("year")}
-              </h1>
-           
-            </>
+                {t("titleLine3") ? <span>{t("titleLine3")}</span> : null}
+                {" "}
+                <span className="text-falcon-deep">{t("year")}</span>
+              </span>
+
+              <span className="hidden max-w-full md:inline-block">
+                <span className="block">
+                  <span className="text-falcon-deep">{t("titleLine1")}</span>
+                  {t("titleLine2") ? <span>{t("titleLine2")}</span> : null}
+                  {t("titleLine3") ? <span>{t("titleLine3")}</span> : null}
+                </span>
+                <span className="block text-end text-[3.5rem] text-falcon-deep md:text-[5rem] lg:text-[7rem]">
+                  {t("year")}
+                </span>
+              </span>
+            </h1>
           ) : (
             <h1 className="max-w-[650px] font-display text-[3.2rem] uppercase leading-[1.05] md:text-[3.8rem] lg:text-[4.2rem]">
               <span className="text-falcon-deep">{t("titleLine1")}</span>{" "}
