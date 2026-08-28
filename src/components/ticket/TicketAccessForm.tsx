@@ -306,13 +306,7 @@ export default function TicketAccessForm({
     });
 
     if (!saveResult.success) {
-      if (saveResult.code === "EMAIL_IN_USE") {
-        setEmailError(t("emailAlreadyLinked"));
-      } else if (saveResult.code === "IB_ID_IN_USE") {
-        setIbIdError(t("ibIdAlreadyLinked"));
-      } else {
-        setIbIdError(saveResult.message || t("ibAccessSaveFailed"));
-      }
+      setIbIdError(saveResult.message || t("ibAccessSaveFailed"));
       setLoading(false);
       return;
     }
