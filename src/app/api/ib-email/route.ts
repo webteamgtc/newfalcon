@@ -36,28 +36,6 @@ export async function POST(request: Request) {
     });
 
     if (!result.success) {
-      if (result.code === "EMAIL_IN_USE") {
-        return NextResponse.json(
-          {
-            success: false,
-            code: "EMAIL_IN_USE",
-            message: "This email is already linked to another IB ID.",
-          },
-          { status: 409 }
-        );
-      }
-
-      if (result.code === "IB_ID_IN_USE") {
-        return NextResponse.json(
-          {
-            success: false,
-            code: "IB_ID_IN_USE",
-            message: "This IB ID is already linked to another email.",
-          },
-          { status: 409 }
-        );
-      }
-
       return NextResponse.json(
         { success: false, message: "Valid email and IB ID are required." },
         { status: 400 }
@@ -66,10 +44,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      created: result.created,
-      message: result.created
-        ? "IB access saved successfully"
-        : "IB access already exists",
+      message: "IB access saved successfully",
     });
   } catch (error) {
     console.error("Save IB email error:", error);

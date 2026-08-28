@@ -6,28 +6,27 @@ export type IbEmailRecord = {
   firstName?: string;
   locale?: string;
   createdAt: Date;
-  updatedAt: Date;
 };
 
-let indexesEnsured = false;
+let legacyIndexesDropped = false;
 
-async function ensureIbEmailIndexes() {
-  if (indexesEnsured) return;
+async function dropLegacyUniqueIndexes() {
+  if (legacyIndexesDropped) return;
 
   const db = await getRegistrationDb();
   const collection = db.collection(IB_EMAIL_COLLECTION);
 
-  await Promise.all([
-    collection.createIndex({ email: 1 }, { unique: true, name: "ib_email_unique_email" }),
-    collection.createIndex({ ibId: 1 }, { unique: true, name: "ib_email_unique_ibId" }),
+  await Promise.allSettled([
+    collection.dropIndex("ib_email_unique_email"),
+    collection.dropIndex("ib_email_unique_ibId"),
   ]);
 
-  indexesEnsured = true;
+  legacyIndexesDropped = true;
 }
 
 export type SaveIbEmailResult =
-  | { success: true; created: boolean }
-  | { success: false; code: "EMAIL_IN_USE" | "IB_ID_IN_USE" | "INVALID" };
+  | { success: true }
+  | { success: false; code: "INVALID" };
 
 export async function saveIbEmailAccess(input: {
   email: string;
@@ -42,68 +41,18 @@ export async function saveIbEmailAccess(input: {
     return { success: false, code: "INVALID" };
   }
 
-  await ensureIbEmailIndexes();
+  await dropLegacyUniqueIndexes();
 
   const db = await getRegistrationDb();
   const collection = db.collection<IbEmailRecord>(IB_EMAIL_COLLECTION);
-  const now = new Date();
 
-  const [existingByEmail, existingByIbId] = await Promise.all([
-    collection.findOne({ email }),
-    collection.findOne({ ibId }),
-  ]);
+  await collection.insertOne({
+    email,
+    ibId,
+    firstName: input.firstName?.trim() || undefined,
+    locale: input.locale?.trim() || undefined,
+    createdAt: new Date(),
+  });
 
-  if (existingByEmail && existingByEmail.ibId === ibId) {
-    await collection.updateOne(
-      { email },
-      {
-        $set: {
-          firstName: input.firstName?.trim() || existingByEmail.firstName,
-          locale: input.locale?.trim() || existingByEmail.locale,
-          updatedAt: now,
-        },
-      }
-    );
-    return { success: true, created: false };
-  }
-
-  if (existingByEmail && existingByEmail.ibId !== ibId) {
-    return { success: false, code: "EMAIL_IN_USE" };
-  }
-
-  if (existingByIbId && existingByIbId.email !== email) {
-    return { success: false, code: "IB_ID_IN_USE" };
-  }
-
-  try {
-    await collection.insertOne({
-      email,
-      ibId,
-      firstName: input.firstName?.trim() || undefined,
-      locale: input.locale?.trim() || undefined,
-      createdAt: now,
-      updatedAt: now,
-    });
-    return { success: true, created: true };
-  } catch (error) {
-    const mongoError = error as { code?: number };
-    if (mongoError.code === 11000) {
-      const [byEmail, byIbId] = await Promise.all([
-        collection.findOne({ email }),
-        collection.findOne({ ibId }),
-      ]);
-
-      if (byEmail?.ibId === ibId) {
-        return { success: true, created: false };
-      }
-      if (byEmail && byEmail.email === email) {
-        return { success: false, code: "EMAIL_IN_USE" };
-      }
-      if (byIbId && byIbId.ibId === ibId) {
-        return { success: false, code: "IB_ID_IN_USE" };
-      }
-    }
-
-    throw error;
-  }
+  return { success: true };
 }

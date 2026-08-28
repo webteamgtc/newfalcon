@@ -7,9 +7,7 @@ type SaveIbEmailAccessPayload = {
 
 type SaveIbEmailAccessResponse = {
   success: boolean;
-  code?: "EMAIL_IN_USE" | "IB_ID_IN_USE";
   message?: string;
-  created?: boolean;
 };
 
 export async function saveIbEmailAccessClient(
@@ -28,7 +26,6 @@ export async function saveIbEmailAccessClient(
   if (!response.ok || !data?.success) {
     return {
       success: false,
-      code: data?.code,
       message: data?.message || "Failed to save IB access",
     };
   }
