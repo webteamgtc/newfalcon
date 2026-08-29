@@ -796,23 +796,23 @@
     "heroSubtext": "您通往 金鹰节 免费 VIP 准入的专属进度视图。",
     "heroCta": "查看进度",
     "journeyEyebrow": "资格认证旅程",
-    "journeyHeadingPlain": "三个阶段。",
-    "journeyHeadingItalic": "一份邀请。",
+    "journeyHeadingPlain": "您的资格认证之旅",
+    "journeyHeadingItalic": "",
     "stages": [
       {
         "number": "01",
-        "name": "已注册",
-        "tier": "银卡状态"
+        "name": "Registered",
+        "description": "Your journey begins."
       },
       {
         "number": "02",
-        "name": "活跃交易者",
-        "tier": "金卡状态"
+        "name": "Active Trader",
+        "description": "Your progress is underway."
       },
       {
         "number": "03",
-        "name": "已达标",
-        "tier": "白金状态"
+        "name": "Qualified",
+        "description": "Your invitation awaits."
       }
     ],
     "capitalLabel": "01 · 净入金",
@@ -833,7 +833,7 @@
     "targetValue": "目标 {amount}",
     "progressPercent": "0%",
     "dashboardNote": "符合条件的账户活动确认后，您的面板将自动更新。资格期：2026 年 1 月 1 日 – 11 月 30 日。",
-    "journeySubtext": "符合条件的账户活动确认后，您的面板将自动更新。资格期：2026 年 1 月 1 日 – 11 月 30 日。",
+    "journeySubtext": "从注册到获得2026年金鹰奖资格认证，只需三步。",
     "summaryLabel": "当前进度",
     "summaryValue": "0%",
     "daysLabel": "剩余天数",

@@ -69,18 +69,30 @@ export default function VipProgressSection() {
   const summaryPercent = user.progressPercent;
   const summaryColors = getProgressColors(summaryPercent);
   const isFullyQualified = isVipQualified(user.capitalCurrent, user.activityCurrent);
-  const stageLabels = t.raw("stages") as { number: string; name: string; tier: string }[];
+  const stageLabels = t.raw("stages") as {
+    number: string;
+    name: string;
+    description?: string;
+  }[];
 
   return (
-    <section id="progress" className="scroll-mt-4 bg-[#FFFDF8] py-12 md:py-16">
-      <div className="container">
+    <section
+      id="progress"
+      className="relative isolate scroll-mt-4 overflow-hidden bg-[url('/bg-img22.jpeg')] bg-cover bg-center py-12 md:py-16"
+    >
+      <div className="container relative z-10">
         <div className="grid gap-6 md:grid-cols-12 md:items-center md:gap-14">
           <div className="col-span-12 flex items-center md:col-span-5">
             <h2 className="font-display HeadingH2 !font-medium !text-ink">
-              {t("journeyHeadingPlain")}{" "}
-              <span className="italic text-falcon-deep">
-                {t("journeyHeadingItalic")}
-              </span>
+              {t("journeyHeadingPlain")}
+              {t("journeyHeadingItalic") ? (
+                <>
+                  {" "}
+                  <span className="italic text-falcon-deep">
+                    {t("journeyHeadingItalic")}
+                  </span>
+                </>
+              ) : null}
             </h2>
           </div>
           <p className="col-span-12 flex items-center TextSmall !leading-snug !font-poppins !text-[#382910] md:col-span-7">
@@ -113,11 +125,11 @@ export default function VipProgressSection() {
                         }
                 }
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-4">
                   <span
-                    className={`font-poppins flex h-8 w-8 items-center justify-center rounded-full border text-xs tracking-[0.14em] ${isQualifiedStage ? "border-green-500 text-green-700 bg-green-50" : "border-[#382910] text-ink"}`}
+                    className={`font-poppins flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-xs tracking-[0.14em] ${isQualifiedStage ? "border-green-500 text-green-700 bg-green-50" : "border-[#382910] text-ink"}`}
                   >
-                    {isQualifiedStage ? "✓" : stage.number}
+                    {isQualifiedStage ? "✓" : stageLabel.number}
                   </span>
 
                   <div>
@@ -126,6 +138,13 @@ export default function VipProgressSection() {
                     >
                       {stageLabel.name}
                     </h3>
+                    {"description" in stageLabel && stageLabel.description ? (
+                      <p
+                        className={`mt-1 font-poppins text-xs leading-snug ${isQualifiedStage ? "text-green-700/80" : "text-[#382910]/70"}`}
+                      >
+                        {stageLabel.description}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </article>

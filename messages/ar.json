@@ -805,18 +805,18 @@
     "stages": [
       {
         "number": "01",
-        "name": "مُسجّل",
-        "tier": "الحالة الفضية"
+        "name": "Registered",
+        "description": "Your journey begins."
       },
       {
         "number": "02",
-        "name": "متداول نشط",
-        "tier": "الحالة الذهبية"
+        "name": "Active Trader",
+        "description": "Your progress is underway."
       },
       {
         "number": "03",
-        "name": "مؤهل",
-        "tier": "الحالة البلاتينية"
+        "name": "Qualified",
+        "description": "Your invitation awaits."
       }
     ],
     "capitalLabel": "01 · صافي الإيداع",

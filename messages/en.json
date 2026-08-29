@@ -796,23 +796,23 @@
     "heroSubtext": "Your private view of the journey toward complimentary VIP access to Golden Falcon Awards Night.",
     "heroCta": "View Progress",
     "journeyEyebrow": "QUALIFICATION JOURNEY",
-    "journeyHeadingPlain": "Three stages.",
-    "journeyHeadingItalic": "One invitation.",
+    "journeyHeadingPlain": "Your Journey to Qualification.",
+    "journeyHeadingItalic": "",
     "stages": [
       {
         "number": "01",
         "name": "Registered",
-        "tier": "Silver Status"
+        "description": "Your journey begins."
       },
       {
         "number": "02",
         "name": "Active Trader",
-        "tier": "Gold Status"
+        "description": "Your progress is underway."
       },
       {
         "number": "03",
         "name": "Qualified",
-        "tier": "Platinum Status"
+        "description": "Your invitation awaits."
       }
     ],
     "capitalLabel": "01 · Net Deposit",
@@ -833,7 +833,7 @@
     "targetValue": "Target {amount}",
     "progressPercent": "0%",
     "dashboardNote": "Your dashboard updates automatically as eligible account activity is confirmed. Qualification period: 1st January – 30 November 2026.",
-    "journeySubtext": "Your dashboard updates automatically as eligible account activity is confirmed. Qualification period: 1st January – 30 November 2026.",
+    "journeySubtext": "Three steps from registration to your Golden Falcon Awards 2026 qualification.",
     "summaryLabel": "Current Progress",
     "summaryValue": "0%",
     "daysLabel": "Days Remaining",
