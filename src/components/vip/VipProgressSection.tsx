@@ -78,7 +78,7 @@ export default function VipProgressSection() {
   return (
     <section
       id="progress"
-      className="relative isolate scroll-mt-4 overflow-hidden bg-[#FFFDF8] bg-[url('/result-banner.jpeg')] bg-contain bg-right-top bg-no-repeat py-12 md:py-16"
+      className="relative isolate scroll-mt-4 overflow-hidden bg-[url('/result-banner.jpeg')] bg-cover bg-right-top bg-no-repeat py-12 md:py-16"
     >
       <div className="container relative z-10">
         <div className="grid gap-6 md:grid-cols-12 md:items-center md:gap-14">
