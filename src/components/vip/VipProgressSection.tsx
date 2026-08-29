@@ -78,7 +78,7 @@ export default function VipProgressSection() {
   return (
     <section
       id="progress"
-      className="relative isolate scroll-mt-4 overflow-hidden bg-[url('/result-banner.jpeg')] bg-cover bg-right-top bg-no-repeat py-12 md:py-16"
+      className="relative isolate scroll-mt-4 overflow-hidden bg-[url('/new-result.jpeg')] bg-cover bg-right-top bg-no-repeat py-12 md:py-16"
     >
       <div className="container relative z-10">
         <div className="grid gap-6 md:grid-cols-12 md:items-center md:gap-14">
@@ -372,23 +372,19 @@ function ProgressCard({
               {t("progressEligible")}
             </span>
           </div>
-        ) : (
+        ) : null}
+      </div>
+      <div className="mt-8">
+        <h3 className="font-display HeadingH4 !font-medium !text-ink">{title}</h3>
+        <div className="mt-4 flex items-end justify-between gap-5">
+          <p className={`font-display text-2xl ${isComplete ? "text-green-700" : "text-ink"}`}>
+            {current}
+          </p>
           <p
-            className={`font-poppins text-xs text-[#382910] ${useUppercaseLabels ? "uppercase tracking-[0.14em]" : "tracking-wide"}`}
+            className={`font-poppins text-sm font-medium text-ink ${useUppercaseLabels ? "uppercase tracking-[0.08em]" : "tracking-wide"}`}
           >
             {targetText}
           </p>
-        )}
-      </div>
-      <div className="mt-8 flex items-end justify-between gap-5">
-        <div>
-          <h3 className="font-display HeadingH4 !font-medium !text-ink">{title}</h3>
-          <p className={`mt-4 font-display text-2xl ${isComplete ? "text-green-700" : "text-ink"}`}>
-            {current}
-          </p>
-        </div>
-        <div className="text-end">
-          <p className="mt-1 font-poppins text-sm font-medium text-ink">{target}</p>
         </div>
       </div>
       <div className="relative mt-6 h-2.5 overflow-hidden rounded-full bg-[#D8C8AE]">
