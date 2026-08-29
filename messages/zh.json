@@ -801,18 +801,15 @@
     "stages": [
       {
         "number": "01",
-        "name": "Registered",
-        "description": "Your journey begins."
+        "name": "已注册"
       },
       {
         "number": "02",
-        "name": "Active Trader",
-        "description": "Your progress is underway."
+        "name": "活跃交易者"
       },
       {
         "number": "03",
-        "name": "Qualified",
-        "description": "Your invitation awaits."
+        "name": "已达标"
       }
     ],
     "capitalLabel": "01 · 净入金",
