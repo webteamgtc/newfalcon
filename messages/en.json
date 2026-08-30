@@ -172,6 +172,145 @@
       "cta": "Explore Your Invitation"
     }
   },
+  "attractions": {
+    "eyebrow": "Explore Dubai",
+    "heading": "Five Must-Visit Attractions",
+    "subtext": "Dubai blends modern wonders with deep culture — these five landmarks are experiences no visitor should miss.",
+    "cta": "Learn More About Dubai",
+    "learnMore": "Learn More",
+    "items": [
+      {
+        "number": "01",
+        "nameZh": "迪拜之框",
+        "nameEn": "Dubai Frame",
+        "points": [
+          "One of Dubai's iconic landmarks, standing approximately 150 metres tall.",
+          "Visit the observation deck for panoramic views of Old Dubai and the modern skyline."
+        ]
+      },
+      {
+        "number": "02",
+        "nameZh": "迪拜购物中心",
+        "nameEn": "The Dubai Mall",
+        "points": [
+          "One of the world's largest shopping and entertainment destinations, home to international brands, dining, and entertainment.",
+          "Next to Burj Khalifa and the Dubai Fountain — experience the best of Downtown Dubai in one visit."
+        ]
+      },
+      {
+        "number": "03",
+        "nameZh": "朱美拉棕榈岛",
+        "nameEn": "Palm Jumeirah",
+        "points": [
+          "A spectacular man-made island shaped like a palm tree.",
+          "Home to luxury resorts including Atlantis; take a helicopter ride or visit The View at The Palm for breathtaking aerial views."
+        ]
+      },
+      {
+        "number": "04",
+        "nameZh": "未来博物馆",
+        "nameEn": "Museum of the Future",
+        "points": [
+          "A futuristic architectural landmark blending technology and innovation, showcasing cutting-edge science and humanity's vision for the future.",
+          "Immersive interactive experiences exploring themes of technology, space, ecology, and more."
+        ]
+      },
+      {
+        "number": "05",
+        "nameZh": "迪拜河与传统市集",
+        "nameEn": "Dubai Creek & Souks",
+        "points": [
+          "The historic birthplace of Dubai, where tradition meets modernity.",
+          "Cross Dubai Creek by traditional abra boat and explore the Gold Souk and Spice Souk."
+        ]
+      }
+    ]
+  },
+  "uberTravel": {
+    "eyebrow": "Travel Recommendation",
+    "heading": "Recommended: Uber",
+    "headingAccent": "Travel with ease across Dubai",
+    "features": [
+      {
+        "title": "Safe & Reliable",
+        "lines": [
+          "Official certification and security assurance",
+          "Travel with peace of mind, worry-free experience"
+        ]
+      },
+      {
+        "title": "Anytime, Anywhere",
+        "lines": [
+          "On demand — save waiting time",
+          "Meets your itinerary needs"
+        ]
+      },
+      {
+        "title": "Transparent Pricing",
+        "lines": [
+          "Clear pricing with no hidden fees",
+          "See your trip cost at a glance"
+        ]
+      }
+    ],
+    "downloadTitle": "Download Uber Now",
+    "downloadSubtext": "Download the Uber app in one tap for a convenient, comfortable travel experience.",
+    "footerNote": "For more travel information or assistance, please contact your line manager.",
+    "googlePlayAlt": "Get it on Google Play",
+    "appStoreAlt": "Download on the App Store",
+    "qrAlt": "Uber app QR code"
+  },
+  "dubaiTravelHero": {
+    "eyebrow": "Dubai Travel Service",
+    "headingLine1": "Your Dubai itinerary",
+    "headingLine2": "starts here",
+    "subtext": "We've prepared essential travel information and recommended attractions to help you plan with ease and enjoy Dubai to the fullest.",
+    "cta": "Plan my itinerary"
+  },
+  "dubaiRouteMap": {
+    "eyebrow": "Your journey route",
+    "heading": "From Dubai Airport to Conrad Hotel",
+    "headingLine1": "From Dubai Airport to",
+    "headingLine2": "Conrad Hotel",
+    "duration": "Approx. 25-minute drive · approx. 20 km",
+    "subtext": "Start your Dubai journey with ease — exclusive transfer services are here for you every step of the way.",
+    "originNameZh": "Dubai International Airport",
+    "originNameEn": "Dubai International Airport (DXB)",
+    "destinationNameZh": "Conrad Dubai",
+    "destinationNameEn": "Conrad Dubai",
+    "routeSummary": "Approx. 25 mins · approx. 20 km",
+    "mapAlt": "Route from Dubai International Airport to Conrad Dubai"
+  },
+  "mobileInvitation": {
+    "eyebrow": "2026 Invitation",
+    "headingLine1": "Crafted around",
+    "headingLine2": "every detail,",
+    "headingLine3": "creating an exclusive",
+    "headingLine4": "VIP experience.",
+    "subtext": "From the moment you arrive in Dubai to every moment after the ceremony, we carefully arrange every step for qualified IB partners and their guests — making every gathering a treasured experience.",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Brilliant Dubai · Unforgettable Night",
+        "description": "Ain Dubai night views, star guests and stage. Enjoy an unforgettable Dubai evening."
+      },
+      {
+        "number": "02",
+        "title": "Conrad Hotel · Luxury Hospitality",
+        "description": "Stay at Conrad Hotel with a five-star experience that makes every moment comfortable and effortless."
+      },
+      {
+        "number": "03",
+        "title": "Opening Chapter · Exclusive Dinner",
+        "description": "Before the main ceremony, gather with VIP guests for a special evening to remember."
+      },
+      {
+        "number": "04",
+        "title": "VIP Concierge · Door-to-Door Transfers",
+        "description": "Private transfers between airport, hotel and venue — arrive at every destination with ease."
+      }
+    ]
+  },
   "gallery": {
     "hero": {
       "headingPlain": "Where Greatness Was",

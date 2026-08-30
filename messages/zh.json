@@ -172,6 +172,145 @@
       "cta": "探索您的邀请"
     }
   },
+  "attractions": {
+    "eyebrow": "探索迪拜",
+    "heading": "五大必游景点",
+    "subtext": "迪拜融合了现代奇迹与深厚文化，这五大景点是每位到访者不容错过的体验。",
+    "cta": "了解更多迪拜",
+    "learnMore": "了解更多",
+    "items": [
+      {
+        "number": "01",
+        "nameZh": "迪拜之框",
+        "nameEn": "Dubai Frame",
+        "points": [
+          "迪拜代表性地标之一，高约 150 米。",
+          "登上观景台，可同时欣赏迪拜老城区与现代城市天际线。"
+        ]
+      },
+      {
+        "number": "02",
+        "nameZh": "迪拜购物中心",
+        "nameEn": "The Dubai Mall",
+        "points": [
+          "全球规模最大的购物与娱乐中心之一，汇集众多国际品牌、餐饮及娱乐设施。",
+          "毗邻哈利法塔及迪拜喷泉，可一次体验 Downtown Dubai 的代表性景观。"
+        ]
+      },
+      {
+        "number": "03",
+        "nameZh": "朱美拉棕榈岛",
+        "nameEn": "Palm Jumeirah",
+        "points": [
+          "宏伟的人工岛屿，形似棕榈树。",
+          "汇聚亚特兰蒂斯等豪华度假村，可乘直升机或前往 The View 高空观景台俯瞰。"
+        ]
+      },
+      {
+        "number": "04",
+        "nameZh": "未来博物馆",
+        "nameEn": "Museum of the Future",
+        "points": [
+          "融合科技与创新的未来主义建筑，展示前沿科技与人类未来愿景。",
+          "沉浸式互动体验，带你探索科技、太空、生态等多个未来主题。"
+        ]
+      },
+      {
+        "number": "05",
+        "nameZh": "迪拜河与传统市集",
+        "nameEn": "Dubai Creek & Souks",
+        "points": [
+          "迪拜的历史发源地，融合传统与现代。",
+          "可乘坐水上木船(Abra)横渡迪拜河，逛黄金市集与香料市集。"
+        ]
+      }
+    ]
+  },
+  "uberTravel": {
+    "eyebrow": "出行推荐",
+    "heading": "推荐使用 Uber",
+    "headingAccent": "轻松出行，畅游迪拜",
+    "features": [
+      {
+        "title": "安全可靠",
+        "lines": [
+          "官方认证，安全保障",
+          "安心出行，无忧体验"
+        ]
+      },
+      {
+        "title": "随时随地",
+        "lines": [
+          "随叫随到，节省等待时间",
+          "满足您的行程需求"
+        ]
+      },
+      {
+        "title": "透明计费",
+        "lines": [
+          "价格透明，无隐藏费用",
+          "行程费用一目了然"
+        ]
+      }
+    ],
+    "downloadTitle": "立即下载 Uber",
+    "downloadSubtext": "一键下载Uber App，享受便捷、舒适的出行体验。",
+    "footerNote": "如需更多出行信息或帮助，请联系直线经理。",
+    "googlePlayAlt": "在 Google Play 获取",
+    "appStoreAlt": "在 App Store 下载",
+    "qrAlt": "Uber 应用二维码"
+  },
+  "dubaiTravelHero": {
+    "eyebrow": "迪拜旅行管家",
+    "headingLine1": "您的迪拜行程",
+    "headingLine2": "从这里开始",
+    "subtext": "我们为您精心准备了重要的出行信息与推荐景点，助您轻松规划行程，尽享迪拜的精彩体验。",
+    "cta": "规划我的行程"
+  },
+  "dubaiRouteMap": {
+    "eyebrow": "您的旅程路线",
+    "heading": "从迪拜机场到ConradHotel",
+    "headingLine1": "从迪拜机场到",
+    "headingLine2": "Conrad Hotel",
+    "duration": "约25分钟车程·约20公里",
+    "subtext": "轻松开启您的迪拜之旅，专属接送服务为您保驾护航。",
+    "originNameZh": "迪拜国际机场",
+    "originNameEn": "Dubai International Airport (DXB)",
+    "destinationNameZh": "康莱德迪拜酒店",
+    "destinationNameEn": "Conrad Dubai",
+    "routeSummary": "约25分钟·约20公里",
+    "mapAlt": "从迪拜国际机场到康莱德迪拜酒店的路线"
+  },
+  "mobileInvitation": {
+    "eyebrow": "2026邀请函",
+    "headingLine1": "围绕每一处",
+    "headingLine2": "细节",
+    "headingLine3": "打造专属",
+    "headingLine4": "尊享体验",
+    "subtext": "从抵达迪拜的第一刻，到盛典落幕后的每一个瞬间，我们为符合资格的IB合作伙伴及同行嘉宾精心安排每一程，让每一次相聚都成为值得珍藏的特别体验。",
+    "cards": [
+      {
+        "number": "01",
+        "title": "璀璨迪拜·精彩之夜",
+        "description": "迪拜眼夜景、明星嘉宾与D舞台。尽享难忘的迪拜之夜。"
+      },
+      {
+        "number": "02",
+        "title": "ConradHotel·奢华礼遇",
+        "description": "入住 Conrad Hotel，尊享五星级住宿体验，让每一次停留都倍感舒适与从容。"
+      },
+      {
+        "number": "03",
+        "title": "盛典序章·尊享晚宴",
+        "description": "在正式盛典开启之前，与贵宾共聚一席，提前开启这场特别的尊享之夜。"
+      },
+      {
+        "number": "04",
+        "title": "VIP礼宾·全程接送",
+        "description": "专属接送服务，机场、酒店及活动场地，让每一程都从容抵达。"
+      }
+    ]
+  },
   "gallery": {
     "hero": {
       "headingPlain": "伟大时刻,",
