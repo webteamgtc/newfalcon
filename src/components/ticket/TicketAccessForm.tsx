@@ -42,6 +42,8 @@ type TicketAccessFormProps = {
   embedded?: boolean;
   onSuccess?: () => void;
   translationNamespace?: "ticketPage.accessForm" | "checkStatusPage.accessForm";
+  defaultExistingClient?: "yes" | "no";
+  showAllFields?: boolean;
 };
 
 export default function TicketAccessForm({
@@ -50,6 +52,8 @@ export default function TicketAccessForm({
   embedded = false,
   onSuccess,
   translationNamespace = "ticketPage.accessForm",
+  defaultExistingClient,
+  showAllFields = false,
 }: TicketAccessFormProps) {
   const t = useTranslations(translationNamespace);
   const locale = useLocale();
@@ -57,7 +61,9 @@ export default function TicketAccessForm({
   const router = useRouter();
   const { login } = useVipUser();
 
-  const [existingClient, setExistingClient] = useState<"" | "yes" | "no">("");
+  const [existingClient, setExistingClient] = useState<"" | "yes" | "no">(
+    defaultExistingClient ?? ""
+  );
   const [email, setEmail] = useState("");
   const [ibId, setIbId] = useState("");
   const [terms, setTerms] = useState(false);
@@ -327,6 +333,9 @@ export default function TicketAccessForm({
     router.push("/result");
   };
 
+  const showPartnerFields = otpVerified || showAllFields;
+  const showTermsBlock = otpVerified || showAllFields;
+
   const formContent = (
     <>
       {!compact && !pageLayout && !embedded && (
@@ -442,27 +451,27 @@ export default function TicketAccessForm({
             )}
 
             {otpVerified && (
-              <>
-                <p className="text-sm font-medium text-green-700">{t("emailVerified")}</p>
-
-                <div className="min-w-0">
-                  <label className="form-field-label form-field-label--literal font-poppins text-sm text-ink/70">{t("ibIdLabel")}</label>
-                  <input
-                    type="text"
-                    value={ibId}
-                    onChange={(event) => {
-                      setIbId(event.target.value);
-                      setIbIdError("");
-                    }}
-                    placeholder={t("ibIdPlaceholder")}
-                    className={fieldInputClass}
-                  />
-                  {ibIdError && <p className="mt-1 text-xs text-red-600">{ibIdError}</p>}
-                </div>
-              </>
+              <p className="text-sm font-medium text-green-700">{t("emailVerified")}</p>
             )}
 
-            {otpVerified && (
+            {showPartnerFields && (
+              <div className="min-w-0">
+                <label className="form-field-label form-field-label--literal font-poppins text-sm text-ink/70">{t("ibIdLabel")}</label>
+                <input
+                  type="text"
+                  value={ibId}
+                  onChange={(event) => {
+                    setIbId(event.target.value);
+                    setIbIdError("");
+                  }}
+                  placeholder={t("ibIdPlaceholder")}
+                  className={fieldInputClass}
+                />
+                {ibIdError && <p className="mt-1 text-xs text-red-600">{ibIdError}</p>}
+              </div>
+            )}
+
+            {showTermsBlock && (
               <>
                 <p className="text-sm leading-relaxed text-ink/70">{t("disclaimer")}</p>
 

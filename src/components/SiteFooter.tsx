@@ -25,7 +25,6 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import Image from "next/image";
 import Button from "@/components/Button";
 
 export default function SiteFooter() {
@@ -33,36 +32,20 @@ export default function SiteFooter() {
   const t2 = useTranslations("footer");
 
   return (
-    <section className="relative isolate overflow-hidden md:pt-24 pt-8">
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-        <Image
-          src="/images/footer-bg.webp"
-          alt=""
-          fill
-          priority
-          className="h-full w-full object-cover object-center"
-          sizes="100vw"
-        />
-      </div>
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#FBF6ED]/95 via-[#FBF6ED]/80 to-[#FBF6ED]/45"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-[#FBF6ED]/90 to-transparent"
-        aria-hidden
-      />
+    <section className="relative isolate overflow-hidden bg-[url('/new/footer-img.webp')] bg-cover bg-center md:pt-24 pt-8">
       <div className="relative z-10 container text-left">
-   
+        <p className="eyebrow !capitalize">
+          <span className="font-poppins text-sm md:text-xl italic">{t("eyebrow")}</span>
+        </p>
         <h2 className="mt-3 max-w-lg font-display HeadingH1 !font-medium !text-ink">
-          {t("headingPlain")}<span className="italic text-falcon-deep">{t("headingItalic")}</span>
+          {t("headingPlain")}<span className="italic">{t("headingItalic")}</span>
         </h2>
-        <p className=" mt-6 max-w-lg Text !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
+        <p className=" mt-6 max-w-lg text-sm md:text-xl !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
         <Button href="/check-status" className="mt-10">
           {t("cta")}
         </Button>
       </div>
-      <footer className="relative z-10 border-t md:mt-24 mt-16 border-[#382910]/40 bg-[#FBF6ED]/92 backdrop-blur-[2px]">
+      <footer className="relative z-10 border-t md:mt-24 mt-16 border-[#382910]/40">
       <div className="container font-poppins flex flex-col md:items-center justify-between md:gap-4 gap-2 md:py-8 py-4 text-xs font-medium uppercase tracking-[0.12em] text-[#382910] md:flex-row">
         <p className="!font-medium text-xs !text-[#382910]">{t2("dateLocation")}</p>
         <p className="md:text-center">{t2("brand")}</p>

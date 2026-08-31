@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import VipHero from "@/components/vip/VipHero";
 import VipProgressSection from "@/components/vip/VipProgressSection";
-import VipInvitationSection from "@/components/vip/VipInvitationSection";
 import VipStatusGuard from "@/components/vip/VipStatusGuard";
 import DubaiTravelHeroSection from "@/components/travel/DubaiTravelHeroSection";
 import DubaiRouteMapSection from "@/components/travel/DubaiRouteMapSection";
@@ -32,7 +31,7 @@ export default function VipStatusPage() {
       <MobileInvitationSection />
       <UberTravelSection />
       <UberDownloadSection />
-      <VipInvitationSection />
+
     </VipStatusGuard>
   );
 }

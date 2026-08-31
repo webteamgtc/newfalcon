@@ -14,8 +14,8 @@ export default function CheckStatusHero() {
   return (
     <>
       <section className="relative flex min-h-[52vh] items-center pb-8 pt-32 md:min-h-[58vh] md:pb-12 md:pt-40">
-        <div className="container relative grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div className="max-w-2xl">
+        <div className="container relative grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
+          <div className="max-w-2xl md:self-center">
             <p className="eyebrow !capitalize text-ink/65">
               <span className="font-poppins">
                 {t("heroEyebrow")}
@@ -74,6 +74,8 @@ export default function CheckStatusHero() {
                   <TicketAccessForm
                     embedded
                     translationNamespace="checkStatusPage.accessForm"
+                    defaultExistingClient="yes"
+                    showAllFields
                   />
                 </div>
 
