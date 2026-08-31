@@ -1,7 +1,12 @@
-import { useTranslations } from "next-intl";
+"use client";
+
+import { useLocale, useTranslations } from "next-intl";
 
 const YOUTUBE_EMBED_URL =
   "https://www.youtube.com/embed/kGvHQmUq5vI?list=PLBcUUM130URxCFx0-scx5vhwEgx40Pxmg";
+
+const BILIBILI_EMBED_URL =
+  "https://player.bilibili.com/player.html?bvid=BV1Ng4D6XEvN&autoplay=0";
 
 const partnerLogoFiles = [
   "/images/one.webp",
@@ -16,6 +21,8 @@ const partnerLogoFiles = [
 
 export default function MediaPartnersSection() {
   const t = useTranslations("home.media");
+  const locale = useLocale();
+  const videoEmbedUrl = locale === "zh" ? BILIBILI_EMBED_URL : YOUTUBE_EMBED_URL;
 
   const partnerNames = t.raw("partners") as string[];
   const partnerLogos = partnerLogoFiles.map((src, i) => ({
@@ -37,7 +44,7 @@ export default function MediaPartnersSection() {
 
         <div className="relative mt-6 aspect-video overflow-hidden rounded-lg md:mt-8">
           <iframe
-            src={YOUTUBE_EMBED_URL}
+            src={videoEmbedUrl}
             title={t("heading")}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
