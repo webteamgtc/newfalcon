@@ -79,7 +79,7 @@ export default function MobileInvitationSection() {
   const cards = t.raw("cards") as CardCopy[];
 
   return (
-    <section className="bg-[url('/new/mobileonly.webp')] bg-cover bg-center py-10 md:hidden">
+    <section className="bg-[url('/new/mobileonly.webp')] bg-cover bg-[87%_50%] bg-no-repeat py-10 md:hidden">
       <div className="container">
         <p className="font-poppins text-xs tracking-[0.08em] text-[#382910]/80">
           {t("eyebrow")}
@@ -116,13 +116,6 @@ export default function MobileInvitationSection() {
                     fill
                     className="object-cover object-center"
                     sizes="46vw"
-                  />
-                  <div
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(to right, rgba(255,252,247,0) 45%, #FFFCF7 88%, #F5E9D6 100%)",
-                    }}
                   />
                 </div>
 
