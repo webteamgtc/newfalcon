@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import type { VipUser } from "@/data/vipUsers";
 import VipTicketBookingForm from "@/components/vip/VipTicketBookingForm";
@@ -37,16 +38,16 @@ export default function VipTicketBookingModal({
 
   if (!open) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto px-4 py-8 md:items-center md:py-12">
+  return createPortal(
+    <div className="fixed inset-0 z-[1000] flex items-start justify-center overflow-y-auto px-4 py-8 md:items-center md:py-12">
       <button
         type="button"
         aria-label={t("closeModal")}
-        className="absolute inset-0 bg-[#17130F]/60 backdrop-blur-sm"
+        className="fixed inset-0 bg-[#17130F]/70 backdrop-blur-[2px]"
         onClick={onClose}
       />
 
-      <div className="relative z-10 w-full max-w-3xl">
+      <div className="relative z-[1001] w-full max-w-3xl">
         <div
           className="max-h-[calc(100vh-4rem)] overflow-y-auto rounded-2xl p-4 shadow-2xl md:p-8"
           style={{
@@ -77,6 +78,7 @@ export default function VipTicketBookingModal({
           <VipTicketBookingForm user={user} onSuccess={onClose} />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

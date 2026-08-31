@@ -1,3 +1,7 @@
+export const MOBILE_INVITATION_ASSETS = {
+  background: "/new/mobileonly.webp",
+} as const;
+
 export const MOBILE_INVITATION_CARDS = [
   { id: "01", image: "/new/L1.webp", icon: "ferris" as const },
   { id: "02", image: "/new/L2.webp", icon: "hotel" as const },
