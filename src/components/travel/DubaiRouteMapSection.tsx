@@ -3,6 +3,12 @@
 import { useTranslations } from "next-intl";
 import DubaiRouteMapCard from "@/components/travel/DubaiRouteMapCard";
 import DubaiRouteMapSectionMobile from "@/components/travel/DubaiRouteMapSectionMobile";
+import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
+import {
+  SCREEN_SECTION_HEIGHT,
+  SCREEN_SECTION_INNER,
+  SECTION_BG_IMAGE_POSITION,
+} from "@/lib/sectionLayout";
 
 export default function DubaiRouteMapSection() {
   const t = useTranslations("dubaiRouteMap");
@@ -11,9 +17,12 @@ export default function DubaiRouteMapSection() {
     <>
       <DubaiRouteMapSectionMobile />
 
-      <section className="relative hidden overflow-hidden bg-[url('/new/newmap.webp')] bg-cover bg-left-top md:block">
-        <div className="container py-14 lg:py-24">
-          <div className="flex min-h-[480px] max-w-[42%] flex-col justify-between">
+      <section className={`relative hidden overflow-hidden md:block ${SCREEN_SECTION_HEIGHT}`}>
+        <SectionBackgroundImage src="/new/newmap.webp" className={SECTION_BG_IMAGE_POSITION} />
+        <div
+          className={`container relative z-10 flex items-center py-10 lg:py-12 ${SCREEN_SECTION_INNER}`}
+        >
+          <div className="flex w-full max-w-[42%] flex-col justify-between gap-10">
             <div className="max-w-md">
               <p className="font-poppins text-[11px] tracking-[0.08em] text-falcon-deep md:text-xs">
                 {t("eyebrow")}
@@ -32,7 +41,7 @@ export default function DubaiRouteMapSection() {
               </p>
             </div>
 
-            <div className="mt-10">
+            <div className="mt-0">
               <DubaiRouteMapCard />
             </div>
           </div>

@@ -2,6 +2,12 @@
 
 import { useTranslations } from "next-intl";
 import UberDownloadCard from "@/components/travel/UberDownloadCard";
+import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
+import {
+  SCREEN_SECTION_HEIGHT,
+  SCREEN_SECTION_INNER,
+  SECTION_BG_IMAGE_POSITION,
+} from "@/lib/sectionLayout";
 
 type FeatureCopy = {
   title: string;
@@ -63,8 +69,11 @@ export default function UberTravelSection() {
   const features = t.raw("features") as FeatureCopy[];
 
   return (
-    <section className="relative isolate flex min-h-[520px] overflow-hidden bg-[url('/new/new1-bg.webp')] bg-cover bg-center md:min-h-[550px] lg:min-h-[600px]">
-      <div className="container relative z-10 w-full pt-10 pb-8 md:pb-0 md:pt-14 lg:pt-16">
+    <section
+      className={`relative isolate flex min-h-[520px] items-center overflow-hidden ${SCREEN_SECTION_HEIGHT}`}
+    >
+      <SectionBackgroundImage src="/new/new1-bg.webp" className={SECTION_BG_IMAGE_POSITION} />
+      <div className={`container relative z-10 w-full pt-10 pb-8 md:pb-0 md:pt-14 lg:pt-16 ${SCREEN_SECTION_INNER}`}>
         <div className="max-w-2xl">
           <p className="eyebrow text-falcon-deep !capitalize">
             <span className="font-poppins">{t("eyebrow")}</span>

@@ -126,7 +126,7 @@ export default function DubaiAttractionsSection() {
                 rel="noopener noreferrer"
                 className="group flex w-full flex-row overflow-hidden rounded-[20px] border border-[#382910]/15 bg-[#F9F3E9] transition-transform duration-300 hover:-translate-y-1 md:flex-col md:w-auto md:rounded-[24px]"
               >
-                <div className="relative w-[38%] min-h-[168px] shrink-0 overflow-hidden md:aspect-[5/6] md:min-h-0 md:w-full">
+                <div className="relative w-[38%] min-h-[132px] shrink-0 overflow-hidden md:aspect-[4/3] md:min-h-0 md:max-h-[168px] md:w-full 3xl:max-h-[150px] 4xl:max-h-[160px] 5xl:max-h-[170px]">
                   <Image
                     src={attraction.image}
                     alt={primaryName}

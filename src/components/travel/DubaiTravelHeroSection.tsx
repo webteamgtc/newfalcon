@@ -1,6 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
+import {
+  SCREEN_SECTION_HEIGHT,
+  SCREEN_SECTION_INNER,
+  SECTION_BG_IMAGE_POSITION,
+} from "@/lib/sectionLayout";
 
 function ArrowIcon() {
   return (
@@ -27,8 +33,11 @@ export default function DubaiTravelHeroSection() {
   const t = useTranslations("dubaiTravelHero");
 
   return (
-    <section className="relative isolate hidden overflow-hidden bg-[url('/new/newtop.webp')] bg-cover bg-top-right py-12 md:block md:py-16 lg:py-48">
-      <div className="container relative z-10">
+    <section
+      className={`relative isolate hidden overflow-hidden md:flex md:items-center ${SCREEN_SECTION_HEIGHT}`}
+    >
+      <SectionBackgroundImage src="/new/newtop.webp" className={SECTION_BG_IMAGE_POSITION} />
+      <div className={`container relative z-10 w-full py-12 md:py-16 ${SCREEN_SECTION_INNER}`}>
         <div className="max-w-xl">
           <p className="font-poppins text-[11px] uppercase tracking-[0.22em] text-[#382910]/55 md:text-xs">
             {t("eyebrow")}

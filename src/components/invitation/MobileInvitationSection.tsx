@@ -3,6 +3,12 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { MOBILE_INVITATION_CARDS } from "@/data/mobileInvitation";
+import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
+import {
+  SCREEN_SECTION_HEIGHT,
+  SCREEN_SECTION_INNER,
+  SECTION_BG_IMAGE_POSITION,
+} from "@/lib/sectionLayout";
 
 type CardCopy = {
   number: string;
@@ -79,24 +85,34 @@ export default function MobileInvitationSection() {
   const cards = t.raw("cards") as CardCopy[];
 
   return (
-    <section className="bg-[url('/new/mobileonly.webp')] bg-cover bg-[87%_50%] bg-no-repeat py-10 md:bg-[url('/new/desktop.webp')] md:bg-center md:py-16">
-      <div className="container">
+    <section
+      className={`relative isolate overflow-hidden py-10 md:flex md:items-center md:py-0 ${SCREEN_SECTION_HEIGHT}`}
+    >
+      <SectionBackgroundImage
+        src="/new/mobileonly.webp"
+        className="object-cover object-[87%_50%] md:hidden"
+      />
+      <SectionBackgroundImage
+        src="/new/desktop.webp"
+        className={`hidden md:block ${SECTION_BG_IMAGE_POSITION}`}
+      />
+      <div className={`container relative z-10 py-0 md:py-12 lg:py-14 ${SCREEN_SECTION_INNER}`}>
         <p className="font-poppins text-xs tracking-[0.08em] text-[#382910]/80">
           {t("eyebrow")}
         </p>
 
-        <h2 className="mt-3 max-w-3xl font-display text-[2rem] leading-[1.15] font-medium tracking-[-0.02em] md:text-4xl lg:text-5xl">
-          <span className="block text-ink">{t("headingLine1")}</span>
-          <span className="block text-ink">{t("headingLine2")}</span>
-          <span className="block italic text-falcon-deep">{t("headingLine3")}</span>
-          <span className="block italic text-falcon-deep">{t("headingLine4")}</span>
+        <h2 className="mt-3 max-w-4xl font-display text-[2rem] leading-[1.15] font-medium tracking-[-0.02em] md:text-4xl lg:text-5xl">
+          <span className="text-ink">{t("headingLine1")}</span>
+          <span className="text-ink">{t("headingLine2")}</span> <br></br>
+          <span className="italic text-falcon-deep">{t("headingLine3")}</span>
+          <span className="italic text-falcon-deep">{t("headingLine4")}</span>
         </h2>
 
         <p className="mt-5 max-w-2xl font-display text-sm leading-relaxed text-[#382910] md:text-base">
           {t("subtext")}
         </p>
 
-        <div className="mt-8 flex flex-col gap-4 md:mt-12 md:grid md:grid-cols-4 md:gap-4 lg:gap-5">
+        <div className="mt-5 flex flex-col gap-4 md:mt-8 md:grid md:grid-cols-4 md:gap-4 lg:gap-5">
           {MOBILE_INVITATION_CARDS.map((card, index) => {
             const copy = cards[index];
             if (!copy) return null;
@@ -104,18 +120,18 @@ export default function MobileInvitationSection() {
             return (
               <article
                 key={card.id}
-                className="flex min-h-[148px] overflow-hidden rounded-[18px] border border-[#382910]/30 md:min-h-[520px] md:flex-col md:border-b-0"
+                className="flex min-h-[132px] overflow-hidden rounded-[18px] border border-[#382910]/30 md:min-h-0 md:flex-col md:border-b-0"
                 style={{
                   background: "linear-gradient(180deg, #FFFCF7 0%, #F5E9D6 100%)",
                 }}
               >
-                <div className="order-2 flex min-w-0 flex-1 flex-col items-center justify-center px-3 py-4 text-center md:order-1 md:flex-none md:px-5 md:pb-5 md:pt-7">
+                <div className="order-2 flex min-w-0 flex-1 flex-col items-center justify-center px-3 py-4 text-center md:order-1 md:flex-none md:px-5 md:pb-4 md:pt-4">
                   <span className="font-display text-[1.75rem] leading-none italic text-[#C5A267] md:text-[2rem]">
                     {copy.number}
                   </span>
                   <GoldDivider />
                   <CardIcon type={card.icon} />
-                  <h3 className="mt-2 font-display text-sm font-medium leading-snug text-[#382910] md:mt-3 md:text-base">
+                  <h3 className="mt-2 font-display text-sm font-medium leading-snug text-[#382910] md:mt-3 md:text-sm">
                     {copy.title}
                   </h3>
                   <p className="mt-2 font-poppins text-[10px] leading-relaxed text-[#382910]/80 md:mt-3 md:text-[11px]">
@@ -123,7 +139,7 @@ export default function MobileInvitationSection() {
                   </p>
                 </div>
 
-                <div className="relative order-1 min-h-[148px] w-[46%] shrink-0 md:order-2 md:mt-auto md:min-h-[240px] md:w-full md:flex-1">
+                <div className="relative order-1 min-h-[132px] w-[46%] shrink-0 md:order-2 md:mt-auto md:h-[150px] md:min-h-0 md:w-full md:flex-none 3xl:h-[160px] 4xl:h-[170px] 5xl:h-[180px]">
                   <Image
                     src={card.image}
                     alt={copy.title}
@@ -132,7 +148,7 @@ export default function MobileInvitationSection() {
                     sizes="(min-width: 768px) 25vw, 46vw"
                   />
                   <div
-                    className="pointer-events-none absolute inset-x-0 top-0 hidden h-20 bg-gradient-to-b from-[#FFFCF7] via-[#FFFCF7]/70 to-transparent md:block"
+                    className="pointer-events-none absolute inset-x-0 top-0 hidden h-12 bg-gradient-to-b from-[#FFFCF7] via-[#FFFCF7]/70 to-transparent md:block"
                     aria-hidden
                   />
                 </div>

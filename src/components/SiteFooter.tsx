@@ -26,13 +26,16 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Button from "@/components/Button";
+import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
+import { SECTION_BG_IMAGE_POSITION } from "@/lib/sectionLayout";
 
 export default function SiteFooter() {
   const t = useTranslations("home.footerCta");
   const t2 = useTranslations("footer");
 
   return (
-    <section className="relative isolate overflow-hidden bg-[url('/new/footer-img.webp')] bg-cover bg-center md:pt-24 pt-8">
+    <section className="relative isolate overflow-hidden md:pt-24 pt-8">
+      <SectionBackgroundImage src="/new/footer-img.webp" className={SECTION_BG_IMAGE_POSITION} />
       <div className="relative z-10 container text-left">
         <p className="eyebrow !capitalize">
           <span className="font-poppins text-sm md:text-xl italic">{t("eyebrow")}</span>
