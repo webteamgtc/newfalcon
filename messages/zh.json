@@ -1175,32 +1175,41 @@
     "trustVerified": "GTCFX 已验证",
     "bottomNote": "登录遇到问题？请联系 support@gtcfx.com",
     "journey": {
-      "eyebrow": "专属旅程",
-      "headingLine1": "从验证身份",
-      "headingLine2": "到尊享席位",
-      "subtext": "只需完成简单步骤，即可查看您的 2026 金鹰节邀请资格与达标进度。",
-      "steps": [
+      "eyebrow": "YOUR JOURNEY",
+      "headingLine1": "从迪拜机场到",
+      "headingLine2": "ConradHotel",
+      "subtext": "2026金鹰节汇聚全球优合作伙伴、交易者与行业先驱，共赴迪拜，见证属于卓越者的荣耀时刻。",
+      "eventDate": "12 DECEMBER 2026",
+      "eventDay": "SATURDAY",
+      "venueName": "CONRAD DUBAI",
+      "venueCountry": "UAE",
+      "cta": "探索盛典详情",
+      "mapAlt": "从迪拜国际机场到康莱德迪拜酒店的路线地图"
+    },
+    "beyondInvitation": {
+      "eyebrow": "BEYOND THE INVITATION",
+      "heading": "不止是一张邀请函",
+      "subtextLine1": "Golden Falcon Awards 2026 为符合资格的合作伙伴",
+      "subtextLine2": "呈现一场专属年度盛典体验。",
+      "benefits": [
         {
-          "label": "验证",
-          "title": "验证身份",
-          "description": "使用注册邮箱验证 GTCFX 合作伙伴信息。"
+          "title": "尊享盛典席位",
+          "desc": "尊享盛典席位"
         },
         {
-          "label": "查看",
-          "title": "查看进度",
-          "description": "查看您的净入金与交易手数当前达标情况。"
+          "title": "五星级酒店住宿*",
+          "desc": "五星级酒店住宿"
         },
         {
-          "label": "达标",
-          "title": "完成资格",
-          "description": "达到活动资格要求后，即可进入邀请确认阶段。"
+          "title": "符合条件的嘉宾机票安排*",
+          "desc": "符合条件的嘉宾机票安排*"
         },
         {
-          "label": "莅临",
-          "title": "尊享盛典",
-          "description": "完成嘉宾信息登记，准备莅临盛典。"
+          "title": "专属接送服务*",
+          "desc": "专属接送服务*"
         }
-      ]
+      ],
+      "disclaimer": "*具体礼遇视嘉宾资格、地区、最终确认及活动条款而定。"
     },
     "qualification": {
       "eyebrow": "资格",

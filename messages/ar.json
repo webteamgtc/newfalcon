@@ -1042,6 +1042,43 @@
     "trustInstant": "تحقق فوري",
     "trustVerified": "موثّق من GTCFX",
     "bottomNote": "تواجه مشكلة في تسجيل الدخول؟ تواصل مع support@gtcfx.com",
+    "beyondInvitation": {
+      "eyebrow": "Beyond the Invitation",
+      "heading": "More Than an Invitation",
+      "subtextLine1": "Golden Falcon Awards 2026 delivers an exclusive annual ceremony experience",
+      "subtextLine2": "for qualified partners.",
+      "benefits": [
+        {
+          "titleEn": "VIP Event Access",
+          "titleZh": "尊享盛典席位"
+        },
+        {
+          "titleEn": "Hotel Stay",
+          "titleZh": "五星级酒店住宿*"
+        },
+        {
+          "titleEn": "Flight Arrangement",
+          "titleZh": "符合条件的嘉宾机票安排*"
+        },
+        {
+          "titleEn": "VIP Transfer",
+          "titleZh": "专属接送服务*"
+        }
+      ],
+      "disclaimer": "*Specific benefits depend on guest eligibility, region, final confirmation, and event terms."
+    },
+    "journey": {
+      "eyebrow": "Your Journey",
+      "headingLine1": "From Dubai Airport to",
+      "headingLine2": "Conrad Hotel",
+      "subtext": "The 2026 Golden Falcon Awards brings together global partners, traders, and industry pioneers in Dubai to witness a moment of glory for the exceptional.",
+      "eventDate": "12 December 2026",
+      "eventDay": "Saturday",
+      "venueName": "Conrad Dubai",
+      "venueCountry": "UAE",
+      "cta": "Explore Event Details",
+      "mapAlt": "Route map from Dubai International Airport to Conrad Dubai"
+    },
     "accessForm": {
       "eyebrow": "وصول Partner الحاليين",
       "headingPlain": "تحقق من حسابك",

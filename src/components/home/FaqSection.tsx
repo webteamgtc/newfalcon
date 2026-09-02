@@ -39,7 +39,7 @@ export default function FaqSection() {
         <div className="max-w-md md:max-w-sm">
           <h2 className="font-display HeadingH1 !font-medium !text-ink">{t("heading")}</h2>
           <p className="mt-3 Text !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
-          <Button className="mt-6 md:mt-8" href="/faq">{t("cta")}</Button>
+          {/* <Button className="mt-6 md:mt-8" href="/faq">{t("cta")}</Button> */}
         </div>
 
         <div className="divide-y divide-[#434343]/30">

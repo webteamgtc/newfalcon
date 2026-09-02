@@ -1179,31 +1179,40 @@
     "bottomNote": "Having trouble signing in? Contact support@gtcfx.com",
     "journey": {
       "eyebrow": "Your Journey",
-      "headingLine1": "From identity verification",
-      "headingLine2": "to your exclusive seat.",
-      "subtext": "Complete a few simple steps to view your Golden Falcon Awards 2026 invitation eligibility and qualification progress.",
-      "steps": [
+      "headingLine1": "From Dubai Airport to",
+      "headingLine2": "Conrad Hotel",
+      "subtext": "The 2026 Golden Falcon Awards brings together global partners, traders, and industry pioneers in Dubai to witness a moment of glory for the exceptional.",
+      "eventDate": "12 December 2026",
+      "eventDay": "Saturday",
+      "venueName": "Conrad Dubai",
+      "venueCountry": "UAE",
+      "cta": "Explore Event Details",
+      "mapAlt": "Route map from Dubai International Airport to Conrad Dubai"
+    },
+    "beyondInvitation": {
+      "eyebrow": "Beyond the Invitation",
+      "heading": "More Than an Invitation",
+      "subtextLine1": "Golden Falcon Awards 2026 delivers an exclusive annual ceremony experience",
+      "subtextLine2": "for qualified partners.",
+      "benefits": [
         {
-          "label": "Verify",
-          "title": "Verify Identity",
-          "description": "Use your registered email to verify your GTCFX Partner information."
+          "title": "VIP Event Access",
+          "desc": "Enjoy Premium Gala Seating"
         },
         {
-          "label": "Track",
-          "title": "Track Progress",
-          "description": "View your current Net Deposit and Trading Volume qualification status."
+          "title": "Hotel Stay",
+          "desc": "Five-star hotel accommodation"
         },
         {
-          "label": "Qualify",
-          "title": "Complete Qualification",
-          "description": "Once you meet the eligibility requirements, proceed to invitation confirmation."
+          "title": "Flight Arrangement",
+          "desc": "Flight arrangements"
         },
         {
-          "label": "Attend",
-          "title": "Exclusive Ceremony",
-          "description": "Complete guest registration and prepare to attend the awards night."
+          "title": "VIP Transfer",
+          "desc": "Exclusive transfer service"
         }
-      ]
+      ],
+      "disclaimer": "*Specific benefits depend on guest eligibility, region, final confirmation, and event terms."
     },
     "qualification": {
       "eyebrow": "Qualification",
