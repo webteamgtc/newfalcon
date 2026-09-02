@@ -97,10 +97,10 @@ export default function CheckStatusBeyondInvitationSection() {
                       <BenefitIcon type={icon} />
                     </div>
 
-                    <p className="mt-4 font-poppins TextSmall !text-[#382910]/55">
+                    <p className="mt-4 TextSmall !text-[#382910]/55">
                       {benefit.title}
                     </p>
-                    <p className="mt-1 font-display text-sm font-medium leading-snug text-[#382910] md:text-base">
+                    <p className="mt-1 TextSmall !text-[#382910]/55">
                       {benefit.desc}
                     </p>
                   </article>
@@ -108,7 +108,7 @@ export default function CheckStatusBeyondInvitationSection() {
               })}
             </div>
 
-            <p className="mt-6 text-center font-poppins text-sm !leading-relaxed !text-[#382910]/55 sm:mt-8 sm:text-end">
+            <p className="mt-6 text-center text-sm !leading-relaxed !text-[#382910]/55 sm:mt-8 sm:text-end">
               {t("disclaimer")}
             </p>
           </div>
