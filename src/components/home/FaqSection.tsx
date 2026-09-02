@@ -1,17 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
-import Button from "@/components/Button";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, type AppLocale } from "@/i18n/routing";
 
-const FAQ_CHECK_STATUS_URL = "https://goldenfalcon.gtcch.com/check-status";
-const FAQ_LINK_PHRASES = ["在线注册", "our Tickets page"] as const;
+const FAQ_CHECK_STATUS_LINK_PHRASES: Record<AppLocale, string> = {
+  en: "our Tickets page",
+  zh: "在线注册",
+  ar: "صفحة التذاكر",
+};
+
 const linkClassName =
   "font-medium text-falcon-deep underline decoration-falcon-deep/40 underline-offset-2 transition-colors hover:text-falcon-deep/80";
 
-function renderFaqAnswer(answer: string) {
-  const linkPhrase = FAQ_LINK_PHRASES.find((phrase) => answer.includes(phrase));
-  if (!linkPhrase) {
+function renderFaqAnswer(answer: string, locale: AppLocale) {
+  const linkPhrase = FAQ_CHECK_STATUS_LINK_PHRASES[locale];
+  if (!answer.includes(linkPhrase)) {
     return answer;
   }
 
@@ -20,15 +24,16 @@ function renderFaqAnswer(answer: string) {
   return (
     <>
       {before}
-      <a href={FAQ_CHECK_STATUS_URL} className={linkClassName}>
+      <Link href="/check-status" className={linkClassName}>
         {linkPhrase}
-      </a>
+      </Link>
       {after}
     </>
   );
 }
 
 export default function FaqSection() {
+  const locale = useLocale() as AppLocale;
   const t = useTranslations("home.faq");
   const faqs = t.raw("list") as { question: string; answer: string }[];
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -65,7 +70,7 @@ export default function FaqSection() {
                 </button>
                 {isOpen && (
                   <p className="pb-5 TextSmall !leading-snug !font-poppins !text-ink">
-                    {renderFaqAnswer(faq.answer)}
+                    {renderFaqAnswer(faq.answer, locale)}
                   </p>
                 )}
               </div>
