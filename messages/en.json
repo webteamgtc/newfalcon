@@ -1179,6 +1179,34 @@
     "bottomNote": "Having trouble signing in? Contact support@gtcfx.com",
     "journey": {
       "eyebrow": "Your Journey",
+      "headingLine1": "From identity verification",
+      "headingLine2": "to your exclusive seat.",
+      "subtext": "Complete a few simple steps to view your Golden Falcon Awards 2026 invitation eligibility and qualification progress.",
+      "steps": [
+        {
+          "label": "Verify",
+          "title": "Verify Identity",
+          "description": "Use your registered email to verify your GTCFX Partner information."
+        },
+        {
+          "label": "Track",
+          "title": "Track Progress",
+          "description": "View your current Net Deposit and Trading Volume qualification status."
+        },
+        {
+          "label": "Qualify",
+          "title": "Complete Qualification",
+          "description": "Once you meet the eligibility requirements, proceed to invitation confirmation."
+        },
+        {
+          "label": "Attend",
+          "title": "Exclusive Ceremony",
+          "description": "Complete guest registration and prepare to attend the awards night."
+        }
+      ]
+    },
+    "routeMap": {
+      "eyebrow": "Your Route",
       "headingLine1": "From Dubai Airport to",
       "headingLine2": "Conrad Hotel",
       "subtext": "The 2026 Golden Falcon Awards brings together global partners, traders, and industry pioneers in Dubai to witness a moment of glory for the exceptional.",

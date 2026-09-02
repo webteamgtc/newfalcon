@@ -1068,7 +1068,35 @@
       "disclaimer": "*Specific benefits depend on guest eligibility, region, final confirmation, and event terms."
     },
     "journey": {
-      "eyebrow": "Your Journey",
+      "eyebrow": "رحلتك",
+      "headingLine1": "من التحقق من الهوية",
+      "headingLine2": "إلى مقعدك الحصري.",
+      "subtext": "أكمل خطوات بسيطة لعرض أهلية دعوة Golden Falcon Awards 2026 وتقدم التأهيل.",
+      "steps": [
+        {
+          "label": "Verify",
+          "title": "التحقق من الهوية",
+          "description": "استخدم بريدك الإلكتروني المسجّل للتحقق من معلومات شريك GTCFX."
+        },
+        {
+          "label": "Track",
+          "title": "تتبع التقدم",
+          "description": "اعرض حالة Net Deposit وTrading Volume الحالية للتأهيل."
+        },
+        {
+          "label": "Qualify",
+          "title": "إكمال التأهيل",
+          "description": "بمجرد استيفاء متطلبات الأهلية، انتقل إلى تأكيد الدعوة."
+        },
+        {
+          "label": "Attend",
+          "title": "حفل حصري",
+          "description": "أكمل تسجيل الضيف واستعد لحضور ليلة الجوائز."
+        }
+      ]
+    },
+    "routeMap": {
+      "eyebrow": "Your Route",
       "headingLine1": "From Dubai Airport to",
       "headingLine2": "Conrad Hotel",
       "subtext": "The 2026 Golden Falcon Awards brings together global partners, traders, and industry pioneers in Dubai to witness a moment of glory for the exceptional.",
