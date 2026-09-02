@@ -73,6 +73,10 @@ export default function UberTravelSection() {
       className={`relative isolate flex min-h-[520px] items-center overflow-hidden ${SCREEN_SECTION_HEIGHT}`}
     >
       <SectionBackgroundImage src="/new/new1-bg.webp" className={SECTION_BG_IMAGE_POSITION} />
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/75 via-white/35 to-transparent md:bg-gradient-to-r md:from-white/82 md:from-0% md:via-white/45 md:via-[42%] md:to-transparent"
+        aria-hidden
+      />
       <div className={`container relative z-10 w-full pt-10 pb-8 md:pb-0 md:pt-14 lg:pt-16 ${SCREEN_SECTION_INNER}`}>
         <div className="max-w-2xl">
           <p className="eyebrow text-falcon-deep !capitalize">

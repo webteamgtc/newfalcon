@@ -6,6 +6,44 @@ type PolicySection = {
   body: string;
 };
 
+const POLICY_LINK_PATTERN = /(support@gtcfx\.com|\+971 800 667788|7788 667 800 971\+)/g;
+
+function PolicySectionBody({ body }: { body: string }) {
+  const parts = body.split(POLICY_LINK_PATTERN);
+
+  return (
+    <p className="mt-4 TextSmall !leading-relaxed !font-poppins !text-ink">
+      {parts.map((part, index) => {
+        if (part === "support@gtcfx.com") {
+          return (
+            <a
+              key={`${part}-${index}`}
+              href="mailto:support@gtcfx.com"
+              className="text-falcon-deep underline decoration-falcon-deep/40 underline-offset-2 transition-opacity hover:opacity-80"
+            >
+              support@gtcfx.com
+            </a>
+          );
+        }
+
+        if (part === "+971 800 667788" || part === "7788 667 800 971+") {
+          return (
+            <a
+              key={`${part}-${index}`}
+              href="tel:+971800667788"
+              className="text-falcon-deep underline decoration-falcon-deep/40 underline-offset-2 transition-opacity hover:opacity-80"
+            >
+              {part}
+            </a>
+          );
+        }
+
+        return part;
+      })}
+    </p>
+  );
+}
+
 export default function PolicyDocumentSection() {
   const t = useTranslations("policyPage");
   const sections = t.raw("sections") as PolicySection[];
@@ -82,9 +120,7 @@ export default function PolicyDocumentSection() {
                       <h3 className="font-display HeadingH3 !font-medium !text-ink">
                         {section.title}
                       </h3>
-                      <p className="mt-4 TextSmall !leading-relaxed !font-poppins !text-ink">
-                        {section.body}
-                      </p>
+                      <PolicySectionBody body={section.body} />
 
                       <dl className="mt-7 space-y-3">
                         {labels.map((label, labelIndex) => (

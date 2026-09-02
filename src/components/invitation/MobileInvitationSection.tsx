@@ -102,9 +102,9 @@ export default function MobileInvitationSection() {
         </p>
 
         <h2 className="mt-3 max-w-4xl font-display text-[2rem] leading-[1.15] font-medium tracking-[-0.02em] md:text-4xl lg:text-5xl">
-          <span className="text-ink">{t("headingLine1")}</span>
+          <span className="text-ink">{t("headingLine1")}</span> {" "}
           <span className="text-ink">{t("headingLine2")}</span> <br></br>
-          <span className="italic text-falcon-deep">{t("headingLine3")}</span>
+          <span className="italic text-falcon-deep">{t("headingLine3")}</span> {" "}
           <span className="italic text-falcon-deep">{t("headingLine4")}</span>
         </h2>
 

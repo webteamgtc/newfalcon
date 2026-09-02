@@ -35,7 +35,7 @@ export default function UberDownloadCard({
       className={`relative z-20 w-full rounded-[24px] border border-[#C79E5E] p-5 md:rounded-[28px] md:p-9 lg:p-10 ${
         isInline
           ? "mt-0 shadow-[0_12px_40px_rgba(56,41,16,0.08)]"
-          : "-mt-12 md:-mt-14 lg:-mt-20"
+          : "-mt-12 md:-mt-14 lg:-mt-16"
       }`}
       style={{
         background: "linear-gradient(180deg, #FFFCF7 0%, #F5E9D6 100%)",
