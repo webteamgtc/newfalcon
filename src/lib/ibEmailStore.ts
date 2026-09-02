@@ -24,6 +24,33 @@ async function dropLegacyUniqueIndexes() {
   legacyIndexesDropped = true;
 }
 
+export type IbEmailListItem = {
+  id: string;
+  email: string;
+  ibId: string;
+  firstName: string;
+  locale: string;
+  createdAt: string;
+};
+
+export async function listIbEmailAccess(): Promise<IbEmailListItem[]> {
+  const db = await getRegistrationDb();
+  const collection = db.collection<IbEmailRecord>(IB_EMAIL_COLLECTION);
+  const docs = await collection.find({}).sort({ createdAt: -1 }).toArray();
+
+  return docs.map((doc) => ({
+    id: String(doc._id),
+    email: doc.email,
+    ibId: doc.ibId,
+    firstName: doc.firstName || "",
+    locale: doc.locale || "",
+    createdAt:
+      doc.createdAt instanceof Date
+        ? doc.createdAt.toISOString()
+        : String(doc.createdAt ?? ""),
+  }));
+}
+
 export type SaveIbEmailResult =
   | { success: true }
   | { success: false; code: "INVALID" };

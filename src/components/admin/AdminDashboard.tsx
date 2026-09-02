@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import AdminIbEmailTable from "@/components/admin/AdminIbEmailTable";
+import AdminTablePagination, { paginateItems } from "@/components/admin/AdminTablePagination";
 import AdminUserEditForm from "@/components/admin/AdminUserEditForm";
 import type {
   AdminRegistrationListItem,
@@ -182,16 +184,20 @@ function TableSkeleton() {
   return <div className="h-96 animate-pulse rounded-2xl bg-ink/5" />;
 }
 
+type DashboardTab = "registrations" | "ib-email";
+
 type Props = {
   adminEmail: string;
 };
 
 export default function AdminDashboard({ adminEmail }: Props) {
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState<DashboardTab>("registrations");
   const [registrations, setRegistrations] = useState<AdminRegistrationListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedRegistration, setSelectedRegistration] =
     useState<AdminRegistrationRecord | null>(null);
@@ -349,6 +355,15 @@ export default function AdminDashboard({ adminEmail }: Props) {
     );
   });
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
+
+  const pagination = useMemo(
+    () => paginateItems(filtered, currentPage),
+    [filtered, currentPage]
+  );
+
   return (
     <div className="min-h-screen bg-[#F7F2E8]">
       {/* Header */}
@@ -377,6 +392,35 @@ export default function AdminDashboard({ adminEmail }: Props) {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-8 md:px-6">
+        <div className="mb-8 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setActiveTab("registrations")}
+            className={`rounded-full px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] transition-colors ${
+              activeTab === "registrations"
+                ? "bg-falcon-deep text-white"
+                : "border border-ink/15 bg-white text-ink/70 hover:border-ink/25 hover:bg-ink/5"
+            }`}
+          >
+            VIP registrations
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("ib-email")}
+            className={`rounded-full px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] transition-colors ${
+              activeTab === "ib-email"
+                ? "bg-falcon-deep text-white"
+                : "border border-ink/15 bg-white text-ink/70 hover:border-ink/25 hover:bg-ink/5"
+            }`}
+          >
+            Performed First Step
+          </button>
+        </div>
+
+        {activeTab === "ib-email" ? (
+          <AdminIbEmailTable />
+        ) : (
+          <>
         {/* Stats overview */}
         <div className="mb-8">
           <h2 className="font-display text-xl text-ink">Overview</h2>
@@ -496,7 +540,9 @@ export default function AdminDashboard({ adminEmail }: Props) {
               <p className="mt-1 font-poppins text-sm text-ink/55">
                 {loading
                   ? "Loading..."
-                  : `${filtered.length} of ${registrations.length} shown`}
+                  : filtered.length === 0
+                    ? "0 registrations"
+                    : `Showing ${pagination.startIndex}-${pagination.endIndex} of ${filtered.length}`}
               </p>
             </div>
             <div className="relative">
@@ -559,7 +605,7 @@ export default function AdminDashboard({ adminEmail }: Props) {
                       </td>
                     </tr>
                   ) : (
-                    filtered.map((item) => (
+                    pagination.items.map((item) => (
                       <tr
                         key={item.id}
                         className="transition-colors hover:bg-[#FFFDF8]/80"
@@ -635,9 +681,16 @@ export default function AdminDashboard({ adminEmail }: Props) {
                   )}
                 </tbody>
               </table>
+              <AdminTablePagination
+                currentPage={currentPage}
+                totalItems={filtered.length}
+                onPageChange={setCurrentPage}
+              />
             </div>
           )}
         </div>
+          </>
+        )}
       </main>
 
       {selectedRegistration && (
