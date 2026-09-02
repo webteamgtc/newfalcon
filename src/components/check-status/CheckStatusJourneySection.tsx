@@ -109,7 +109,7 @@ export default function CheckStatusJourneySection() {
 
   return (
     <>
-      <section className="!bg-white relative z-10 md:hidden">
+      <section className="relative z-10 isolate bg-white md:hidden">
         <div className="container py-10">
           <JourneyContent />
         </div>
@@ -125,7 +125,9 @@ export default function CheckStatusJourneySection() {
         </div>
       </section>
 
-      <section className={`relative hidden overflow-hidden h-full items-center md:flex ${SCREEN_SECTION_HEIGHT}`}>
+      <section
+        className={`relative z-10 isolate hidden overflow-hidden bg-white md:flex md:items-center ${SCREEN_SECTION_HEIGHT}`}
+      >
         <SectionBackgroundImage
           src="/map.webp"
           className="object-cover object-center lg:object-right-center"
