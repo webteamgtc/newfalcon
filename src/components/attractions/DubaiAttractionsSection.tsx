@@ -95,7 +95,7 @@ export default function DubaiAttractionsSection() {
             </p>
           </div>
 
-          <div className="md:pt-2">
+          {/* <div className="md:pt-2">
             <a
               href={DUBAI_TOURISM_URL}
               target="_blank"
@@ -107,7 +107,7 @@ export default function DubaiAttractionsSection() {
                 <ArrowIcon />
               </span>
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-8 flex flex-col gap-4 md:mt-12 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible xl:grid-cols-5">
