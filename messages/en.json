@@ -1177,6 +1177,50 @@
     "trustInstant": "Instant verification",
     "trustVerified": "GTCFX verified",
     "bottomNote": "Having trouble signing in? Contact support@gtcfx.com",
+    "journey": {
+      "eyebrow": "Your Journey",
+      "headingLine1": "From identity verification",
+      "headingLine2": "to your exclusive seat.",
+      "subtext": "Complete a few simple steps to view your Golden Falcon Awards 2026 invitation eligibility and qualification progress.",
+      "steps": [
+        {
+          "label": "Verify",
+          "title": "Verify Identity",
+          "description": "Use your registered email to verify your GTCFX Partner information."
+        },
+        {
+          "label": "Track",
+          "title": "Track Progress",
+          "description": "View your current Net Deposit and Trading Volume qualification status."
+        },
+        {
+          "label": "Qualify",
+          "title": "Complete Qualification",
+          "description": "Once you meet the eligibility requirements, proceed to invitation confirmation."
+        },
+        {
+          "label": "Attend",
+          "title": "Exclusive Ceremony",
+          "description": "Complete guest registration and prepare to attend the awards night."
+        }
+      ]
+    },
+    "qualification": {
+      "eyebrow": "Qualification",
+      "eyebrowYear": "2026",
+      "headingLine1": "Toward",
+      "headingScript": "Golden Falcon Awards",
+      "headingLine2": "just one step away.",
+      "subtext": "Complete the eligibility requirements and pass final review to receive your Golden Falcon Awards 2026 invitation.",
+      "netDepositLabel": "Net Deposit",
+      "currencyUnit": "USD",
+      "tradingVolumeLabel": "Trading Lots",
+      "lotsUnit": "Lots",
+      "netDepositFootnote": "Annual net deposit requirement",
+      "tradingFootnote": "Annual trading volume requirement",
+      "connectorOr": "OR",
+      "connectorOrHint": "Meet either target to qualify"
+    },
     "accessForm": {
       "eyebrow": "Existing Partner access",
       "headingPlain": "Verify your account to",

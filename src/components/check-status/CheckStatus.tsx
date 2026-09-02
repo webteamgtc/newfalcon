@@ -1,14 +1,13 @@
 import CheckStatusHero from "@/components/check-status/CheckStatusHero";
-import { useTranslations } from "next-intl";
+import CheckStatusJourneySection from "@/components/check-status/CheckStatusJourneySection";
+import CheckStatusQualificationSection from "@/components/check-status/CheckStatusQualificationSection";
 
 export default function CheckStatus() {
-  const t = useTranslations("checkStatusPage");
-
   return (
     <div className="check-status-page-bg">
       <CheckStatusHero />
-
-
+      <CheckStatusJourneySection />
+      <CheckStatusQualificationSection />
     </div>
   );
 }
