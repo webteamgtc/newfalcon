@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 
 export default function GalleryJourneySection() {
   const t = useTranslations("gallery.journey");
@@ -25,12 +24,12 @@ export default function GalleryJourneySection() {
           </p>
 
           <div className="relative mt-4 md:mt-8 aspect-[16/10] overflow-hidden">
-            <Image
+            <img
               src="/images/award-25.svg"
               alt=""
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

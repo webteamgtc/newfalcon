@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import Button from "@/components/Button";
+import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
 import {
   SCREEN_SECTION_HEIGHT,
   SCREEN_SECTION_INNER,
 } from "@/lib/sectionLayout";
-
 const ROUTE_MAP_IMAGE = {
   zh: "/map.webp",
   en: "/new/result.webp",
@@ -17,12 +16,6 @@ const ROUTE_MAP_IMAGE = {
 function getRouteMapImage(locale: string) {
   if (locale === "zh") return ROUTE_MAP_IMAGE.zh;
   return ROUTE_MAP_IMAGE.en;
-}
-
-function getRouteMapDesktopBgClass(locale: string) {
-  return locale === "zh"
-    ? "md:bg-[url('/map.webp')]"
-    : "md:bg-[url('/new/result.webp')]";
 }
 
 function CalendarIcon() {
@@ -124,7 +117,6 @@ export default function CheckStatusRouteMapSection() {
   const t = useTranslations("checkStatusPage.routeMap");
   const locale = useLocale();
   const mapImage = getRouteMapImage(locale);
-  const desktopBgClass = getRouteMapDesktopBgClass(locale);
 
   return (
     <>
@@ -133,20 +125,23 @@ export default function CheckStatusRouteMapSection() {
           <RouteMapContent />
         </div>
         <div className="w-full">
-          <Image
+          <img
             src={mapImage}
             alt={t("mapAlt")}
-            width={1440}
-            height={900}
             className="h-auto w-full"
-            sizes="100vw"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </section>
 
       <section
-        className={`relative z-10 isolate hidden overflow-hidden bg-white bg-cover bg-no-repeat bg-center md:flex md:items-center lg:bg-right ${desktopBgClass} ${SCREEN_SECTION_HEIGHT}`}
+        className={`relative z-10 isolate hidden overflow-hidden bg-white md:flex md:items-center ${SCREEN_SECTION_HEIGHT}`}
       >
+        <SectionBackgroundImage
+          src={mapImage}
+          className="object-cover object-center lg:object-right-center"
+        />
         <div
           className={`container relative z-10 flex items-center py-10 lg:py-12 ${SCREEN_SECTION_INNER}`}
         >

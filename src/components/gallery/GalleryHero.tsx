@@ -1,10 +1,12 @@
 import { useTranslations } from "next-intl";
+import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
 
 export default function GalleryHero() {
   const t = useTranslations("gallery.hero");
 
   return (
-    <section className="relative flex min-h-[50vh] items-end overflow-hidden bg-[url('/55.webp')] bg-cover bg-center pb-16 pt-16 md:min-h-[80vh] md:pb-36 md:pt-24">
+    <section className="relative flex min-h-[50vh] items-end overflow-hidden pb-16 pt-16 md:min-h-[80vh] md:pb-36 md:pt-24">
+      <SectionBackgroundImage src="/55.webp" className="object-cover object-center" priority />
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"
         aria-hidden
