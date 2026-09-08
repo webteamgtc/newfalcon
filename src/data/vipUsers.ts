@@ -35,6 +35,8 @@ const DEFAULT_STAGES: VipStage[] = [
   { number: "03", name: "Qualified", tier: "Platinum Status" },
 ];
 
+export const VIP_STAGES = DEFAULT_STAGES;
+
 function getCapitalProgressPercent(capitalCurrent: number): number {
   return Math.min(
     Math.round((capitalCurrent / VIP_QUALIFICATION_TARGETS.capital) * 100),
@@ -159,4 +161,64 @@ export function formatActivity(value: number): string {
     minimumFractionDigits: value % 1 === 0 ? 0 : 2,
     maximumFractionDigits: 2,
   });
+}
+
+export type VipProgressSnapshot = {
+  hasPerformanceData: boolean;
+  capitalCurrent: number;
+  capitalTarget: number;
+  capitalPercent: number;
+  activityCurrent: number;
+  activityTarget: number;
+  activityPercent: number;
+  progressPercent: number;
+  isFullyQualified: boolean;
+  activeStageIndex: number;
+  stageNumber: string;
+  stageName: string;
+  stageTier: string;
+  daysRemaining: number;
+};
+
+export function getProgressColors(percent: number) {
+  if (percent >= 100) {
+    return { bar: "#22C55E", text: "#15803D", badge: "bg-emerald-100 text-emerald-800" };
+  }
+  if (percent >= 50) {
+    return { bar: "#F97316", text: "#C2410C", badge: "bg-orange-100 text-orange-800" };
+  }
+  if (percent >= 25) {
+    return { bar: "#EAB308", text: "#A16207", badge: "bg-yellow-100 text-yellow-800" };
+  }
+  return { bar: "#EF4444", text: "#B91C1C", badge: "bg-red-100 text-red-800" };
+}
+
+export function computeVipProgressSnapshot(
+  performance?: Pick<IbPerformanceData, "netDepositUsd" | "tradeLots"> | null
+): VipProgressSnapshot {
+  const hasPerformanceData = performance != null;
+  const capitalCurrent = Math.max(0, performance?.netDepositUsd ?? 0);
+  const activityCurrent = Math.max(0, performance?.tradeLots ?? 0);
+  const capitalPercent = getCapitalProgressPercent(capitalCurrent);
+  const activityPercent = getActivityProgressPercent(activityCurrent);
+  const progressPercent = getOverallProgressPercent(capitalCurrent, activityCurrent);
+  const activeStageIndex = getActiveStageIndex(capitalCurrent, activityCurrent);
+  const stage = DEFAULT_STAGES[activeStageIndex] ?? DEFAULT_STAGES[0];
+
+  return {
+    hasPerformanceData,
+    capitalCurrent,
+    capitalTarget: VIP_QUALIFICATION_TARGETS.capital,
+    capitalPercent,
+    activityCurrent,
+    activityTarget: VIP_QUALIFICATION_TARGETS.activity,
+    activityPercent,
+    progressPercent,
+    isFullyQualified: isVipQualified(capitalCurrent, activityCurrent),
+    activeStageIndex,
+    stageNumber: stage.number,
+    stageName: stage.name,
+    stageTier: stage.tier,
+    daysRemaining: getQualificationDaysRemaining(),
+  };
 }

@@ -7,6 +7,7 @@ import {
   VISA_STATUS_OPTIONS,
 } from "@/lib/adminRegistration";
 import { SHOW_VISA_SECTION } from "@/lib/featureFlags";
+import AdminVipProgressDetail from "@/components/admin/AdminVipProgressCell";
 
 function fieldClass() {
   return "mt-2 h-11 w-full rounded-md border border-ink/20 bg-white px-3 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep";
@@ -294,6 +295,123 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                 </div>
               </div>
             </section>
+
+            {(registration.memberId ||
+              registration.userId ||
+              registration.ibId ||
+              registration.ibClient) && (
+              <section>
+                <h3 className="font-display text-xl text-ink">Registration & IB account</h3>
+                <div className="mt-4 grid gap-4 md:grid-cols-2">
+                  <div>
+                    <p className={labelClass()}>Member ID</p>
+                    <p className="mt-2 font-poppins text-sm text-ink">{registration.memberId || "—"}</p>
+                  </div>
+                  <div>
+                    <p className={labelClass()}>User ID</p>
+                    <p className="mt-2 font-poppins text-sm text-ink">{registration.userId || "—"}</p>
+                  </div>
+                  <div>
+                    <p className={labelClass()}>Account ID entered</p>
+                    <p className="mt-2 font-poppins text-sm text-ink">{registration.ibId || "—"}</p>
+                  </div>
+                  <div>
+                    <p className={labelClass()}>IB verification</p>
+                    <p className="mt-2 font-poppins text-sm text-ink">
+                      {registration.ibClient ? "Verified at registration" : "Not found in GTCFX"}
+                    </p>
+                  </div>
+                </div>
+
+                {registration.ibClient ? (
+                  <div className="mt-4 rounded-xl border border-[#382910]/10 bg-[#FFFDF8] p-4 md:p-5">
+                    <p className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/50">
+                      Verified IB client
+                    </p>
+                    <div className="mt-4 grid gap-4 md:grid-cols-2">
+                      <div>
+                        <p className={labelClass()}>Client name</p>
+                        <p className="mt-2 font-poppins text-sm text-ink">
+                          {registration.ibClient.client.firstName || "—"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>Client email</p>
+                        <p className="mt-2 font-poppins text-sm text-ink">
+                          {registration.ibClient.client.email || "—"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>Member ID</p>
+                        <p className="mt-2 font-poppins text-sm text-ink">
+                          {registration.ibClient.client.memberId || "—"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>Client status</p>
+                        <p className="mt-2 font-poppins text-sm capitalize text-ink">
+                          {registration.ibClient.client.clientStatus || "—"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>KYC status</p>
+                        <p className="mt-2 font-poppins text-sm capitalize text-ink">
+                          {registration.ibClient.client.kycStatus || "—"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>User type</p>
+                        <p className="mt-2 font-poppins text-sm capitalize text-ink">
+                          {registration.ibClient.client.userType || "—"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>Net deposit (USD)</p>
+                        <p className="mt-2 font-poppins text-sm text-ink">
+                          {registration.ibClient.performance.netDepositUsd.toLocaleString()}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>Trade lots</p>
+                        <p className="mt-2 font-poppins text-sm text-ink">
+                          {registration.ibClient.performance.tradeLots.toLocaleString()}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>Deposit (USD)</p>
+                        <p className="mt-2 font-poppins text-sm text-ink">
+                          {registration.ibClient.performance.depositUsd.toLocaleString()}
+                        </p>
+                      </div>
+                      <div>
+                        <p className={labelClass()}>Withdrawal (USD)</p>
+                        <p className="mt-2 font-poppins text-sm text-ink">
+                          {registration.ibClient.performance.withdrawalUsd.toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+
+                {registration.vipProgress.hasPerformanceData ? (
+                  <div className="mt-4">
+                    <p className="font-poppins text-xs uppercase tracking-[0.08em] text-ink/50">
+                      VIP qualification progress
+                    </p>
+                    <div className="mt-3 rounded-xl border border-[#382910]/10 bg-white p-4">
+                      <AdminVipProgressDetail progress={registration.vipProgress} />
+                    </div>
+                  </div>
+                ) : null}
+
+                {registration.specialRequirements ? (
+                  <div className="mt-4">
+                    <p className={labelClass()}>Special requirements</p>
+                    <p className="mt-2 font-poppins text-sm text-ink">{registration.specialRequirements}</p>
+                  </div>
+                ) : null}
+              </section>
+            )}
 
             <section>
               <h3 className="font-display text-xl text-ink">Partner & qualification</h3>

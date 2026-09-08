@@ -1,15 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Link } from "@/i18n/routing";
 import CheckStatusTrustBadges from "@/components/check-status/CheckStatusTrustBadges";
 import TicketAccessForm from "@/components/ticket/TicketAccessForm";
+import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
 
 export default function CheckStatusHero() {
   const t = useTranslations("checkStatusPage");
   const tNav = useTranslations("nav");
   const locale = useLocale();
   const useUppercaseLabels = locale === "en";
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
   return (
     <>
@@ -32,11 +34,12 @@ export default function CheckStatusHero() {
               {t("heroSubtext")}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/user-status"
+              <button
+                type="button"
+                onClick={() => setBookingModalOpen(true)}
                 className={`inline-flex items-center gap-4 rounded-full border border-ink/25 bg-white/80 py-1.5 ps-6 pe-3 font-poppins text-sm text-ink transition-colors hover:border-falcon-deep hover:bg-white ${useUppercaseLabels ? "uppercase tracking-[0.14em]" : "tracking-wide"}`}
               >
-                <span>{tNav("checkStatus")}</span>
+                <span>Register</span>
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-white">
                   <svg
                     width="14"
@@ -54,7 +57,7 @@ export default function CheckStatusHero() {
                     />
                   </svg>
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
           <section id="access-form" className="relative">
@@ -87,6 +90,11 @@ export default function CheckStatusHero() {
           </section>
         </div>
       </section>
+
+      <PublicVipTicketBookingModal
+        open={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+      />
     </>
   );
 }

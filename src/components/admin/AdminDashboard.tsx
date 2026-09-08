@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import AdminIbEmailTable from "@/components/admin/AdminIbEmailTable";
 import AdminTablePagination, { paginateItems } from "@/components/admin/AdminTablePagination";
 import AdminUserEditForm from "@/components/admin/AdminUserEditForm";
+import {
+  AdminVipNetDepositBar,
+  AdminVipProgressLegend,
+} from "@/components/admin/AdminVipProgressCell";
 import type {
   AdminRegistrationListItem,
   AdminRegistrationRecord,
@@ -14,11 +18,10 @@ import { SHOW_VISA_SECTION } from "@/lib/featureFlags";
 const TABLE_HEADINGS = [
   "Name",
   "Email",
-  "Phone",
+  "Member ID",
+  "Net deposit",
   "Submitted",
-  "Qualified",
   ...(SHOW_VISA_SECTION ? (["Visa"] as const) : []),
-  "Ticket",
   "Actions",
 ] as const;
 
@@ -42,6 +45,11 @@ function computeStats(registrations: AdminRegistrationListItem[]) {
   return {
     total: registrations.length,
     qualified: registrations.filter((r) => r.qualified === "yes").length,
+    vipQualified: registrations.filter((r) => r.vipProgress.isFullyQualified).length,
+    vipActiveTrader: registrations.filter(
+      (r) => r.vipProgress.hasPerformanceData && r.vipProgress.activeStageIndex === 1
+    ).length,
+    vipWithIbData: registrations.filter((r) => r.vipProgress.hasPerformanceData).length,
     needsReview: registrations.filter((r) => !r.hasAdminDetails).length,
     visaApproved: registrations.filter((r) => r.visaStatus === "approved").length,
     visaPending: registrations.filter((r) =>
@@ -351,7 +359,11 @@ export default function AdminDashboard({ adminEmail }: Props) {
       item.fullName.toLowerCase().includes(query) ||
       item.email.toLowerCase().includes(query) ||
       item.registrationEmail.toLowerCase().includes(query) ||
-      item.phone.toLowerCase().includes(query)
+      item.phone.toLowerCase().includes(query) ||
+      item.memberId.toLowerCase().includes(query) ||
+      (item.ibId ?? "").toLowerCase().includes(query) ||
+      (item.ibClient?.client.firstName ?? "").toLowerCase().includes(query) ||
+      item.vipProgress.stageName.toLowerCase().includes(query)
     );
   });
 
@@ -446,10 +458,32 @@ export default function AdminDashboard({ adminEmail }: Props) {
                 }
               />
               <StatCard
-                label="Qualified"
-                value={stats.qualified}
-                subtitle="Marked as eligible"
+                label="VIP qualified"
+                value={stats.vipQualified}
+                subtitle={`${stats.vipWithIbData} with IB performance data`}
                 tone="green"
+                icon={
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                }
+              />
+              <StatCard
+                label="Active traders"
+                value={stats.vipActiveTrader}
+                subtitle="Stage 02 · capital or activity started"
+                tone="amber"
+                icon={
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                  </svg>
+                }
+              />
+              <StatCard
+                label="Admin qualified"
+                value={stats.qualified}
+                subtitle="Marked eligible manually"
+                tone="slate"
                 icon={
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -540,9 +574,9 @@ export default function AdminDashboard({ adminEmail }: Props) {
               <p className="mt-1 font-poppins text-sm text-ink/55">
                 {loading
                   ? "Loading..."
-                  : filtered.length === 0
+                  : filtered?.length === 0
                     ? "0 registrations"
-                    : `Showing ${pagination.startIndex}-${pagination.endIndex} of ${filtered.length}`}
+                    : `Showing ${pagination?.startIndex}-${pagination?.endIndex} of ${filtered?.length}`}
               </p>
             </div>
             <div className="relative">
@@ -578,6 +612,10 @@ export default function AdminDashboard({ adminEmail }: Props) {
           )}
 
           {!loading && !error && (
+            <>
+            <div className="border-b border-ink/8 px-6 py-4">
+              <AdminVipProgressLegend />
+            </div>
             <div className="overflow-x-auto">
               <table className="min-w-full">
                 <thead>
@@ -593,7 +631,7 @@ export default function AdminDashboard({ adminEmail }: Props) {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-ink/6">
-                  {filtered.length === 0 ? (
+                  {filtered?.length === 0 ? (
                     <tr>
                       <td colSpan={TABLE_HEADINGS.length} className="px-5 py-16 text-center">
                         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 text-ink/30">
@@ -605,7 +643,7 @@ export default function AdminDashboard({ adminEmail }: Props) {
                       </td>
                     </tr>
                   ) : (
-                    pagination.items.map((item) => (
+                    pagination?.items?.map((item) => (
                       <tr
                         key={item.id}
                         className="transition-colors hover:bg-[#FFFDF8]/80"
@@ -631,22 +669,23 @@ export default function AdminDashboard({ adminEmail }: Props) {
                           {item.registrationEmail}
                         </td>
                         <td className="px-5 py-4 font-poppins text-sm text-ink/70">
-                          {item.phone || "—"}
+                          {item.memberId || "—"}
+                        </td>
+                        <td className="px-5 py-4">
+                          <AdminVipNetDepositBar
+                            percent={item?.vipProgress?.capitalPercent || 0}
+                            amount={item?.vipProgress?.capitalCurrent || 0}
+                            hasData={item?.vipProgress?.hasPerformanceData || false}
+                          />
                         </td>
                         <td className="px-5 py-4 font-poppins text-sm text-ink/70">
                           {formatDate(item.submittedAt)}
-                        </td>
-                        <td className="px-5 py-4">
-                          <StatusBadge value={item.qualified} type="qualified" />
                         </td>
                         {SHOW_VISA_SECTION && (
                           <td className="px-5 py-4">
                             <StatusBadge value={item.visaStatus} type="visa" />
                           </td>
                         )}
-                        <td className="px-5 py-4">
-                          <StatusBadge value={item.ticketStatus} type="ticket" />
-                        </td>
                         <td className="px-5 py-4">
                           <div className="flex flex-wrap items-center gap-2">
                             <button
@@ -683,10 +722,11 @@ export default function AdminDashboard({ adminEmail }: Props) {
               </table>
               <AdminTablePagination
                 currentPage={currentPage}
-                totalItems={filtered.length}
+                totalItems={filtered?.length || 0}
                 onPageChange={setCurrentPage}
               />
             </div>
+            </>
           )}
         </div>
           </>

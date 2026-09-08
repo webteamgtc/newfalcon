@@ -1,13 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Button from "@/components/Button";
+import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
 
 export default function Hero() {
   const t = useTranslations("home.hero");
   const locale = useLocale();
   const isZh = locale === "zh";
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
   return (
     <section className="relative isolate overflow-hidden pb-20 pt-40 md:pb-32 md:pt-48">
@@ -99,13 +102,18 @@ export default function Hero() {
             {t("description")}
           </p>
 
-          <Button href="/check-status" className="mt-10">
+          <Button type="button" onClick={() => setBookingModalOpen(true)} className="mt-10">
             {t("cta")}
           </Button>
         </div>
 
         <div className="relative mx-auto hidden aspect-[3/4] w-full max-w-sm md:block" />
       </div>
+
+      <PublicVipTicketBookingModal
+        open={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+      />
     </section>
   );
 }

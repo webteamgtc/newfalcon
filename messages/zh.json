@@ -1111,6 +1111,37 @@
         "emailAlreadyExists": "该邮箱已注册。"
       },
       "submitFailed": "保存注册失败，请重试。"
+    },
+    "publicTicketBooking": {
+      "eyebrow": "活动门票注册",
+      "headingPlain": "预订您的",
+      "headingItalic": "UAE 门票。",
+      "closeModal": "关闭表单",
+      "verificationTitle": "验证您的邮箱",
+      "verificationDescription": "请先输入邮箱并验证一次性验证码，再完成注册。",
+      "emailPlaceholder": "请输入邮箱地址",
+      "emailRequired": "邮箱为必填项",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "getOtp": "获取验证码",
+      "sendingOtp": "发送中...",
+      "verifyingOtp": "验证中...",
+      "verifyOtp": "验证验证码",
+      "otpLabel": "输入验证码",
+      "otpRequired": "请输入 6 位验证码",
+      "otpInvalid": "验证码无效，请重试。",
+      "otpSendFailed": "发送验证码失败，请重试。",
+      "otpExpired": "验证码已过期，请重新获取。",
+      "otpExpiresIn": "验证码将在 {time} 后过期",
+      "emailVerified": "邮箱验证成功。",
+      "verifyEmailFirst": "请先验证邮箱后再提交。",
+      "ibIdLabel": "账户 ID",
+      "ibIdPlaceholder": "请输入账户 ID（选填）",
+      "leadDescription": "请填写以下信息以登记您对 Golden Falcon Awards 的兴趣。",
+      "countryOfResidenceLabel": "居住国家/地区",
+      "countrySelect": "请选择国家/地区",
+      "countryLoading": "正在加载国家/地区...",
+      "countryRequired": "请选择您的居住国家/地区",
+      "submitLead": "提交登记"
     }
   },
   "checkStatusPage": {
@@ -1491,6 +1522,22 @@
       "notFound": "未找到该邮箱的注册记录。",
       "loadFailed": "加载注册状态失败。请稍后重试。"
     }
+  },
+  "bookingSuccessPage": {
+    "metaTitle": "成功 — 金鹰节",
+    "eyebrow": "注册完成",
+    "headingPlain": "恭喜！",
+    "headingItalic": "您已成功注册。",
+    "welcomeName": "欢迎，{name}",
+    "description": "您的金鹰节 VIP 门票注册已成功提交。我们的活动团队将审核您的信息并通过邮件与您确认。",
+    "emailNoticeTitle": "确认邮件已发送",
+    "emailNoticeBody": "确认邮件已发送至您的邮箱。如未收到，请检查垃圾邮件文件夹。",
+    "steps": [
+      "我们的团队将在 48 小时内审核您的出行信息。",
+      "注册确认后，您将通过邮件收到进一步说明。",
+      "请为迪拜金鹰节准备好您的旅行证件。"
+    ],
+    "ctaHome": "返回首页"
   },
   "thankYouPage": {
     "metaTitle": "感谢 — 金鹰节",

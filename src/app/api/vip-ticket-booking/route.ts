@@ -44,6 +44,24 @@ function isS3AccessDeniedError(error: unknown) {
   );
 }
 
+function parseIbClientField(raw: FormDataEntryValue | null): Record<string, unknown> | null {
+  if (typeof raw !== "string") return null;
+
+  const trimmed = raw.trim();
+  if (!trimmed || trimmed === "null") return null;
+
+  try {
+    const parsed = JSON.parse(trimmed) as unknown;
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      return parsed as Record<string, unknown>;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -53,18 +71,11 @@ export async function POST(request: Request) {
       return typeof value === "string" ? value.trim() : "";
     };
 
-    const requiredFields = [
-      "fullName",
-      "email",
-      "phone",
-      "passportNumber",
-      "passportExpiry",
-      "nationality",
-      "dateOfBirth",
-      "invitingGuest",
-      "memberId",
-      "userId",
-    ];
+    const isLeadForm = getField("leadForm") === "true";
+
+    const requiredFields = isLeadForm
+      ? ["fullName", "email", "phone", "nationality", "memberId", "userId"]
+      : ["fullName", "email", "phone", "passportNumber", "passportExpiry", "invitingGuest", "memberId", "userId"];
 
     for (const field of requiredFields) {
       if (!getField(field)) {
@@ -75,7 +86,7 @@ export async function POST(request: Request) {
       }
     }
 
-    const invitingGuest = getField("invitingGuest");
+    const invitingGuest = isLeadForm ? "no" : getField("invitingGuest");
     if (invitingGuest !== "yes" && invitingGuest !== "no") {
       return NextResponse.json(
         { success: false, message: "Invalid inviting guest selection" },
@@ -92,17 +103,27 @@ export async function POST(request: Request) {
 
     const normalizedEmail = getField("email").toLowerCase();
 
-    const primaryPhoto = await validatePassportFile(
-      formData.get("passportPhoto"),
-      "Passport photo"
-    );
-    if ("error" in primaryPhoto) {
-      return NextResponse.json({ success: false, message: primaryPhoto.error }, { status: 400 });
+    let uploadedPrimaryPassport = null;
+
+    if (!isLeadForm) {
+      const primaryPhoto = await validatePassportFile(
+        formData.get("passportPhoto"),
+        "Passport photo"
+      );
+      if ("error" in primaryPhoto) {
+        return NextResponse.json({ success: false, message: primaryPhoto.error }, { status: 400 });
+      }
+
+      uploadedPrimaryPassport = await uploadPassportFile(
+        primaryPhoto.file,
+        normalizedEmail,
+        "primary"
+      );
     }
 
     let guestPhotoFile: File | null = null;
 
-    if (invitingGuest === "yes") {
+    if (!isLeadForm && invitingGuest === "yes") {
       const guestRequiredFields = [
         "bedroomPreference",
         "guestFirstName",
@@ -168,15 +189,9 @@ export async function POST(request: Request) {
       );
     }
 
-    const uploadedPrimaryPassport = await uploadPassportFile(
-      primaryPhoto.file,
-      normalizedEmail,
-      "primary"
-    );
-
     let guestDetails: Record<string, unknown> | null = null;
 
-    if (invitingGuest === "yes" && guestPhotoFile) {
+    if (!isLeadForm && invitingGuest === "yes" && guestPhotoFile) {
       const uploadedGuestPassport = await uploadPassportFile(
         guestPhotoFile,
         normalizedEmail,
@@ -202,14 +217,15 @@ export async function POST(request: Request) {
       phone: getField("phone"),
       passportNumber: getField("passportNumber"),
       passportExpiry: getField("passportExpiry"),
-      nationality: getField("nationality"),
-      dateOfBirth: getField("dateOfBirth"),
+      nationality: getField("nationality") || "",
+      dateOfBirth: getField("dateOfBirth") || "",
       invitingGuest: invitingGuest === "yes",
       guest: guestDetails,
       specialRequirements: getField("specialRequirements"),
       memberId: getField("memberId"),
       userId: getField("userId"),
-      ibId: getField("ibId"),
+      ibId: getField("ibId") || null,
+      ibClient: parseIbClientField(formData.get("ibClient")),
       passportPhoto: uploadedPrimaryPassport,
       submittedAt: new Date(),
     };
