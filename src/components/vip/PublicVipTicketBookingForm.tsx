@@ -186,6 +186,7 @@ export default function PublicVipTicketBookingForm({
     setErrors((prev) => ({ ...prev, email: undefined }));
     return trimmedEmail;
   };
+  
 
   const handleGetOtp = async () => {
     const trimmedEmail = validateEmailFormat();
