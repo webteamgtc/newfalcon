@@ -1114,6 +1114,37 @@
         "emailAlreadyExists": "This email is already registered."
       },
       "submitFailed": "Failed to save registration. Please try again."
+    },
+    "publicTicketBooking": {
+      "eyebrow": "Event ticket registration",
+      "headingPlain": "Book your ticket",
+      "headingItalic": "for UAE.",
+      "closeModal": "Close form",
+      "verificationTitle": "Verify your email",
+      "verificationDescription": "Enter your email and verify the one-time code before completing your registration.",
+      "emailPlaceholder": "Enter your email address",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email address",
+      "getOtp": "Get OTP",
+      "sendingOtp": "Sending...",
+      "verifyingOtp": "Verifying...",
+      "verifyOtp": "Verify OTP",
+      "otpLabel": "Enter OTP",
+      "otpRequired": "Enter the 6-digit OTP",
+      "otpInvalid": "Invalid OTP. Please try again.",
+      "otpSendFailed": "Failed to send OTP. Please try again.",
+      "otpExpired": "Your OTP has expired. Please request a new one.",
+      "otpExpiresIn": "OTP expires in {time}",
+      "emailVerified": "Email verified successfully.",
+      "verifyEmailFirst": "Please verify your email before submitting.",
+      "ibIdLabel": "Account ID",
+      "ibIdPlaceholder": "Enter your account ID (optional)",
+      "leadDescription": "Complete your details below to register your interest for Golden Falcon Awards.",
+      "countryOfResidenceLabel": "Country of residence",
+      "countrySelect": "Select your country",
+      "countryLoading": "Loading countries...",
+      "countryRequired": "Please select your country of residence",
+      "submitLead": "Submit registration"
     }
   },
   "checkStatusPage": {
@@ -1494,6 +1525,22 @@
       "notFound": "No registration was found for this email.",
       "loadFailed": "Failed to load registration status. Please try again later."
     }
+  },
+  "bookingSuccessPage": {
+    "metaTitle": "Success — Golden Falcon Awards",
+    "eyebrow": "Registration complete",
+    "headingPlain": "Congratulations!",
+    "headingItalic": "You're registered.",
+    "welcomeName": "Welcome, {name}",
+    "description": "Your VIP ticket registration for Golden Falcon Awards has been submitted successfully. Our events team will review your details and contact you with confirmation.",
+    "emailNoticeTitle": "Confirmation sent",
+    "emailNoticeBody": "A confirmation email has been sent to your inbox. Please check your spam folder if you do not see it shortly.",
+    "steps": [
+      "Our team will review your travel details within 48 hours.",
+      "You will receive further instructions by email once your registration is confirmed.",
+      "Prepare your travel documents for Golden Falcon Awards in Dubai."
+    ],
+    "ctaHome": "Back to Home"
   },
   "thankYouPage": {
     "metaTitle": "Thank You — Golden Falcon Awards",

@@ -979,6 +979,37 @@
         "emailAlreadyExists": "هذا البريد الإلكتروني مسجل بالفعل."
       },
       "submitFailed": "فشل حفظ التسجيل. يرجى المحاولة مرة أخرى."
+    },
+    "publicTicketBooking": {
+      "eyebrow": "تسجيل تذكرة الفعالية",
+      "headingPlain": "احجز تذكرتك",
+      "headingItalic": "للإمارات.",
+      "closeModal": "إغلاق النموذج",
+      "verificationTitle": "تحقق من بريدك الإلكتروني",
+      "verificationDescription": "أدخل بريدك الإلكتروني وتحقق من الرمز لمرة واحدة قبل إكمال التسجيل.",
+      "emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "أدخل عنوان بريد إلكتروني صالح",
+      "getOtp": "احصل على OTP",
+      "sendingOtp": "جارٍ الإرسال...",
+      "verifyingOtp": "جارٍ التحقق...",
+      "verifyOtp": "تحقق من OTP",
+      "otpLabel": "أدخل OTP",
+      "otpRequired": "أدخل رمز OTP المكوّن من 6 أرقام",
+      "otpInvalid": "رمز OTP غير صالح. يرجى المحاولة مرة أخرى.",
+      "otpSendFailed": "فشل إرسال OTP. يرجى المحاولة مرة أخرى.",
+      "otpExpired": "انتهت صلاحية OTP. يرجى طلب رمز جديد.",
+      "otpExpiresIn": "ينتهي OTP خلال {time}",
+      "emailVerified": "تم التحقق من البريد الإلكتروني بنجاح.",
+      "verifyEmailFirst": "يرجى التحقق من بريدك الإلكتروني قبل الإرسال.",
+      "ibIdLabel": "معرّف الحساب",
+      "ibIdPlaceholder": "أدخل معرّف حسابك (اختياري)",
+      "leadDescription": "أكمل بياناتك أدناه للتسجيل في Golden Falcon Awards.",
+      "countryOfResidenceLabel": "بلد الإقامة",
+      "countrySelect": "اختر بلدك",
+      "countryLoading": "جارٍ تحميل البلدان...",
+      "countryRequired": "يرجى اختيار بلد إقامتك",
+      "submitLead": "إرسال التسجيل"
     }
   },
   "checkStatusPage": {
@@ -1343,6 +1374,22 @@
       "notFound": "لم يتم العثور على تسجيل لهذا البريد الإلكتروني.",
       "loadFailed": "فشل تحميل حالة التسجيل. يرجى المحاولة لاحقًا."
     }
+  },
+  "bookingSuccessPage": {
+    "metaTitle": "نجاح — Golden Falcon Awards",
+    "eyebrow": "اكتمل التسجيل",
+    "headingPlain": "تهانينا!",
+    "headingItalic": "تم تسجيلك.",
+    "welcomeName": "مرحباً، {name}",
+    "description": "تم إرسال تسجيل تذكرة VIP الخاصة بك لـ Golden Falcon Awards بنجاح. سيراجع فريق الفعاليات تفاصيلك ويتواصل معك للتأكيد.",
+    "emailNoticeTitle": "تم إرسال التأكيد",
+    "emailNoticeBody": "تم إرسال رسالة تأكيد إلى بريدك الإلكتروني. يرجى التحقق من مجلد الرسائل غير المرغوب فيها إذا لم تظهر قريباً.",
+    "steps": [
+      "سيراجع فريقنا تفاصيل سفرك خلال 48 ساعة.",
+      "ستتلقى تعليمات إضافية عبر البريد الإلكتروني بعد تأكيد تسجيلك.",
+      "جهّز وثائق سفرك لحضور Golden Falcon Awards في دبي."
+    ],
+    "ctaHome": "العودة إلى الرئيسية"
   },
   "thankYouPage": {
     "metaTitle": "شكرًا لك — Golden Falcon Awards",

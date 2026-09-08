@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useVipUser } from "@/context/VipUserProvider";
 import { formatActivity, formatCurrency, isVipQualified, VIP_QUALIFICATION_TARGETS } from "@/data/vipUsers";
-import VipTicketBookingModal from "@/components/vip/VipTicketBookingModal";
+import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
 import { hasTicketBooking } from "@/components/vip/VipTicketBookingForm";
+import { hasPublicTicketBooking } from "@/components/vip/PublicVipTicketBookingForm";
 
 function getProgressColors(percent: number) {
   if (percent >= 100) {
@@ -48,7 +49,7 @@ export default function VipProgressSection() {
 
   useEffect(() => {
     if (user) {
-      setHasRegistered(hasTicketBooking(user.id));
+      setHasRegistered(hasTicketBooking(user.id) || hasPublicTicketBooking(user.id));
     }
   }, [user, bookingModalOpen]);
 
@@ -261,7 +262,7 @@ export default function VipProgressSection() {
           </div>
         )}
 
-        <VipTicketBookingModal
+        <PublicVipTicketBookingModal
           open={bookingModalOpen}
           onClose={() => setBookingModalOpen(false)}
           user={user}
