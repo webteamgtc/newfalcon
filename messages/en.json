@@ -13,13 +13,12 @@
     "agenda": "Agenda",
     "guest": "Guests",
     "media": "Media",
-    "ticket": "Tickets",
+    "ticket": "Check Status",
     "policy": "Terms & Conditions",
     "awards": "Awards",
     "joinUs": "Register Now",
     "vipStatus": "VIP Status",
-    "checkStatus": "Check Status",
-    "ticketAccess": "Ticket"
+    "checkStatus": "Check Status"
   },
   "home": {
     "hero": {
@@ -88,7 +87,7 @@
       "headingPlain": "Reserve your",
       "headingItalic": "seat at the table.",
       "description": "Join an elite gathering of trading professionals, liquidity partners, and industry pioneers for the most prestigious awards night of the year. Limited seats available.",
-      "cta": "Reserve Your Ticket"
+      "cta": "Secure Your Invitation"
     },
     "awards": {
       "eyebrow": "The Honours",
@@ -152,7 +151,7 @@
       "list": [
         {
           "question": "How do I register for the Golden Falcon Awards?",
-          "answer": "Register online through our Tickets page. Once confirmed, you'll receive your invitation details and event access via email within 48 hours."
+          "answer": "Register online through our registration page. Once confirmed, you'll receive your invitation details and event access via email within 48 hours."
         },
         {
           "question": "What is the dress code for the evening?",
@@ -546,225 +545,6 @@
     "watchHighlights": "Watch Event Highlights",
     "pressKit": "Download Press Kit"
   },
-  "ticketPage": {
-    "hero": {
-      "headingPlain": "One night. One stage. One legacy.",
-      "headingItalic": "Infinite recognition awaits.",
-      "subtext": "December 12, 2026 — Conrad Hotel, Dubai. The Golden Falcon Awards brings together 200+ elite traders, partners, and visionaries for the most anticipated evening in global trading. Red carpet. World-class speakers. 22 awards. This is your invitation to greatness.",
-      "primaryCta": "Secure Your Seat",
-      "secondaryCta": "View Qualification"
-    },
-    "access": {
-      "headingPlain": "Choose the path that suits your",
-      "headingItalic": "evening.",
-      "subtext": "Two ways to attend: qualify through your trading performance as an IB partner, or purchase event access directly for yourself and your guests.",
-      "eyebrow": "Ticket information",
-      "descriptionText": "Golden Falcon Awards is a curated event. Every ticket request is reviewed so the guest experience remains considered, relevant, and personal.",
-      "twoAccessLabel": "Two access routes",
-      "twoAccessHint": "Choose one path · Both lead to Golden Falcon Night",
-      "complimentaryAccess": "Complimentary access",
-      "forEligibleClients": "For eligible GTCFX IB/Partners",
-      "qualifyDesc": "Reach the confirmed campaign targets to unlock complimentary access to Golden Falcon Awards Night.",
-      "falconTicket": "Falcon ticket",
-      "subjectToAvailability": "Subject to availability",
-      "purchaseDesc": "Purchase event access directly for yourself or your guests. Subject to availability.",
-      "vipAssistText": "Our guest relations team can assist with executive hosting, private introductions, and tailored partner access.",
-      "qualify": {
-        "title": "Qualify through performance",
-        "fields": [
-          {
-            "label": "Account type",
-            "placeholder": "Select your account type"
-          },
-          {
-            "label": "Account number",
-            "placeholder": "Enter your account number"
-          },
-          {
-            "label": "Country of residence",
-            "placeholder": "Select your country"
-          },
-          {
-            "label": "Trading Lots",
-            "placeholder": "Select volume range"
-          }
-        ],
-        "cta": "Request Qualified Access"
-      },
-      "purchase": {
-        "title": "Purchase event access",
-        "fields": [
-          {
-            "label": "Ticket type",
-            "placeholder": "Select ticket type"
-          },
-          {
-            "label": "Number of tickets",
-            "placeholder": "Select quantity"
-          },
-          {
-            "label": "Guest name",
-            "placeholder": "Enter full name"
-          },
-          {
-            "label": "Email address",
-            "placeholder": "Enter your email"
-          }
-        ],
-        "cta": "Proceed to Payment"
-      },
-      "vip": {
-        "label": "VIP",
-        "text": "Interested in a VIP experience with premium benefits?",
-        "cta": "Check Status",
-        "viewStatus": "View My Status"
-      }
-    },
-    "accessForm": {
-      "eyebrow": "Existing Partner access",
-      "headingPlain": "Verify your account to",
-      "headingItalic": "view your progress.",
-      "description": "If you are an existing GTCFX Partner, enter your registered email to check your VIP qualification status and event ticket access.",
-      "existingClientLabel": "Existing GTCFX Partner?",
-      "selectPlaceholder": "Select",
-      "existingYes": "Yes",
-      "existingNo": "No",
-      "emailLabel": "Email Address*",
-      "emailPlaceholder": "Enter your registered email",
-      "emailRequired": "Email is required",
-      "emailInvalid": "Please enter a valid email address",
-      "emailNotFound": "This email is not registered with GTCFX. Please contact support.",
-      "accountInactive": "This account is not active. Please contact support.",
-      "ibIdLabel": "IB ID / Referral Code*",
-      "ibIdPlaceholder": "Enter your IB ID / Referral Code from your email",
-      "ibIdRequired": "IB ID / Referral Code is required",
-      "credentialsNotFound": "Email and IB ID / Referral Code do not match our records.",
-      "emailAlreadyLinked": "This email is already linked to another IB ID / Referral Code.",
-      "ibIdAlreadyLinked": "This IB ID / Referral Code is already linked to another email.",
-      "ibAccessSaveFailed": "Unable to save your access details. Please try again.",
-      "getOtp": "Get OTP",
-      "sendingOtp": "Sending...",
-      "verifyingOtp": "Verifying...",
-      "otpLabel": "Enter OTP",
-      "otpRequired": "Please enter the 6-digit OTP",
-      "otpInvalid": "Invalid OTP. Please try again.",
-      "otpSendFailed": "Failed to send OTP. Please try again.",
-      "otpExpiresIn": "OTP expires in {time}",
-      "otpExpired": "Your OTP has expired. Please request a new one.",
-      "verifyOtp": "Verify OTP",
-      "demoOtpHint": "Demo OTP: 123456",
-      "emailVerified": "Your email has been verified successfully. Check your email for your IB ID / Referral Code.",
-      "disclaimer": "By submitting this form, I acknowledge that I have read, understood, and agree to the event terms. I give my consent for GTCFX to contact me regarding my VIP qualification status.",
-      "termsLabel": "I agree to the event terms and privacy policy.",
-      "termsRequired": "You must accept the terms to continue.",
-      "submit": "Check My Status",
-      "submitting": "Submitting...",
-      "closeModal": "Close form",
-      "newClientText": "Don't have an IB account yet? Open one now to start your qualification journey.",
-      "newClientCta": "Open IB Account Now",
-      "loadingForm": "Loading form...",
-      "apiErrors": {
-        "ipNotTrusted": "Your current IP address is not trusted by the system. Please contact support@gtcfx.com.",
-        "verifyFailed": "Unable to verify your account right now. Please try again later.",
-        "serviceUnavailable": "Verification service is temporarily unavailable. Please try again later."
-      }
-    },
-    "newClientForm": {
-      "intro": "Create your GTCFX account to begin your IB qualification journey for Golden Falcon Awards.",
-      "fields": {
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "email": "Email",
-        "emailCode": "Email Verification Code",
-        "password": "Password",
-        "country": "Country Of Residence",
-        "phone": "Phone Number",
-        "partnerCode": "Partner Code",
-        "optional": "optional"
-      },
-      "placeholders": {
-        "email": "Please enter a valid email to receive verification code",
-        "emailCode": "Enter email verification code",
-        "passwordHint": "At least 8 characters with letters and numbers"
-      },
-      "countryLoading": "Loading countries...",
-      "countrySelect": "Select your country",
-      "actions": {
-        "getCode": "Get code",
-        "sendingCode": "Sending...",
-        "register": "Register",
-        "registering": "Submitting..."
-      },
-      "a11y": {
-        "showPassword": "Show",
-        "hidePassword": "Hide"
-      },
-      "legal": {
-        "agreePrefix": "I agree to the",
-        "termsOfService": "Terms of Service",
-        "agreeAnd": "and",
-        "privacyPolicy": "Privacy Policy"
-      },
-      "login": {
-        "prefix": "Already have an account?",
-        "link": "Click here to login"
-      },
-      "errors": {
-        "firstName": "First name is required",
-        "firstNameLetters": "First name can only contain letters",
-        "lastName": "Last name is required",
-        "lastNameLetters": "Last name can only contain letters",
-        "email": "Email is required",
-        "emailInvalid": "Invalid email address",
-        "emailRegistered": "This email is already registered",
-        "country": "Country is required",
-        "validCountry": "Please select a valid country",
-        "phone": "Phone is required",
-        "phoneInvalid": "Invalid phone number",
-        "passwordRequired": "Password is required",
-        "passwordMin": "At least 8 characters",
-        "passwordPattern": "Must contain letters and numbers",
-        "otpRequired": "OTP is required",
-        "otpLength": "OTP must be 6 digits",
-        "terms": "You must accept the terms"
-      },
-      "toast": {
-        "otpSent": "OTP sent successfully!",
-        "codeError": "Failed to send verification code",
-        "registrationSuccess": "Registration successful!",
-        "registrationFailed": "Registration failed"
-      }
-    },
-    "steps": {
-      "headingPlain": "Three simple steps to",
-      "headingItalic": "secure your place.",
-      "contactCta": "Contact Us",
-      "list": [
-        {
-          "title": "Choose Your Path",
-          "description": "Select qualification through performance or direct ticket purchase — whichever suits your journey."
-        },
-        {
-          "title": "Submit Your Details",
-          "description": "Provide the required information so our team can review and process your registration promptly."
-        },
-        {
-          "title": "Receive Confirmation",
-          "description": "Get your official invitation and full event details delivered to your inbox within 48 hours."
-        }
-      ]
-    },
-    "contact": {
-      "eyebrow": "Need Help?",
-      "headingPlain": "We're here to make your",
-      "headingItalic": "arrival effortless.",
-      "subtext": "Our events team is available to assist with seating preferences, airport transfers, accommodation, and any questions before the evening begins.",
-      "nameLabel": "Full Name",
-      "emailLabel": "Email Address",
-      "namePlaceholder": "Your full name",
-      "emailPlaceholder": "you@example.com"
-    }
-  },
   "policyPage": {
     "hero": {
       "eyebrow": "Golden Falcon Awards · Legal",
@@ -1025,100 +805,11 @@
     "motivation75": "🔥 Almost there! Final push to qualify.",
     "registerCta": "Submit Application",
     "registeredCta": "Registered",
-    "registerPrompt": "Book your UAE event ticket to complete your VIP registration.",
-    "registerComplete": "Your ticket registration has been submitted.",
-    "ticketBooking": {
-      "eyebrow": "Event ticket registration",
-      "headingPlain": "Book your ticket",
-      "headingItalic": "for UAE.",
-      "description": "Please provide your travel details for Golden Falcon Awards in Dubai, UAE. All fields marked with * are required.",
-      "closeModal": "Close form",
-      "submit": "Submit Registration",
-      "submitting": "Submitting...",
-      "successTitle": "Registration submitted",
-      "successDescription": "Our events team will review your details and contact you with confirmation within 48 hours.",
-      "successMessage": "Ticket registration submitted successfully.",
-      "termsLabel": "I confirm that the information provided is accurate and I agree to the event travel terms.",
-      "fields": {
-        "fullName": "Full Name (As On Passport)",
-        "email": "Email Address",
-        "phone": "Phone Number",
-        "passportNumber": "Passport Number",
-        "passportExpiry": "Passport Expiry Date",
-        "nationality": "Nationality",
-        "dateOfBirth": "Date Of Birth",
-        "arrivalDate": "Arrival Date In UAE",
-        "departureDate": "Departure Date From UAE",
-        "invitingGuest": "Will You Invite Someone?",
-        "bedroomPreference": "Bedroom Preference",
-        "specialRequirements": "Additional Notes",
-        "passportPhoto": "Passport Photo",
-        "guestFirstName": "Guest Full Name",
-        "guestEmail": "Guest Email",
-        "guestPhone": "Guest Phone Number",
-        "guestPassportNumber": "Guest Passport Number",
-        "guestPassportExpiry": "Guest Passport Expiry Date",
-        "guestNationality": "Guest Nationality",
-        "guestPassportPhoto": "Guest Passport Photo"
-      },
-      "guestSection": {
-        "title": "Guest details",
-        "description": "Please provide your guest's travel details and room preference for the stay in UAE."
-      },
-      "options": {
-        "invitingGuestNo": "No",
-        "invitingGuestYes": "Yes",
-        "singleBed": "Single bed",
-        "masterBed": "Double Bed",
-        "extraRoom": "Extra room"
-      },
-      "placeholders": {
-        "fullName": "Enter full name as on passport",
-        "phone": "Include country code",
-        "passportNumber": "e.g. AB1234567",
-        "nationality": "e.g. United Arab Emirates",
-        "guestFirstName": "Enter guest full name",
-        "guestEmail": "guest@example.com",
-        "specialRequirements": "Dietary needs, accessibility, or other notes",
-        "passportPhoto": "Upload JPG, PNG, WEBP, or PDF",
-        "passportExample": "Reference Image",
-        "selectDate": "Select date",
-        "selectOption": "Select an option",
-        "selectBedroom": "Select bedroom preference"
-      },
-      "errors": {
-        "fullName": "Full name is required",
-        "phone": "Phone number is required",
-        "phoneInvalid": "Enter a valid phone number",
-        "passportNumber": "Passport number is required",
-        "passportExpiry": "Passport expiry date is required",
-        "nationality": "Nationality is required",
-        "dateOfBirth": "Date of birth is required",
-        "arrivalDate": "Arrival date is required",
-        "departureDate": "Departure date is required",
-        "departureBeforeArrival": "Departure must be on or after arrival",
-        "invitingGuest": "Please select whether you will invite someone",
-        "bedroomPreference": "Bedroom preference is required",
-        "guestFirstName": "Guest full name is required",
-        "guestEmail": "Guest email is required",
-        "guestEmailInvalid": "Enter a valid guest email address",
-        "guestPhone": "Guest phone number is required",
-        "guestPassportNumber": "Guest passport number is required",
-        "guestPassportExpiry": "Guest passport expiry date is required",
-        "guestNationality": "Guest nationality is required",
-        "guestPassportPhoto": "Guest passport photo is required",
-        "terms": "You must confirm the terms to continue",
-        "passportPhoto": "Passport photo is required",
-        "passportPhotoType": "Passport file must be JPG, PNG, WEBP, or PDF",
-        "passportPhotoSize": "Passport photo must be 5MB or less",
-        "emailAlreadyExists": "This email is already registered."
-      },
-      "submitFailed": "Failed to save registration. Please try again."
-    },
-    "publicTicketBooking": {
-      "eyebrow": "Event ticket registration",
-      "headingPlain": "Book your ticket",
-      "headingItalic": "for UAE.",
+    "registerPrompt": "Submit your application to complete your VIP registration.",
+    "registerComplete": "Your registration has been submitted.",
+    "eventRegistration": {
+      "headingPlain": "Please Register With Us",
+      "headingItalic": "Golden Falcon Awards Night 2026",
       "closeModal": "Close form",
       "verificationTitle": "Verify your email",
       "verificationDescription": "Enter your email and verify the one-time code before completing your registration.",
@@ -1137,14 +828,33 @@
       "otpExpiresIn": "OTP expires in {time}",
       "emailVerified": "Email verified successfully.",
       "verifyEmailFirst": "Please verify your email before submitting.",
-      "ibIdLabel": "Account ID",
-      "ibIdPlaceholder": "Enter your account ID (optional)",
+      "ibIdLabel": "Reference Number / IB Account",
+      "ibIdPlaceholder": "Enter your reference number or IB account",
       "leadDescription": "Complete your details below to register your interest for Golden Falcon Awards.",
       "countryOfResidenceLabel": "Country of residence",
       "countrySelect": "Select your country",
       "countryLoading": "Loading countries...",
       "countryRequired": "Please select your country of residence",
-      "submitLead": "Submit registration"
+      "submitLead": "Submit registration",
+      "fields": {
+        "fullName": "Full Name",
+        "email": "Email Address",
+        "phone": "Phone Number"
+      },
+      "placeholders": {
+        "fullName": "Enter your full name"
+      },
+      "errors": {
+        "fullName": "Full name is required",
+        "phone": "Phone number is required",
+        "phoneInvalid": "Enter a valid phone number",
+        "terms": "You must confirm the terms to continue",
+        "emailAlreadyExists": "This email is already registered.",
+        "ibIdRequired": "Reference number / IB account is required"
+      },
+      "termsLabel": "I confirm that the information provided is accurate and I agree to the event terms.",
+      "submitting": "Submitting...",
+      "submitFailed": "Failed to save registration. Please try again."
     }
   },
   "checkStatusPage": {
@@ -1293,7 +1003,7 @@
       "eyebrow": "Existing Partner access",
       "headingPlain": "Verify your account to",
       "headingItalic": "view your progress.",
-      "description": "If you are an existing GTCFX Partner, enter your registered email to check your VIP qualification status and event ticket access.",
+      "description": "If you are an existing GTCFX Partner, enter your registered email to check your VIP qualification status and event access.",
       "existingClientLabel": "Existing GTCFX Partner?",
       "selectPlaceholder": "Select",
       "existingYes": "Yes",
@@ -1337,6 +1047,72 @@
         "verifyFailed": "Unable to verify your account right now. Please try again later.",
         "serviceUnavailable": "Verification service is temporarily unavailable. Please try again later."
       }
+    },
+    "newClientForm": {
+      "intro": "Create your GTCFX account to begin your IB qualification journey for Golden Falcon Awards.",
+      "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "emailCode": "Email Verification Code",
+        "password": "Password",
+        "country": "Country Of Residence",
+        "phone": "Phone Number",
+        "partnerCode": "Partner Code",
+        "optional": "optional"
+      },
+      "placeholders": {
+        "email": "Please enter a valid email to receive verification code",
+        "emailCode": "Enter email verification code",
+        "passwordHint": "At least 8 characters with letters and numbers"
+      },
+      "countryLoading": "Loading countries...",
+      "countrySelect": "Select your country",
+      "actions": {
+        "getCode": "Get code",
+        "sendingCode": "Sending...",
+        "register": "Register",
+        "registering": "Submitting..."
+      },
+      "a11y": {
+        "showPassword": "Show",
+        "hidePassword": "Hide"
+      },
+      "legal": {
+        "agreePrefix": "I agree to the",
+        "termsOfService": "Terms of Service",
+        "agreeAnd": "and",
+        "privacyPolicy": "Privacy Policy"
+      },
+      "login": {
+        "prefix": "Already have an account?",
+        "link": "Click here to login"
+      },
+      "errors": {
+        "firstName": "First name is required",
+        "firstNameLetters": "First name can only contain letters",
+        "lastName": "Last name is required",
+        "lastNameLetters": "Last name can only contain letters",
+        "email": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "emailRegistered": "This email is already registered",
+        "country": "Country is required",
+        "validCountry": "Please select a valid country",
+        "phone": "Phone is required",
+        "phoneInvalid": "Invalid phone number",
+        "passwordRequired": "Password is required",
+        "passwordMin": "At least 8 characters",
+        "passwordPattern": "Must contain letters and numbers",
+        "otpRequired": "OTP is required",
+        "otpLength": "OTP must be 6 digits",
+        "terms": "You must accept the terms"
+      },
+      "toast": {
+        "otpSent": "OTP sent successfully!",
+        "codeError": "Failed to send verification code",
+        "registrationSuccess": "Registration successful!",
+        "registrationFailed": "Registration failed"
+      }
     }
   },
   "common": {
@@ -1360,7 +1136,7 @@
       "registered": "Registered"
     },
     "formTypes": {
-      "vipTicket": "VIP ticket booking",
+      "vipTicket": "VIP registration",
       "staff": "Staff registration"
     },
     "cards": {
@@ -1446,7 +1222,7 @@
     },
     "adminStatus": {
       "description": "Details updated by our events team based on your registration and travel arrangements.",
-      "journeyDescription": "Track where you are in the qualification, visa, and ticketing process.",
+      "journeyDescription": "Track where you are in the qualification and registration process.",
       "travelDescription": "Your confirmed flight, hotel, and transport arrangements.",
       "documentsDescription": "Download or view documents shared with you by our team.",
       "submissionDescription": "Original details from your registration form.",
@@ -1462,9 +1238,9 @@
         "qualificationStatus": "Qualification",
         "visaStatus": "Visa",
         "visaDocument": "Visa document",
-        "ticketStatus": "Ticket",
+        "ticketStatus": "Registration",
         "hotelStatus": "Hotel",
-        "eTicket": "E-ticket",
+        "eTicket": "Confirmation",
         "hotelName": "Hotel name",
         "hotelAddress": "Hotel address",
         "hotelFloor": "Floor",
@@ -1482,7 +1258,7 @@
         "returnDateTime": "Return",
         "guestPassportCopy": "Guest passport copy",
         "guestVisaDocument": "Guest visa document",
-        "guestETicket": "Guest e-ticket"
+        "guestETicket": "Guest confirmation"
       },
       "hints": {
         "qualificationPending": "Our team is reviewing your eligibility for the event.",
@@ -1490,9 +1266,9 @@
         "visaPending": "Visa processing updates will appear here.",
         "visaApproved": "Your visa has been approved. You can download your visa document below.",
         "visaRejected": "Please contact support for next steps regarding your visa.",
-        "ticketPending": "Ticket updates will appear here once processing begins.",
-        "ticketConfirmed": "Your ticket is confirmed. Download your e-ticket from the documents section.",
-        "ticketCancelled": "Please contact support if you need assistance with your ticket.",
+        "ticketPending": "Registration updates will appear here once processing begins.",
+        "ticketConfirmed": "Your registration is confirmed. Download your confirmation from the documents section.",
+        "ticketCancelled": "Please contact support if you need assistance with your registration.",
         "hotelConfirmed": "Your hotel floor and room number have been assigned.",
         "hotelPending": "Hotel room details will appear here once confirmed by our team."
       },
@@ -1524,7 +1300,8 @@
       "emailRequired": "Please enter your email address to check your status.",
       "notFound": "No registration was found for this email.",
       "loadFailed": "Failed to load registration status. Please try again later."
-    }
+    },
+    "journeyDescription": "Track where you are in the qualification and registration process."
   },
   "bookingSuccessPage": {
     "metaTitle": "Success — Golden Falcon Awards",
@@ -1532,13 +1309,13 @@
     "headingPlain": "Congratulations!",
     "headingItalic": "You're registered.",
     "welcomeName": "Welcome, {name}",
-    "description": "Your VIP ticket registration for Golden Falcon Awards has been submitted successfully. Our events team will review your details and contact you with confirmation.",
+    "description": "Your registration for Golden Falcon Awards has been submitted successfully. Our events team will review your details and contact you with confirmation.",
     "emailNoticeTitle": "Confirmation sent",
     "emailNoticeBody": "A confirmation email has been sent to your inbox. Please check your spam folder if you do not see it shortly.",
     "steps": [
-      "Our team will review your travel details within 48 hours.",
+      "Our team will review your details within 48 hours.",
       "You will receive further instructions by email once your registration is confirmed.",
-      "Prepare your travel documents for Golden Falcon Awards in Dubai."
+      "Prepare for Golden Falcon Awards Night in Dubai."
     ],
     "ctaHome": "Back to Home"
   },

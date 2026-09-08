@@ -5,9 +5,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link, type AppLocale } from "@/i18n/routing";
 
 const FAQ_CHECK_STATUS_LINK_PHRASES: Record<AppLocale, string> = {
-  en: "our Tickets page",
-  zh: "在线注册",
-  ar: "صفحة التذاكر",
+  en: "registration page",
+  zh: "注册页面",
+  ar: "صفحة التسجيل",
 };
 
 const linkClassName =

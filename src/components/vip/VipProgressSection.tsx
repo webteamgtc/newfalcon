@@ -5,7 +5,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { useVipUser } from "@/context/VipUserProvider";
 import { formatActivity, formatCurrency, isVipQualified, VIP_QUALIFICATION_TARGETS } from "@/data/vipUsers";
 import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
-import { hasTicketBooking } from "@/components/vip/VipTicketBookingForm";
 import { hasPublicTicketBooking } from "@/components/vip/PublicVipTicketBookingForm";
 
 function getProgressColors(percent: number) {
@@ -49,7 +48,7 @@ export default function VipProgressSection() {
 
   useEffect(() => {
     if (user) {
-      setHasRegistered(hasTicketBooking(user.id) || hasPublicTicketBooking(user.id));
+      setHasRegistered(hasPublicTicketBooking(user.id));
     }
   }, [user, bookingModalOpen]);
 

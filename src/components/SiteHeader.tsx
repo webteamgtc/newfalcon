@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useVipUser } from "@/context/VipUserProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useChineseOnlySite } from "@/hooks/useChineseOnlySite";
 
@@ -12,15 +11,14 @@ export default function SiteHeader() {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const { user } = useVipUser();
   const chineseOnlySite = useChineseOnlySite();
-  const isGallery = pathname.includes('/gallery') || pathname.includes('/guest') || pathname.includes('/ticket');
+  const isGallery = pathname.includes('/gallery') || pathname.includes('/guest');
   const links = [
     { href: "/", label: t("welcome") },
     { href: "/gallery", label: t("gallery") },
     // { href: "/awards", label: t("awards") },
     // { href: "/guest", label: t("guest") },
-    ...(user ? [{ href: "/ticket", label: t("ticket") }] : [{ href: "/check-status", label: t("ticket") }]),
+    { href: "/check-status", label: t("checkStatus") },
     { href: "/policy", label: t("policy") },
   ];
 

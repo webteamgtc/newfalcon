@@ -43,7 +43,7 @@ function fieldClass(touched?: boolean, error?: string) {
 }
 
 export default function TicketNewClientForm() {
-  const t = useTranslations("ticketPage.newClientForm");
+  const t = useTranslations("checkStatusPage.newClientForm");
   const router = useRouter();
   const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);

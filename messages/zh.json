@@ -13,13 +13,12 @@
     "agenda": "议程",
     "guest": "嘉宾",
     "media": "媒体",
-    "ticket": "门票",
+    "ticket": "查询状态",
     "policy": "条款与条件",
     "awards": "奖项",
     "joinUs": "立即注册",
     "vipStatus": "VIP 状态",
-    "checkStatus": "查询状态",
-    "ticketAccess": "门票"
+    "checkStatus": "查询状态"
   },
   "home": {
     "hero": {
@@ -88,7 +87,7 @@
       "headingPlain": "预定您的专属席位",
       "headingItalic": "",
       "description": "同交易精英、流动性合作伙伴及行业先驱共聚年度最负盛名的颁奖之夜。\n席位有限，敬请尽早预订。",
-      "cta": "预订门票"
+      "cta": "锁定您的邀请"
     },
     "awards": {
       "eyebrow": "荣誉殿堂",
@@ -152,7 +151,7 @@
       "list": [
         {
           "question": "如何注册参加金鹰节？",
-          "answer": "请通过我们的门票页面在线注册。确认后，您将在 48 小时内通过电子邮件收到邀请详情和活动准入信息。"
+          "answer": "请通过我们的注册页面在线注册。确认后，您将在 48 小时内通过电子邮件收到邀请详情和活动准入信息。"
         },
         {
           "question": "当晚的着装要求是什么？",
@@ -546,225 +545,6 @@
     "watchHighlights": "观看活动精彩回顾",
     "pressKit": "下载新闻资料包"
   },
-  "ticketPage": {
-    "hero": {
-      "headingPlain": "一夜。一舞台。一传承。",
-      "headingItalic": "无限荣耀，静候您来。",
-      "subtext": "2026年12月12日 — Conrad Hotel, Dubai。金鹰节汇聚 200 余位交易精英、合作伙伴与远见者，共赴全球交易领域最受期待的夜晚。红毯、世界级演讲嘉宾、22 项大奖。这是通往荣耀的邀请。",
-      "primaryCta": "确认席位",
-      "secondaryCta": "查看资格"
-    },
-    "access": {
-      "headingPlain": "选择适合您的",
-      "headingItalic": "参与方式。",
-      "subtext": "两种出席途径：以 IB 合作伙伴身份通过交易业绩获得资格，或直接购买活动门票供您及宾客使用。",
-      "eyebrow": "门票信息",
-      "descriptionText": "金鹰节是一场精心策划的活动。每一份门票申请均经审核，以确保宾客体验周到、相关且个性化。",
-      "twoAccessLabel": "两种准入途径",
-      "twoAccessHint": "选择一种方式 · 均可通往 金鹰节",
-      "complimentaryAccess": "免费准入",
-      "forEligibleClients": "适用于符合条件的 GTCFX IB/Partners",
-      "qualifyDesc": "达成确认的活动目标，即可解锁 金鹰节 免费准入资格。",
-      "falconTicket": "Falcon 门票",
-      "subjectToAvailability": "视名额而定",
-      "purchaseDesc": "直接为您或您的宾客购买活动准入。视名额而定。",
-      "vipAssistText": "我们的宾客关系团队可协助安排高管接待、私人引荐及定制化合作伙伴准入。",
-      "qualify": {
-        "title": "通过业绩获得资格",
-        "fields": [
-          {
-            "label": "账户类型",
-            "placeholder": "选择您的账户类型"
-          },
-          {
-            "label": "账户号码",
-            "placeholder": "输入您的账户号码"
-          },
-          {
-            "label": "居住国家",
-            "placeholder": "选择您的国家"
-          },
-          {
-            "label": "交易手数",
-            "placeholder": "选择交易量范围"
-          }
-        ],
-        "cta": "申请资格准入"
-      },
-      "purchase": {
-        "title": "购买活动门票",
-        "fields": [
-          {
-            "label": "门票类型",
-            "placeholder": "选择门票类型"
-          },
-          {
-            "label": "门票数量",
-            "placeholder": "选择数量"
-          },
-          {
-            "label": "宾客姓名",
-            "placeholder": "输入全名"
-          },
-          {
-            "label": "电子邮箱",
-            "placeholder": "输入您的邮箱"
-          }
-        ],
-        "cta": "前往支付"
-      },
-      "vip": {
-        "label": "VIP",
-        "text": "有兴趣了解包含高级权益的 VIP 体验吗？",
-        "cta": "查询状态",
-        "viewStatus": "查看我的状态"
-      }
-    },
-    "accessForm": {
-      "eyebrow": "现有 Partner 准入",
-      "headingPlain": "验证账户以",
-      "headingItalic": "查看进度。",
-      "description": "如果您是现有 GTCFX Partner，请输入注册邮箱以查询 VIP 资格状态及活动门票准入。",
-      "existingClientLabel": "是否为现有 GTCFX Partner？",
-      "selectPlaceholder": "请选择",
-      "existingYes": "是",
-      "existingNo": "否",
-      "emailLabel": "电子邮箱*",
-      "emailPlaceholder": "输入您的注册邮箱",
-      "emailRequired": "请输入邮箱",
-      "emailInvalid": "请输入有效的邮箱地址",
-      "emailNotFound": "该邮箱未在 GTCFX 注册。请联系客服。",
-      "accountInactive": "该账户未激活。请联系客服。",
-      "ibIdLabel": "IB ID / 推荐码*",
-      "ibIdPlaceholder": "输入邮件中的 IB ID / Referral Code",
-      "ibIdRequired": "请输入 IB ID / Referral Code",
-      "credentialsNotFound": "邮箱与 IB ID / Referral Code 与我们的记录不匹配。",
-      "emailAlreadyLinked": "该邮箱已绑定其他 IB ID / Referral Code。",
-      "ibIdAlreadyLinked": "该 IB ID / Referral Code 已绑定其他邮箱。",
-      "ibAccessSaveFailed": "无法保存您的访问信息，请重试。",
-      "getOtp": "获取 OTP",
-      "sendingOtp": "发送中...",
-      "verifyingOtp": "验证中...",
-      "otpLabel": "输入 OTP",
-      "otpRequired": "请输入 6 位 OTP",
-      "otpInvalid": "OTP 无效。请重试。",
-      "otpSendFailed": "OTP 发送失败。请重试。",
-      "otpExpiresIn": "OTP 将在 {time} 后过期",
-      "otpExpired": "OTP 已过期。请重新获取。",
-      "verifyOtp": "验证 OTP",
-      "demoOtpHint": "演示 OTP：123456",
-      "emailVerified": "邮箱验证成功。请查收邮件获取 IB ID / Referral Code。",
-      "disclaimer": "提交本表单即表示我已阅读、理解并同意活动条款。我同意 GTCFX 就 VIP 资格状态与我联系。",
-      "termsLabel": "我同意活动条款和隐私政策。",
-      "termsRequired": "您必须同意条款才能继续。",
-      "submit": "查询我的状态",
-      "submitting": "提交中...",
-      "closeModal": "关闭表单",
-      "newClientText": "还没有 IB 账户？立即开户，开启您的资格之旅。",
-      "newClientCta": "立即开通 IB 账户",
-      "loadingForm": "加载表单中...",
-      "apiErrors": {
-        "ipNotTrusted": "当前网络 IP 未获系统信任，请联系 support@gtcfx.com。",
-        "verifyFailed": "暂时无法验证账户，请稍后重试。",
-        "serviceUnavailable": "验证服务暂时不可用，请稍后重试。"
-      }
-    },
-    "newClientForm": {
-      "intro": "创建 GTCFX 账户，开启金鹰节 IB 资格之旅。",
-      "fields": {
-        "firstName": "名",
-        "lastName": "姓",
-        "email": "电子邮箱",
-        "emailCode": "邮箱验证码",
-        "password": "密码",
-        "country": "居住国家",
-        "phone": "电话号码",
-        "partnerCode": "合作伙伴代码",
-        "optional": "选填"
-      },
-      "placeholders": {
-        "email": "请输入有效邮箱以接收验证码",
-        "emailCode": "输入邮箱验证码",
-        "passwordHint": "至少 8 个字符，包含字母和数字"
-      },
-      "countryLoading": "加载国家列表中...",
-      "countrySelect": "选择您的国家",
-      "actions": {
-        "getCode": "获取验证码",
-        "sendingCode": "发送中...",
-        "register": "注册",
-        "registering": "提交中..."
-      },
-      "a11y": {
-        "showPassword": "显示",
-        "hidePassword": "隐藏"
-      },
-      "legal": {
-        "agreePrefix": "我同意",
-        "termsOfService": "服务条款",
-        "agreeAnd": "和",
-        "privacyPolicy": "隐私政策"
-      },
-      "login": {
-        "prefix": "已有账户？",
-        "link": "点击此处登录"
-      },
-      "errors": {
-        "firstName": "请输入名",
-        "firstNameLetters": "名只能包含字母",
-        "lastName": "请输入姓",
-        "lastNameLetters": "姓只能包含字母",
-        "email": "请输入邮箱",
-        "emailInvalid": "邮箱地址无效",
-        "emailRegistered": "该邮箱已注册",
-        "country": "请选择国家",
-        "validCountry": "请选择有效的国家",
-        "phone": "请输入电话号码",
-        "phoneInvalid": "电话号码无效",
-        "passwordRequired": "请输入密码",
-        "passwordMin": "至少 8 个字符",
-        "passwordPattern": "必须包含字母和数字",
-        "otpRequired": "OTP 为必填项",
-        "otpLength": "OTP 必须为 6 位数字",
-        "terms": "您必须同意条款"
-      },
-      "toast": {
-        "otpSent": "OTP 发送成功！",
-        "codeError": "验证码发送失败",
-        "registrationSuccess": "注册成功！",
-        "registrationFailed": "注册失败"
-      }
-    },
-    "steps": {
-      "headingPlain": "三步简单流程",
-      "headingItalic": "确认您的席位。",
-      "contactCta": "联系我们",
-      "list": [
-        {
-          "title": "选择您的路径",
-          "description": "选择通过业绩获得资格或直接购买门票——选择最适合您的方式。"
-        },
-        {
-          "title": "提交您的信息",
-          "description": "提供所需信息，以便我们的团队及时审核并处理您的注册。"
-        },
-        {
-          "title": "收到确认",
-          "description": "48 小时内，官方邀请及完整活动详情将发送至您的邮箱。"
-        }
-      ]
-    },
-    "contact": {
-      "eyebrow": "需要帮助？",
-      "headingPlain": "我们助您",
-      "headingItalic": "轻松抵达。",
-      "subtext": "我们的活动团队可协助您安排座位偏好、机场接送、住宿及活动开始前的任何问题。",
-      "nameLabel": "Full Name",
-      "emailLabel": "电子邮箱",
-      "namePlaceholder": "您的全名",
-      "emailPlaceholder": "you@example.com"
-    }
-  },
   "policyPage": {
     "hero": {
       "eyebrow": "金鹰节 · 法律条款",
@@ -1020,102 +800,13 @@
     "motivation25": "💪 良好的开端！您正在稳步前进。",
     "motivation50": "🚀 已完成一半！请继续保持。",
     "motivation75": "🔥 即将达标！再加把劲。",
-    "registerCta": "预订您的门票",
+    "registerCta": "提交申请",
     "registeredCta": "已注册",
-    "registerPrompt": "预订 UAE 活动门票以完成 VIP 注册。",
-    "registerComplete": "您的门票注册已提交。",
-    "ticketBooking": {
-      "eyebrow": "活动门票注册",
-      "headingPlain": "预订您的",
-      "headingItalic": "UAE 门票。",
-      "description": "请提供 金鹰节 在 Dubai, UAE 的出行详情。标有 * 的字段为必填项。",
-      "closeModal": "关闭表单",
-      "submit": "提交注册",
-      "submitting": "提交中...",
-      "successTitle": "注册已提交",
-      "successDescription": "我们的活动团队将审核您的信息，并在 48 小时内联系您确认。",
-      "successMessage": "门票注册提交成功。",
-      "termsLabel": "我确认所提供信息准确无误，并同意活动出行条款。",
-      "fields": {
-        "fullName": "全名（与护照一致）",
-        "email": "电子邮箱",
-        "phone": "电话号码",
-        "passportNumber": "护照号码",
-        "passportExpiry": "护照有效期",
-        "nationality": "国籍",
-        "dateOfBirth": "出生日期",
-        "arrivalDate": "抵达 UAE 日期",
-        "departureDate": "离境 UAE 日期",
-        "invitingGuest": "是否邀请他人？",
-        "bedroomPreference": "房型偏好",
-        "specialRequirements": "附加备注",
-        "passportPhoto": "护照照片",
-        "guestFirstName": "宾客全名",
-        "guestEmail": "宾客邮箱",
-        "guestPhone": "宾客电话号码",
-        "guestPassportNumber": "宾客护照号码",
-        "guestPassportExpiry": "宾客护照有效期",
-        "guestNationality": "宾客国籍",
-        "guestPassportPhoto": "宾客护照照片"
-      },
-      "guestSection": {
-        "title": "宾客信息",
-        "description": "请提供宾客的出行详情及 UAE 住宿的房型偏好。"
-      },
-      "options": {
-        "invitingGuestNo": "否",
-        "invitingGuestYes": "是",
-        "singleBed": "单人床",
-        "masterBed": "双床房",
-        "extraRoom": "额外房间"
-      },
-      "placeholders": {
-        "fullName": "请输入与护照一致的全名",
-        "phone": "请包含国家区号",
-        "passportNumber": "e.g. AB1234567",
-        "nationality": "例如：阿拉伯联合酋长国",
-        "guestFirstName": "请输入宾客全名",
-        "guestEmail": "guest@example.com",
-        "specialRequirements": "饮食需求、无障碍设施或其他备注",
-        "passportPhoto": "上传 JPG、PNG、WEBP 或 PDF",
-        "passportExample": "参考图片",
-        "selectDate": "选择日期",
-        "selectOption": "选择选项",
-        "selectBedroom": "选择房型偏好"
-      },
-      "errors": {
-        "fullName": "请输入全名",
-        "phone": "请输入电话号码",
-        "phoneInvalid": "请输入有效的电话号码",
-        "passportNumber": "请输入护照号码",
-        "passportExpiry": "请输入护照有效期",
-        "nationality": "请输入国籍",
-        "dateOfBirth": "请输入出生日期",
-        "arrivalDate": "请输入抵达日期",
-        "departureDate": "请输入离境日期",
-        "departureBeforeArrival": "离境日期须等于或晚于抵达日期",
-        "invitingGuest": "请选择是否会邀请他人",
-        "bedroomPreference": "请选择房型偏好",
-        "guestFirstName": "请输入宾客全名",
-        "guestEmail": "请输入宾客邮箱",
-        "guestEmailInvalid": "请输入有效的宾客邮箱地址",
-        "guestPhone": "请输入宾客电话号码",
-        "guestPassportNumber": "请输入宾客护照号码",
-        "guestPassportExpiry": "请输入宾客护照有效期",
-        "guestNationality": "请输入宾客国籍",
-        "guestPassportPhoto": "请上传宾客护照照片",
-        "terms": "您必须确认条款才能继续",
-        "passportPhoto": "请上传护照照片",
-        "passportPhotoType": "护照文件须为 JPG、PNG、WEBP 或 PDF",
-        "passportPhotoSize": "护照照片须在 5MB 以内",
-        "emailAlreadyExists": "该邮箱已注册。"
-      },
-      "submitFailed": "保存注册失败，请重试。"
-    },
-    "publicTicketBooking": {
-      "eyebrow": "活动门票注册",
-      "headingPlain": "预订您的",
-      "headingItalic": "UAE 门票。",
+    "registerPrompt": "提交申请以完成 VIP 注册。",
+    "registerComplete": "您的注册已提交。",
+    "eventRegistration": {
+      "headingPlain": "注册参加",
+      "headingItalic": "2026 金鹰节之夜",
       "closeModal": "关闭表单",
       "verificationTitle": "验证您的邮箱",
       "verificationDescription": "请先输入邮箱并验证一次性验证码，再完成注册。",
@@ -1134,14 +825,33 @@
       "otpExpiresIn": "验证码将在 {time} 后过期",
       "emailVerified": "邮箱验证成功。",
       "verifyEmailFirst": "请先验证邮箱后再提交。",
-      "ibIdLabel": "账户 ID",
-      "ibIdPlaceholder": "请输入账户 ID（选填）",
+      "ibIdLabel": "参考编号 / IB 账户",
+      "ibIdPlaceholder": "请输入参考编号或 IB 账户",
       "leadDescription": "请填写以下信息以登记您对 Golden Falcon Awards 的兴趣。",
       "countryOfResidenceLabel": "居住国家/地区",
       "countrySelect": "请选择国家/地区",
       "countryLoading": "正在加载国家/地区...",
       "countryRequired": "请选择您的居住国家/地区",
-      "submitLead": "提交登记"
+      "submitLead": "提交登记",
+      "fields": {
+        "fullName": "全名",
+        "email": "电子邮箱",
+        "phone": "电话号码"
+      },
+      "placeholders": {
+        "fullName": "请输入您的全名"
+      },
+      "errors": {
+        "fullName": "请输入全名",
+        "phone": "请输入电话号码",
+        "phoneInvalid": "请输入有效的电话号码",
+        "terms": "您必须确认条款才能继续",
+        "emailAlreadyExists": "该邮箱已注册。",
+        "ibIdRequired": "请输入参考编号或 IB 账户"
+      },
+      "termsLabel": "我确认所提供信息准确无误，并同意活动条款。",
+      "submitting": "提交中...",
+      "submitFailed": "保存注册失败，请重试。"
     }
   },
   "checkStatusPage": {
@@ -1290,7 +1000,7 @@
       "eyebrow": "现有合作伙伴准入",
       "headingPlain": "验证账户以",
       "headingItalic": "查看进度。",
-      "description": "如果您是现有 GTCFX 合作伙伴，请输入注册邮箱以查询 VIP 资格状态及活动门票准入。",
+      "description": "如果您是现有 GTCFX 合作伙伴，请输入注册邮箱以查询 VIP 资格状态和活动准入信息。",
       "existingClientLabel": "是否为现有 GTCFX 合作伙伴？",
       "selectPlaceholder": "请选择",
       "existingYes": "是",
@@ -1334,6 +1044,72 @@
         "verifyFailed": "暂时无法验证账户，请稍后重试。",
         "serviceUnavailable": "验证服务暂时不可用，请稍后重试。"
       }
+    },
+    "newClientForm": {
+      "intro": "创建 GTCFX 账户，开启金鹰节 IB 资格之旅。",
+      "fields": {
+        "firstName": "名",
+        "lastName": "姓",
+        "email": "电子邮箱",
+        "emailCode": "邮箱验证码",
+        "password": "密码",
+        "country": "居住国家",
+        "phone": "电话号码",
+        "partnerCode": "合作伙伴代码",
+        "optional": "选填"
+      },
+      "placeholders": {
+        "email": "请输入有效邮箱以接收验证码",
+        "emailCode": "输入邮箱验证码",
+        "passwordHint": "至少 8 个字符，包含字母和数字"
+      },
+      "countryLoading": "加载国家列表中...",
+      "countrySelect": "选择您的国家",
+      "actions": {
+        "getCode": "获取验证码",
+        "sendingCode": "发送中...",
+        "register": "注册",
+        "registering": "提交中..."
+      },
+      "a11y": {
+        "showPassword": "显示",
+        "hidePassword": "隐藏"
+      },
+      "legal": {
+        "agreePrefix": "我同意",
+        "termsOfService": "服务条款",
+        "agreeAnd": "和",
+        "privacyPolicy": "隐私政策"
+      },
+      "login": {
+        "prefix": "已有账户？",
+        "link": "点击此处登录"
+      },
+      "errors": {
+        "firstName": "请输入名",
+        "firstNameLetters": "名只能包含字母",
+        "lastName": "请输入姓",
+        "lastNameLetters": "姓只能包含字母",
+        "email": "请输入邮箱",
+        "emailInvalid": "邮箱地址无效",
+        "emailRegistered": "该邮箱已注册",
+        "country": "请选择国家",
+        "validCountry": "请选择有效的国家",
+        "phone": "请输入电话号码",
+        "phoneInvalid": "电话号码无效",
+        "passwordRequired": "请输入密码",
+        "passwordMin": "至少 8 个字符",
+        "passwordPattern": "必须包含字母和数字",
+        "otpRequired": "OTP 为必填项",
+        "otpLength": "OTP 必须为 6 位数字",
+        "terms": "您必须同意条款"
+      },
+      "toast": {
+        "otpSent": "OTP 发送成功！",
+        "codeError": "验证码发送失败",
+        "registrationSuccess": "注册成功！",
+        "registrationFailed": "注册失败"
+      }
     }
   },
   "common": {
@@ -1357,7 +1133,7 @@
       "registered": "已注册"
     },
     "formTypes": {
-      "vipTicket": "VIP 门票预订",
+      "vipTicket": "VIP 注册",
       "staff": "员工注册"
     },
     "cards": {
@@ -1443,7 +1219,7 @@
     },
     "adminStatus": {
       "description": "由活动团队根据您的注册及出行安排更新的详情。",
-      "journeyDescription": "跟踪您在资格、签证及票务流程中的进度。",
+      "journeyDescription": "跟踪您在资格认证和注册流程中的进度。",
       "travelDescription": "您已确认的航班、酒店及接送安排。",
       "documentsDescription": "下载或查看团队与您分享的文件。",
       "submissionDescription": "来自您注册表的原始详情。",
@@ -1459,9 +1235,9 @@
         "qualificationStatus": "资格",
         "visaStatus": "签证",
         "visaDocument": "签证文件",
-        "ticketStatus": "门票",
+        "ticketStatus": "注册",
         "hotelStatus": "酒店",
-        "eTicket": "电子票",
+        "eTicket": "确认函",
         "hotelName": "酒店名称",
         "hotelAddress": "酒店地址",
         "hotelFloor": "楼层",
@@ -1479,7 +1255,7 @@
         "returnDateTime": "返程",
         "guestPassportCopy": "宾客护照副本",
         "guestVisaDocument": "宾客签证文件",
-        "guestETicket": "宾客电子票"
+        "guestETicket": "宾客确认函"
       },
       "hints": {
         "qualificationPending": "我们的团队正在审核您的活动资格。",
@@ -1487,9 +1263,9 @@
         "visaPending": "签证处理更新将显示于此。",
         "visaApproved": "您的签证已获批。您可在下方下载签证文件。",
         "visaRejected": "请联系客服了解签证后续步骤。",
-        "ticketPending": "票务处理开始后将显示更新。",
-        "ticketConfirmed": "您的门票已确认。请从文件区下载电子票。",
-        "ticketCancelled": "如需票务协助，请联系客服。",
+        "ticketPending": "注册处理开始后将显示更新。",
+        "ticketConfirmed": "您的注册已确认。请从文件部分下载确认函。",
+        "ticketCancelled": "如需帮助，请联系支持团队。",
         "hotelConfirmed": "您的酒店楼层及房间号已分配。",
         "hotelPending": "酒店房间详情将在团队确认后显示于此。"
       },
@@ -1521,7 +1297,8 @@
       "emailRequired": "请输入邮箱地址以查询状态。",
       "notFound": "未找到该邮箱的注册记录。",
       "loadFailed": "加载注册状态失败。请稍后重试。"
-    }
+    },
+    "journeyDescription": "跟踪您在资格认证和注册流程中的进度。"
   },
   "bookingSuccessPage": {
     "metaTitle": "成功 — 金鹰节",
@@ -1529,7 +1306,7 @@
     "headingPlain": "恭喜！",
     "headingItalic": "您已成功注册。",
     "welcomeName": "欢迎，{name}",
-    "description": "您的金鹰节 VIP 门票注册已成功提交。我们的活动团队将审核您的信息并通过邮件与您确认。",
+    "description": "您的 Golden Falcon Awards 注册已成功提交。我们的活动团队将审核您的信息并与您联系确认。",
     "emailNoticeTitle": "确认邮件已发送",
     "emailNoticeBody": "确认邮件已发送至您的邮箱。如未收到，请检查垃圾邮件文件夹。",
     "steps": [

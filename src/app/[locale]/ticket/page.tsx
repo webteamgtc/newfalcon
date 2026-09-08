@@ -1,5 +1,5 @@
-import TicketPageShell from "@/components/ticket/TicketPageShell";
+import { redirect } from "next/navigation";
 
 export default function TicketPage() {
-  return <TicketPageShell />;
+  redirect("/check-status");
 }

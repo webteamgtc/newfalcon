@@ -41,7 +41,7 @@ type TicketAccessFormProps = {
   pageLayout?: boolean;
   embedded?: boolean;
   onSuccess?: () => void;
-  translationNamespace?: "ticketPage.accessForm" | "checkStatusPage.accessForm";
+  translationNamespace?: "checkStatusPage.accessForm";
   defaultExistingClient?: "yes" | "no";
   showAllFields?: boolean;
 };
@@ -51,7 +51,7 @@ export default function TicketAccessForm({
   pageLayout = false,
   embedded = false,
   onSuccess,
-  translationNamespace = "ticketPage.accessForm",
+  translationNamespace = "checkStatusPage.accessForm",
   defaultExistingClient,
   showAllFields = false,
 }: TicketAccessFormProps) {

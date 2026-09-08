@@ -13,13 +13,12 @@
     "agenda": "جدول الأعمال",
     "guest": "الضيوف",
     "media": "الإعلام",
-    "ticket": "التذاكر",
+    "ticket": "تحقق من الحالة",
     "policy": "الشروط والأحكام",
     "awards": "الجوائز",
     "joinUs": "سجّل الآن",
     "vipStatus": "حالة كبار الشخصيات",
-    "checkStatus": "تحقق من الحالة",
-    "ticketAccess": "التذكرة"
+    "checkStatus": "تحقق من الحالة"
   },
   "home": {
     "hero": {
@@ -411,225 +410,6 @@
     "watchHighlights": "شاهد أبرز اللقطات",
     "pressKit": "تحميل الحقيبة الإعلامية"
   },
-  "ticketPage": {
-    "hero": {
-      "headingPlain": "ليلة واحدة. مسرح واحد. إرثٌ واحد.",
-      "headingItalic": "تكريمٌ بلا حدود بانتظارك.",
-      "subtext": "12 ديسمبر 2026 — فندق كونراد، دبي. جوائز الصقر الذهبي تجمع 200+ من نخبة المتداولين والشركاء وأصحاب الرؤى لأكثر أمسيةٍ منتظرة في عالم التداول. سجادة حمراء. متحدّثون عالميون. 22 جائزة. هذه دعوتك للعظمة.",
-      "primaryCta": "احجز مقعدك",
-      "secondaryCta": "عرض التأهيل"
-    },
-    "access": {
-      "headingPlain": "اختر المسار الذي يناسب",
-      "headingItalic": "أمسيتك.",
-      "subtext": "طريقتان للحضور: التأهّل عبر أدائك كشريك مُعرّف، أو شراء الدخول مباشرةً لك أو لضيوفك.",
-      "eyebrow": "معلومات التذاكر",
-      "descriptionText": "جوائز الصقر الذهبي فعالية مُنتقاة. كل طلب تذكرة يُراجع لضمان تجربة ضيوف مدروسة وذات صلة وشخصية.",
-      "twoAccessLabel": "طريقان للدخول",
-      "twoAccessHint": "اختر مسارًا واحدًا · كلاهما يقود إلى ليلة الصقر الذهبي",
-      "complimentaryAccess": "دخول مجاني",
-      "forEligibleClients": "لشركاء IB/Partners المؤهّلين في GTCFX",
-      "qualifyDesc": "حقق أهداف الحملة المؤكدة للحصول على دخول مجاني إلى ليلة جوائز الصقر الذهبي.",
-      "falconTicket": "تذكرة الصقر",
-      "subjectToAvailability": "رهن بالتوفر",
-      "purchaseDesc": "اشترِ الدخول مباشرةً لك أو لضيوفك. رهن بالتوفر.",
-      "vipAssistText": "فريق علاقات الضيوف متاح لمساعدتك في الاستضافة التنفيذية والتعارف الخاص والوصول المخصص للشركاء.",
-      "qualify": {
-        "title": "التأهّل عبر الأداء",
-        "fields": [
-          {
-            "label": "نوع الحساب",
-            "placeholder": "اختر نوع حسابك"
-          },
-          {
-            "label": "رقم الحساب",
-            "placeholder": "أدخل رقم حسابك"
-          },
-          {
-            "label": "بلد الإقامة",
-            "placeholder": "اختر بلدك"
-          },
-          {
-            "label": "حجم التداول",
-            "placeholder": "اختر نطاق الحجم"
-          }
-        ],
-        "cta": "اطلب الدخول المؤهّل"
-      },
-      "purchase": {
-        "title": "شراء دخول الفعالية",
-        "fields": [
-          {
-            "label": "نوع التذكرة",
-            "placeholder": "اختر نوع التذكرة"
-          },
-          {
-            "label": "عدد التذاكر",
-            "placeholder": "اختر الكمية"
-          },
-          {
-            "label": "اسم الضيف",
-            "placeholder": "أدخل الاسم الكامل"
-          },
-          {
-            "label": "البريد الإلكتروني",
-            "placeholder": "أدخل بريدك الإلكتروني"
-          }
-        ],
-        "cta": "المتابعة إلى الدفع"
-      },
-      "vip": {
-        "label": "VIP",
-        "text": "مهتم بتجربة VIP مع مزايا حصرية؟",
-        "cta": "تحقق من الحالة",
-        "viewStatus": "عرض حالتي"
-      }
-    },
-    "accessForm": {
-      "eyebrow": "وصول Partner الحاليين",
-      "headingPlain": "تحقق من حسابك",
-      "headingItalic": "لعرض تقدّمك.",
-      "description": "إذا كنت Partner حالياً في GTCFX، أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى التذاكر.",
-      "existingClientLabel": "هل أنت Partner حالي في GTCFX؟",
-      "selectPlaceholder": "اختر",
-      "existingYes": "نعم",
-      "existingNo": "لا",
-      "emailLabel": "عنوان البريد الإلكتروني*",
-      "emailPlaceholder": "أدخل بريدك الإلكتروني المسجّل",
-      "emailRequired": "البريد الإلكتروني مطلوب",
-      "emailInvalid": "يرجى إدخال بريد إلكتروني صالح",
-      "emailNotFound": "هذا البريد غير مسجّل لدى GTCFX. يرجى التواصل مع الدعم.",
-      "accountInactive": "هذا الحساب غير نشط. يرجى التواصل مع الدعم.",
-      "ibIdLabel": "معرّف IB / رمز الإحالة*",
-      "ibIdPlaceholder": "أدخل معرّف IB / رمز الإحالة من بريدك الإلكتروني",
-      "ibIdRequired": "معرّف IB / رمز الإحالة مطلوب",
-      "credentialsNotFound": "البريد الإلكتروني ومعرّف IB / رمز الإحالة لا يطابقان سجلاتنا.",
-      "emailAlreadyLinked": "هذا البريد الإلكتروني مرتبط بالفعل بمعرّف IB / رمز إحالة آخر.",
-      "ibIdAlreadyLinked": "معرّف IB / رمز الإحالة هذا مرتبط بالفعل ببريد إلكتروني آخر.",
-      "ibAccessSaveFailed": "تعذر حفظ بيانات الوصول. يرجى المحاولة مرة أخرى.",
-      "getOtp": "احصل على OTP",
-      "sendingOtp": "جارٍ الإرسال...",
-      "verifyingOtp": "جارٍ التحقق...",
-      "otpLabel": "أدخل OTP",
-      "otpRequired": "يرجى إدخال رمز OTP المكوّن من 6 أرقام",
-      "otpInvalid": "رمز OTP غير صحيح. يرجى المحاولة مرة أخرى.",
-      "otpSendFailed": "فشل إرسال OTP. يرجى المحاولة مرة أخرى.",
-      "otpExpiresIn": "ينتهي OTP خلال {time}",
-      "otpExpired": "انتهت صلاحية OTP. يرجى طلب رمز جديد.",
-      "verifyOtp": "تحقق من OTP",
-      "demoOtpHint": "رمز OTP التجريبي: 123456",
-      "emailVerified": "تم التحقق من بريدك الإلكتروني بنجاح. تحقق من بريدك للحصول على معرّف IB / رمز الإحالة.",
-      "disclaimer": "بإرسال هذا النموذج، أقرّ بأنني قرأتُ الشروط وفهمتها ووافقتُ عليها. أمنح GTCFX موافقتي للتواصل معي بخصوص حالة تأهيل VIP.",
-      "termsLabel": "أوافق على شروط الفعالية وسياسة الخصوصية.",
-      "termsRequired": "يجب الموافقة على الشروط للمتابعة.",
-      "submit": "تحقق من حالتي",
-      "submitting": "جارٍ الإرسال...",
-      "closeModal": "إغلاق النموذج",
-      "newClientText": "ليس لديك حساب IB بعد؟ افتح حسابًا الآن لبدء رحلة التأهيل.",
-      "newClientCta": "افتح حساب IB الآن",
-      "loadingForm": "جارٍ تحميل النموذج...",
-      "apiErrors": {
-        "ipNotTrusted": "عنوان IP الحالي غير موثوق به من قبل النظام. يرجى التواصل مع support@gtcfx.com.",
-        "verifyFailed": "تعذر التحقق من الحساب حالياً. يرجى المحاولة لاحقاً.",
-        "serviceUnavailable": "خدمة التحقق غير متاحة مؤقتاً. يرجى المحاولة لاحقاً."
-      }
-    },
-    "newClientForm": {
-      "intro": "أنشئ حساب GTCFX الخاص بك لبدء رحلة تأهيل IB لجوائز Golden Falcon.",
-      "fields": {
-        "firstName": "الاسم الأول",
-        "lastName": "اسم العائلة",
-        "email": "البريد الإلكتروني",
-        "emailCode": "رمز التحقق من البريد",
-        "password": "كلمة المرور",
-        "country": "بلد الإقامة",
-        "phone": "الهاتف",
-        "partnerCode": "رمز الشريك",
-        "optional": "اختياري"
-      },
-      "placeholders": {
-        "email": "يرجى إدخال بريد إلكتروني صالح لاستلام رمز التحقق",
-        "emailCode": "أدخل رمز التحقق من البريد",
-        "passwordHint": "8 أحرف على الأقل مع أحرف وأرقام"
-      },
-      "countryLoading": "جارٍ تحميل البلدان...",
-      "countrySelect": "اختر بلدك",
-      "actions": {
-        "getCode": "احصل على الرمز",
-        "sendingCode": "جارٍ الإرسال...",
-        "register": "تسجيل",
-        "registering": "جارٍ الإرسال..."
-      },
-      "a11y": {
-        "showPassword": "إظهار",
-        "hidePassword": "إخفاء"
-      },
-      "legal": {
-        "agreePrefix": "أوافق على",
-        "termsOfService": "شروط الخدمة",
-        "agreeAnd": "و",
-        "privacyPolicy": "سياسة الخصوصية"
-      },
-      "login": {
-        "prefix": "لديك حساب بالفعل؟",
-        "link": "اضغط هنا لتسجيل الدخول"
-      },
-      "errors": {
-        "firstName": "الاسم الأول مطلوب",
-        "firstNameLetters": "يجب أن يحتوي الاسم الأول على أحرف فقط",
-        "lastName": "اسم العائلة مطلوب",
-        "lastNameLetters": "يجب أن يحتوي اسم العائلة على أحرف فقط",
-        "email": "البريد الإلكتروني مطلوب",
-        "emailInvalid": "بريد إلكتروني غير صالح",
-        "emailRegistered": "هذا البريد مسجل بالفعل",
-        "country": "البلد مطلوب",
-        "validCountry": "يرجى اختيار بلد صالح",
-        "phone": "الهاتف مطلوب",
-        "phoneInvalid": "رقم هاتف غير صالح",
-        "passwordRequired": "كلمة المرور مطلوبة",
-        "passwordMin": "8 أحرف على الأقل",
-        "passwordPattern": "يجب أن تحتوي على أحرف وأرقام",
-        "otpRequired": "OTP مطلوب",
-        "otpLength": "يجب أن يكون OTP 6 أرقام",
-        "terms": "يجب الموافقة على الشروط"
-      },
-      "toast": {
-        "otpSent": "تم إرسال OTP بنجاح!",
-        "codeError": "فشل إرسال رمز التحقق",
-        "registrationSuccess": "تم التسجيل بنجاح!",
-        "registrationFailed": "فشل التسجيل"
-      }
-    },
-    "steps": {
-      "headingPlain": "ثلاث خطوات بسيطة",
-      "headingItalic": "لحجز مقعدك.",
-      "contactCta": "تواصل معنا",
-      "list": [
-        {
-          "title": "اختر مسارك",
-          "description": "اختر التأهّل عبر الأداء أو شراء التذكرة مباشرة — وفقًا لما يناسب رحلتك."
-        },
-        {
-          "title": "أرسل بياناتك",
-          "description": "قدّم المعلومات المطلوبة حتى يتمكّن فريقنا من مراجعة طلبك ومعالجته بسرعة."
-        },
-        {
-          "title": "استلم التأكيد",
-          "description": "احصل على دعوتك الرسمية وتفاصيل الفعالية الكاملة في بريدك خلال 48 ساعة."
-        }
-      ]
-    },
-    "contact": {
-      "eyebrow": "تحتاج مساعدة؟",
-      "headingPlain": "نحن هنا لجعل",
-      "headingItalic": "وصولك سلسًا.",
-      "subtext": "فريق الفعاليات متاح لمساعدتك في تفضيلات الجلوس والنقل من المطار والإقامة وأي أسئلة قبل بدء الأمسية.",
-      "nameLabel": "الاسم الكامل",
-      "emailLabel": "البريد الإلكتروني",
-      "namePlaceholder": "اسمك الكامل",
-      "emailPlaceholder": "you@example.com"
-    }
-  },
   "policyPage": {
     "hero": {
       "eyebrow": "جوائز الصقر الذهبي · قانوني",
@@ -890,100 +670,11 @@
     "motivation75": "🔥 أوشكت على الوصول! ادفع للأمام.",
     "registerCta": "تسجيل",
     "registeredCta": "مسجل",
-    "registerPrompt": "احجز تذكرة فعالية الإمارات لإكمال تسجيل VIP.",
-    "registerComplete": "تم إرسال تسجيل التذكرة الخاص بك.",
-    "ticketBooking": {
-      "eyebrow": "تسجيل تذكرة الفعالية",
-      "headingPlain": "احجز تذكرتك",
-      "headingItalic": "للإمارات.",
-      "description": "يرجى تقديم تفاصيل السفر لحضور Golden Falcon Awards في دبي، الإمارات. جميع الحقول المميزة بـ * مطلوبة.",
-      "closeModal": "إغلاق النموذج",
-      "submit": "إرسال التسجيل",
-      "submitting": "جارٍ الإرسال...",
-      "successTitle": "تم إرسال التسجيل",
-      "successDescription": "سيراجع فريق الفعاليات بياناتك ويتواصل معك للتأكيد خلال 48 ساعة.",
-      "successMessage": "تم إرسال تسجيل التذكرة بنجاح.",
-      "termsLabel": "أؤكد أن المعلومات المقدمة دقيقة وأوافق على شروط سفر الفعالية.",
-      "fields": {
-        "fullName": "الاسم الكامل (كما في جواز السفر)",
-        "email": "البريد الإلكتروني",
-        "phone": "رقم الهاتف",
-        "passportNumber": "رقم جواز السفر",
-        "passportExpiry": "تاريخ انتهاء جواز السفر",
-        "nationality": "الجنسية",
-        "dateOfBirth": "تاريخ الميلاد",
-        "arrivalDate": "تاريخ الوصول إلى الإمارات",
-        "departureDate": "تاريخ المغادرة من الإمارات",
-        "invitingGuest": "هل ستدعو شخصًا؟",
-        "bedroomPreference": "تفضيل الغرفة",
-        "specialRequirements": "ملاحظات إضافية",
-        "passportPhoto": "صورة جواز السفر",
-        "guestFirstName": "الاسم الأول للضيف",
-        "guestEmail": "البريد الإلكتروني للضيف",
-        "guestPhone": "رقم هاتف الضيف",
-        "guestPassportNumber": "رقم جواز سفر الضيف",
-        "guestPassportExpiry": "تاريخ انتهاء جواز سفر الضيف",
-        "guestNationality": "جنسية الضيف",
-        "guestPassportPhoto": "صورة جواز سفر الضيف"
-      },
-      "guestSection": {
-        "title": "بيانات الضيف",
-        "description": "يرجى تقديم تفاصيل سفر الضيف وتفضيل الغرفة للإقامة في الإمارات."
-      },
-      "options": {
-        "invitingGuestNo": "لا",
-        "invitingGuestYes": "نعم، سأدعو شخصًا",
-        "singleBed": "سرير مفرد",
-        "masterBed": "سرير رئيسي",
-        "extraRoom": "غرفة إضافية"
-      },
-      "placeholders": {
-        "fullName": "أدخل الاسم الكامل كما في جواز السفر",
-        "phone": "يشمل رمز الدولة",
-        "passportNumber": "مثال: AB1234567",
-        "nationality": "مثال: الإمارات العربية المتحدة",
-        "guestFirstName": "أدخل الاسم الأول للضيف",
-        "guestEmail": "guest@example.com",
-        "specialRequirements": "احتياجات غذائية، إمكانية وصول، أو ملاحظات أخرى",
-        "passportPhoto": "ارفع JPG أو PNG أو WEBP أو PDF",
-        "passportExample": "مثال لصورة جواز السفر",
-        "selectDate": "اختر التاريخ",
-        "selectOption": "اختر خيارًا",
-        "selectBedroom": "اختر تفضيل الغرفة"
-      },
-      "errors": {
-        "fullName": "الاسم الكامل مطلوب",
-        "phone": "رقم الهاتف مطلوب",
-        "phoneInvalid": "أدخل رقم هاتف صالحًا",
-        "passportNumber": "رقم جواز السفر مطلوب",
-        "passportExpiry": "تاريخ انتهاء جواز السفر مطلوب",
-        "nationality": "الجنسية مطلوبة",
-        "dateOfBirth": "تاريخ الميلاد مطلوب",
-        "arrivalDate": "تاريخ الوصول مطلوب",
-        "departureDate": "تاريخ المغادرة مطلوب",
-        "departureBeforeArrival": "يجب أن تكون المغادرة في أو بعد تاريخ الوصول",
-        "invitingGuest": "يرجى تحديد ما إذا كنت ستدعو شخصًا",
-        "bedroomPreference": "تفضيل الغرفة مطلوب",
-        "guestFirstName": "الاسم الأول للضيف مطلوب",
-        "guestEmail": "البريد الإلكتروني للضيف مطلوب",
-        "guestEmailInvalid": "أدخل بريدًا إلكترونيًا صالحًا للضيف",
-        "guestPhone": "رقم هاتف الضيف مطلوب",
-        "guestPassportNumber": "رقم جواز سفر الضيف مطلوب",
-        "guestPassportExpiry": "تاريخ انتهاء جواز سفر الضيف مطلوب",
-        "guestNationality": "جنسية الضيف مطلوبة",
-        "guestPassportPhoto": "صورة جواز سفر الضيف مطلوبة",
-        "terms": "يجب تأكيد الشروط للمتابعة",
-        "passportPhoto": "صورة جواز السفر مطلوبة",
-        "passportPhotoType": "يجب أن يكون ملف جواز السفر JPG أو PNG أو WEBP أو PDF",
-        "passportPhotoSize": "يجب ألا تتجاوز صورة جواز السفر 5MB",
-        "emailAlreadyExists": "هذا البريد الإلكتروني مسجل بالفعل."
-      },
-      "submitFailed": "فشل حفظ التسجيل. يرجى المحاولة مرة أخرى."
-    },
-    "publicTicketBooking": {
-      "eyebrow": "تسجيل تذكرة الفعالية",
-      "headingPlain": "احجز تذكرتك",
-      "headingItalic": "للإمارات.",
+    "registerPrompt": "قدّم طلبك لإكمال تسجيل VIP.",
+    "registerComplete": "تم إرسال تسجيلك.",
+    "eventRegistration": {
+      "headingPlain": "سجّل في",
+      "headingItalic": "ليلة جوائز الصقر الذهبي 2026",
       "closeModal": "إغلاق النموذج",
       "verificationTitle": "تحقق من بريدك الإلكتروني",
       "verificationDescription": "أدخل بريدك الإلكتروني وتحقق من الرمز لمرة واحدة قبل إكمال التسجيل.",
@@ -1002,14 +693,33 @@
       "otpExpiresIn": "ينتهي OTP خلال {time}",
       "emailVerified": "تم التحقق من البريد الإلكتروني بنجاح.",
       "verifyEmailFirst": "يرجى التحقق من بريدك الإلكتروني قبل الإرسال.",
-      "ibIdLabel": "معرّف الحساب",
-      "ibIdPlaceholder": "أدخل معرّف حسابك (اختياري)",
+      "ibIdLabel": "رقم المرجع / حساب IB",
+      "ibIdPlaceholder": "أدخل رقم المرجع أو حساب IB",
       "leadDescription": "أكمل بياناتك أدناه للتسجيل في Golden Falcon Awards.",
       "countryOfResidenceLabel": "بلد الإقامة",
       "countrySelect": "اختر بلدك",
       "countryLoading": "جارٍ تحميل البلدان...",
       "countryRequired": "يرجى اختيار بلد إقامتك",
-      "submitLead": "إرسال التسجيل"
+      "submitLead": "إرسال التسجيل",
+      "fields": {
+        "fullName": "الاسم الكامل",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف"
+      },
+      "placeholders": {
+        "fullName": "أدخل اسمك الكامل"
+      },
+      "errors": {
+        "fullName": "الاسم الكامل مطلوب",
+        "phone": "رقم الهاتف مطلوب",
+        "phoneInvalid": "أدخل رقم هاتف صالحًا",
+        "terms": "يجب تأكيد الشروط للمتابعة",
+        "emailAlreadyExists": "هذا البريد الإلكتروني مسجل بالفعل.",
+        "ibIdRequired": "رقم المرجع / حساب IB مطلوب"
+      },
+      "termsLabel": "أؤكد أن المعلومات المقدمة دقيقة وأوافق على شروط الفعالية.",
+      "submitting": "جارٍ الإرسال...",
+      "submitFailed": "فشل حفظ التسجيل. يرجى المحاولة مرة أخرى."
     }
   },
   "checkStatusPage": {
@@ -1142,7 +852,7 @@
       "eyebrow": "وصول Partner الحاليين",
       "headingPlain": "تحقق من حسابك",
       "headingItalic": "لعرض تقدّمك.",
-      "description": "إذا كنت Partner حالياً في GTCFX، أدخل بريدك الإلكتروني المسجّل للتحقق من حالة تأهيل VIP والوصول إلى التذاكر.",
+      "description": "إذا كنت شريك GTCFX حاليًا، أدخل بريدك المسجل للتحقق من حالة تأهيل VIP والوصول إلى الفعالية.",
       "existingClientLabel": "هل أنت Partner حالي في GTCFX؟",
       "selectPlaceholder": "اختر",
       "existingYes": "نعم",
@@ -1186,6 +896,72 @@
         "verifyFailed": "تعذر التحقق من الحساب حالياً. يرجى المحاولة لاحقاً.",
         "serviceUnavailable": "خدمة التحقق غير متاحة مؤقتاً. يرجى المحاولة لاحقاً."
       }
+    },
+    "newClientForm": {
+      "intro": "أنشئ حساب GTCFX الخاص بك لبدء رحلة تأهيل IB لجوائز Golden Falcon.",
+      "fields": {
+        "firstName": "الاسم الأول",
+        "lastName": "اسم العائلة",
+        "email": "البريد الإلكتروني",
+        "emailCode": "رمز التحقق من البريد",
+        "password": "كلمة المرور",
+        "country": "بلد الإقامة",
+        "phone": "الهاتف",
+        "partnerCode": "رمز الشريك",
+        "optional": "اختياري"
+      },
+      "placeholders": {
+        "email": "يرجى إدخال بريد إلكتروني صالح لاستلام رمز التحقق",
+        "emailCode": "أدخل رمز التحقق من البريد",
+        "passwordHint": "8 أحرف على الأقل مع أحرف وأرقام"
+      },
+      "countryLoading": "جارٍ تحميل البلدان...",
+      "countrySelect": "اختر بلدك",
+      "actions": {
+        "getCode": "احصل على الرمز",
+        "sendingCode": "جارٍ الإرسال...",
+        "register": "تسجيل",
+        "registering": "جارٍ الإرسال..."
+      },
+      "a11y": {
+        "showPassword": "إظهار",
+        "hidePassword": "إخفاء"
+      },
+      "legal": {
+        "agreePrefix": "أوافق على",
+        "termsOfService": "شروط الخدمة",
+        "agreeAnd": "و",
+        "privacyPolicy": "سياسة الخصوصية"
+      },
+      "login": {
+        "prefix": "لديك حساب بالفعل؟",
+        "link": "اضغط هنا لتسجيل الدخول"
+      },
+      "errors": {
+        "firstName": "الاسم الأول مطلوب",
+        "firstNameLetters": "يجب أن يحتوي الاسم الأول على أحرف فقط",
+        "lastName": "اسم العائلة مطلوب",
+        "lastNameLetters": "يجب أن يحتوي اسم العائلة على أحرف فقط",
+        "email": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "بريد إلكتروني غير صالح",
+        "emailRegistered": "هذا البريد مسجل بالفعل",
+        "country": "البلد مطلوب",
+        "validCountry": "يرجى اختيار بلد صالح",
+        "phone": "الهاتف مطلوب",
+        "phoneInvalid": "رقم هاتف غير صالح",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "passwordMin": "8 أحرف على الأقل",
+        "passwordPattern": "يجب أن تحتوي على أحرف وأرقام",
+        "otpRequired": "OTP مطلوب",
+        "otpLength": "يجب أن يكون OTP 6 أرقام",
+        "terms": "يجب الموافقة على الشروط"
+      },
+      "toast": {
+        "otpSent": "تم إرسال OTP بنجاح!",
+        "codeError": "فشل إرسال رمز التحقق",
+        "registrationSuccess": "تم التسجيل بنجاح!",
+        "registrationFailed": "فشل التسجيل"
+      }
     }
   },
   "common": {
@@ -1209,7 +985,7 @@
       "registered": "مسجل"
     },
     "formTypes": {
-      "vipTicket": "حجز تذكرة VIP",
+      "vipTicket": "تسجيل VIP",
       "staff": "تسجيل الموظفين"
     },
     "cards": {
@@ -1295,7 +1071,7 @@
     },
     "adminStatus": {
       "description": "تفاصيل محدّثة من فريق الفعاليات بناءً على تسجيلك وترتيبات السفر.",
-      "journeyDescription": "تابع مرحلتك في التأهل والتأشيرة وحجز التذكرة.",
+      "journeyDescription": "تابع مرحلتك في التأهل والتسجيل.",
       "travelDescription": "تفاصيل رحلتك والفندق والنقل المؤكدة.",
       "documentsDescription": "قم بتنزيل أو عرض المستندات التي شاركها فريقنا معك.",
       "submissionDescription": "التفاصيل الأصلية من نموذج التسجيل الخاص بك.",
@@ -1311,9 +1087,9 @@
         "qualificationStatus": "التأهل",
         "visaStatus": "التأشيرة",
         "visaDocument": "مستند التأشيرة",
-        "ticketStatus": "التذكرة",
+        "ticketStatus": "التسجيل",
         "hotelStatus": "الفندق",
-        "eTicket": "التذكرة الإلكترونية",
+        "eTicket": "التأكيد",
         "hotelName": "اسم الفندق",
         "hotelAddress": "عنوان الفندق",
         "hotelFloor": "الطابق",
@@ -1331,7 +1107,7 @@
         "returnDateTime": "العودة",
         "guestPassportCopy": "نسخة جواز سفر الضيف",
         "guestVisaDocument": "مستند تأشيرة الضيف",
-        "guestETicket": "تذكرة الضيف الإلكترونية"
+        "guestETicket": "تأكيد الضيف"
       },
       "hints": {
         "qualificationPending": "يراجع فريقنا أهليتك للفعالية.",
@@ -1339,9 +1115,9 @@
         "visaPending": "ستظهر تحديثات التأشيرة هنا.",
         "visaApproved": "تمت الموافقة على تأشيرتك. يمكنك تنزيل مستند التأشيرة أدناه.",
         "visaRejected": "يرجى التواصل مع الدعم للخطوات التالية بخصوص تأشيرتك.",
-        "ticketPending": "ستظهر تحديثات التذكرة هنا عند بدء المعالجة.",
-        "ticketConfirmed": "تم تأكيد تذكرتك. قم بتنزيل التذكرة الإلكترونية من قسم المستندات.",
-        "ticketCancelled": "يرجى التواصل مع الدعم إذا كنت بحاجة إلى مساعدة بخصوص تذكرتك.",
+        "ticketPending": "ستظهر تحديثات التسجيل هنا عند بدء المعالجة.",
+        "ticketConfirmed": "تم تأكيد تسجيلك. قم بتنزيل التأكيد من قسم المستندات.",
+        "ticketCancelled": "يرجى التواصل مع الدعم إذا كنت بحاجة إلى مساعدة بخصوص تسجيلك.",
         "hotelConfirmed": "تم تعيين طابق الفندق ورقم الغرفة.",
         "hotelPending": "ستظهر تفاصيل غرفة الفندق هنا بمجرد تأكيدها من فريقنا."
       },
@@ -1373,7 +1149,8 @@
       "emailRequired": "يرجى إدخال بريدك الإلكتروني للتحقق من حالتك.",
       "notFound": "لم يتم العثور على تسجيل لهذا البريد الإلكتروني.",
       "loadFailed": "فشل تحميل حالة التسجيل. يرجى المحاولة لاحقًا."
-    }
+    },
+    "journeyDescription": "تابع تقدمك في عملية التأهيل والتسجيل."
   },
   "bookingSuccessPage": {
     "metaTitle": "نجاح — Golden Falcon Awards",
@@ -1381,7 +1158,7 @@
     "headingPlain": "تهانينا!",
     "headingItalic": "تم تسجيلك.",
     "welcomeName": "مرحباً، {name}",
-    "description": "تم إرسال تسجيل تذكرة VIP الخاصة بك لـ Golden Falcon Awards بنجاح. سيراجع فريق الفعاليات تفاصيلك ويتواصل معك للتأكيد.",
+    "description": "تم إرسال تسجيلك في Golden Falcon Awards بنجاح. سيراجع فريق الفعاليات تفاصيلك ويتواصل معك للتأكيد.",
     "emailNoticeTitle": "تم إرسال التأكيد",
     "emailNoticeBody": "تم إرسال رسالة تأكيد إلى بريدك الإلكتروني. يرجى التحقق من مجلد الرسائل غير المرغوب فيها إذا لم تظهر قريباً.",
     "steps": [

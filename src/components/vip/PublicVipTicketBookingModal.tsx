@@ -17,7 +17,7 @@ export default function PublicVipTicketBookingModal({
   onClose,
   user,
 }: PublicVipTicketBookingModalProps) {
-  const t = useTranslations("vipPage.publicTicketBooking");
+  const t = useTranslations("vipPage.eventRegistration");
 
   useEffect(() => {
     if (!open) return;
@@ -54,25 +54,33 @@ export default function PublicVipTicketBookingModal({
             border: "1px solid rgba(56, 41, 16, 0.30)",
             background: "linear-gradient(117deg, #FDFCFA 0.63%, #F3E5CB 100%)",
           }}
+          aria-labelledby="public-vip-booking-title"
         >
-          <div className="mb-5 flex items-start justify-between gap-4">
-            <div>
-              <p className="eyebrow !capitalize text-[#382910]">
-                <span className="font-poppins">{t("eyebrow")}</span>
-              </p>
-              <h2 className="mt-2 font-display HeadingH4 !font-medium !text-ink md:HeadingH3">
-                {t("headingPlain")}{" "}
-                <span className="italic text-falcon-deep">{t("headingItalic")}</span>
-              </h2>
+          <div className="mb-6 border-b border-[#382910]/12 pb-5 md:mb-8 md:pb-6">
+            <div className="flex items-start justify-between gap-4">
+              <div className="max-w-2xl pe-2">
+                <div className="mb-4 flex items-center gap-2" aria-hidden>
+                  <span className="block h-px w-10 bg-falcon-deep/35" />
+                  <span className="block h-2.5 w-2.5 rotate-45 border border-falcon-deep/35" />
+                  <span className="block h-px w-10 bg-falcon-deep/35" />
+                </div>
+                <p className="text-base md:text-2xl text-black"> {t("headingPlain")}</p>
+                <h2
+                  id="public-vip-booking-title"
+                  className="font-display text-[1.75rem] font-medium leading-[1.2] text-ink md:text-[2.125rem] md:leading-[1.15]"
+                >
+                  <span className="italic text-falcon-deep">{t("headingItalic")}</span>
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label={t("closeModal")}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/20 bg-white font-poppins text-lg text-ink transition-colors hover:border-falcon-deep hover:text-falcon-deep"
+              >
+                ×
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label={t("closeModal")}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/20 bg-white font-poppins text-lg text-ink transition-colors hover:border-falcon-deep hover:text-falcon-deep"
-            >
-              ×
-            </button>
           </div>
 
           <PublicVipTicketBookingForm user={user} onSuccess={onClose} />

@@ -2,10 +2,12 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import type { Country } from "react-phone-number-input";
 import { toast } from "react-toastify";
 import Button from "@/components/Button";
 import OtpBoxes from "@/components/ui/OtpBoxes";
 import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhoneInput";
+import { detectClientCountryCode, resolveCountryNameByCode } from "@/lib/detectClientCountryCode";
 import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 import { OTP_TTL_MS } from "@/lib/otpConstants";
 import type { IbClientData, IbPerformanceData, VipUser } from "@/data/vipUsers";
@@ -20,6 +22,7 @@ type PublicVipTicketBookingFormProps = {
 
 type GtcCountry = {
   name: string;
+  code?: string;
   phone_code?: string;
 };
 
@@ -34,10 +37,11 @@ type FormState = {
 
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
-function fieldClass(error?: string) {
-  return `mt-2 h-12 w-full rounded-md border bg-white px-3 font-poppins text-sm text-ink outline-none placeholder:text-ink/40 transition-colors focus:border-falcon-deep ${
-    error ? "border-red-500" : "border-ink/20"
-  }`;
+function fieldClass(error?: string, options?: { withInlineAction?: boolean }) {
+  const base =
+    "h-12 w-full rounded-md border bg-white font-poppins text-sm text-ink outline-none placeholder:text-ink/40 transition-colors focus:border-falcon-deep";
+  const spacing = options?.withInlineAction ? "py-0 pe-28 ps-3" : "mt-2 px-3";
+  return `${spacing} ${base} ${error ? "border-red-500" : "border-ink/20"}`;
 }
 
 function formatOtpCountdown(remainingMs: number) {
@@ -79,8 +83,7 @@ export default function PublicVipTicketBookingForm({
   user,
   onSuccess,
 }: PublicVipTicketBookingFormProps) {
-  const t = useTranslations("vipPage.ticketBooking");
-  const tOtp = useTranslations("vipPage.publicTicketBooking");
+  const t = useTranslations("vipPage.eventRegistration");
   const locale = useLocale();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -95,6 +98,7 @@ export default function PublicVipTicketBookingForm({
   const [now, setNow] = useState(() => Date.now());
   const [countries, setCountries] = useState<GtcCountry[]>([]);
   const [countriesLoading, setCountriesLoading] = useState(true);
+  const [detectedCountryCode, setDetectedCountryCode] = useState<Country | null>(null);
   const [verifiedIbClient, setVerifiedIbClient] = useState<VerifiedIbClient | null>(null);
   const [verifiedIbClientEmail, setVerifiedIbClientEmail] = useState<string | null>(null);
   const [form, setForm] = useState<FormState>({
@@ -115,8 +119,8 @@ export default function PublicVipTicketBookingForm({
     setOtpInput("");
     setVerificationToken("");
     setOtpExpiresAt(null);
-    setOtpError(tOtp("otpExpired"));
-  }, [tOtp]);
+    setOtpError(t("otpExpired"));
+  }, [t]);
 
   useEffect(() => {
     if (!otpExpiresAt || otpVerified) return;
@@ -137,10 +141,28 @@ export default function PublicVipTicketBookingForm({
 
     async function loadCountries() {
       try {
-        const response = await fetch("/api/gtc/get-country", { method: "POST" });
-        const data = await response.json();
+        const [countriesResponse, countryCode] = await Promise.all([
+          fetch("/api/gtc/get-country", { method: "POST" }),
+          detectClientCountryCode(),
+        ]);
+        const data = await countriesResponse.json();
+
         if (!cancelled && data?.code === 200 && Array.isArray(data.data)) {
-          setCountries(data.data);
+          const loadedCountries = data.data as GtcCountry[];
+          setCountries(loadedCountries);
+
+          if (countryCode) {
+            setDetectedCountryCode(countryCode as Country);
+
+            const detectedCountry = resolveCountryNameByCode(loadedCountries, countryCode);
+            if (detectedCountry) {
+              setForm((prev) =>
+                prev.countryOfResidence
+                  ? prev
+                  : { ...prev, countryOfResidence: detectedCountry }
+              );
+            }
+          }
         }
       } catch {
         // ignore
@@ -154,6 +176,17 @@ export default function PublicVipTicketBookingForm({
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    if (!detectedCountryCode || countries.length === 0) return;
+
+    const detectedCountry = resolveCountryNameByCode(countries, detectedCountryCode);
+    if (!detectedCountry) return;
+
+    setForm((prev) =>
+      prev.countryOfResidence ? prev : { ...prev, countryOfResidence: detectedCountry }
+    );
+  }, [detectedCountryCode, countries]);
 
   const updateField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -171,26 +204,42 @@ export default function PublicVipTicketBookingForm({
         setOtpExpiresAt(null);
       }
     }
+
+    if (key === "ibId" && showOtp && !otpVerified) {
+      setShowOtp(false);
+      setOtpInput("");
+      setVerificationToken("");
+      setOtpExpiresAt(null);
+      setOtpError("");
+    }
   };
 
   const validateEmailFormat = () => {
     const trimmedEmail = form.email.trim().toLowerCase();
     if (!trimmedEmail) {
-      setErrors((prev) => ({ ...prev, email: tOtp("emailRequired") }));
+      setErrors((prev) => ({ ...prev, email: t("emailRequired") }));
       return null;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-      setErrors((prev) => ({ ...prev, email: tOtp("emailInvalid") }));
+      setErrors((prev) => ({ ...prev, email: t("emailInvalid") }));
       return null;
     }
     setErrors((prev) => ({ ...prev, email: undefined }));
     return trimmedEmail;
   };
-  
+
+  const validateIbId = () => {
+    if (!form.ibId.trim()) {
+      setErrors((prev) => ({ ...prev, ibId: t("errors.ibIdRequired") }));
+      return false;
+    }
+    setErrors((prev) => ({ ...prev, ibId: undefined }));
+    return true;
+  };
 
   const handleGetOtp = async () => {
     const trimmedEmail = validateEmailFormat();
-    if (!trimmedEmail) return;
+    if (!trimmedEmail || !validateIbId()) return;
 
     setOtpLoading(true);
     setOtpError("");
@@ -205,12 +254,7 @@ export default function PublicVipTicketBookingForm({
         setVerifiedIbClientEmail(trimmedEmail);
       }
 
-      const ibIdForEmail =
-        form.ibId.trim() ||
-        ibClientData?.client.memberId ||
-        user?.ibId ||
-        user?.memberId ||
-        "";
+      const ibIdForEmail = form.ibId.trim();
 
       const response = await fetch("/api/otp-smtp", {
         method: "POST",
@@ -226,7 +270,7 @@ export default function PublicVipTicketBookingForm({
       const data = await response.json();
 
       if (!response.ok || !data?.success) {
-        throw new Error(data?.message || data?.error || tOtp("otpSendFailed"));
+        throw new Error(data?.message || data?.error || t("otpSendFailed"));
       }
 
       setForm((prev) => ({ ...prev, email: trimmedEmail }));
@@ -237,7 +281,7 @@ export default function PublicVipTicketBookingForm({
       setOtpExpiresAt(Date.now() + OTP_TTL_MS);
       setNow(Date.now());
     } catch (error) {
-      setOtpError(error instanceof Error ? error.message : tOtp("otpSendFailed"));
+      setOtpError(error instanceof Error ? error.message : t("otpSendFailed"));
     } finally {
       setOtpLoading(false);
     }
@@ -252,12 +296,12 @@ export default function PublicVipTicketBookingForm({
     }
 
     if (!showOtp || otpInput.length !== 6) {
-      setOtpError(tOtp("otpRequired"));
+      setOtpError(t("otpRequired"));
       return false;
     }
 
     if (!verificationToken) {
-      setOtpError(tOtp("otpSendFailed"));
+      setOtpError(t("otpSendFailed"));
       return false;
     }
 
@@ -277,15 +321,15 @@ export default function PublicVipTicketBookingForm({
       const data = await response.json();
 
       if (!response.ok || !data?.success) {
-        setOtpError(tOtp("otpInvalid"));
+        setOtpError(t("otpInvalid"));
         return false;
       }
 
       setOtpVerified(true);
-      toast.success(tOtp("emailVerified"));
+      toast.success(t("emailVerified"));
       return true;
     } catch {
-      setOtpError(tOtp("otpInvalid"));
+      setOtpError(t("otpInvalid"));
       return false;
     } finally {
       setOtpVerifying(false);
@@ -296,7 +340,7 @@ export default function PublicVipTicketBookingForm({
     const nextErrors: FormErrors = {};
 
     if (!otpVerified) {
-      toast.error(tOtp("verifyEmailFirst"));
+      toast.error(t("verifyEmailFirst"));
       return false;
     }
 
@@ -307,7 +351,10 @@ export default function PublicVipTicketBookingForm({
       nextErrors.phone = t("errors.phoneInvalid");
     }
     if (!form.countryOfResidence.trim()) {
-      nextErrors.countryOfResidence = tOtp("countryRequired");
+      nextErrors.countryOfResidence = t("countryRequired");
+    }
+    if (!form.ibId.trim()) {
+      nextErrors.ibId = t("errors.ibIdRequired");
     }
     if (!form.terms) nextErrors.terms = t("errors.terms");
 
@@ -318,7 +365,7 @@ export default function PublicVipTicketBookingForm({
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!otpVerified) {
-      toast.error(tOtp("verifyEmailFirst"));
+      toast.error(t("verifyEmailFirst"));
       return;
     }
     if (!validate()) return;
@@ -332,7 +379,7 @@ export default function PublicVipTicketBookingForm({
         verifiedIbClientEmail === normalizedEmail ? verifiedIbClient : null;
 
       const memberId = cachedIbClient?.client.memberId || user?.memberId || "PUBLIC";
-      const ibId = form.ibId.trim() || cachedIbClient?.client.memberId || user?.ibId || "";
+      const ibId = form.ibId.trim();
 
       const payload = new FormData();
       payload.append("leadForm", "true");
@@ -405,46 +452,60 @@ export default function PublicVipTicketBookingForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="rounded-xl border border-[#382910]/15 bg-white/70 p-4 md:p-5">
-        <p className="font-display text-base font-medium text-ink">{tOtp("verificationTitle")}</p>
-        <p className="mt-1 TextSmall !font-poppins !text-ink/70">{tOtp("verificationDescription")}</p>
+        <p className="font-display text-base font-medium text-ink">{t("verificationTitle")}</p>
+        <p className="mt-1 TextSmall !font-poppins !text-ink/70">{t("verificationDescription")}</p>
 
         <div className="mt-4">
           <label className="form-field-label font-poppins text-sm text-ink/70">
             {t("fields.email")} *
           </label>
-          <input
-            type="email"
-            value={form.email}
-            onChange={(e) => updateField("email", e.target.value)}
-            readOnly={otpVerified}
-            className={`${fieldClass(errors.email)} ${otpVerified ? "bg-ink/5" : ""}`}
-            placeholder={tOtp("emailPlaceholder")}
-          />
+          <div className="relative mt-2">
+            <input
+              type="email"
+              value={form.email}
+              onChange={(e) => updateField("email", e.target.value)}
+              readOnly={otpVerified}
+              className={`${fieldClass(errors.email, { withInlineAction: !otpVerified })} ${otpVerified ? "bg-ink/5 pe-3" : ""}`}
+              placeholder={t("emailPlaceholder")}
+            />
+            {!otpVerified && (
+              <button
+                type="button"
+                onClick={handleGetOtp}
+                disabled={otpLoading}
+                className="absolute end-1.5 top-1/2 -translate-y-1/2 rounded-full border border-falcon-deep bg-white px-3 py-1.5 font-poppins text-[11px] uppercase tracking-[0.08em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {otpLoading ? t("sendingOtp") : t("getOtp")}
+              </button>
+            )}
+          </div>
           {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
         </div>
 
-        {!otpVerified && (
-          <div className="mt-4 flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={handleGetOtp}
-              disabled={otpLoading || otpVerified}
-              className="rounded-full border border-falcon-deep px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {otpLoading ? tOtp("sendingOtp") : tOtp("getOtp")}
-            </button>
-          </div>
-        )}
+        <div className="mt-4">
+          <label className="form-field-label font-poppins text-sm text-ink/70">
+            {t("ibIdLabel")} *
+          </label>
+          <input
+            type="text"
+            value={form.ibId}
+            onChange={(e) => updateField("ibId", e.target.value)}
+            readOnly={otpVerified}
+            className={`${fieldClass(errors.ibId)} ${otpVerified ? "bg-ink/5" : ""}`}
+            placeholder={t("ibIdPlaceholder")}
+          />
+          {errors.ibId && <p className="mt-1 text-xs text-red-600">{errors.ibId}</p>}
+        </div>
 
         {showOtp && !otpVerified && (
           <div className="mt-4 space-y-3">
             <label className="form-field-label font-poppins text-sm text-ink/70">
-              {tOtp("otpLabel")}
+              {t("otpLabel")}
             </label>
             <OtpBoxes value={otpInput} onChange={setOtpInput} disabled={otpVerifying} />
             {otpRemainingMs > 0 && (
               <p className="font-poppins text-xs text-ink/55">
-                {tOtp("otpExpiresIn", { time: formatOtpCountdown(otpRemainingMs) })}
+                {t("otpExpiresIn", { time: formatOtpCountdown(otpRemainingMs) })}
               </p>
             )}
             {otpError && <p className="text-xs text-red-600">{otpError}</p>}
@@ -454,20 +515,20 @@ export default function PublicVipTicketBookingForm({
               disabled={otpVerifying || otpInput.length !== 6}
               className="rounded-full bg-falcon-deep px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {otpVerifying ? tOtp("verifyingOtp") : tOtp("verifyOtp")}
+              {otpVerifying ? t("verifyingOtp") : t("verifyOtp")}
             </button>
           </div>
         )}
 
         {otpVerified && (
           <p className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 font-poppins text-sm text-emerald-800">
-            {tOtp("emailVerified")}
+            {t("emailVerified")}
           </p>
         )}
       </div>
 
       <fieldset disabled={!otpVerified} className="space-y-4 disabled:opacity-60">
-        <p className="TextSmall !font-poppins !text-ink/75">{tOtp("leadDescription")}</p>
+ 
 
         <div>
           <label className="form-field-label font-poppins text-sm text-ink/70">
@@ -488,17 +549,19 @@ export default function PublicVipTicketBookingForm({
             {t("fields.phone")} *
           </label>
           <FalconPhoneInput
+            key={detectedCountryCode ?? "default-phone-country"}
             id="public-vip-phone"
             value={form.phone}
             onChange={(value) => updateField("phone", value)}
             error={errors.phone}
+            defaultCountry={detectedCountryCode ?? "AE"}
           />
           {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
         </div>
 
         <div>
           <label htmlFor="public-vip-country" className="form-field-label font-poppins text-sm text-ink/70">
-            {tOtp("countryOfResidenceLabel")} *
+            {t("countryOfResidenceLabel")} *
           </label>
           <select
             id="public-vip-country"
@@ -507,7 +570,7 @@ export default function PublicVipTicketBookingForm({
             className={`${fieldClass(errors.countryOfResidence)} appearance-none`}
           >
             <option value="">
-              {countriesLoading ? tOtp("countryLoading") : tOtp("countrySelect")}
+              {countriesLoading ? t("countryLoading") : t("countrySelect")}
             </option>
             {sortedCountries.map((country) => (
               <option key={country.name} value={country.name}>
@@ -518,20 +581,6 @@ export default function PublicVipTicketBookingForm({
           {errors.countryOfResidence && (
             <p className="mt-1 text-xs text-red-600">{errors.countryOfResidence}</p>
           )}
-        </div>
-
-        <div>
-          <label className="form-field-label font-poppins text-sm text-ink/70">
-            {tOtp("ibIdLabel")}
-          </label>
-          <input
-            type="text"
-            value={form.ibId}
-            onChange={(e) => updateField("ibId", e.target.value)}
-            className={fieldClass(errors.ibId)}
-            placeholder={tOtp("ibIdPlaceholder")}
-          />
-          {errors.ibId && <p className="mt-1 text-xs text-red-600">{errors.ibId}</p>}
         </div>
 
         <label className="flex items-start gap-3 text-sm text-ink/80">
@@ -552,7 +601,7 @@ export default function PublicVipTicketBookingForm({
           textClassName="text-white flex-1"
           disabled={loading || !otpVerified}
         >
-          {loading ? t("submitting") : tOtp("submitLead")}
+          {loading ? t("submitting") : t("submitLead")}
         </Button>
       </fieldset>
     </form>
