@@ -8,6 +8,8 @@ const nextConfig = {
     serverComponentsExternalPackages: ["axios", "tough-cookie", "axios-cookiejar-support"],
   },
   images: {
+    // Self-hosted EC2: skip /_next/image optimizer unless sharp is installed reliably.
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "gtcfx-bucket.s3.ap-southeast-1.amazonaws.com" }
