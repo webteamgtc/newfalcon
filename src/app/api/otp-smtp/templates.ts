@@ -521,7 +521,6 @@ function buildInvitationEarnedBody(vars: EmailTemplateVars, locale: EmailLocale)
     </p>
     <p style="margin:0 0 8px;padding:0;">Our team will arrange your:</p>
     <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin:0 0 20px 0;">
-      <tr><td valign="top" style="padding:0 8px 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">&bull;</td><td style="padding:0 0 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">Flight ticket</td></tr>
       <tr><td valign="top" style="padding:0 8px 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">&bull;</td><td style="padding:0 0 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">Hotel accommodation</td></tr>
       <tr><td valign="top" style="padding:0 8px 0 0;font-size:14px;line-height:18px;color:#3b2c1c;">&bull;</td><td style="padding:0;font-size:14px;line-height:18px;color:#3b2c1c;">Event delivery details</td></tr>
     </table>

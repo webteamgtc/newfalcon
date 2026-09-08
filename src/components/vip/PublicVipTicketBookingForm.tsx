@@ -95,6 +95,8 @@ export default function PublicVipTicketBookingForm({
   const [now, setNow] = useState(() => Date.now());
   const [countries, setCountries] = useState<GtcCountry[]>([]);
   const [countriesLoading, setCountriesLoading] = useState(true);
+  const [verifiedIbClient, setVerifiedIbClient] = useState<VerifiedIbClient | null>(null);
+  const [verifiedIbClientEmail, setVerifiedIbClientEmail] = useState<string | null>(null);
   const [form, setForm] = useState<FormState>({
     fullName: user ? `${user.firstName} ${user.lastName}`.trim() : "",
     email: user?.email ?? "",
@@ -156,6 +158,19 @@ export default function PublicVipTicketBookingForm({
   const updateField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
     setErrors((prev) => ({ ...prev, [key]: undefined }));
+
+    if (key === "email" && typeof value === "string") {
+      const normalized = value.trim().toLowerCase();
+      if (verifiedIbClientEmail && verifiedIbClientEmail !== normalized) {
+        setVerifiedIbClient(null);
+        setVerifiedIbClientEmail(null);
+        setShowOtp(false);
+        setOtpVerified(false);
+        setOtpInput("");
+        setVerificationToken("");
+        setOtpExpiresAt(null);
+      }
+    }
   };
 
   const validateEmailFormat = () => {
@@ -171,6 +186,7 @@ export default function PublicVipTicketBookingForm({
     setErrors((prev) => ({ ...prev, email: undefined }));
     return trimmedEmail;
   };
+  
 
   const handleGetOtp = async () => {
     const trimmedEmail = validateEmailFormat();
@@ -180,13 +196,29 @@ export default function PublicVipTicketBookingForm({
     setOtpError("");
 
     try {
+      let ibClientData =
+        verifiedIbClientEmail === trimmedEmail ? verifiedIbClient : null;
+
+      if (verifiedIbClientEmail !== trimmedEmail) {
+        ibClientData = await verifyIbClientBeforeBooking(trimmedEmail);
+        setVerifiedIbClient(ibClientData);
+        setVerifiedIbClientEmail(trimmedEmail);
+      }
+
+      const ibIdForEmail =
+        form.ibId.trim() ||
+        ibClientData?.client.memberId ||
+        user?.ibId ||
+        user?.memberId ||
+        "";
+
       const response = await fetch("/api/otp-smtp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: trimmedEmail,
           first_name: form.fullName.trim() || trimmedEmail.split("@")[0] || "Guest",
-          ibId: form.ibId.trim() || user?.ibId || user?.memberId || "",
+          ibId: ibIdForEmail,
           locale,
         }),
       });
@@ -295,10 +327,12 @@ export default function PublicVipTicketBookingForm({
 
     try {
       const registrationUserId = user?.id ?? `public_${form.email.trim().toLowerCase()}`;
-      const verifiedIbClient = await verifyIbClientBeforeBooking(form.email);
+      const normalizedEmail = form.email.trim().toLowerCase();
+      const cachedIbClient =
+        verifiedIbClientEmail === normalizedEmail ? verifiedIbClient : null;
 
-      const memberId = verifiedIbClient?.client.memberId || user?.memberId || "PUBLIC";
-      const ibId = form.ibId.trim() || verifiedIbClient?.client.memberId || user?.ibId || "";
+      const memberId = cachedIbClient?.client.memberId || user?.memberId || "PUBLIC";
+      const ibId = form.ibId.trim() || cachedIbClient?.client.memberId || user?.ibId || "";
 
       const payload = new FormData();
       payload.append("leadForm", "true");
@@ -314,7 +348,7 @@ export default function PublicVipTicketBookingForm({
       payload.append("memberId", memberId);
       payload.append("userId", registrationUserId);
       payload.append("ibId", ibId);
-      payload.append("ibClient", verifiedIbClient ? JSON.stringify(verifiedIbClient) : "null");
+      payload.append("ibClient", cachedIbClient ? JSON.stringify(cachedIbClient) : "null");
       payload.append("terms", String(form.terms));
 
       const response = await fetch("/api/vip-ticket-booking", {
@@ -340,7 +374,7 @@ export default function PublicVipTicketBookingForm({
           JSON.stringify({
             ...form,
             memberId,
-            ibClient: verifiedIbClient,
+            ibClient: cachedIbClient,
             submittedAt: new Date().toISOString(),
             mongoId: data.id,
           })
