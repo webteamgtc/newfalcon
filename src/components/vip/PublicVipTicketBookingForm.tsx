@@ -10,14 +10,21 @@ import FalconPhoneInput, { isValidPhoneNumber } from "@/components/ui/FalconPhon
 import { detectClientCountryCode, resolveCountryNameByCode } from "@/lib/detectClientCountryCode";
 import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 import { OTP_TTL_MS } from "@/lib/otpConstants";
+import PublicRegistrationSuccess from "@/components/vip/PublicRegistrationSuccess";
 import type { IbClientData, IbPerformanceData, VipUser } from "@/data/vipUsers";
 import { useRouter } from "@/i18n/routing";
 
 const PUBLIC_BOOKING_STORAGE_KEY = "gfn_public_vip_ticket_booking";
 
+type SubmitSuccessDetails = {
+  email: string;
+  fullName: string;
+};
+
 type PublicVipTicketBookingFormProps = {
   user?: VipUser;
-  onSuccess?: () => void;
+  onSuccessClose?: () => void;
+  onSubmitted?: () => void;
 };
 
 type GtcCountry = {
@@ -81,11 +88,13 @@ async function verifyIbClientBeforeBooking(email: string): Promise<VerifiedIbCli
 
 export default function PublicVipTicketBookingForm({
   user,
-  onSuccess,
+  onSuccessClose,
+  onSubmitted,
 }: PublicVipTicketBookingFormProps) {
   const t = useTranslations("vipPage.eventRegistration");
   const locale = useLocale();
   const router = useRouter();
+  const [submitSuccess, setSubmitSuccess] = useState<SubmitSuccessDetails | null>(null);
   const [loading, setLoading] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [otpInput, setOtpInput] = useState("");
@@ -228,18 +237,9 @@ export default function PublicVipTicketBookingForm({
     return trimmedEmail;
   };
 
-  const validateIbId = () => {
-    if (!form.ibId.trim()) {
-      setErrors((prev) => ({ ...prev, ibId: t("errors.ibIdRequired") }));
-      return false;
-    }
-    setErrors((prev) => ({ ...prev, ibId: undefined }));
-    return true;
-  };
-
   const handleGetOtp = async () => {
     const trimmedEmail = validateEmailFormat();
-    if (!trimmedEmail || !validateIbId()) return;
+    if (!trimmedEmail) return;
 
     setOtpLoading(true);
     setOtpError("");
@@ -254,7 +254,12 @@ export default function PublicVipTicketBookingForm({
         setVerifiedIbClientEmail(trimmedEmail);
       }
 
-      const ibIdForEmail = form.ibId.trim();
+      const ibIdForEmail =
+        form.ibId.trim() ||
+        ibClientData?.client.memberId ||
+        user?.ibId ||
+        user?.memberId ||
+        "";
 
       const response = await fetch("/api/otp-smtp", {
         method: "POST",
@@ -273,7 +278,11 @@ export default function PublicVipTicketBookingForm({
         throw new Error(data?.message || data?.error || t("otpSendFailed"));
       }
 
-      setForm((prev) => ({ ...prev, email: trimmedEmail }));
+      setForm((prev) => ({
+        ...prev,
+        email: trimmedEmail,
+        ibId: prev.ibId.trim() || ibClientData?.client.memberId || prev.ibId,
+      }));
       setShowOtp(true);
       setOtpInput("");
       setVerificationToken(data.verificationToken || "");
@@ -379,7 +388,8 @@ export default function PublicVipTicketBookingForm({
         verifiedIbClientEmail === normalizedEmail ? verifiedIbClient : null;
 
       const memberId = cachedIbClient?.client.memberId || user?.memberId || "PUBLIC";
-      const ibId = form.ibId.trim();
+      const ibId =
+        form.ibId.trim() || cachedIbClient?.client.memberId || user?.ibId || "";
 
       const payload = new FormData();
       payload.append("leadForm", "true");
@@ -438,16 +448,32 @@ export default function PublicVipTicketBookingForm({
         locale,
       });
 
-      onSuccess?.();
-      router.push(
-        `/success?email=${encodeURIComponent(form.email)}&name=${encodeURIComponent(form.fullName)}`
-      );
+      setSubmitSuccess({ email: form.email, fullName: form.fullName });
+      onSubmitted?.();
     } catch (error) {
       toast.error(error instanceof Error ? error.message : t("submitFailed"));
     } finally {
       setLoading(false);
     }
   };
+
+  const handleSuccessClose = () => {
+    if (onSuccessClose) {
+      onSuccessClose();
+      return;
+    }
+    router.push("/");
+  };
+
+  if (submitSuccess) {
+    return (
+      <PublicRegistrationSuccess
+        email={submitSuccess.email}
+        fullName={submitSuccess.fullName}
+        onClose={handleSuccessClose}
+      />
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

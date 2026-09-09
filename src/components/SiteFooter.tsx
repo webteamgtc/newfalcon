@@ -22,18 +22,21 @@
 //   );
 // }
 
+"use client";
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Button from "@/components/Button";
 import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
 import { SECTION_BG_IMAGE_POSITION } from "@/lib/sectionLayout";
-
+import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
+import { useState } from "react";
 export default function SiteFooter() {
   const t = useTranslations("home.footerCta");
   const t2 = useTranslations("footer");
-
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
   return (
+    <>
     <section className="relative isolate overflow-hidden md:pt-24 pt-8">
       <SectionBackgroundImage src="/new/footer-img.webp" className={SECTION_BG_IMAGE_POSITION} />
       <div className="relative z-10 container text-left">
@@ -44,7 +47,7 @@ export default function SiteFooter() {
           {t("headingPlain")}<span className="italic">{t("headingItalic")}</span>
         </h2>
         <p className=" mt-6 max-w-lg text-sm md:text-xl !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
-        <Button href="/check-status" className="mt-10">
+        <Button onClick={() => setBookingModalOpen(true)} className="mt-10">
           {t("cta")}
         </Button>
       </div>
@@ -63,5 +66,10 @@ export default function SiteFooter() {
       </div>
     </footer>
     </section>
+    <PublicVipTicketBookingModal
+        open={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+      />
+    </>
   );
 }

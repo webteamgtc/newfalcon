@@ -476,31 +476,14 @@ function buildRegistrationStartedBody(vars: EmailTemplateVars, locale: EmailLoca
 
 function buildInvitationEarnedBody(vars: EmailTemplateVars, locale: EmailLocale) {
   const name = resolveName(vars.firstName, locale);
-  const registrationLink = vars.registrationLink || DEFAULT_STATUS_SITE;
-  const statusSiteUrl = vars.statusSiteUrl || DEFAULT_STATUS_SITE;
 
   if (locale === "zh") {
     return `
     <p style="margin:0 0 20px;padding:0;">尊敬的 ${name}，</p>
-    <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">恭喜！</strong></p>
+    <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">注册完成</strong></p>
+    <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">恭喜！您已成功注册。</strong></p>
     <p style="margin:0 0 20px;padding:0;">
-      您已成功完成所需目标，获得
-      <strong style="font-weight:700;">${ZH_EVENT_NAME}</strong> 专属邀请。
-    </p>
-    <p style="margin:0 0 20px;padding:0;">请完善您的个人及出行信息：</p>
-    <p style="margin:0 0 6px;padding:0;"><strong style="font-weight:700;">注册链接：</strong></p>
-    <p style="margin:0 0 20px;padding:0;">
-      <a href="${registrationLink}" target="_blank" style="color:#3b2c1c;font-weight:700;text-decoration:underline;">完成注册</a>
-    </p>
-    <p style="margin:0 0 8px;padding:0;">我们的团队将为您安排：</p>
-    <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin:0 0 20px 0;">
-      <tr><td valign="top" style="padding:0 8px 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">&bull;</td><td style="padding:0 0 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">机票</td></tr>
-      <tr><td valign="top" style="padding:0 8px 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">&bull;</td><td style="padding:0 0 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">酒店住宿</td></tr>
-      <tr><td valign="top" style="padding:0 8px 0 0;font-size:14px;line-height:18px;color:#3b2c1c;">&bull;</td><td style="padding:0;font-size:14px;line-height:18px;color:#3b2c1c;">活动交付详情</td></tr>
-    </table>
-    <p style="margin:0 0 6px;padding:0;">您可随时查看最新进展：</p>
-    <p style="margin:0 0 20px;padding:0;">
-      <a href="${statusSiteUrl}" target="_blank" style="color:#3b2c1c;font-weight:700;text-decoration:underline;">${statusSiteUrl}</a>
+      您的 Golden Falcon Awards 注册已成功提交。我们的活动团队将审核您的信息并与您联系确认。
     </p>
     <p style="margin:0 0 20px;padding:0;">我们期待在迪拜欢迎您。</p>
     <p style="margin:0;padding:0;">此致敬礼，</p>
@@ -509,24 +492,10 @@ function buildInvitationEarnedBody(vars: EmailTemplateVars, locale: EmailLocale)
 
   return `
     <p style="margin:0 0 20px;padding:0;">Dear ${name},</p>
-    <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">Congratulations!</strong></p>
+    <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">Registration complete</strong></p>
+    <p style="margin:0 0 20px;padding:0;"><strong style="font-weight:700;">Congratulations! You're registered.</strong></p>
     <p style="margin:0 0 20px;padding:0;">
-      You have successfully completed the required target and earned your exclusive invitation to
-      <strong style="font-weight:700;">${EN_EVENT_NAME}.</strong>
-    </p>
-    <p style="margin:0 0 20px;padding:0;">Please complete your personal and travel information below:</p>
-    <p style="margin:0 0 6px;padding:0;"><strong style="font-weight:700;">Registration Link:</strong></p>
-    <p style="margin:0 0 20px;padding:0;">
-      <a href="${registrationLink}" target="_blank" style="color:#3b2c1c;font-weight:700;text-decoration:underline;">Complete Your Registration</a>
-    </p>
-    <p style="margin:0 0 8px;padding:0;">Our team will arrange your:</p>
-    <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin:0 0 20px 0;">
-      <tr><td valign="top" style="padding:0 8px 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">&bull;</td><td style="padding:0 0 5px 0;font-size:14px;line-height:18px;color:#3b2c1c;">Hotel accommodation</td></tr>
-      <tr><td valign="top" style="padding:0 8px 0 0;font-size:14px;line-height:18px;color:#3b2c1c;">&bull;</td><td style="padding:0;font-size:14px;line-height:18px;color:#3b2c1c;">Event delivery details</td></tr>
-    </table>
-    <p style="margin:0 0 6px;padding:0;">You can check your latest updates anytime:</p>
-    <p style="margin:0 0 20px;padding:0;">
-      <a href="${statusSiteUrl}" target="_blank" style="color:#3b2c1c;font-weight:700;text-decoration:underline;">${statusSiteUrl}</a>
+      Your registration for Golden Falcon Awards has been submitted successfully. Our events team will review your details and contact you with confirmation.
     </p>
     <p style="margin:0 0 20px;padding:0;">We look forward to welcoming you in Dubai.</p>
     <p style="margin:0;padding:0;">Warm regards,</p>
@@ -608,11 +577,11 @@ const EMAIL_META: Record<
         `Thank you for joining ${EN_EVENT_NAME}. Your registration journey has started.`,
     },
     invitation_earned: {
-      subject: `Congratulations! Your ${EN_EVENT_NAME} Invitation Is Ready`,
-      pageTitle: "Golden Falcon Night 2026 - Invitation Earned",
-      eyebrow: "YOU ARE INVITED",
-      plainText: ({ registrationLink = DEFAULT_STATUS_SITE }) =>
-        `Congratulations! Complete your registration: ${registrationLink}`,
+      subject: "Registration complete – Golden Falcon Awards",
+      pageTitle: "Golden Falcon Night 2026 - Registration Complete",
+      eyebrow: "REGISTRATION COMPLETE",
+      plainText: () =>
+        "Congratulations! You're registered. Your registration for Golden Falcon Awards has been submitted successfully. Our events team will review your details and contact you with confirmation.",
     },
     travel_confirmed: {
       subject: `Welcome to Dubai – Your ${EN_EVENT_NAME} Details`,
@@ -639,11 +608,11 @@ const EMAIL_META: Record<
       plainText: () => `感谢您加入${ZH_EVENT_NAME}，您的注册流程已开始。`,
     },
     invitation_earned: {
-      subject: `恭喜 – 您的${ZH_EVENT_NAME} 专属邀请已准备好`,
-      pageTitle: `${ZH_EVENT_NAME} - 邀请已达成`,
-      eyebrow: "诚挚邀请",
-      plainText: ({ registrationLink = DEFAULT_STATUS_SITE }) =>
-        `恭喜！请完成${ZH_EVENT_NAME} 注册：${registrationLink}`,
+      subject: "注册完成 – Golden Falcon Awards",
+      pageTitle: `${ZH_EVENT_NAME} - 注册完成`,
+      eyebrow: "注册完成",
+      plainText: () =>
+        "恭喜！您已成功注册。您的 Golden Falcon Awards 注册已成功提交。我们的活动团队将审核您的信息并与您联系确认。",
     },
     travel_confirmed: {
       subject: `欢迎抵达迪拜 – 您的${ZH_EVENT_NAME} 行程已确认`,
