@@ -188,7 +188,10 @@ class FireworksDisplay {
   private animationId: number | null = null;
   private stopped = false;
 
-  constructor(private canvas: HTMLCanvasElement) {
+  constructor(
+    private canvas: HTMLCanvasElement,
+    private getSize: () => { width: number; height: number }
+  ) {
     const ctx = canvas.getContext("2d");
     if (!ctx) {
       throw new Error("Could not get canvas context");
@@ -203,8 +206,9 @@ class FireworksDisplay {
   }
 
   resize = () => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const { width, height } = this.getSize();
+    if (width <= 0 || height <= 0) return;
+
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     this.canvas.width = width * dpr;
@@ -236,8 +240,9 @@ class FireworksDisplay {
   }
 }
 
-export default function CelebrationAnimation() {
+export default function CelebrationAnimation({ contained = false }: { contained?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const displayRef = useRef<FireworksDisplay | null>(null);
 
   useEffect(() => {
@@ -247,26 +252,51 @@ export default function CelebrationAnimation() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    const getSize = () => {
+      if (contained && containerRef.current) {
+        return {
+          width: containerRef.current.clientWidth,
+          height: containerRef.current.clientHeight,
+        };
+      }
+
+      return {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    };
+
     let display: FireworksDisplay;
     try {
-      display = new FireworksDisplay(canvas);
+      display = new FireworksDisplay(canvas, getSize);
       displayRef.current = display;
     } catch {
       return;
     }
 
-    window.addEventListener("resize", display.resize);
+    const handleResize = () => display.resize();
+    window.addEventListener("resize", handleResize);
+
+    let resizeObserver: ResizeObserver | undefined;
+    if (contained && containerRef.current) {
+      resizeObserver = new ResizeObserver(handleResize);
+      resizeObserver.observe(containerRef.current);
+    }
 
     return () => {
-      window.removeEventListener("resize", display.resize);
+      window.removeEventListener("resize", handleResize);
+      resizeObserver?.disconnect();
       display.stop();
       displayRef.current = null;
     };
-  }, []);
+  }, [contained]);
 
   return (
     <div
-      className="celebration-fireworks-overlay pointer-events-none fixed inset-0 z-[5] overflow-hidden"
+      ref={containerRef}
+      className={`celebration-fireworks-overlay pointer-events-none overflow-hidden ${
+        contained ? "absolute inset-0 z-0" : "fixed inset-0 z-[5]"
+      }`}
       aria-hidden
     >
       <canvas ref={canvasRef} className="block h-full w-full" />
