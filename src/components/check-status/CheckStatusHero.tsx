@@ -7,7 +7,7 @@ export default function CheckStatusHero() {
   const t = useTranslations("checkStatusPage");
 
   return (
-    <section className="relative flex min-h-[52vh] items-center pb-8 pt-32 md:min-h-[58vh] md:pb-12 md:pt-40">
+    <section className="relative flex min-h-[52vh] items-center overflow-hidden bg-[url('/new/statusB.webp')] bg-cover bg-center bg-no-repeat pb-8 pt-32 md:min-h-[58vh] md:pb-12 md:pt-40">
       <div className="container relative grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
         <div className="max-w-2xl md:self-center">
           <p className="eyebrow !capitalize text-ink/65">
