@@ -8,7 +8,11 @@ export default function CheckStatusHero() {
 
   return (
     <section className="relative flex min-h-[52vh] items-center overflow-hidden bg-[url('/new/statusB.webp')] bg-cover bg-center bg-no-repeat pb-8 pt-32 md:min-h-[58vh] md:pb-12 md:pt-40">
-      <div className="container relative grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[52%] bg-gradient-to-b from-white/90 via-white/45 to-transparent md:hidden"
+        aria-hidden
+      />
+      <div className="container relative z-10 grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
         <div className="max-w-2xl md:self-center">
           <p className="eyebrow !capitalize text-ink/65">
             <span className="font-poppins">
@@ -40,10 +44,6 @@ export default function CheckStatusHero() {
 
               <PublicVipTicketBookingForm />
             </div>
-
-            <p className="mx-auto mt-6 max-w-md text-center font-poppins text-[11px] leading-relaxed text-ink/50">
-              {t("bottomNote")}
-            </p>
           </div>
         </section>
       </div>
