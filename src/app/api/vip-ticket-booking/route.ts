@@ -74,7 +74,7 @@ export async function POST(request: Request) {
     const isLeadForm = getField("leadForm") === "true";
 
     const requiredFields = isLeadForm
-      ? ["fullName", "email", "phone", "nationality", "memberId", "userId"]
+      ? ["fullName", "email", "memberId", "userId"]
       : ["fullName", "email", "phone", "passportNumber", "passportExpiry", "invitingGuest", "memberId", "userId"];
 
     for (const field of requiredFields) {

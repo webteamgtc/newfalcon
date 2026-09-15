@@ -1,13 +1,32 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import CelebrationAnimation from "@/components/booking/CelebrationAnimation";
 import PublicVipTicketBookingForm from "@/components/vip/PublicVipTicketBookingForm";
+
+const HERO_CELEBRATION_MS = 4000;
 
 export default function CheckStatusHero() {
   const t = useTranslations("checkStatusPage");
+  const [showCelebration, setShowCelebration] = useState(false);
+
+  useEffect(() => {
+    if (!showCelebration) return;
+
+    const timer = window.setTimeout(() => {
+      setShowCelebration(false);
+    }, HERO_CELEBRATION_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [showCelebration]);
 
   return (
     <section className="relative flex min-h-[52vh] items-center overflow-hidden bg-[url('/new/statusB.webp')] bg-cover bg-center bg-no-repeat pb-8 pt-32 md:min-h-[58vh] md:pb-12 md:pt-40">
+      {showCelebration && (
+        <CelebrationAnimation contained durationMs={HERO_CELEBRATION_MS} />
+      )}
+
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[52%] bg-gradient-to-b from-white/90 via-white/45 to-transparent md:hidden"
         aria-hidden
@@ -42,7 +61,7 @@ export default function CheckStatusHero() {
                 aria-hidden
               />
 
-              <PublicVipTicketBookingForm />
+              <PublicVipTicketBookingForm onSubmitted={() => setShowCelebration(true)} />
             </div>
           </div>
         </section>
