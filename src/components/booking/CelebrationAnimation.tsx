@@ -240,7 +240,13 @@ class FireworksDisplay {
   }
 }
 
-export default function CelebrationAnimation({ contained = false }: { contained?: boolean }) {
+export default function CelebrationAnimation({
+  contained = false,
+  durationMs,
+}: {
+  contained?: boolean;
+  durationMs?: number;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const displayRef = useRef<FireworksDisplay | null>(null);
@@ -283,13 +289,21 @@ export default function CelebrationAnimation({ contained = false }: { contained?
       resizeObserver.observe(containerRef.current);
     }
 
+    let durationTimer: number | undefined;
+    if (durationMs && durationMs > 0) {
+      durationTimer = window.setTimeout(() => {
+        display.stop();
+      }, durationMs);
+    }
+
     return () => {
+      window.clearTimeout(durationTimer);
       window.removeEventListener("resize", handleResize);
       resizeObserver?.disconnect();
       display.stop();
       displayRef.current = null;
     };
-  }, [contained]);
+  }, [contained, durationMs]);
 
   return (
     <div
