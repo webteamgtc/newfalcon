@@ -853,6 +853,9 @@
         "ibIdRequired": "Reference number / IB account is required"
       },
       "termsLabel": "I confirm that the information provided is accurate and I agree to the event terms.",
+      "termsLabelBefore": "I confirm that the information provided is accurate and I agree to the ",
+      "termsLinkLabel": "event terms",
+      "termsLabelAfter": ".",
       "submitting": "Submitting...",
       "submitFailed": "Failed to save registration. Please try again."
     }

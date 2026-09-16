@@ -9,7 +9,7 @@ import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 import { OTP_TTL_MS } from "@/lib/otpConstants";
 import PublicRegistrationSuccess from "@/components/vip/PublicRegistrationSuccess";
 import type { IbClientData, IbPerformanceData, VipUser } from "@/data/vipUsers";
-import { useRouter } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 
 const PUBLIC_BOOKING_STORAGE_KEY = "gfn_public_vip_ticket_booking";
 
@@ -491,28 +491,39 @@ export default function PublicVipTicketBookingForm({
         )}
       </div>
 
-      <fieldset disabled={!otpVerified} className="space-y-4 disabled:opacity-60">
-        <label className="flex items-start gap-3 text-sm text-ink/80">
+      <div className="relative z-[2] space-y-4">
+        <div className="flex items-start gap-3 text-sm text-ink/80">
           <input
+            id="public-event-registration-terms"
             type="checkbox"
             checked={form.terms}
             onChange={(e) => updateField("terms", e.target.checked)}
-            className="mt-0.5 h-5 w-5 rounded border-ink/25"
+            className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded border-ink/25"
           />
-          <span>{t("termsLabel")}</span>
-        </label>
+          <label htmlFor="public-event-registration-terms" className="cursor-pointer leading-snug">
+            {t("termsLabelBefore")}
+            <Link
+              href="/policy"
+              className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {t("termsLinkLabel")}
+            </Link>
+            {t("termsLabelAfter")}
+          </label>
+        </div>
         {errors.terms && <p className="text-xs text-red-600">{errors.terms}</p>}
 
         <Button
           type="submit"
           variant="gold"
-          className="w-full justify-between"
+          className="w-full justify-between disabled:cursor-not-allowed disabled:opacity-60"
           textClassName="text-white flex-1"
           disabled={loading || !otpVerified}
         >
           {loading ? t("submitting") : t("submitLead")}
         </Button>
-      </fieldset>
+      </div>
     </form>
   );
 }

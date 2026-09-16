@@ -28,7 +28,7 @@ export default function OtpBoxes({ value, onChange, disabled }: OtpBoxesProps) {
   };
 
   return (
-    <div className="flex justify-between gap-2">
+    <div className="grid w-full max-w-full grid-cols-6 gap-1.5 sm:gap-2">
       {digits.map((digit, index) => (
         <input
           key={index}
@@ -77,7 +77,7 @@ export default function OtpBoxes({ value, onChange, disabled }: OtpBoxesProps) {
               inputRefs.current[index - 1]?.focus();
             }
           }}
-          className="h-12 w-full min-w-[44px] rounded-md border border-ink/20 bg-white text-center font-display text-lg font-medium text-ink outline-none transition-colors focus:border-falcon-deep disabled:opacity-60"
+          className="h-10 w-full min-w-0 rounded-md border border-ink/20 bg-white text-center font-display text-base font-medium text-ink outline-none transition-colors focus:border-falcon-deep disabled:opacity-60 sm:h-12 sm:text-lg"
         />
       ))}
     </div>

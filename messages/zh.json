@@ -850,6 +850,9 @@
         "ibIdRequired": "请输入参考编号或 IB 账户"
       },
       "termsLabel": "我确认所提供信息准确无误，并同意活动条款。",
+      "termsLabelBefore": "我确认所提供信息准确无误，并同意",
+      "termsLinkLabel": "活动条款",
+      "termsLabelAfter": "。",
       "submitting": "提交中...",
       "submitFailed": "保存注册失败，请重试。"
     }
