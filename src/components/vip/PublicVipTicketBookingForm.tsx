@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 import Button from "@/components/Button";
@@ -117,6 +117,7 @@ export default function PublicVipTicketBookingForm({
     terms: false,
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  const autoVerifyOtpRef = useRef<string | null>(null);
 
   const otpRemainingMs = otpExpiresAt && otpExpiresAt > now ? otpExpiresAt - now : 0;
 
@@ -230,6 +231,7 @@ export default function PublicVipTicketBookingForm({
       }));
       setShowOtp(true);
       setOtpInput("");
+      autoVerifyOtpRef.current = null;
       setVerificationToken(data.verificationToken || "");
       setOtpVerified(false);
       setOtpExpiresAt(Date.now() + OTP_TTL_MS);
@@ -241,7 +243,7 @@ export default function PublicVipTicketBookingForm({
     }
   };
 
-  const handleVerifyOtp = async () => {
+  const handleVerifyOtp = useCallback(async () => {
     setOtpError("");
 
     if (otpExpiresAt && Date.now() >= otpExpiresAt) {
@@ -266,7 +268,7 @@ export default function PublicVipTicketBookingForm({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: form.email.trim(),
+          email: form.email.trim().toLowerCase(),
           otp: otpInput.trim(),
           verificationToken,
         }),
@@ -288,7 +290,35 @@ export default function PublicVipTicketBookingForm({
     } finally {
       setOtpVerifying(false);
     }
-  };
+  }, [
+    expireOtpSession,
+    form.email,
+    otpExpiresAt,
+    otpInput,
+    showOtp,
+    t,
+    verificationToken,
+  ]);
+
+  useEffect(() => {
+    if (otpVerified || otpVerifying || !showOtp || !verificationToken) return;
+    if (otpInput.length !== 6) {
+      autoVerifyOtpRef.current = null;
+      return;
+    }
+
+    if (autoVerifyOtpRef.current === otpInput) return;
+    autoVerifyOtpRef.current = otpInput;
+
+    void handleVerifyOtp();
+  }, [
+    handleVerifyOtp,
+    otpInput,
+    otpVerified,
+    otpVerifying,
+    showOtp,
+    verificationToken,
+  ]);
 
   const validate = () => {
     const nextErrors: FormErrors = {};
@@ -450,21 +480,20 @@ export default function PublicVipTicketBookingForm({
             <label className="form-field-label font-poppins text-sm text-ink/70">
               {t("otpLabel")}
             </label>
-            <OtpBoxes value={otpInput} onChange={setOtpInput} disabled={otpVerifying} />
+            <OtpBoxes
+              value={otpInput}
+              onChange={setOtpInput}
+              disabled={otpVerifying || otpVerified || !showOtp}
+            />
+            {otpVerifying && (
+              <p className="font-poppins text-xs text-ink/55">{t("verifyingOtp")}</p>
+            )}
             {otpRemainingMs > 0 && (
               <p className="font-poppins text-xs text-ink/55">
                 {t("otpExpiresIn", { time: formatOtpCountdown(otpRemainingMs) })}
               </p>
             )}
             {otpError && <p className="text-xs text-red-600">{otpError}</p>}
-            <button
-              type="button"
-              onClick={handleVerifyOtp}
-              disabled={otpVerifying || otpInput.length !== 6}
-              className="rounded-full bg-falcon-deep px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {otpVerifying ? t("verifyingOtp") : t("verifyOtp")}
-            </button>
           </div>
 
         <div className="mt-4">
