@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import AdminTablePagination, { paginateItems } from "@/components/admin/AdminTablePagination";
 import type { IbEmailListItem } from "@/lib/ibEmailStore";
+import { buildIbEmailCsv, csvFilename, downloadCsvFile } from "@/lib/adminCsvExport";
 
 function formatDate(value: string) {
   if (!value) return "—";
@@ -77,6 +78,13 @@ export default function AdminIbEmailTable() {
     [filtered, currentPage]
   );
 
+  function handleExportCsv(exportFilteredOnly: boolean) {
+    const rows = exportFilteredOnly ? filtered : records;
+    if (rows.length === 0) return;
+    const csv = buildIbEmailCsv(rows);
+    downloadCsvFile(csvFilename("gfn-ib-email-access"), csv);
+  }
+
   return (
     <div className="rounded-2xl border border-[#382910]/10 bg-white shadow-[0_4px_24px_-4px_rgba(56,41,16,0.08)]">
       <div className="flex flex-col gap-4 border-b border-ink/8 px-6 py-5 md:flex-row md:items-center md:justify-between">
@@ -90,27 +98,49 @@ export default function AdminIbEmailTable() {
                 : `Showing ${pagination.startIndex}-${pagination.endIndex} of ${filtered.length} · read only`}
           </p>
         </div>
-        <div className="relative">
-          <svg
-            className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/35"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={loading || records.length === 0}
+              onClick={() => handleExportCsv(false)}
+              className="inline-flex h-11 items-center justify-center rounded-full border border-falcon-deep bg-white px-4 font-poppins text-xs uppercase tracking-[0.08em] text-falcon-deep transition-colors hover:bg-falcon-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Export all CSV
+            </button>
+            {search.trim() && filtered.length !== records.length && (
+              <button
+                type="button"
+                disabled={loading || filtered.length === 0}
+                onClick={() => handleExportCsv(true)}
+                className="inline-flex h-11 items-center justify-center rounded-full border border-ink/15 bg-white px-4 font-poppins text-xs uppercase tracking-[0.08em] text-ink/70 transition-colors hover:border-ink/25 hover:bg-ink/5 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Export search ({filtered.length})
+              </button>
+            )}
+          </div>
+          <div className="relative">
+            <svg
+              className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/35"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+            <input
+              type="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search email, IB ID, name..."
+              className="h-11 w-full rounded-full border border-ink/15 bg-[#FFFDF8] py-2 pl-10 pr-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep md:w-72"
             />
-          </svg>
-          <input
-            type="search"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder="Search email, IB ID, name..."
-            className="h-11 w-full rounded-full border border-ink/15 bg-[#FFFDF8] py-2 pl-10 pr-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep md:w-72"
-          />
+          </div>
         </div>
       </div>
 

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import AdminIbEmailTable from "@/components/admin/AdminIbEmailTable";
+import AdminRegistrationExportPanel from "@/components/admin/AdminRegistrationExportPanel";
 import AdminTablePagination, { paginateItems } from "@/components/admin/AdminTablePagination";
 import AdminUserEditForm from "@/components/admin/AdminUserEditForm";
 import {
@@ -556,23 +557,30 @@ export default function AdminDashboard({ adminEmail }: Props) {
                         : `Showing ${pagination?.startIndex}-${pagination?.endIndex} of ${filtered?.length}`}
                   </p>
                 </div>
-                <div className="relative">
-                  <svg
-                    className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/35"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                  </svg>
-                  <input
-                    type="search"
-                    value={search}
-                    onChange={(event) => setSearch(event.target.value)}
-                    placeholder="Search name, email, phone..."
-                    className="h-11 w-full rounded-full border border-ink/15 bg-[#FFFDF8] py-2 pl-10 pr-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep md:w-72"
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <AdminRegistrationExportPanel
+                    registrations={registrations}
+                    filtered={filtered}
+                    disabled={loading}
                   />
+                  <div className="relative">
+                    <svg
+                      className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/35"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                    <input
+                      type="search"
+                      value={search}
+                      onChange={(event) => setSearch(event.target.value)}
+                      placeholder="Search name, email, phone..."
+                      className="h-11 w-full rounded-full border border-ink/15 bg-[#FFFDF8] py-2 pl-10 pr-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep md:w-72"
+                    />
+                  </div>
                 </div>
               </div>
 
