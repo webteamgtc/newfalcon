@@ -678,6 +678,8 @@
       "closeModal": "إغلاق النموذج",
       "verificationTitle": "تحقق من بريدك الإلكتروني",
       "verificationDescription": "أدخل بريدك الإلكتروني وتحقق من الرمز لمرة واحدة قبل إكمال التسجيل.",
+      "simpleRegistrationTitle": "أكمل تسجيلك",
+      "simpleRegistrationDescription": "أدخل بريدك الإلكتروني ووافق على الشروط أدناه لإتمام التسجيل.",
       "emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
       "emailRequired": "البريد الإلكتروني مطلوب",
       "emailInvalid": "أدخل عنوان بريد إلكتروني صالح",

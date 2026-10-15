@@ -810,6 +810,8 @@
       "closeModal": "关闭表单",
       "verificationTitle": "验证您的邮箱",
       "verificationDescription": "请先输入邮箱并验证一次性验证码，再完成注册。",
+      "simpleRegistrationTitle": "完成注册",
+      "simpleRegistrationDescription": "请输入邮箱地址并同意下方条款以完成注册。",
       "emailPlaceholder": "请输入邮箱地址",
       "emailRequired": "邮箱为必填项",
       "emailInvalid": "请输入有效的邮箱地址",
