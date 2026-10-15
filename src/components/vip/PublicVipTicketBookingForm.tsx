@@ -10,10 +10,6 @@ import { OTP_TTL_MS } from "@/lib/otpConstants";
 import PublicRegistrationSuccess from "@/components/vip/PublicRegistrationSuccess";
 import type { IbClientData, IbPerformanceData, VipUser } from "@/data/vipUsers";
 import { Link, useRouter } from "@/i18n/routing";
-import {
-  PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP,
-  PUBLIC_REGISTRATION_SHOW_IB_FIELD,
-} from "@/lib/featureFlags";
 
 const PUBLIC_BOOKING_STORAGE_KEY = "gfn_public_vip_ticket_booking";
 
@@ -134,7 +130,6 @@ export default function PublicVipTicketBookingForm({
   }, [t]);
 
   useEffect(() => {
-    if (!PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP) return;
     if (!otpExpiresAt || otpVerified) return;
 
     const interval = window.setInterval(() => {
@@ -196,26 +191,21 @@ export default function PublicVipTicketBookingForm({
     setOtpError("");
 
     try {
-      let ibClientData: VerifiedIbClient | null = null;
+      let ibClientData =
+        verifiedIbClientEmail === trimmedEmail ? verifiedIbClient : null;
 
-      if (PUBLIC_REGISTRATION_SHOW_IB_FIELD) {
-        ibClientData =
-          verifiedIbClientEmail === trimmedEmail ? verifiedIbClient : null;
-
-        if (verifiedIbClientEmail !== trimmedEmail) {
-          ibClientData = await verifyIbClientBeforeBooking(trimmedEmail);
-          setVerifiedIbClient(ibClientData);
-          setVerifiedIbClientEmail(trimmedEmail);
-        }
+      if (verifiedIbClientEmail !== trimmedEmail) {
+        ibClientData = await verifyIbClientBeforeBooking(trimmedEmail);
+        setVerifiedIbClient(ibClientData);
+        setVerifiedIbClientEmail(trimmedEmail);
       }
 
-      const ibIdForEmail = PUBLIC_REGISTRATION_SHOW_IB_FIELD
-        ? form.ibId.trim() ||
-          ibClientData?.client.memberId ||
-          user?.ibId ||
-          user?.memberId ||
-          ""
-        : user?.ibId || user?.memberId || "";
+      const ibIdForEmail =
+        form.ibId.trim() ||
+        ibClientData?.client.memberId ||
+        user?.ibId ||
+        user?.memberId ||
+        "";
 
       const response = await fetch("/api/otp-smtp", {
         method: "POST",
@@ -237,9 +227,7 @@ export default function PublicVipTicketBookingForm({
       setForm((prev) => ({
         ...prev,
         email: trimmedEmail,
-        ...(PUBLIC_REGISTRATION_SHOW_IB_FIELD
-          ? { ibId: prev.ibId.trim() || ibClientData?.client.memberId || prev.ibId }
-          : {}),
+        ibId: prev.ibId.trim() || ibClientData?.client.memberId || prev.ibId,
       }));
       setShowOtp(true);
       setOtpInput("");
@@ -313,7 +301,6 @@ export default function PublicVipTicketBookingForm({
   ]);
 
   useEffect(() => {
-    if (!PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP) return;
     if (otpVerified || otpVerifying || !showOtp || !verificationToken) return;
     if (otpInput.length !== 6) {
       autoVerifyOtpRef.current = null;
@@ -335,18 +322,13 @@ export default function PublicVipTicketBookingForm({
 
   const validate = () => {
     const nextErrors: FormErrors = {};
-    const trimmedEmail = validateEmailFormat();
 
-    if (!trimmedEmail) {
-      return false;
-    }
-
-    if (PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && !otpVerified) {
+    if (!otpVerified) {
       toast.error(t("verifyEmailFirst"));
       return false;
     }
 
-    if (PUBLIC_REGISTRATION_SHOW_IB_FIELD && !form.ibId.trim()) {
+    if (!form.ibId.trim()) {
       nextErrors.ibId = t("errors.ibIdRequired");
     }
     if (!form.terms) nextErrors.terms = t("errors.terms");
@@ -357,7 +339,7 @@ export default function PublicVipTicketBookingForm({
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && !otpVerified) {
+    if (!otpVerified) {
       toast.error(t("verifyEmailFirst"));
       return;
     }
@@ -369,20 +351,17 @@ export default function PublicVipTicketBookingForm({
       const registrationUserId = user?.id ?? `public_${form.email.trim().toLowerCase()}`;
       const normalizedEmail = form.email.trim().toLowerCase();
       const cachedIbClient =
-        PUBLIC_REGISTRATION_SHOW_IB_FIELD && verifiedIbClientEmail === normalizedEmail
-          ? verifiedIbClient
-          : null;
+        verifiedIbClientEmail === normalizedEmail ? verifiedIbClient : null;
 
       const fullName = resolveFullName(normalizedEmail, cachedIbClient, user);
       const memberId = cachedIbClient?.client.memberId || user?.memberId || "PUBLIC";
-      const ibId = PUBLIC_REGISTRATION_SHOW_IB_FIELD
-        ? form.ibId.trim() || cachedIbClient?.client.memberId || user?.ibId || ""
-        : user?.ibId || "";
+      const ibId =
+        form.ibId.trim() || cachedIbClient?.client.memberId || user?.ibId || "";
 
       const payload = new FormData();
       payload.append("leadForm", "true");
       payload.append("fullName", fullName);
-      payload.append("email", normalizedEmail);
+      payload.append("email", form.email);
       payload.append("phone", "");
       payload.append("nationality", "");
       payload.append("passportNumber", "");
@@ -467,16 +446,8 @@ export default function PublicVipTicketBookingForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="rounded-xl border border-[#382910]/15 bg-white/70 p-4 md:p-5">
-        <p className="font-display text-base font-medium text-ink">
-          {PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP
-            ? t("verificationTitle")
-            : t("simpleRegistrationTitle")}
-        </p>
-        <p className="mt-1 TextSmall !font-poppins !text-ink/70">
-          {PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP
-            ? t("verificationDescription")
-            : t("simpleRegistrationDescription")}
-        </p>
+        <p className="font-display text-base font-medium text-ink">{t("verificationTitle")}</p>
+        <p className="mt-1 TextSmall !font-poppins !text-ink/70">{t("verificationDescription")}</p>
 
         <div className="mt-4">
           <label className="form-field-label font-poppins text-sm text-ink/70">
@@ -487,13 +458,11 @@ export default function PublicVipTicketBookingForm({
               type="email"
               value={form.email}
               onChange={(e) => updateField("email", e.target.value)}
-              readOnly={PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && otpVerified}
-              className={`${fieldClass(errors.email, {
-                withInlineAction: PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && !otpVerified,
-              })} ${PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && otpVerified ? "bg-ink/5 pe-3" : ""}`}
+              readOnly={otpVerified}
+              className={`${fieldClass(errors.email, { withInlineAction: !otpVerified })} ${otpVerified ? "bg-ink/5 pe-3" : ""}`}
               placeholder={t("emailPlaceholder")}
             />
-            {PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && !otpVerified && (
+            {!otpVerified && (
               <button
                 type="button"
                 onClick={handleGetOtp}
@@ -507,8 +476,7 @@ export default function PublicVipTicketBookingForm({
           {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
         </div>
 
-        {PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && (
-          <div className="mt-4 space-y-3">
+        <div className="mt-4 space-y-3">
             <label className="form-field-label font-poppins text-sm text-ink/70">
               {t("otpLabel")}
             </label>
@@ -527,26 +495,25 @@ export default function PublicVipTicketBookingForm({
             )}
             {otpError && <p className="text-xs text-red-600">{otpError}</p>}
           </div>
-        )}
 
-        {PUBLIC_REGISTRATION_SHOW_IB_FIELD && (
-          <div className="mt-4">
-            <label className="form-field-label font-poppins text-sm text-ink/70">
-              {t("ibIdLabel")} *
-            </label>
-            <input
-              type="text"
-              value={form.ibId}
-              onChange={(e) => updateField("ibId", e.target.value)}
-              readOnly={PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && otpVerified}
-              className={`${fieldClass(errors.ibId)} ${PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && otpVerified ? "bg-ink/5" : ""}`}
-              placeholder={t("ibIdPlaceholder")}
-            />
-            {errors.ibId && <p className="mt-1 text-xs text-red-600">{errors.ibId}</p>}
-          </div>
-        )}
+        <div className="mt-4">
+          <label className="form-field-label font-poppins text-sm text-ink/70">
+            {t("ibIdLabel")} *
+          </label>
+          <input
+            type="text"
+            value={form.ibId}
+            onChange={(e) => updateField("ibId", e.target.value)}
+            readOnly={otpVerified}
+            className={`${fieldClass(errors.ibId)} ${otpVerified ? "bg-ink/5" : ""}`}
+            placeholder={t("ibIdPlaceholder")}
+          />
+          {errors.ibId && <p className="mt-1 text-xs text-red-600">{errors.ibId}</p>}
+        </div>
 
-        {PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && otpVerified && (
+        
+ 
+        {otpVerified && (
           <p className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 font-poppins text-sm text-emerald-800">
             {t("emailVerified")}
           </p>
@@ -581,7 +548,7 @@ export default function PublicVipTicketBookingForm({
           variant="gold"
           className="w-full justify-between disabled:cursor-not-allowed disabled:opacity-60"
           textClassName="text-white flex-1"
-          disabled={loading || (PUBLIC_REGISTRATION_REQUIRE_EMAIL_OTP && !otpVerified)}
+          disabled={loading || !otpVerified}
         >
           {loading ? t("submitting") : t("submitLead")}
         </Button>

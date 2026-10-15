@@ -813,8 +813,6 @@
       "closeModal": "Close form",
       "verificationTitle": "Verify your email",
       "verificationDescription": "Enter your email and verify the one-time code before completing your registration.",
-      "simpleRegistrationTitle": "Complete your registration",
-      "simpleRegistrationDescription": "Enter your email address and accept the terms below to register.",
       "emailPlaceholder": "Enter your email address",
       "emailRequired": "Email is required",
       "emailInvalid": "Enter a valid email address",
