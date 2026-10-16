@@ -1363,11 +1363,10 @@
       "internationalEmployee": {
         "label": "International Employee",
         "title": "Reserve your seat, wherever you're flying in from",
-        "intro": "For GTCFX team members travelling to Dubai. We'll use your passport details to arrange your visa and travel, and you can bring a companion.",
+        "intro": "For GTCFX team members travelling to Dubai. We'll use your passport details to arrange your visa and travel.",
         "card": "Travelling to Dubai for the event. Passport details required.",
         "highlights": [
           "Visa and travel support",
-          "Bring a companion",
           "Seating with your team"
         ]
       },

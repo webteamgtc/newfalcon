@@ -102,10 +102,7 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
 
   const showLineManager = listKey === "uae-employee";
   const showMedia = listKey === "media-partners";
-  const showCompanion =
-    listKey === "international-employee" ||
-    listKey === "seat-vip" ||
-    listKey === "media-partners";
+  const showCompanion = listKey === "seat-vip" || listKey === "media-partners";
 
   const headings = [
     "Name",

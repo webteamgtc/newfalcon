@@ -32,7 +32,7 @@ export const SEAT_CATEGORIES: Record<SeatCategorySlug, SeatCategory> = {
     formType: "seat_international_employee",
     i18nKey: "internationalEmployee",
     requiresPassport: true,
-    allowCompanion: true,
+    allowCompanion: false,
     hasOrganisation: false,
     defaultPhoneCountry: "AE",
   },
