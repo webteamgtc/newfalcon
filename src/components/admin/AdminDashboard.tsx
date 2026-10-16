@@ -4,6 +4,12 @@ import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react
 import { useRouter } from "next/navigation";
 import AdminIbEmailTable from "@/components/admin/AdminIbEmailTable";
 import AdminRegistrationExportPanel from "@/components/admin/AdminRegistrationExportPanel";
+import AdminSeatRegistrationsTable from "@/components/admin/AdminSeatRegistrationsTable";
+import {
+  ADMIN_SEAT_LIST_KEYS,
+  ADMIN_SEAT_LIST_META,
+  type AdminSeatListKey,
+} from "@/lib/adminSeatRegistrations";
 import AdminTablePagination, { paginateItems } from "@/components/admin/AdminTablePagination";
 import AdminUserEditForm from "@/components/admin/AdminUserEditForm";
 import {
@@ -193,7 +199,20 @@ function TableSkeleton() {
   return <div className="h-96 animate-pulse rounded-2xl bg-ink/5" />;
 }
 
-type DashboardTab = "registrations" | "ib-email";
+type DashboardTab = "registrations" | "ib-email" | AdminSeatListKey;
+
+const DASHBOARD_TABS: { id: DashboardTab; label: string }[] = [
+  { id: "registrations", label: "VIP registrations" },
+  { id: "uae-employee", label: ADMIN_SEAT_LIST_META["uae-employee"].label },
+  { id: "international-employee", label: ADMIN_SEAT_LIST_META["international-employee"].label },
+  { id: "media-partners", label: ADMIN_SEAT_LIST_META["media-partners"].label },
+  { id: "seat-vip", label: ADMIN_SEAT_LIST_META["seat-vip"].label },
+  { id: "ib-email", label: "Performed First Step" },
+];
+
+function isSeatDashboardTab(tab: DashboardTab): tab is AdminSeatListKey {
+  return (ADMIN_SEAT_LIST_KEYS as readonly string[]).includes(tab);
+}
 
 type Props = {
   adminEmail: string;
@@ -244,6 +263,15 @@ export default function AdminDashboard({ adminEmail }: Props) {
   }, [loadRegistrations]);
 
   const stats = useMemo(() => computeStats(registrations), [registrations]);
+
+  function switchTab(tab: DashboardTab) {
+    setActiveTab(tab);
+    setSelectedId(null);
+    setSelectedRegistration(null);
+    setSearch("");
+    setCurrentPage(1);
+    setTravelEmailFeedback(null);
+  }
 
   async function openRegistration(id: string) {
     setSelectedId(id);
@@ -406,30 +434,26 @@ export default function AdminDashboard({ adminEmail }: Props) {
 
       <main className="mx-auto max-w-7xl px-4 py-8 md:px-6">
         <div className="mb-8 flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={() => setActiveTab("registrations")}
-            className={`rounded-full px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] transition-colors ${activeTab === "registrations"
-                ? "bg-falcon-deep text-white"
-                : "border border-ink/15 bg-white text-ink/70 hover:border-ink/25 hover:bg-ink/5"
+          {DASHBOARD_TABS.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => switchTab(tab.id)}
+              className={`rounded-full px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] transition-colors ${
+                activeTab === tab.id
+                  ? "bg-falcon-deep text-white"
+                  : "border border-ink/15 bg-white text-ink/70 hover:border-ink/25 hover:bg-ink/5"
               }`}
-          >
-            VIP registrations
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("ib-email")}
-            className={`rounded-full px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] transition-colors ${activeTab === "ib-email"
-                ? "bg-falcon-deep text-white"
-                : "border border-ink/15 bg-white text-ink/70 hover:border-ink/25 hover:bg-ink/5"
-              }`}
-          >
-            Performed First Step
-          </button>
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         {activeTab === "ib-email" ? (
           <AdminIbEmailTable />
+        ) : isSeatDashboardTab(activeTab) ? (
+          <AdminSeatRegistrationsTable listKey={activeTab} />
         ) : (
           <>
             {/* Stats overview */}
