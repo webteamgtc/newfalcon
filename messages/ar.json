@@ -1187,5 +1187,199 @@
     "ctaCheckStatus": "تحقق من حالتي",
     "ctaHome": "العودة إلى الرئيسية",
     "supportNote": "تحتاج مساعدة؟ تواصل مع فريق الدعم على"
+  },
+  "seatBooking": {
+    "meta": {
+      "title": "Book Your Seat — Golden Falcon Awards 2026"
+    },
+    "event": {
+      "name": "Golden Falcon Awards 2026",
+      "dateLabel": "Date",
+      "date": "12 December 2026",
+      "venueLabel": "Venue",
+      "venue": "Conrad Hotel, Dubai",
+      "dressLabel": "Dress code",
+      "dress": "Black tie"
+    },
+    "hub": {
+      "eyebrow": "Golden Falcon Awards 2026",
+      "title": "Book Your Seat",
+      "subtitle": "One evening of recognition, leadership and celebration in Dubai. Choose the registration that fits you to reserve your place.",
+      "choose": "Register as",
+      "cta": "Book seat"
+    },
+    "categories": {
+      "internationalEmployee": {
+        "label": "International Employee",
+        "title": "Reserve your seat, wherever you're flying in from",
+        "intro": "For GTCFX team members travelling to Dubai. We'll use your passport details to arrange your visa and travel, and you can bring a companion.",
+        "card": "Travelling to Dubai for the event. Passport details required.",
+        "highlights": [
+          "Visa and travel support",
+          "Bring a companion",
+          "Seating with your team"
+        ]
+      },
+      "uaeEmployee": {
+        "label": "UAE-Based Employee",
+        "title": "Your seat at the Golden Falcon Awards",
+        "intro": "For GTCFX team members living in the UAE. A quick registration with no passport details needed.",
+        "card": "Already in the UAE. Quick registration, no passport needed.",
+        "highlights": [
+          "Two-minute registration",
+          "No passport needed",
+          "Seating with your team"
+        ]
+      },
+      "vip": {
+        "label": "VIP Guest",
+        "title": "An evening reserved for our most valued partners",
+        "intro": "For invited VIP guests. Share your details and passport so our concierge team can prepare your arrival.",
+        "card": "Invited guests and top partners. Passport details required.",
+        "highlights": [
+          "Priority seating",
+          "Concierge arrival",
+          "Bring a companion"
+        ]
+      },
+      "mediaPartners": {
+        "label": "Media, Partners & Influencers",
+        "title": "Cover the night. Share the moment.",
+        "intro": "For press, sponsors, partners and creators. Register for accreditation and we'll confirm your access and arrival.",
+        "card": "Press, sponsors and creators. Passport details required.",
+        "highlights": [
+          "Media accreditation",
+          "Red-carpet access",
+          "Bring a companion"
+        ]
+      }
+    },
+    "steps": {
+      "title": "What happens next",
+      "items": [
+        {
+          "title": "Submit your details",
+          "body": "Fill in the form and verify your email with a one-time code."
+        },
+        {
+          "title": "We review",
+          "body": "Our team double-checks your information and documents."
+        },
+        {
+          "title": "Confirmation",
+          "body": "You'll hear from us by email with your seat confirmation."
+        }
+      ]
+    },
+    "form": {
+      "title": "Registration form",
+      "subtitle": "Fields marked * are required.",
+      "sections": {
+        "personal": "Your details",
+        "passport": "Passport details",
+        "organisation": "Organisation",
+        "companion": "Companion"
+      },
+      "fullName": "Full name (as on passport) *",
+      "fullNameNoPassport": "Full name *",
+      "email": "Email address *",
+      "phone": "Phone number *",
+      "country": "Country of residence *",
+      "countryDetected": "Detected from your location. Change it if needed.",
+      "countryPlaceholder": "Select country",
+      "passportNumber": "Passport number *",
+      "passportExpiry": "Passport expiry date *",
+      "passportExpiryHint": "For UAE entry, your passport should be valid for at least 6 months after 12 December 2026.",
+      "passportFile": "Passport copy *",
+      "passportFileHint": "Photo page as JPG, PNG, WEBP or PDF, up to 10 MB.",
+      "uploadCta": "Click to upload or drag the file here",
+      "replaceFile": "Replace",
+      "removeFile": "Remove",
+      "partnerType": "I am attending as *",
+      "partnerTypes": {
+        "media": "Media / Press",
+        "partner": "Partner / Sponsor",
+        "influencer": "Influencer / Creator"
+      },
+      "organisation": "Organisation, outlet or brand *",
+      "profileLink": "Website or social profile",
+      "profileLinkPlaceholder": "https://",
+      "joining": "Will you join with someone? *",
+      "yes": "Yes",
+      "no": "No",
+      "companionIntro": "Tell us about the person joining you.",
+      "companionFullName": "Companion's full name *",
+      "companionRelationship": "Relationship *",
+      "relationshipPlaceholder": "Select relationship",
+      "relationships": {
+        "spouse": "Spouse / Partner",
+        "family": "Family member",
+        "colleague": "Colleague",
+        "friend": "Friend",
+        "other": "Other"
+      },
+      "companionEmail": "Companion's email *",
+      "companionPhone": "Companion's phone *",
+      "companionPassportNumber": "Companion's passport number *",
+      "companionPassportExpiry": "Companion's passport expiry date *",
+      "companionPassportFile": "Companion's passport copy *",
+      "consent": "I confirm these details are accurate and agree that GTCFX may use them, including passport documents, to arrange my attendance at the Golden Falcon Awards 2026.",
+      "submit": "Book my seat",
+      "submitting": "Submitting…",
+      "datePlaceholder": "Select date"
+    },
+    "otp": {
+      "send": "Send code",
+      "sending": "Sending…",
+      "resend": "Resend code",
+      "resendIn": "Resend in {time}",
+      "sentTo": "We sent a 6-digit code to {email}. It expires in {time}.",
+      "verify": "Verify",
+      "verifying": "Verifying…",
+      "verified": "Email verified",
+      "change": "Change",
+      "required": "Please verify your email before submitting."
+    },
+    "errors": {
+      "required": "This field is required.",
+      "fullName": "Please enter your full name.",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a valid phone number.",
+      "country": "Select your country of residence.",
+      "passportNumber": "Enter a valid passport number (letters and numbers only).",
+      "passportExpiry": "Select a future expiry date.",
+      "passportFile": "Upload a copy of the passport photo page.",
+      "fileType": "Use JPG, PNG, WEBP or PDF.",
+      "fileSize": "The file must be 10 MB or smaller.",
+      "partnerType": "Choose how you're attending.",
+      "organisation": "Enter your organisation or brand.",
+      "profileLink": "Enter a full link starting with https://",
+      "joining": "Please choose Yes or No.",
+      "relationship": "Choose a relationship.",
+      "sameEmail": "Use a different email from your own.",
+      "consent": "Please confirm to continue.",
+      "otpInvalid": "That code isn't right or has expired.",
+      "otpExpired": "The code expired. Request a new one.",
+      "alreadyRegistered": "This email has already been registered for this category.",
+      "rateLimited": "Too many attempts. Please wait a few minutes and try again.",
+      "notVerified": "Your email verification expired. Please verify again.",
+      "generic": "Something went wrong. Please try again.",
+      "fixFields": "Please check the highlighted fields."
+    },
+    "thankYou": {
+      "eyebrow": "Request received",
+      "title": "Thank you for your time",
+      "body": "We have received your information. Our team will double-check everything and get back to you soon.",
+      "reference": "Your reference",
+      "emailNote": "A copy has been sent to your email. Please keep your reference for any questions.",
+      "nextTitle": "What happens now",
+      "next": [
+        "We review your details and documents.",
+        "If anything is missing, we'll contact you by email.",
+        "You'll receive your seat confirmation by email."
+      ],
+      "home": "Back to home",
+      "seeYou": "We look forward to celebrating with you in Dubai."
+    }
   }
 }

@@ -1335,5 +1335,199 @@
     "ctaCheckStatus": "查询我的状态",
     "ctaHome": "返回首页",
     "supportNote": "需要帮助？请联系我们的客服团队："
+  },
+  "seatBooking": {
+    "meta": {
+      "title": "预订席位 — 金鹰节 2026"
+    },
+    "event": {
+      "name": "金鹰节 2026",
+      "dateLabel": "日期",
+      "date": "2026年12月12日",
+      "venueLabel": "地点",
+      "venue": "迪拜康莱德酒店",
+      "dressLabel": "着装要求",
+      "dress": "黑色正装"
+    },
+    "hub": {
+      "eyebrow": "金鹰节 2026",
+      "title": "预订您的席位",
+      "subtitle": "在迪拜共度一个表彰、领导力与庆祝之夜。请选择适合您的注册类型以预留席位。",
+      "choose": "注册类型",
+      "cta": "预订席位"
+    },
+    "categories": {
+      "internationalEmployee": {
+        "label": "国际员工",
+        "title": "无论您从哪里出发，都为您预留席位",
+        "intro": "适用于前往迪拜的 GTCFX 团队成员。我们将使用您的护照信息安排签证与行程，您也可以携带一位同行人。",
+        "card": "前往迪拜参加活动，需提供护照信息。",
+        "highlights": [
+          "签证与行程支持",
+          "可携带同行人",
+          "与团队同席"
+        ]
+      },
+      "uaeEmployee": {
+        "label": "阿联酋员工",
+        "title": "您在金鹰节的席位",
+        "intro": "适用于居住在阿联酋的 GTCFX 团队成员。注册快捷，无需护照信息。",
+        "card": "已在阿联酋，快速注册，无需护照。",
+        "highlights": [
+          "两分钟完成注册",
+          "无需护照",
+          "与团队同席"
+        ]
+      },
+      "vip": {
+        "label": "VIP 嘉宾",
+        "title": "为尊贵合作伙伴专属预留的夜晚",
+        "intro": "适用于受邀 VIP 嘉宾。请提供您的信息和护照，以便礼宾团队为您安排抵达事宜。",
+        "card": "受邀嘉宾与顶级合作伙伴，需提供护照信息。",
+        "highlights": [
+          "优先席位",
+          "礼宾接待",
+          "可携带同行人"
+        ]
+      },
+      "mediaPartners": {
+        "label": "媒体、合作伙伴与达人",
+        "title": "记录盛典，分享精彩",
+        "intro": "适用于媒体、赞助商、合作伙伴与内容创作者。注册认证后，我们将确认您的入场与抵达安排。",
+        "card": "媒体、赞助商与创作者，需提供护照信息。",
+        "highlights": [
+          "媒体认证",
+          "红毯通道",
+          "可携带同行人"
+        ]
+      }
+    },
+    "steps": {
+      "title": "后续流程",
+      "items": [
+        {
+          "title": "提交信息",
+          "body": "填写表格并通过一次性验证码验证邮箱。"
+        },
+        {
+          "title": "我们审核",
+          "body": "团队将仔细核对您的信息与文件。"
+        },
+        {
+          "title": "确认通知",
+          "body": "我们将通过电子邮件发送席位确认。"
+        }
+      ]
+    },
+    "form": {
+      "title": "注册表",
+      "subtitle": "带 * 的为必填项。",
+      "sections": {
+        "personal": "个人信息",
+        "passport": "护照信息",
+        "organisation": "所属机构",
+        "companion": "同行人"
+      },
+      "fullName": "全名（与护照一致）*",
+      "fullNameNoPassport": "全名 *",
+      "email": "电子邮箱 *",
+      "phone": "电话号码 *",
+      "country": "居住国家 *",
+      "countryDetected": "已根据您的位置自动识别，如有需要可更改。",
+      "countryPlaceholder": "选择国家",
+      "passportNumber": "护照号码 *",
+      "passportExpiry": "护照有效期 *",
+      "passportExpiryHint": "入境阿联酋需护照在 2026年12月12日后至少仍有 6 个月有效期。",
+      "passportFile": "护照复印件 *",
+      "passportFileHint": "护照资料页，JPG、PNG、WEBP 或 PDF，最大 10 MB。",
+      "uploadCta": "点击上传或将文件拖到此处",
+      "replaceFile": "更换",
+      "removeFile": "移除",
+      "partnerType": "参加身份 *",
+      "partnerTypes": {
+        "media": "媒体 / 记者",
+        "partner": "合作伙伴 / 赞助商",
+        "influencer": "达人 / 创作者"
+      },
+      "organisation": "机构、媒体或品牌名称 *",
+      "profileLink": "网站或社交主页",
+      "profileLinkPlaceholder": "https://",
+      "joining": "是否有同行人？*",
+      "yes": "是",
+      "no": "否",
+      "companionIntro": "请填写同行人信息。",
+      "companionFullName": "同行人全名 *",
+      "companionRelationship": "关系 *",
+      "relationshipPlaceholder": "选择关系",
+      "relationships": {
+        "spouse": "配偶 / 伴侣",
+        "family": "家人",
+        "colleague": "同事",
+        "friend": "朋友",
+        "other": "其他"
+      },
+      "companionEmail": "同行人邮箱 *",
+      "companionPhone": "同行人电话 *",
+      "companionPassportNumber": "同行人护照号码 *",
+      "companionPassportExpiry": "同行人护照有效期 *",
+      "companionPassportFile": "同行人护照复印件 *",
+      "consent": "我确认以上信息准确无误，并同意 GTCFX 使用这些信息（包括护照文件）为我安排参加金鹰节 2026。",
+      "submit": "预订我的席位",
+      "submitting": "提交中…",
+      "datePlaceholder": "选择日期"
+    },
+    "otp": {
+      "send": "发送验证码",
+      "sending": "发送中…",
+      "resend": "重新发送",
+      "resendIn": "{time} 后可重新发送",
+      "sentTo": "我们已向 {email} 发送 6 位验证码，{time} 后失效。",
+      "verify": "验证",
+      "verifying": "验证中…",
+      "verified": "邮箱已验证",
+      "change": "更改",
+      "required": "提交前请先验证邮箱。"
+    },
+    "errors": {
+      "required": "此项为必填。",
+      "fullName": "请输入您的全名。",
+      "email": "请输入有效的电子邮箱。",
+      "phone": "请输入有效的电话号码。",
+      "country": "请选择居住国家。",
+      "passportNumber": "请输入有效的护照号码（仅限字母和数字）。",
+      "passportExpiry": "请选择未来的有效期日期。",
+      "passportFile": "请上传护照资料页复印件。",
+      "fileType": "请使用 JPG、PNG、WEBP 或 PDF。",
+      "fileSize": "文件需小于等于 10 MB。",
+      "partnerType": "请选择参加身份。",
+      "organisation": "请输入机构或品牌名称。",
+      "profileLink": "请输入以 https:// 开头的完整链接。",
+      "joining": "请选择是或否。",
+      "relationship": "请选择关系。",
+      "sameEmail": "请使用与您不同的邮箱。",
+      "consent": "请确认后继续。",
+      "otpInvalid": "验证码不正确或已过期。",
+      "otpExpired": "验证码已过期，请重新获取。",
+      "alreadyRegistered": "该邮箱已在此类别中注册。",
+      "rateLimited": "尝试次数过多，请稍后再试。",
+      "notVerified": "邮箱验证已过期，请重新验证。",
+      "generic": "出现问题，请重试。",
+      "fixFields": "请检查标出的字段。"
+    },
+    "thankYou": {
+      "eyebrow": "申请已收到",
+      "title": "感谢您抽出宝贵时间",
+      "body": "我们已收到您的信息。团队将仔细核对，并尽快与您联系。",
+      "reference": "您的参考编号",
+      "emailNote": "副本已发送至您的邮箱，如有疑问请提供参考编号。",
+      "nextTitle": "接下来",
+      "next": [
+        "我们审核您的信息与文件。",
+        "如有遗漏，我们会通过邮件联系您。",
+        "您将通过邮件收到席位确认。"
+      ],
+      "home": "返回首页",
+      "seeYou": "期待与您在迪拜共同庆祝。"
+    }
   }
 }
