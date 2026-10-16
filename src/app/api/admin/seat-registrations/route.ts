@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/adminAuth";
+import { isAdminSeatListKey } from "@/lib/adminSeatRegistrations";
 import {
   getCollectionNameForSeatList,
-  isAdminSeatListKey,
   mapSeatRegistrationDocument,
-} from "@/lib/adminSeatRegistrations";
+} from "@/lib/adminSeatRegistrations.server";
 import { getRegistrationDb } from "@/lib/mongodb";
 
 export const runtime = "nodejs";
