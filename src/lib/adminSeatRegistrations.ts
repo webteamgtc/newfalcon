@@ -48,9 +48,9 @@ export const ADMIN_SEAT_LIST_META: Record<
     description: "Media, partners and influencers",
   },
   "seat-vip": {
-    label: "VIP Registration",
+    label: "VIP (Book Your Seat)",
     collectionHint: "seat_vip",
-    description: "VIP guest seat bookings",
+    description: "VIP seat bookings from /book-your-seat/vip — includes who recommended them",
   },
 };
 

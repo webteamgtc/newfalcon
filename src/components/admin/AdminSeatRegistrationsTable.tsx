@@ -86,7 +86,7 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
         item.reference.toLowerCase().includes(query) ||
         item.organisationName.toLowerCase().includes(query) ||
         item.lineManagerName.toLowerCase().includes(query) ||
-        item.referredBy.toLowerCase().includes(query) ||
+        (item.referredBy ?? "").toLowerCase().includes(query) ||
         item.companionName.toLowerCase().includes(query)
       );
     });
@@ -112,7 +112,7 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
     "Phone",
     "Reference",
     ...(showLineManager ? (["Line manager"] as const) : []),
-    ...(showReferral ? (["Referred / invited by"] as const) : []),
+    ...(showReferral ? (["Who recommended you"] as const) : []),
     ...(showMedia ? (["Type", "Organisation"] as const) : []),
     ...(showCompanion ? (["Companion"] as const) : []),
     "Country",
@@ -152,7 +152,11 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
             type="search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Search name, email, phone..."
+            placeholder={
+              listKey === "seat-vip"
+                ? "Search name, email, phone, referrer..."
+                : "Search name, email, phone..."
+            }
             className="h-11 w-full rounded-full border border-ink/15 bg-[#FFFDF8] py-2 pl-10 pr-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep md:w-72"
           />
         </div>
@@ -204,6 +208,12 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
                           <p className="font-poppins text-sm font-medium text-ink">
                             {item.displayName}
                           </p>
+                          {showReferral && item.referredBy && (
+                            <p className="mt-0.5 font-poppins text-xs text-ink/60">
+                              Recommended by:{" "}
+                              <span className="font-medium text-ink/80">{item.referredBy}</span>
+                            </p>
+                          )}
                           {item.source && (
                             <p className="mt-0.5 font-poppins text-[10px] uppercase tracking-[0.06em] text-ink/45">
                               {formatLabel(item.source)}
