@@ -23,6 +23,8 @@ export type SeatCategory = {
   allowCompanion: boolean;
   /** Media / Partner / Influencer extras: type, organisation, profile link. */
   hasOrganisation: boolean;
+  /** VIP: who recommended or invited the guest. */
+  collectReferral: boolean;
   defaultPhoneCountry: string;
 };
 
@@ -34,6 +36,7 @@ export const SEAT_CATEGORIES: Record<SeatCategorySlug, SeatCategory> = {
     requiresPassport: true,
     allowCompanion: false,
     hasOrganisation: false,
+    collectReferral: false,
     defaultPhoneCountry: "AE",
   },
   "uae-employee": {
@@ -44,6 +47,7 @@ export const SEAT_CATEGORIES: Record<SeatCategorySlug, SeatCategory> = {
     requiresPassport: false,
     allowCompanion: false,
     hasOrganisation: false,
+    collectReferral: false,
     defaultPhoneCountry: "AE",
   },
   vip: {
@@ -53,6 +57,7 @@ export const SEAT_CATEGORIES: Record<SeatCategorySlug, SeatCategory> = {
     requiresPassport: true,
     allowCompanion: true,
     hasOrganisation: false,
+    collectReferral: true,
     defaultPhoneCountry: "AE",
   },
   "media-partners": {
@@ -62,6 +67,7 @@ export const SEAT_CATEGORIES: Record<SeatCategorySlug, SeatCategory> = {
     requiresPassport: true,
     allowCompanion: true,
     hasOrganisation: true,
+    collectReferral: false,
     defaultPhoneCountry: "AE",
   },
 };

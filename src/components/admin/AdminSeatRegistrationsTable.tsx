@@ -86,6 +86,7 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
         item.reference.toLowerCase().includes(query) ||
         item.organisationName.toLowerCase().includes(query) ||
         item.lineManagerName.toLowerCase().includes(query) ||
+        item.referredBy.toLowerCase().includes(query) ||
         item.companionName.toLowerCase().includes(query)
       );
     });
@@ -101,6 +102,7 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
   );
 
   const showLineManager = listKey === "uae-employee";
+  const showReferral = listKey === "seat-vip";
   const showMedia = listKey === "media-partners";
   const showCompanion = listKey === "seat-vip" || listKey === "media-partners";
 
@@ -110,6 +112,7 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
     "Phone",
     "Reference",
     ...(showLineManager ? (["Line manager"] as const) : []),
+    ...(showReferral ? (["Referred / invited by"] as const) : []),
     ...(showMedia ? (["Type", "Organisation"] as const) : []),
     ...(showCompanion ? (["Companion"] as const) : []),
     "Country",
@@ -219,6 +222,11 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
                     {showLineManager && (
                       <td className="px-5 py-4 font-poppins text-sm text-ink/70">
                         {item.lineManagerName || "—"}
+                      </td>
+                    )}
+                    {showReferral && (
+                      <td className="px-5 py-4 font-poppins text-sm text-ink/70">
+                        {item.referredBy || "—"}
                       </td>
                     )}
                     {showMedia && (

@@ -32,6 +32,7 @@ type Values = {
   email: string;
   phone: string;
   countryOfResidence: string;
+  referredBy: string;
   passportNumber: string;
   passportExpiry: string;
   partnerType: string;
@@ -52,6 +53,7 @@ const INITIAL: Values = {
   email: "",
   phone: "",
   countryOfResidence: "",
+  referredBy: "",
   passportNumber: "",
   passportExpiry: "",
   partnerType: "",
@@ -127,6 +129,9 @@ export default function SeatBookingForm({ category }: { category: SeatCategory }
     else if (!proofToken) e.email = t("otp.required");
     if (!values.phone || !isValidPhoneNumber(values.phone)) e.phone = t("errors.phone");
     if (!values.countryOfResidence) e.countryOfResidence = t("errors.country");
+    if (category.collectReferral && values.referredBy.trim().length < 2) {
+      e.referredBy = t("errors.referredBy");
+    }
 
     if (category.requiresPassport) {
       if (!PASSPORT_NUMBER_PATTERN.test(normalizePassportNumber(values.passportNumber))) {
@@ -181,6 +186,7 @@ export default function SeatBookingForm({ category }: { category: SeatCategory }
       phone: t("errors.phone"),
       companionPhone: t("errors.phone"),
       countryOfResidence: t("errors.country"),
+      referredBy: t("errors.referredBy"),
       passportNumber: t("errors.passportNumber"),
       companionPassportNumber: t("errors.passportNumber"),
       passportExpiry: t("errors.passportExpiry"),
@@ -221,6 +227,7 @@ export default function SeatBookingForm({ category }: { category: SeatCategory }
     fd.set("email", values.email.trim().toLowerCase());
     fd.set("phone", values.phone);
     fd.set("countryOfResidence", values.countryOfResidence);
+    if (category.collectReferral) fd.set("referredBy", values.referredBy.trim());
     fd.set("consent", String(values.consent));
 
     if (category.requiresPassport) {
@@ -354,6 +361,25 @@ export default function SeatBookingForm({ category }: { category: SeatCategory }
               error={errors.countryOfResidence}
             />
           </Field>
+
+          {category.collectReferral && (
+            <Field
+              className="sm:col-span-2"
+              label={t("form.referredBy")}
+              htmlFor="seat-referredBy"
+              error={errors.referredBy}
+            >
+              <input
+                id="seat-referredBy"
+                autoComplete="off"
+                value={values.referredBy}
+                onChange={(e) => set("referredBy", e.target.value)}
+                placeholder={t("form.referredByPlaceholder")}
+                className={inputClass(errors.referredBy)}
+                aria-invalid={!!errors.referredBy}
+              />
+            </Field>
+          )}
         </div>
       </fieldset>
 

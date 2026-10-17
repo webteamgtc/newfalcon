@@ -6,7 +6,7 @@ const YOUTUBE_EMBED_URL =
   "https://www.youtube.com/embed/kGvHQmUq5vI?list=PLBcUUM130URxCFx0-scx5vhwEgx40Pxmg";
 
 const BILIBILI_EMBED_URL =
-  "https://player.bilibili.com/player.html?bvid=BV1Ng4D6XEvN&autoplay=0";
+  "https://player.bilibili.com/player.html?bvid=BV1KMJt6gE97&autoplay=0";
 
 const partnerLogoFiles = [
   "/images/one.webp",

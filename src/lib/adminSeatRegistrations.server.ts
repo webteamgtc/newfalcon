@@ -74,6 +74,7 @@ export function mapSeatRegistrationDocument(
     formType: readString(doc.formType),
     source: readString(doc.source),
     lineManagerName: readString(doc.lineManagerName),
+    referredBy: readString(doc.referredBy),
     partnerType,
     organisationName,
     joiningWithSomeone,

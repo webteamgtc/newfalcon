@@ -112,6 +112,11 @@ export async function POST(
   if (!EMAIL_PATTERN.test(email)) errors.email = "INVALID";
   if (!phone || !isValidPhoneNumber(phone)) errors.phone = "INVALID";
   if (!/^[A-Z]{2}$/.test(countryOfResidence)) errors.countryOfResidence = "REQUIRED";
+  let referredBy = "";
+  if (category.collectReferral) {
+    referredBy = text(form, "referredBy", 120);
+    if (referredBy.length < 2) errors.referredBy = "REQUIRED";
+  }
   if (text(form, "consent", 10) !== "true") errors.consent = "REQUIRED";
 
   if (!errors.email && !verifyEmailProofToken(proofToken, email)) {
@@ -218,6 +223,7 @@ export async function POST(
       source: "book-your-seat",
       phone,
       countryOfResidence,
+      ...(category.collectReferral && { referredBy }),
       ...(category.requiresPassport && {
         passport: { number: passportNumber, expiry: passportExpiry, file: storedPassport },
       }),

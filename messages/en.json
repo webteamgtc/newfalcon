@@ -1437,6 +1437,8 @@
       "country": "Country of residence *",
       "countryDetected": "Detected from your location. Change it if needed.",
       "countryPlaceholder": "Select country",
+      "referredBy": "Who recommended or invited you? *",
+      "referredByPlaceholder": "Full name of your referrer or GTCFX host",
       "passportNumber": "Passport number *",
       "passportExpiry": "Passport expiry date *",
       "passportExpiryHint": "For UAE entry, your passport should be valid for at least 6 months after 12 December 2026.",
@@ -1493,6 +1495,7 @@
     "errors": {
       "required": "This field is required.",
       "fullName": "Please enter your full name.",
+      "referredBy": "Please tell us who recommended or invited you.",
       "email": "Enter a valid email address.",
       "phone": "Enter a valid phone number.",
       "country": "Select your country of residence.",

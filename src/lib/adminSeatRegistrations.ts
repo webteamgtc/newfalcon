@@ -20,6 +20,7 @@ export type AdminSeatRegistrationListItem = {
   formType: string;
   source: string;
   lineManagerName: string;
+  referredBy: string;
   partnerType: string;
   organisationName: string;
   joiningWithSomeone: string;

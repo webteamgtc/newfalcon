@@ -1434,6 +1434,8 @@
       "country": "居住国家 *",
       "countryDetected": "已根据您的位置自动识别，如有需要可更改。",
       "countryPlaceholder": "选择国家",
+      "referredBy": "谁推荐或邀请您参加？*",
+      "referredByPlaceholder": "推荐人或 GTCFX 对接人全名",
       "passportNumber": "护照号码 *",
       "passportExpiry": "护照有效期 *",
       "passportExpiryHint": "入境阿联酋需护照在 2026年12月12日后至少仍有 6 个月有效期。",
@@ -1490,6 +1492,7 @@
     "errors": {
       "required": "此项为必填。",
       "fullName": "请输入您的全名。",
+      "referredBy": "请填写推荐或邀请您的人员。",
       "email": "请输入有效的电子邮箱。",
       "phone": "请输入有效的电话号码。",
       "country": "请选择居住国家。",
