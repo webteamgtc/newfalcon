@@ -104,7 +104,7 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
   const showLineManager = listKey === "uae-employee";
   const showReferral = listKey === "seat-vip";
   const showMedia = listKey === "media-partners";
-  const showCompanion = listKey === "seat-vip" || listKey === "media-partners";
+  const showCompanion = listKey === "seat-vip";
 
   const headings = [
     "Name",

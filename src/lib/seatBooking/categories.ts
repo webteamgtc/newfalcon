@@ -65,7 +65,7 @@ export const SEAT_CATEGORIES: Record<SeatCategorySlug, SeatCategory> = {
     formType: "seat_media_partner",
     i18nKey: "mediaPartners",
     requiresPassport: true,
-    allowCompanion: true,
+    allowCompanion: false,
     hasOrganisation: true,
     collectReferral: false,
     defaultPhoneCountry: "AE",

@@ -122,7 +122,7 @@ Registration-only pages with email OTP verification:
 | `/book-your-seat/international-employee` | Yes | No | `seat_international_employee` |
 | `/book-your-seat/uae-employee` | No | No | `staff_registration` (shared with the existing staff form) |
 | `/book-your-seat/vip` | Yes | Yes | `seat_vip` |
-| `/book-your-seat/media-partners` | Yes | Yes | `seat_media_partner` |
+| `/book-your-seat/media-partners` | Yes | No | `seat_media_partner` |
 
 - `/book-your-seat` is the category picker; `/book-your-seat/thank-you` is shown after submitting.
 - Category rules live in `src/lib/seatBooking/categories.ts`; copy is under `seatBooking` in `messages/*.json`.
