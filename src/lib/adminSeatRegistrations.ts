@@ -9,6 +9,12 @@ export const ADMIN_SEAT_LIST_KEYS = [
 
 export type AdminSeatListKey = (typeof ADMIN_SEAT_LIST_KEYS)[number];
 
+export type AdminSeatDocumentFile = {
+  fileName: string;
+  mimeType: string;
+  s3Key: string;
+};
+
 export type AdminSeatRegistrationListItem = {
   id: string;
   reference: string;
@@ -23,6 +29,11 @@ export type AdminSeatRegistrationListItem = {
   referredBy: string;
   partnerType: string;
   organisationName: string;
+  profileLink: string;
+  passportNumber: string;
+  passportExpiry: string;
+  passportFile: AdminSeatDocumentFile | null;
+  companionPassportFile: AdminSeatDocumentFile | null;
   joiningWithSomeone: string;
   companionName: string;
   submittedAt: string;
