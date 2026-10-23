@@ -30,7 +30,7 @@ const CATEGORY_LABELS: Record<SeatCategory["i18nKey"], { en: string; zh: string 
   internationalEmployee: { en: "International Employee", zh: "国际员工" },
   uaeEmployee: { en: "UAE-Based Employee", zh: "阿联酋员工" },
   vip: { en: "VIP Guest", zh: "VIP 嘉宾" },
-  partnerIb: { en: "Partner / IB", zh: "合作伙伴 / IB" },
+  partner: { en: "Partner", zh: "合作伙伴" },
   mediaPartners: { en: "Media, Partner & Influencer", zh: "媒体、合作伙伴与达人" },
 };
 

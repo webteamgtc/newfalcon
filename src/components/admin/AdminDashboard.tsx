@@ -207,7 +207,7 @@ const DASHBOARD_TABS: { id: DashboardTab; label: string }[] = [
   { id: "international-employee", label: ADMIN_SEAT_LIST_META["international-employee"].label },
   { id: "media-partners", label: ADMIN_SEAT_LIST_META["media-partners"].label },
   { id: "seat-vip", label: ADMIN_SEAT_LIST_META["seat-vip"].label },
-  { id: "partner-ib", label: ADMIN_SEAT_LIST_META["partner-ib"].label },
+  { id: "partner", label: ADMIN_SEAT_LIST_META.partner.label },
   { id: "ib-email", label: "Performed First Step" },
 ];
 

@@ -40,8 +40,11 @@ function seatExportColumns(listKey: AdminSeatListKey): SeatExportColumn[] {
     columns.push({ label: "Line manager", value: (i) => i.lineManagerName });
   }
 
-  if (listKey === "seat-vip" || listKey === "partner-ib") {
+  if (listKey === "seat-vip" || listKey === "partner") {
     columns.push({ label: "Who recommended you", value: (i) => i.referredBy });
+  }
+
+  if (listKey === "seat-vip") {
     columns.push({ label: "Joining with someone", value: (i) => i.joiningWithSomeone });
     columns.push({ label: "Companion name", value: (i) => i.companionName });
   }
@@ -60,7 +63,7 @@ function seatExportColumns(listKey: AdminSeatListKey): SeatExportColumn[] {
     );
   }
 
-  if (listKey === "seat-vip" || listKey === "partner-ib") {
+  if (listKey === "seat-vip") {
     columns.push({
       label: "Companion passport file name",
       value: (i) => i.companionPassportFile?.fileName ?? "",

@@ -7,18 +7,23 @@ export const SEAT_CATEGORY_SLUGS = [
   "international-employee",
   "uae-employee",
   "vip",
-  "partner-ib",
+  "partner",
   "media-partners",
 ] as const;
 
 export type SeatCategorySlug = (typeof SEAT_CATEGORY_SLUGS)[number];
+
+/** Old URLs still accepted by APIs; public pages redirect to the canonical slug. */
+export const SEAT_CATEGORY_SLUG_ALIASES: Partial<Record<string, SeatCategorySlug>> = {
+  "partner-ib": "partner",
+};
 
 export type SeatCategory = {
   slug: SeatCategorySlug;
   /** Stored on every document so exports stay self-describing. */
   formType: string;
   /** Key under `seatBooking.categories` in messages/*.json */
-  i18nKey: "internationalEmployee" | "uaeEmployee" | "vip" | "partnerIb" | "mediaPartners";
+  i18nKey: "internationalEmployee" | "uaeEmployee" | "vip" | "partner" | "mediaPartners";
   requiresPassport: boolean;
   /** Show the "Will you join with someone?" question. */
   allowCompanion: boolean;
@@ -61,12 +66,12 @@ export const SEAT_CATEGORIES: Record<SeatCategorySlug, SeatCategory> = {
     collectReferral: true,
     defaultPhoneCountry: "AE",
   },
-  "partner-ib": {
-    slug: "partner-ib",
+  partner: {
+    slug: "partner",
     formType: "seat_partner_ib",
-    i18nKey: "partnerIb",
+    i18nKey: "partner",
     requiresPassport: true,
-    allowCompanion: true,
+    allowCompanion: false,
     hasOrganisation: false,
     collectReferral: true,
     defaultPhoneCountry: "AE",
@@ -111,8 +116,15 @@ export function isSeatCategorySlug(value: string): value is SeatCategorySlug {
   return (SEAT_CATEGORY_SLUGS as readonly string[]).includes(value);
 }
 
+export function resolveSeatCategorySlug(slug: string): SeatCategorySlug | null {
+  if (isSeatCategorySlug(slug)) return slug;
+  const alias = SEAT_CATEGORY_SLUG_ALIASES[slug];
+  return alias ?? null;
+}
+
 export function getSeatCategory(slug: string): SeatCategory | null {
-  return isSeatCategorySlug(slug) ? SEAT_CATEGORIES[slug] : null;
+  const resolved = resolveSeatCategorySlug(slug);
+  return resolved ? SEAT_CATEGORIES[resolved] : null;
 }
 
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

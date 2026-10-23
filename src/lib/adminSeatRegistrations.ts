@@ -5,7 +5,7 @@ export const ADMIN_SEAT_LIST_KEYS = [
   "international-employee",
   "media-partners",
   "seat-vip",
-  "partner-ib",
+  "partner",
 ] as const;
 
 export type AdminSeatListKey = (typeof ADMIN_SEAT_LIST_KEYS)[number];
@@ -64,10 +64,10 @@ export const ADMIN_SEAT_LIST_META: Record<
     collectionHint: "seat_vip",
     description: "VIP seat bookings from /book-your-seat/vip — includes who recommended them",
   },
-  "partner-ib": {
-    label: "Partner / IB (Book Your Seat)",
+  partner: {
+    label: "Partner (Book Your Seat)",
     collectionHint: "seat_partner_ib",
-    description: "Partner and IB seat bookings from /book-your-seat/partner-ib",
+    description: "Partner seat bookings from /book-your-seat/partner",
   },
 };
 

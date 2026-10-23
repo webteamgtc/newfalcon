@@ -7,7 +7,7 @@ export const CATEGORY_IMAGES: Record<SeatCategorySlug, string> = {
   "international-employee": "/images/vip-bg-dubai.webp",
   "uae-employee": "/images/home-banner.webp",
   vip: "/images/traphy-short.webp",
-  "partner-ib": "/images/traphy-short.webp",
+  partner: "/images/traphy-short.webp",
   "media-partners": "/images/Ticket/banner.webp",
 };
 

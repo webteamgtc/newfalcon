@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Params) {
 }
 
 export default function SeatCategoryPage({ params }: Params) {
+  if (params.category === "partner-ib") redirect("/book-your-seat/partner");
   const category = getSeatCategory(params.category);
   // Unknown category: send people to the category picker.
   if (!category) redirect("/book-your-seat");

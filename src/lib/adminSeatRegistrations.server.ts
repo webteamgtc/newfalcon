@@ -19,8 +19,8 @@ export function getCollectionNameForSeatList(list: AdminSeatListKey): string {
       return getSeatCollectionName("media-partners");
     case "seat-vip":
       return getSeatCollectionName("vip");
-    case "partner-ib":
-      return getSeatCollectionName("partner-ib");
+    case "partner":
+      return getSeatCollectionName("partner");
     default:
       return STAFF_REGISTRATION_COLLECTION;
   }

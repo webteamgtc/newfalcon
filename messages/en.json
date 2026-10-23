@@ -19,7 +19,7 @@
     "joinUs": "Register Now",
     "vipStatus": "VIP Status",
     "checkStatus": "Check Status",
-    "partnerIbRegistration": "Partner / IB Registration"
+    "partnerIbRegistration": "Partner Registration"
   },
   "home": {
     "hero": {
@@ -1393,15 +1393,15 @@
           "Bring a companion"
         ]
       },
-      "partnerIb": {
-        "label": "Partner / IB",
-        "title": "Your seat as a GTCFX partner or IB",
-        "intro": "For introducing brokers and partners attending the Golden Falcon Awards. Complete the same registration as our VIP guests so we can confirm your seat and travel.",
-        "card": "Partners and IBs. Passport details required.",
+      "partner": {
+        "label": "Partner",
+        "title": "Your seat as a GTCFX Partner",
+        "intro": "For Partners attending the Golden Falcon Awards. Share your details and passport so we can confirm your seat and travel.",
+        "card": "GTCFX Partners. Passport details required.",
         "highlights": [
-          "Dedicated partner seating",
+          "Dedicated Partner seating",
           "Concierge arrival",
-          "Bring a companion"
+          "Arrival coordination"
         ]
       },
       "mediaPartners": {

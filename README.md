@@ -122,7 +122,7 @@ Registration-only pages with email OTP verification:
 | `/book-your-seat/international-employee` | Yes | No | `seat_international_employee` |
 | `/book-your-seat/uae-employee` | No | No | `staff_registration` (shared with the existing staff form) |
 | `/book-your-seat/vip` | Yes | Yes | `seat_vip` |
-| `/book-your-seat/partner-ib` | Yes | Yes | `seat_partner_ib` |
+| `/book-your-seat/partner` | Yes | No | `seat_partner_ib` |
 | `/book-your-seat/media-partners` | Yes | No | `seat_media_partner` |
 
 - `/book-your-seat` is the category picker; `/book-your-seat/thank-you` is shown after submitting.
@@ -130,7 +130,7 @@ Registration-only pages with email OTP verification:
 - APIs: `POST /api/seat-booking/send-otp`, `POST /api/seat-booking/verify-otp`, `POST /api/seat-booking/[category]`.
   The submit API only accepts emails verified by OTP (signed proof token, 45 min) and checks file signatures.
 - Collection names can be overridden with `MONGODB_SEAT_INTL_EMPLOYEE_COLLECTION`, `MONGODB_SEAT_UAE_EMPLOYEE_COLLECTION`,
-  `MONGODB_SEAT_VIP_COLLECTION`, `MONGODB_SEAT_PARTNER_IB_COLLECTION`, `MONGODB_SEAT_MEDIA_PARTNER_COLLECTION`.
+  `MONGODB_SEAT_VIP_COLLECTION`, `MONGODB_SEAT_PARTNER_COLLECTION` (or legacy `MONGODB_SEAT_PARTNER_IB_COLLECTION`), `MONGODB_SEAT_MEDIA_PARTNER_COLLECTION`.
   A unique index on `email` is created automatically.
 - Passport files go to the existing S3 bucket/prefix (`AWS_S3_PASSPORT_PREFIX`).
 - Rate limits are in-memory per server process; use Redis if you run more than one instance.

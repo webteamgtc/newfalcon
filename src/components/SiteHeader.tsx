@@ -1,164 +1,31 @@
 "use client";
-import { useState } from "react";
-import { useTranslations } from "next-intl";
+
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { useChineseOnlySite } from "@/hooks/useChineseOnlySite";
 
 export default function SiteHeader() {
-  const t = useTranslations("nav");
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const chineseOnlySite = useChineseOnlySite();
-  const isGallery = pathname.includes('/gallery') || pathname.includes('/guest');
-  const links = [
-    { href: "/", label: t("welcome") },
-    { href: "/gallery", label: t("gallery") },
-    // { href: "/awards", label: t("awards") },
-    // { href: "/guest", label: t("guest") },
-    { href: "/policy", label: t("policy") },
-  ];
+  const isGallery = pathname.includes("/gallery") || pathname.includes("/guest");
 
-  const partnerIbRegistration = {
-    href: "/book-your-seat/partner-ib",
-    label: t("partnerIbRegistration"),
-  };
-
- return (
+  return (
     <header className="absolute inset-x-0 top-0 z-40">
-      <div className="container flex items-center justify-between py-5">
-        <Link href="/" className="font-display text-lg tracking-widest2 uppercase">
+      <div className="container flex items-center py-5">
+        <Link href="/" className="font-display text-lg uppercase tracking-widest2">
           <Image
-            src={isGallery ? "https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/footer-logo.webp" : "https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/logo-2024-new.webp"}
+            src={
+              isGallery
+                ? "https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/footer-logo.webp"
+                : "https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/logo-2024-new.webp"
+            }
             width={150}
             height={52}
             alt="GTCFX"
-
             priority
-
             className="h-[30px] w-auto cursor-pointer object-contain transition-all duration-300 sm:h-[34px] md:h-[38px]"
-
           />
-
         </Link>
-
-
-
-        <nav className="hidden font-poppins rounded-full py-2.5 px-4 items-center gap-8 lg:flex"
-
-          style={{
-
-            border: "0.55px solid #FFFFFF40",
-
-            backdropFilter: "blur(36.599998474121094px)"
-
-
-
-          }}
-
-        >
-
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-xs font-medium tracking-[0.12em] transition-colors hover:text-falcon-deep ${isGallery ? "!text-[#fff]" : "!text-[#07111F]"}`}
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          <Link
-            href={partnerIbRegistration.href}
-            className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold tracking-[0.08em] transition-colors ${
-              isGallery
-                ? "bg-falcon-gold text-ink hover:bg-falcon-light"
-                : "bg-falcon-deep text-white hover:bg-ink"
-            }`}
-          >
-            {partnerIbRegistration.label}
-          </Link>
-
-          {!chineseOnlySite && (
-            <>
-              <span
-                className={`mx-1 h-5 w-px shrink-0 ${isGallery ? "bg-white/30" : "bg-ink/20"}`}
-                aria-hidden
-              />
-              <LanguageSwitcher variant={isGallery ? "light" : "default"} />
-            </>
-          )}
-        </nav>
-
-
-
-        <button
-
-          className="lg:hidden"
-
-          aria-label="Toggle menu"
-
-          aria-expanded={open}
-
-          onClick={() => setOpen((v) => !v)}
-
-        >
-
-          <span className="block h-px w-6 bg-[#07111F]" />
-
-          <span className="mt-1.5 block h-px w-6 bg-[#07111F]" />
-
-          <span className="mt-1.5 block h-px w-4 bg-[#07111F]" />
-
-        </button>
-
       </div>
-
-
-
-      {open && (
-
-        <div className="mx-6 rounded-2xl border border-ink/10 bg-parchment-light/95 p-6 shadow-lg backdrop-blur lg:hidden">
-
-          <nav className="flex flex-col gap-4">
-
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="TextSmall font-medium tracking-[0.12em] !text-[#07111F]"
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            <Link
-              href={partnerIbRegistration.href}
-              onClick={() => setOpen(false)}
-              className="inline-flex w-fit items-center justify-center rounded-full bg-falcon-deep px-5 py-2.5 font-poppins text-sm font-semibold text-white"
-            >
-              {partnerIbRegistration.label}
-            </Link>
-
-            {!chineseOnlySite && (
-              <>
-                <div className="my-2 h-px bg-ink/10" aria-hidden />
-                <LanguageSwitcher />
-              </>
-            )}
-          </nav>
-
-        </div>
-
-      )}
-
     </header>
-
   );
-
 }
-
-

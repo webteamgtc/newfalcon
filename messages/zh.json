@@ -19,7 +19,7 @@
     "joinUs": "立即注册",
     "vipStatus": "VIP 状态",
     "checkStatus": "查询状态",
-    "partnerIbRegistration": "合作伙伴 / IB 注册"
+    "partnerIbRegistration": "合作伙伴注册"
   },
   "home": {
     "hero": {
@@ -1390,15 +1390,15 @@
           "可携带同行人"
         ]
       },
-      "partnerIb": {
-        "label": "合作伙伴 / IB",
-        "title": "GTCFX 合作伙伴与 IB 专属席位",
-        "intro": "适用于出席金鹰节的介绍经纪人与合作伙伴。请按 VIP 嘉宾相同流程注册，以便我们确认您的席位与行程。",
-        "card": "合作伙伴与 IB，需提供护照信息。",
+      "partner": {
+        "label": "合作伙伴",
+        "title": "GTCFX 合作伙伴专属席位",
+        "intro": "适用于出席金鹰节的合作伙伴。请提交个人信息与护照，以便我们确认您的席位与行程。",
+        "card": "GTCFX 合作伙伴，需提供护照信息。",
         "highlights": [
           "合作伙伴专属席位",
           "礼宾接待",
-          "可携带同行人"
+          "抵达协调安排"
         ]
       },
       "mediaPartners": {
