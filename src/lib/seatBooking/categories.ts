@@ -7,6 +7,7 @@ export const SEAT_CATEGORY_SLUGS = [
   "international-employee",
   "uae-employee",
   "vip",
+  "partner-ib",
   "media-partners",
 ] as const;
 
@@ -17,7 +18,7 @@ export type SeatCategory = {
   /** Stored on every document so exports stay self-describing. */
   formType: string;
   /** Key under `seatBooking.categories` in messages/*.json */
-  i18nKey: "internationalEmployee" | "uaeEmployee" | "vip" | "mediaPartners";
+  i18nKey: "internationalEmployee" | "uaeEmployee" | "vip" | "partnerIb" | "mediaPartners";
   requiresPassport: boolean;
   /** Show the "Will you join with someone?" question. */
   allowCompanion: boolean;
@@ -54,6 +55,16 @@ export const SEAT_CATEGORIES: Record<SeatCategorySlug, SeatCategory> = {
     slug: "vip",
     formType: "seat_vip",
     i18nKey: "vip",
+    requiresPassport: true,
+    allowCompanion: true,
+    hasOrganisation: false,
+    collectReferral: true,
+    defaultPhoneCountry: "AE",
+  },
+  "partner-ib": {
+    slug: "partner-ib",
+    formType: "seat_partner_ib",
+    i18nKey: "partnerIb",
     requiresPassport: true,
     allowCompanion: true,
     hasOrganisation: false,

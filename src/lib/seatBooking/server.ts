@@ -15,6 +15,8 @@ const COLLECTION_NAMES: Record<SeatCategorySlug, string> = {
     process.env.MONGODB_STAFF_COLLECTION ||
     "staff_registration",
   vip: process.env.MONGODB_SEAT_VIP_COLLECTION || "seat_vip",
+  "partner-ib":
+    process.env.MONGODB_SEAT_PARTNER_IB_COLLECTION || "seat_partner_ib",
   "media-partners": process.env.MONGODB_SEAT_MEDIA_PARTNER_COLLECTION || "seat_media_partner",
 };
 

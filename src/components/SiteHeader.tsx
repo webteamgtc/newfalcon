@@ -18,9 +18,13 @@ export default function SiteHeader() {
     { href: "/gallery", label: t("gallery") },
     // { href: "/awards", label: t("awards") },
     // { href: "/guest", label: t("guest") },
-    { href: "/check-status", label: t("checkStatus") },
     { href: "/policy", label: t("policy") },
   ];
+
+  const partnerIbRegistration = {
+    href: "/book-your-seat/partner-ib",
+    label: t("partnerIbRegistration"),
+  };
 
  return (
     <header className="absolute inset-x-0 top-0 z-40">
@@ -65,6 +69,17 @@ export default function SiteHeader() {
               {link.label}
             </Link>
           ))}
+
+          <Link
+            href={partnerIbRegistration.href}
+            className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold tracking-[0.08em] transition-colors ${
+              isGallery
+                ? "bg-falcon-gold text-ink hover:bg-falcon-light"
+                : "bg-falcon-deep text-white hover:bg-ink"
+            }`}
+          >
+            {partnerIbRegistration.label}
+          </Link>
 
           {!chineseOnlySite && (
             <>
@@ -119,6 +134,14 @@ export default function SiteHeader() {
                 {link.label}
               </Link>
             ))}
+
+            <Link
+              href={partnerIbRegistration.href}
+              onClick={() => setOpen(false)}
+              className="inline-flex w-fit items-center justify-center rounded-full bg-falcon-deep px-5 py-2.5 font-poppins text-sm font-semibold text-white"
+            >
+              {partnerIbRegistration.label}
+            </Link>
 
             {!chineseOnlySite && (
               <>

@@ -113,9 +113,10 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
   );
 
   const showLineManager = listKey === "uae-employee";
-  const showReferral = listKey === "seat-vip";
+  const showVipStyle = listKey === "seat-vip" || listKey === "partner-ib";
+  const showReferral = showVipStyle;
   const showMedia = listKey === "media-partners";
-  const showCompanion = listKey === "seat-vip";
+  const showCompanion = showVipStyle;
   const showDocuments = listKey !== "uae-employee";
 
   const headings = [
@@ -187,7 +188,7 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder={
-                listKey === "seat-vip"
+                showVipStyle
                   ? "Search name, email, phone, referrer..."
                   : "Search name, email, phone..."
               }

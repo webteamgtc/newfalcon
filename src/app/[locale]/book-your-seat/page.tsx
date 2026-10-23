@@ -40,7 +40,7 @@ export default async function BookYourSeatHub({ params }: { params: { locale: st
         <p className="mt-14 text-center font-poppins text-xs font-semibold uppercase tracking-[0.2em] text-ink/50">
           {t("hub.choose")}
         </p>
-        <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {SEAT_CATEGORY_SLUGS.map((slug) => {
             const c = SEAT_CATEGORIES[slug];
             return (
