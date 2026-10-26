@@ -15,6 +15,9 @@ import AdminUserEditForm from "@/components/admin/AdminUserEditForm";
 import {
   AdminVipNetDepositBar,
   AdminVipProgressLegend,
+  matchesVipNetDepositBand,
+  vipNetDepositPercentForFilter,
+  type VipProgressFilterBand,
 } from "@/components/admin/AdminVipProgressCell";
 import type {
   AdminRegistrationListItem,
@@ -46,6 +49,39 @@ function formatDate(value: string) {
 function formatLabel(value: string) {
   if (!value) return "—";
   return value.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+type VipStatFilter =
+  | "vipQualified"
+  | "vipActiveTrader"
+  | "adminQualified"
+  | "withIbData"
+  | "visaApproved"
+  | "visaPending"
+  | "visaRejected";
+
+function matchesVipStatFilter(
+  item: AdminRegistrationListItem,
+  filter: VipStatFilter
+): boolean {
+  switch (filter) {
+    case "vipQualified":
+      return item.vipProgress.isFullyQualified;
+    case "vipActiveTrader":
+      return item.vipProgress.hasPerformanceData && item.vipProgress.activeStageIndex === 1;
+    case "adminQualified":
+      return item.qualified === "yes";
+    case "withIbData":
+      return item.vipProgress.hasPerformanceData;
+    case "visaApproved":
+      return item.visaStatus === "approved";
+    case "visaPending":
+      return ["applied", "under_processing"].includes(item.visaStatus);
+    case "visaRejected":
+      return item.visaStatus === "rejected";
+    default:
+      return true;
+  }
 }
 
 function computeStats(registrations: AdminRegistrationListItem[]) {
@@ -120,21 +156,24 @@ function StatCard({
   subtitle,
   tone,
   icon,
+  active = false,
+  onClick,
 }: {
   label: string;
   value: number;
   subtitle?: string;
   tone: StatTone;
   icon: ReactNode;
+  active?: boolean;
+  onClick?: () => void;
 }) {
   const styles = statToneStyles[tone];
+  const interactive = Boolean(onClick);
 
-  return (
-    <div
-      className={`relative overflow-hidden rounded-2xl border p-5 shadow-[0_4px_20px_-4px_rgba(56,41,16,0.1)] ${styles.card}`}
-    >
+  const body = (
+    <>
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="text-left">
           <p className={`font-poppins text-[11px] uppercase tracking-[0.1em] ${styles.label}`}>
             {label}
           </p>
@@ -143,12 +182,33 @@ function StatCard({
             <p className={`mt-1 font-poppins text-xs ${styles.label}`}>{subtitle}</p>
           )}
         </div>
-        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${styles.icon}`}>
+        <div
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${styles.icon}`}
+        >
           {icon}
         </div>
       </div>
-    </div>
+      {interactive && (
+        <p className="mt-3 font-poppins text-[10px] uppercase tracking-[0.08em] text-ink/40">
+          {active ? "Filtering list · click to clear" : "Click to filter list"}
+        </p>
+      )}
+    </>
   );
+
+  const className = `relative w-full overflow-hidden rounded-2xl border p-5 text-left shadow-[0_4px_20px_-4px_rgba(56,41,16,0.1)] transition-all ${styles.card} ${
+    active ? "ring-2 ring-falcon-deep ring-offset-2 ring-offset-[#F7F2E8]" : ""
+  } ${interactive ? "cursor-pointer hover:shadow-md hover:ring-1 hover:ring-falcon-deep/30" : ""}`;
+
+  if (interactive) {
+    return (
+      <button type="button" onClick={onClick} className={className} aria-pressed={active}>
+        {body}
+      </button>
+    );
+  }
+
+  return <div className={className}>{body}</div>;
 }
 
 function StatusBadge({ value, type }: { value: string; type: "qualified" | "visa" | "ticket" }) {
@@ -226,6 +286,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
+  const [progressFilter, setProgressFilter] = useState<VipProgressFilterBand | null>(null);
+  const [statFilter, setStatFilter] = useState<VipStatFilter | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedRegistration, setSelectedRegistration] =
@@ -270,6 +332,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
     setSelectedId(null);
     setSelectedRegistration(null);
     setSearch("");
+    setProgressFilter(null);
+    setStatFilter(null);
     setCurrentPage(1);
     setTravelEmailFeedback(null);
   }
@@ -381,25 +445,41 @@ export default function AdminDashboard({ adminEmail }: Props) {
     }
   }
 
-  const filtered = registrations.filter((item) => {
-    const query = search.trim().toLowerCase();
-    if (!query) return true;
+  const toggleStatFilter = (filter: VipStatFilter) => {
+    setStatFilter((current) => (current === filter ? null : filter));
+  };
 
-    return (
-      item.fullName.toLowerCase().includes(query) ||
-      item.email.toLowerCase().includes(query) ||
-      item.registrationEmail.toLowerCase().includes(query) ||
-      item.phone.toLowerCase().includes(query) ||
-      item.memberId.toLowerCase().includes(query) ||
-      (item.ibId ?? "").toLowerCase().includes(query) ||
-      (item.ibClient?.client.firstName ?? "").toLowerCase().includes(query) ||
-      item.vipProgress.stageName.toLowerCase().includes(query)
-    );
-  });
+  const filtered = useMemo(() => {
+    return registrations.filter((item) => {
+      if (statFilter && !matchesVipStatFilter(item, statFilter)) return false;
+
+      if (progressFilter) {
+        const percent = vipNetDepositPercentForFilter(
+          item.vipProgress.hasPerformanceData,
+          item.vipProgress.capitalPercent
+        );
+        if (!matchesVipNetDepositBand(percent, progressFilter)) return false;
+      }
+
+      const query = search.trim().toLowerCase();
+      if (!query) return true;
+
+      return (
+        item.fullName.toLowerCase().includes(query) ||
+        item.email.toLowerCase().includes(query) ||
+        item.registrationEmail.toLowerCase().includes(query) ||
+        item.phone.toLowerCase().includes(query) ||
+        item.memberId.toLowerCase().includes(query) ||
+        (item.ibId ?? "").toLowerCase().includes(query) ||
+        (item.ibClient?.client.firstName ?? "").toLowerCase().includes(query) ||
+        item.vipProgress.stageName.toLowerCase().includes(query)
+      );
+    });
+  }, [registrations, search, progressFilter, statFilter]);
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [search]);
+  }, [search, progressFilter, statFilter]);
 
   const pagination = useMemo(
     () => paginateItems(filtered, currentPage),
@@ -461,7 +541,7 @@ export default function AdminDashboard({ adminEmail }: Props) {
             <div className="mb-8">
               <h2 className="font-display text-xl text-ink">Overview</h2>
               <p className="mt-1 font-poppins text-sm text-ink/55">
-                Live stats from VIP registrations
+                Live stats from VIP registrations · click a card to filter the table below
               </p>
 
               {loading ? (
@@ -475,6 +555,11 @@ export default function AdminDashboard({ adminEmail }: Props) {
                     value={stats.total}
                     subtitle="All VIP submissions"
                     tone="gold"
+                    active={!statFilter && !progressFilter}
+                    onClick={() => {
+                      setStatFilter(null);
+                      setProgressFilter(null);
+                    }}
                     icon={
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
@@ -486,6 +571,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
                     value={stats.vipQualified}
                     subtitle={`${stats.vipWithIbData} with IB performance data`}
                     tone="green"
+                    active={statFilter === "vipQualified"}
+                    onClick={() => toggleStatFilter("vipQualified")}
                     icon={
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -497,6 +584,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
                     value={stats.vipActiveTrader}
                     subtitle="Stage 02 · capital or activity started"
                     tone="amber"
+                    active={statFilter === "vipActiveTrader"}
+                    onClick={() => toggleStatFilter("vipActiveTrader")}
                     icon={
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
@@ -508,6 +597,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
                     value={stats.qualified}
                     subtitle="Marked eligible manually"
                     tone="slate"
+                    active={statFilter === "adminQualified"}
+                    onClick={() => toggleStatFilter("adminQualified")}
                     icon={
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -520,6 +611,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
                       value={stats.visaApproved}
                       subtitle={stats.visaPending > 0 ? `${stats.visaPending} in progress` : "All clear"}
                       tone="blue"
+                      active={statFilter === "visaApproved"}
+                      onClick={() => toggleStatFilter("visaApproved")}
                       icon={
                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75Zm-3.75 0a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75Z" />
@@ -545,6 +638,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
                         value={stats.visaPending}
                         subtitle="Applied or processing"
                         tone="blue"
+                        active={statFilter === "visaPending"}
+                        onClick={() => toggleStatFilter("visaPending")}
                         icon={
                           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -556,6 +651,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
                         value={stats.visaRejected}
                         subtitle="Requires follow-up"
                         tone="red"
+                        active={statFilter === "visaRejected"}
+                        onClick={() => toggleStatFilter("visaRejected")}
                         icon={
                           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -624,7 +721,10 @@ export default function AdminDashboard({ adminEmail }: Props) {
               {!loading && !error && (
                 <>
                   <div className="border-b border-ink/8 px-6 py-4">
-                    <AdminVipProgressLegend />
+                    <AdminVipProgressLegend
+                      activeBand={progressFilter}
+                      onBandChange={setProgressFilter}
+                    />
                   </div>
                   <div className="overflow-x-auto">
                     <table className="min-w-full">

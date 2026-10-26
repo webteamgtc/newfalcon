@@ -7,31 +7,94 @@ import {
   type VipProgressSnapshot,
 } from "@/data/vipUsers";
 
-const LEGEND_ITEMS = [
-  { label: "0%", description: "Not started", color: "#94A3B8", min: 0, max: 0 },
-  { label: "1–24%", description: "Getting started", color: "#EF4444", min: 1, max: 24 },
-  { label: "25–49%", description: "Building momentum", color: "#EAB308", min: 25, max: 49 },
-  { label: "50–99%", description: "Strong progress", color: "#F97316", min: 50, max: 99 },
-  { label: "100%", description: "Target reached", color: "#22C55E", min: 100, max: 100 },
-] as const;
+export type VipProgressFilterBand = "0" | "1-24" | "25-49" | "50-99" | "100";
 
-export function AdminVipProgressLegend() {
+const LEGEND_ITEMS: {
+  id: VipProgressFilterBand;
+  label: string;
+  description: string;
+  color: string;
+}[] = [
+  { id: "0", label: "0%", description: "Not started", color: "#94A3B8" },
+  { id: "1-24", label: "1–24%", description: "Getting started", color: "#EF4444" },
+  { id: "25-49", label: "25–49%", description: "Building momentum", color: "#EAB308" },
+  { id: "50-99", label: "50–99%", description: "Strong progress", color: "#F97316" },
+  { id: "100", label: "100%", description: "Target reached", color: "#22C55E" },
+];
+
+/** Net deposit % shown in the admin table (matches AdminVipNetDepositBar). */
+export function vipNetDepositPercentForFilter(
+  hasPerformanceData: boolean,
+  capitalPercent: number
+): number {
+  if (!hasPerformanceData) return 0;
+  return capitalPercent;
+}
+
+export function matchesVipNetDepositBand(
+  percent: number,
+  band: VipProgressFilterBand
+): boolean {
+  switch (band) {
+    case "0":
+      return percent === 0;
+    case "1-24":
+      return percent >= 1 && percent <= 24;
+    case "25-49":
+      return percent >= 25 && percent <= 49;
+    case "50-99":
+      return percent >= 50 && percent <= 99;
+    case "100":
+      return percent >= 100;
+    default:
+      return true;
+  }
+}
+
+type LegendProps = {
+  activeBand: VipProgressFilterBand | null;
+  onBandChange: (band: VipProgressFilterBand | null) => void;
+};
+
+export function AdminVipProgressLegend({ activeBand, onBandChange }: LegendProps) {
   return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-[#382910]/10 bg-[#FFFDF8] px-4 py-3">
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-[#382910]/10 bg-[#FFFDF8] px-4 py-3">
       <span className="font-poppins text-[10px] uppercase tracking-[0.1em] text-ink/45">
-        Progress key
+        Filter by net deposit
       </span>
-      {LEGEND_ITEMS.map((item) => (
-        <span key={item.label} className="inline-flex items-center gap-2 font-poppins text-xs text-ink/70">
-          <span
-            className="h-2.5 w-2.5 shrink-0 rounded-full ring-2 ring-white"
-            style={{ backgroundColor: item.color }}
-            aria-hidden
-          />
-          <span className="font-medium text-ink">{item.label}</span>
-          <span className="text-ink/45">{item.description}</span>
-        </span>
-      ))}
+      {LEGEND_ITEMS.map((item) => {
+        const active = activeBand === item.id;
+        return (
+          <button
+            key={item.id}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onBandChange(active ? null : item.id)}
+            className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-poppins text-xs transition-colors ${
+              active
+                ? "border-falcon-deep bg-falcon-deep/10 text-ink shadow-sm"
+                : "border-transparent text-ink/70 hover:border-ink/15 hover:bg-white"
+            }`}
+          >
+            <span
+              className="h-2.5 w-2.5 shrink-0 rounded-full ring-2 ring-white"
+              style={{ backgroundColor: item.color }}
+              aria-hidden
+            />
+            <span className="font-medium text-ink">{item.label}</span>
+            <span className="text-ink/45">{item.description}</span>
+          </button>
+        );
+      })}
+      {activeBand && (
+        <button
+          type="button"
+          onClick={() => onBandChange(null)}
+          className="font-poppins text-[10px] uppercase tracking-[0.08em] text-falcon-deep underline-offset-2 hover:underline"
+        >
+          Clear filter
+        </button>
+      )}
     </div>
   );
 }
