@@ -468,7 +468,6 @@ export default function AdminDashboard({ adminEmail }: Props) {
         item.fullName.toLowerCase().includes(query) ||
         item.email.toLowerCase().includes(query) ||
         item.registrationEmail.toLowerCase().includes(query) ||
-        item.phone.toLowerCase().includes(query) ||
         item.memberId.toLowerCase().includes(query) ||
         (item.ibId ?? "").toLowerCase().includes(query) ||
         (item.ibClient?.client.firstName ?? "").toLowerCase().includes(query) ||
@@ -699,7 +698,7 @@ export default function AdminDashboard({ adminEmail }: Props) {
                       type="search"
                       value={search}
                       onChange={(event) => setSearch(event.target.value)}
-                      placeholder="Search name, email, phone..."
+                      placeholder="Search name, email..."
                       className="h-11 w-full rounded-full border border-ink/15 bg-[#FFFDF8] py-2 pl-10 pr-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep md:w-72"
                     />
                   </div>

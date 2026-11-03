@@ -28,7 +28,6 @@ function seatExportColumns(listKey: AdminSeatListKey): SeatExportColumn[] {
     { label: "Reference", value: (i) => i.reference },
     { label: "Full name", value: (i) => i.displayName },
     { label: "Email", value: (i) => i.email },
-    { label: "Phone", value: (i) => i.phone },
     { label: "Country", value: (i) => i.country },
     { label: "Status", value: (i) => i.status },
     { label: "Source", value: (i) => i.source },

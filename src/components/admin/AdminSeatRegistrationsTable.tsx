@@ -93,7 +93,6 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
       return (
         item.displayName.toLowerCase().includes(query) ||
         item.email.toLowerCase().includes(query) ||
-        item.phone.toLowerCase().includes(query) ||
         item.reference.toLowerCase().includes(query) ||
         item.organisationName.toLowerCase().includes(query) ||
         item.lineManagerName.toLowerCase().includes(query) ||
@@ -121,7 +120,6 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
   const headings = [
     "Name",
     "Email",
-    "Phone",
     "Reference",
     ...(showLineManager ? (["Line manager"] as const) : []),
     ...(showReferral ? (["Who recommended you"] as const) : []),
@@ -188,8 +186,8 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
               onChange={(event) => setSearch(event.target.value)}
               placeholder={
                 showReferral
-                  ? "Search name, email, phone, referrer..."
-                  : "Search name, email, phone..."
+                  ? "Search name, email, referrer..."
+                  : "Search name, email..."
               }
               className="h-11 w-full rounded-full border border-ink/15 bg-[#FFFDF8] py-2 pl-10 pr-4 font-poppins text-sm text-ink outline-none transition-colors focus:border-falcon-deep md:w-72"
             />
@@ -258,9 +256,6 @@ export default function AdminSeatRegistrationsTable({ listKey }: Props) {
                       </div>
                     </td>
                     <td className="px-5 py-4 font-poppins text-sm text-ink/70">{item.email}</td>
-                    <td className="px-5 py-4 font-poppins text-sm text-ink/70">
-                      {item.phone || "—"}
-                    </td>
                     <td className="px-5 py-4 font-poppins text-sm text-ink/70">
                       {item.reference || "—"}
                     </td>

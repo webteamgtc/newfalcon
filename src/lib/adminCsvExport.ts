@@ -8,7 +8,6 @@ export type RegistrationExportColumnId =
   | "lastName"
   | "registrationEmail"
   | "contactEmail"
-  | "phone"
   | "memberId"
   | "userId"
   | "ibId"
@@ -48,7 +47,6 @@ export const REGISTRATION_EXPORT_COLUMNS: {
   { id: "lastName", label: "Last name (admin)", group: "core" },
   { id: "registrationEmail", label: "Registration email", group: "core" },
   { id: "contactEmail", label: "Contact email", group: "core" },
-  { id: "phone", label: "Phone", group: "core" },
   { id: "memberId", label: "Member ID", group: "core" },
   { id: "userId", label: "User ID", group: "core" },
   { id: "ibId", label: "Reference / IB ID", group: "core" },
@@ -93,7 +91,7 @@ export const REGISTRATION_EXPORT_PRESETS: {
   {
     id: "core",
     label: "Contact & registration",
-    description: "Names, emails, phone, IDs, and submit date",
+    description: "Names, emails, IDs, and submit date",
     columns: [
       "registrationId",
       "fullName",
@@ -101,7 +99,6 @@ export const REGISTRATION_EXPORT_PRESETS: {
       "lastName",
       "registrationEmail",
       "contactEmail",
-      "phone",
       "memberId",
       "userId",
       "ibId",
@@ -190,8 +187,6 @@ export function registrationExportCell(
       return item.registrationEmail;
     case "contactEmail":
       return item.email;
-    case "phone":
-      return item.phone;
     case "memberId":
       return item.memberId;
     case "userId":

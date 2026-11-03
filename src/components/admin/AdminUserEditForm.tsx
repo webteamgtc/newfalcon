@@ -267,15 +267,6 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                   />
                 </div>
                 <div>
-                  <label className={labelClass(true)}>Phone number</label>
-                  <input
-                    required
-                    value={form.phone}
-                    onChange={(e) => updateField("phone", e.target.value)}
-                    className={fieldClass()}
-                  />
-                </div>
-                <div>
                   <label className={labelClass(true)}>Country</label>
                   <input
                     required
@@ -744,14 +735,6 @@ export default function AdminUserEditForm({ registration, onClose, onSaved }: Pr
                       type="email"
                       value={guestForm.guestEmail}
                       onChange={(e) => updateGuestField("guestEmail", e.target.value)}
-                      className={fieldClass()}
-                    />
-                  </div>
-                  <div>
-                    <label className={labelClass()}>Guest phone</label>
-                    <input
-                      value={guestForm.guestPhone}
-                      onChange={(e) => updateGuestField("guestPhone", e.target.value)}
                       className={fieldClass()}
                     />
                   </div>
