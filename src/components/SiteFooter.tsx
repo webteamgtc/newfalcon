@@ -53,7 +53,10 @@ export default function SiteFooter() {
       </div>
       <footer className="relative z-10 border-t md:mt-24 mt-16 border-[#382910]/40">
       <div className="container font-poppins flex flex-col md:items-center justify-between md:gap-4 gap-2 md:py-8 py-4 text-xs font-medium uppercase tracking-[0.12em] text-[#382910] md:flex-row">
-        <p className="!font-medium text-xs !text-[#382910]">{t2("dateLocation")}</p>
+        <div className="flex flex-col gap-1">
+          <p className="!font-medium text-xs !text-[#382910]">{t2("preEventDateLocation")}</p>
+          <p className="!font-medium text-xs !text-[#382910]">{t2("dateLocation")}</p>
+        </div>
         <p className="md:text-center">{t2("brand")}</p>
         <div className="flex items-center gap-6">
           <Link href="/policy" className="hover:text-[#382910]">

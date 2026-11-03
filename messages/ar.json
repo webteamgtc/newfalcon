@@ -481,7 +481,8 @@
     ]
   },
   "footer": {
-    "dateLocation": "12 ديسمبر 2026 · فندق كونراد، دبي",
+    "preEventDateLocation": "11 December 2026 · Conrad Hotel, Dubai · Pre-Event Dinner",
+    "dateLocation": "12 December 2026 · Za'abeel Hall 3, Dubai World Trade Centre",
     "brand": "© GTCFX — وسيط تداول أصول متعددة ومرخّص",
     "policy": "الشروط والأحكام",
     "contact": "تواصل",
@@ -1198,7 +1199,7 @@
       "dateLabel": "Date",
       "date": "12 December 2026",
       "venueLabel": "Venue",
-      "venue": "Conrad Hotel, Dubai",
+      "venue": "Za'abeel Hall 3, Dubai World Trade Centre",
       "dressLabel": "Dress code",
       "dress": "Black tie"
     },

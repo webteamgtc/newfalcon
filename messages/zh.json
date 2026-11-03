@@ -5,7 +5,7 @@
     "brandFull": "GTCFX — 受监管的多资产经纪商",
     "tagline": "庆祝全球交易伙伴关系的卓越成就",
     "date": "2026年12月12日",
-    "location": "Conrad Hotel，迪拜，阿联酋"
+    "location": "Za'abeel Hall 3，迪拜世界贸易中心，阿联酋"
   },
   "nav": {
     "welcome": "首页",
@@ -31,7 +31,7 @@
       "subtitle": "「卓越，在此绽放」",
       "description": "诚邀您共度难忘之夜，致敬远见、成就，以及塑造行业未来的杰出人士。",
       "dateLabel": "2026年12月12日",
-      "locationLabel": "Conrad Hotel，迪拜",
+      "locationLabel": "Za'abeel Hall 3，迪拜世界贸易中心",
       "cta": "确认您的邀请"
     },
     "history": {
@@ -160,7 +160,7 @@
         },
         {
           "question": "活动在哪里举办？",
-          "answer": "2026 年金鹰节将于 Conrad Hotel, Sheikh Zayed Road, Dubai, UAE 举行。VIP 嘉宾可享受代客泊车及免费接送服务。"
+          "answer": "2026 年 12 月 12 日金鹰节盛典将于 Za'abeel Hall 3，迪拜世界贸易中心举行；12 月 11 日预热晚宴在 Conrad Hotel，迪拜举办。VIP 嘉宾可享受代客泊车及免费接送服务（视活动安排而定）。"
         }
       ]
     },
@@ -394,12 +394,12 @@
     "heading": "当晚流程一览。",
     "subtext": "从红毯入场到闭幕庆典——2026 年金鹰节完整行程。",
     "venueLabel": "场地",
-    "venue": "Conrad Hotel，Sheikh Zayed Road，迪拜，阿联酋",
+    "venue": "Za'abeel Hall 3，迪拜世界贸易中心，迪拜，阿联酋",
     "schedule": [
       {
         "time": "6:00 PM",
         "title": "红毯入场",
-        "description": "嘉宾抵达 Conrad Hotel，沿典礼红毯入场，享用迎宾香槟。"
+        "description": "嘉宾抵达 Za'abeel Hall 3，迪拜世界贸易中心，沿典礼红毯入场，享用迎宾香槟。"
       },
       {
         "time": "7:00 PM",
@@ -433,7 +433,7 @@
       "eyebrow": "金鹰节 · 2026年12月12日",
       "headingPlain": "全球精英",
       "headingItalic": "专属汇聚。",
-      "subtext": "来自 30 多个国家的 200 余位杰出领袖——CEO、基金经理、首席分析师及远见合作伙伴——齐聚 Dubai Conrad Hotel，共度非凡之夜。庆祝雄心、卓越，以及塑造全球金融未来的伙伴关系。",
+      "subtext": "来自 30 多个国家的 200 余位杰出领袖——CEO、基金经理、首席分析师及远见合作伙伴——齐聚 Za'abeel Hall 3，迪拜世界贸易中心，共度非凡之夜。庆祝雄心、卓越，以及塑造全球金融未来的伙伴关系。",
       "cta": "预订席位"
     },
     "featured": {
@@ -455,7 +455,7 @@
       "sectionLabel": "特邀嘉宾",
       "headingPlain": "2026 年",
       "headingItalic": "嘉宾名单。",
-      "subtext": "精心遴选的 executives、分析师、基金经理与合作伙伴，齐聚 Conrad Hotel, Dubai。",
+      "subtext": "精心遴选的 executives、分析师、基金经理与合作伙伴，齐聚 Za'abeel Hall 3，迪拜世界贸易中心。",
       "description": "汇聚 Dubai 的领袖与声音，精心构建的社群。",
       "filters": [
         {
@@ -616,7 +616,8 @@
     ]
   },
   "footer": {
-    "dateLocation": "2026年12月12日 · Conrad Hotel, Dubai",
+    "preEventDateLocation": "2026年12月11日 · Conrad Hotel，迪拜 · 预热晚宴",
+    "dateLocation": "2026年12月12日 · Za'abeel Hall 3，迪拜世界贸易中心",
     "brand": "© GTCFX — 受监管的多资产经纪商",
     "policy": "条款与条件",
     "contact": "联系我们",
@@ -1346,7 +1347,7 @@
       "dateLabel": "日期",
       "date": "2026年12月12日",
       "venueLabel": "地点",
-      "venue": "迪拜康莱德酒店",
+      "venue": "Za'abeel Hall 3，迪拜世界贸易中心",
       "dressLabel": "着装要求",
       "dress": "黑色正装"
     },

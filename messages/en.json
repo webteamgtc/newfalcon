@@ -5,7 +5,7 @@
     "brandFull": "GTCFX — Regulated Multi-Asset Broker",
     "tagline": "Celebrating Excellence in Global Trading Partnerships",
     "date": "12 December 2026",
-    "location": "Conrad Hotel, Dubai, UAE"
+    "location": "Za'abeel Hall 3, Dubai World Trade Centre, UAE"
   },
   "nav": {
     "welcome": "Home",
@@ -31,7 +31,7 @@
       "subtitle": "“Where excellence takes centre stage”",
       "description": "Join us for an unforgettable evening honouring vision, achievement, and the individuals shaping the future of our industry.",
       "dateLabel": "12 December 2026",
-      "locationLabel": "Conrad Hotel, Dubai",
+      "locationLabel": "Za'abeel Hall 3, Dubai World Trade Centre",
       "cta": "Secure Your Invitation"
     },
     "history": {
@@ -160,7 +160,7 @@
         },
         {
           "question": "Where is the event held?",
-          "answer": "The Golden Falcon Awards 2026 will take place at the Conrad Hotel, Sheikh Zayed Road, Dubai, UAE. Valet parking and complimentary transfers are available for VIP guests."
+          "answer": "The Golden Falcon Awards 2026 ceremony on 12 December will take place at Za'abeel Hall 3, Dubai World Trade Centre. The pre-event dinner on 11 December will be held at Conrad Hotel, Dubai. Valet parking and complimentary transfers are available for VIP guests where applicable."
         }
       ]
     },
@@ -394,12 +394,12 @@
     "heading": "How the evening unfolds.",
     "subtext": "From red-carpet arrivals to the closing celebration — your complete itinerary for the Golden Falcon Awards 2026.",
     "venueLabel": "Venue",
-    "venue": "Conrad Hotel, Sheikh Zayed Road, Dubai, UAE",
+    "venue": "Za'abeel Hall 3, Dubai World Trade Centre, Dubai, UAE",
     "schedule": [
       {
         "time": "6:00 PM",
         "title": "Red Carpet Arrivals",
-        "description": "Guests arrive at the Conrad Hotel and are welcomed along the ceremonial red carpet with welcome champagne."
+        "description": "Guests arrive at Za'abeel Hall 3, Dubai World Trade Centre and are welcomed along the ceremonial red carpet with welcome champagne."
       },
       {
         "time": "7:00 PM",
@@ -433,7 +433,7 @@
       "eyebrow": "Golden Falcon Awards · December 12, 2026",
       "headingPlain": "An exclusive gathering of",
       "headingItalic": "the world's finest minds.",
-      "subtext": "Over 200 distinguished leaders from 30+ countries — CEOs, fund managers, chief analysts, and visionary partners — converge at the Conrad Hotel, Dubai for one extraordinary evening. A celebration of ambition, excellence, and the partnerships shaping the future of global finance.",
+      "subtext": "Over 200 distinguished leaders from 30+ countries — CEOs, fund managers, chief analysts, and visionary partners — converge at Za'abeel Hall 3, Dubai World Trade Centre for one extraordinary evening. A celebration of ambition, excellence, and the partnerships shaping the future of global finance.",
       "cta": "Reserve Your Seat"
     },
     "featured": {
@@ -455,7 +455,7 @@
       "sectionLabel": "Featured guest",
       "headingPlain": "The 2026",
       "headingItalic": "guest list.",
-      "subtext": "A curated assembly of executives, analysts, fund managers, and partners joining us at the Conrad Hotel, Dubai.",
+      "subtext": "A curated assembly of executives, analysts, fund managers, and partners joining us at Za'abeel Hall 3, Dubai World Trade Centre.",
       "description": "A curated community of leaders and voices joining us in Dubai.",
       "filters": [
         {
@@ -616,7 +616,8 @@
     ]
   },
   "footer": {
-    "dateLocation": "12 December 2026 · Conrad Hotel, Dubai",
+    "preEventDateLocation": "11 December 2026 · Conrad Hotel, Dubai · Pre-Event Dinner",
+    "dateLocation": "12 December 2026 · Za'abeel Hall 3, Dubai World Trade Centre",
     "brand": "© GTCFX — Regulated Multi-Asset Broker",
     "policy": "Terms & Conditions",
     "contact": "Contact",
@@ -1349,7 +1350,7 @@
       "dateLabel": "Date",
       "date": "12 December 2026",
       "venueLabel": "Venue",
-      "venue": "Conrad Hotel, Dubai",
+      "venue": "Za'abeel Hall 3, Dubai World Trade Centre",
       "dressLabel": "Dress code",
       "dress": "Black tie"
     },
