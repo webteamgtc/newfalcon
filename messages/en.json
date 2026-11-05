@@ -57,6 +57,24 @@
         }
       ]
     },
+    "venue": {
+      "eyebrow": "The Venue",
+      "headingLine1": "Awards ceremony venue",
+      "headingLine2": "Dubai World Trade Centre",
+      "subtext": "The Golden Falcon Awards 2026 ceremony will be held at Za'abeel Hall 3, Dubai World Trade Centre — a landmark setting for an evening of recognition and celebration.",
+      "dateLabel": "Date",
+      "dateValue": "12 Dec 2026",
+      "hallLabel": "Hall",
+      "hallValue": "Za'abeel Hall 3",
+      "cityLabel": "City",
+      "cityValue": "Dubai",
+      "footnote": "Ceremony venue: Dubai World Trade Centre · Za'abeel Hall 3",
+      "cardEyebrow": "Awards venue",
+      "cardTitle": "Dubai World Trade Centre",
+      "cardHall": "Za'abeel Hall 3",
+      "cardDate": "12.12.2026",
+      "imageAlt": "Dubai World Trade Centre exterior"
+    },
     "guests": {
       "eyebrow": "Distinguished Guests",
       "headingPlain": "An exclusive evening of networking with",

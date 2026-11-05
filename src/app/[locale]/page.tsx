@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import AwardsVenueSection from "@/components/home/AwardsVenueSection";
 import HistorySection from "@/components/home/HistorySection";
 import TicketCtaSection from "@/components/home/TicketCtaSection";
 import MediaPartnersSection from "@/components/home/MediaPartnersSection";
@@ -15,6 +16,7 @@ export default function HomePage() {
     <>
       <Hero />
       <HistorySection />
+      <AwardsVenueSection />
       <DubaiTravelHeroSection />
       <DubaiRouteMapSection />
       <DubaiAttractionsSection />

@@ -57,6 +57,24 @@
         }
       ]
     },
+    "venue": {
+      "eyebrow": "المكان",
+      "headingLine1": "موقع حفل الجوائز",
+      "headingLine2": "Dubai World Trade Centre",
+      "subtext": "يُقام حفل جوائز الصقر الذهبي 2026 في قاعة Za'abeel Hall 3 بمركز دبي التجاري العالمي — وجهة بارزة لأمسية تكريم وإحتفال.",
+      "dateLabel": "التاريخ",
+      "dateValue": "12 ديسمبر 2026",
+      "hallLabel": "القاعة",
+      "hallValue": "Za'abeel Hall 3",
+      "cityLabel": "المدينة",
+      "cityValue": "دبي",
+      "footnote": "موقع الحفل: Dubai World Trade Centre · Za'abeel Hall 3",
+      "cardEyebrow": "موقع الجوائز",
+      "cardTitle": "Dubai World Trade Centre",
+      "cardHall": "Za'abeel Hall 3",
+      "cardDate": "12.12.2026",
+      "imageAlt": "مركز دبي التجاري العالمي"
+    },
     "guests": {
       "eyebrow": "ضيوف مميّزون",
       "headingPlain": "أمسيةٌ حصرية للتواصل مع",

@@ -57,6 +57,24 @@
         }
       ]
     },
+    "venue": {
+      "eyebrow": "THE VENUE / 典礼举办地",
+      "headingLine1": "典礼举办地 迪拜世界贸易中心",
+      "headingLine2": "Dubai World Trade Centre",
+      "subtext": "2026金鹰奖颁奖典礼将于迪拜世界贸易中心 Za'abeel Hall 3 举行，共同见证属于卓越者的荣耀时刻。",
+      "dateLabel": "DATE",
+      "dateValue": "12 DEC 2026",
+      "hallLabel": "HALL",
+      "hallValue": "ZA'ABEEL HALL 3",
+      "cityLabel": "CITY",
+      "cityValue": "DUBAI",
+      "footnote": "典礼场地为 Dubai World Trade Centre · Za'abeel Hall 3",
+      "cardEyebrow": "AWARDS VENUE",
+      "cardTitle": "Dubai World Trade Centre",
+      "cardHall": "Za'abeel Hall 3",
+      "cardDate": "12.12.2026",
+      "imageAlt": "迪拜世界贸易中心"
+    },
     "guests": {
       "eyebrow": "尊贵嘉宾",
       "headingPlain": "与行业领袖共度的",

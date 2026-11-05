@@ -299,6 +299,8 @@ export default function AdminDashboard({ adminEmail }: Props) {
     message: string;
     success: boolean;
   } | null>(null);
+  const [exportingAllContacts, setExportingAllContacts] = useState(false);
+  const [exportAllContactsError, setExportAllContactsError] = useState("");
 
   const loadRegistrations = useCallback(async () => {
     setLoading(true);
@@ -390,6 +392,42 @@ export default function AdminDashboard({ adminEmail }: Props) {
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });
     router.replace("/admin");
+  }
+
+  async function handleExportAllContacts() {
+    setExportingAllContacts(true);
+    setExportAllContactsError("");
+
+    try {
+      const response = await fetch("/api/admin/registrations/all-contacts");
+      if (!response.ok) {
+        let message = "Failed to export registrations";
+        try {
+          const data = await response.json();
+          if (data.message) message = data.message;
+        } catch {
+          /* CSV error body */
+        }
+        setExportAllContactsError(message);
+        return;
+      }
+
+      const blob = await response.blob();
+      const disposition = response.headers.get("Content-Disposition") ?? "";
+      const match = disposition.match(/filename="([^"]+)"/);
+      const filename = match?.[1] ?? "gfn-all-registrations-contacts.csv";
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      setExportAllContactsError("Failed to export registrations. Please try again.");
+    } finally {
+      setExportingAllContacts(false);
+    }
   }
 
   async function handleSendTravelConfirmationEmail(item: AdminRegistrationListItem) {
@@ -502,17 +540,32 @@ export default function AdminDashboard({ adminEmail }: Props) {
               <p className="mt-0.5 font-poppins text-xs text-ink/50">{adminEmail}</p>
             </div>
           </div>
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="rounded-full border border-ink/15 bg-white px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] text-ink/70 shadow-sm transition-colors hover:border-ink/25 hover:bg-ink/5"
-          >
-            Log out
-          </button>
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <button
+              type="button"
+              onClick={handleExportAllContacts}
+              disabled={exportingAllContacts}
+              className="rounded-full border border-falcon-deep/25 bg-falcon-deep px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] text-white shadow-sm transition-colors hover:bg-[#2a1d12] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {exportingAllContacts ? "Exporting…" : "Export all contacts CSV"}
+            </button>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="rounded-full border border-ink/15 bg-white px-4 py-2 font-poppins text-xs uppercase tracking-[0.08em] text-ink/70 shadow-sm transition-colors hover:border-ink/25 hover:bg-ink/5"
+            >
+              Log out
+            </button>
+          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-8 md:px-6">
+        {exportAllContactsError ? (
+          <p className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 font-poppins text-sm text-red-800">
+            {exportAllContactsError}
+          </p>
+        ) : null}
         <div className="mb-8 flex flex-wrap gap-2">
           {DASHBOARD_TABS.map((tab) => (
             <button
