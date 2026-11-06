@@ -14,8 +14,8 @@ export default function GuestHero() {
       headingItalic={t("headingItalic")}
       subtext={t("subtext")}
       primaryCta={{
-        label: REGISTRATION_OPEN ? t("cta") : tClosed("ctaUserStatus"),
-        href: REGISTRATION_OPEN ? "/check-status" : "/user-status",
+        label: REGISTRATION_OPEN ? t("cta") : tClosed("ctaHome"),
+        href: REGISTRATION_OPEN ? "/check-status" : "/",
       }}
     />
   );

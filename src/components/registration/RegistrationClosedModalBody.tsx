@@ -56,20 +56,13 @@ export default function RegistrationClosedModalBody({ onClose }: Props) {
         {t("lineManager")}
       </p>
 
-      <p className="mx-auto mt-4 max-w-md font-poppins text-xs leading-relaxed text-[#382910]/60 md:text-sm">
-        {t("bodyRegistered")}
-      </p>
-
-      <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-        <Button href="/user-status" variant="gold" className="w-full sm:w-auto sm:min-w-[200px]">
-          {t("ctaUserStatus")}
-        </Button>
+      <div className="mt-8 flex justify-center">
         {onClose ? (
-          <Button type="button" variant="light" className="w-full sm:w-auto" onClick={onClose}>
+          <Button type="button" variant="gold" className="w-full sm:w-auto sm:min-w-[200px]" onClick={onClose}>
             {t("closeModal")}
           </Button>
         ) : (
-          <Button href="/" variant="light" className="w-full sm:w-auto">
+          <Button href="/" variant="gold" className="w-full sm:w-auto sm:min-w-[200px]">
             {t("ctaHome")}
           </Button>
         )}

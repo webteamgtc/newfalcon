@@ -22,10 +22,20 @@ function renderFaqAnswer(answer: string, locale: AppLocale) {
 
   const [before, after] = answer.split(linkPhrase);
 
+  if (!REGISTRATION_OPEN) {
+    return (
+      <>
+        {before}
+        {linkPhrase}
+        {after}
+      </>
+    );
+  }
+
   return (
     <>
       {before}
-      <Link href={REGISTRATION_OPEN ? "/check-status" : "/user-status"} className={linkClassName}>
+      <Link href="/check-status" className={linkClassName}>
         {linkPhrase}
       </Link>
       {after}

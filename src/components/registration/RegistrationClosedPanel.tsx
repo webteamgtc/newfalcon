@@ -36,18 +36,8 @@ export default function RegistrationClosedPanel({ variant = "card" }: Props) {
       <p className="mt-4 rounded-xl border border-[#382910]/12 bg-white/50 px-4 py-3 font-display text-base italic leading-snug text-falcon-deep md:text-lg">
         {t("lineManager")}
       </p>
-      <p className="mt-3 font-poppins text-sm leading-relaxed text-[#382910]/65 md:text-[15px]">
-        {t("bodyRegistered")}
-      </p>
-      <div
-        className={`mt-8 flex flex-col gap-3 sm:flex-row ${
-          isPage ? "justify-center" : "sm:justify-start"
-        }`}
-      >
-        <Button href="/user-status" variant="gold" className="w-full sm:w-auto">
-          {t("ctaUserStatus")}
-        </Button>
-        <Button href="/" variant="light" className="w-full sm:w-auto">
+      <div className={`mt-8 ${isPage ? "flex justify-center" : ""}`}>
+        <Button href="/" variant="gold" className="w-full sm:w-auto">
           {t("ctaHome")}
         </Button>
       </div>
