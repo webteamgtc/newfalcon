@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Button from "@/components/Button";
+import RegistrationClosedNotice from "@/components/registration/RegistrationClosedNotice";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 export default function FooterCtaSection() {
   const t = useTranslations("home.footerCta");
@@ -29,9 +31,13 @@ export default function FooterCtaSection() {
           {t("headingPlain")} <span className="italic text-falcon-deep">{t("headingItalic")}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-sm text-ink/65">{t("subtext")}</p>
-        <Button href="/check-status" className="mt-8">
-          {t("cta")}
-        </Button>
+        {REGISTRATION_OPEN ? (
+          <Button href="/check-status" className="mt-8">
+            {t("cta")}
+          </Button>
+        ) : (
+          <RegistrationClosedNotice className="mx-auto mt-8 max-w-md" />
+        )}
       </div>
     </section>
   );

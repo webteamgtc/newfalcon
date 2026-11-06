@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, type AppLocale } from "@/i18n/routing";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 const FAQ_CHECK_STATUS_LINK_PHRASES: Record<AppLocale, string> = {
   en: "registration page",
@@ -24,7 +25,7 @@ function renderFaqAnswer(answer: string, locale: AppLocale) {
   return (
     <>
       {before}
-      <Link href="/check-status" className={linkClassName}>
+      <Link href={REGISTRATION_OPEN ? "/check-status" : "/user-status"} className={linkClassName}>
         {linkPhrase}
       </Link>
       {after}

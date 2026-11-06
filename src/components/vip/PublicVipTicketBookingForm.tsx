@@ -8,6 +8,7 @@ import OtpBoxes from "@/components/ui/OtpBoxes";
 import { sendConfirmationEmail } from "@/lib/sendConfirmationEmail";
 import { OTP_TTL_MS } from "@/lib/otpConstants";
 import PublicRegistrationSuccess from "@/components/vip/PublicRegistrationSuccess";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 import type { IbClientData, IbPerformanceData, VipUser } from "@/data/vipUsers";
 import { Link, useRouter } from "@/i18n/routing";
 
@@ -432,6 +433,10 @@ export default function PublicVipTicketBookingForm({
     }
     router.push("/");
   };
+
+  if (!REGISTRATION_OPEN) {
+    return null;
+  }
 
   if (submitSuccess) {
     return (

@@ -7,6 +7,18 @@
     "date": "12 December 2026",
     "location": "Za'abeel Hall 3, Dubai World Trade Centre, UAE"
   },
+  "registrationClosed": {
+    "eyebrow": "Golden Falcon Night 2026",
+    "title": "Registration is closed",
+    "body": "We are no longer accepting new registrations for Golden Falcon Awards Night 2026.",
+    "lineManager": "Please contact your line manager for next steps.",
+    "bodyRegistered": "If you have already registered, you can view your status online.",
+    "inline": "Registration is closed. Please contact your line manager.",
+    "ctaUserStatus": "Check your status",
+    "ctaHome": "Back to home",
+    "closeModal": "Close",
+    "ctaClosed": "Registration closed"
+  },
   "nav": {
     "welcome": "Home",
     "gallery": "Gallery",

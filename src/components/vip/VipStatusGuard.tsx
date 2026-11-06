@@ -3,6 +3,7 @@
 import { useEffect, type ReactNode } from "react";
 import { useRouter } from "@/i18n/routing";
 import { useVipUser } from "@/context/VipUserProvider";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 export default function VipStatusGuard({ children }: { children: ReactNode }) {
   const { user, isReady } = useVipUser();
@@ -10,7 +11,7 @@ export default function VipStatusGuard({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (isReady && !user) {
-      router.replace("/check-status");
+      router.replace(REGISTRATION_OPEN ? "/check-status" : "/user-status");
     }
   }, [isReady, user, router]);
 

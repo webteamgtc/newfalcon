@@ -30,10 +30,12 @@ import Button from "@/components/Button";
 import SectionBackgroundImage from "@/components/ui/SectionBackgroundImage";
 import { SECTION_BG_IMAGE_POSITION } from "@/lib/sectionLayout";
 import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 import { useState } from "react";
 export default function SiteFooter() {
   const t = useTranslations("home.footerCta");
   const t2 = useTranslations("footer");
+  const tClosed = useTranslations("registrationClosed");
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   return (
     <>
@@ -48,7 +50,7 @@ export default function SiteFooter() {
         </h2>
         <p className=" mt-6 max-w-lg text-sm md:text-xl !leading-snug !font-poppins !text-ink">{t("subtext")}</p>
         <Button onClick={() => setBookingModalOpen(true)} className="mt-10">
-          {t("cta")}
+          {REGISTRATION_OPEN ? t("cta") : tClosed("ctaClosed")}
         </Button>
       </div>
       <footer className="relative z-10 border-t md:mt-24 mt-16 border-[#382910]/40">
@@ -70,9 +72,9 @@ export default function SiteFooter() {
     </footer>
     </section>
     <PublicVipTicketBookingModal
-        open={bookingModalOpen}
-        onClose={() => setBookingModalOpen(false)}
-      />
+      open={bookingModalOpen}
+      onClose={() => setBookingModalOpen(false)}
+    />
     </>
   );
 }

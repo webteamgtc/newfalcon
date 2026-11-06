@@ -20,6 +20,7 @@ import {
   verifyEmailProofToken,
 } from "@/lib/seatBooking/server";
 import { normalizeEmailLocale, sendSeatReceivedEmail } from "@/lib/seatBooking/emails";
+import { requireRegistrationOpen } from "@/lib/registrationGate.server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -83,6 +84,9 @@ export async function POST(
   request: Request,
   { params }: { params: { category: string } }
 ) {
+  const closed = requireRegistrationOpen();
+  if (closed) return closed;
+
   const category = getSeatCategory(params.category);
   if (!category) {
     return NextResponse.json({ success: false, code: "UNKNOWN_CATEGORY" }, { status: 404 });

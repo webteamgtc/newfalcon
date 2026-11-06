@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
+import RegistrationClosedPanel from "@/components/registration/RegistrationClosedPanel";
 import { SEAT_CATEGORIES, SEAT_CATEGORY_SLUGS } from "@/lib/seatBooking/categories";
 import { CATEGORY_IMAGES, EventFacts, GoldRule } from "@/components/seat-booking/SeatBookingShell";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const t = await getTranslations({ locale: params.locale, namespace: "seatBooking" });
@@ -12,6 +14,16 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 export default async function BookYourSeatHub({ params }: { params: { locale: string } }) {
   unstable_setRequestLocale(params.locale);
   const t = await getTranslations({ locale: params.locale, namespace: "seatBooking" });
+
+  if (!REGISTRATION_OPEN) {
+    return (
+      <section className="relative isolate min-h-[70vh] overflow-hidden bg-parchment">
+        <div className="container pb-24 pt-32 md:pt-40">
+          <RegistrationClosedPanel variant="page" />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="relative isolate overflow-hidden bg-parchment">

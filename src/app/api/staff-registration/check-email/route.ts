@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { requireRegistrationOpen } from "@/lib/registrationGate.server";
 import {
   getRegistrationDb,
   STAFF_REGISTRATION_COLLECTION,
@@ -9,6 +10,9 @@ export const runtime = "nodejs";
 const STAFF_EMAIL_DOMAIN = "@gtcfx.com";
 
 export async function GET(request: Request) {
+  const closed = requireRegistrationOpen();
+  if (closed) return closed;
+
   try {
     const email = new URL(request.url).searchParams.get("email")?.trim().toLowerCase();
 

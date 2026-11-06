@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Button from "@/components/Button";
 import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 export default function TicketCtaSection() {
   const t = useTranslations("home.ticketCta");
+  const tClosed = useTranslations("registrationClosed");
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
   return (
@@ -40,7 +42,7 @@ export default function TicketCtaSection() {
               className="mt-9"
               onClick={() => setBookingModalOpen(true)}
             >
-              {t("cta")}
+              {REGISTRATION_OPEN ? t("cta") : tClosed("ctaClosed")}
             </Button>
           </div>
         </div>

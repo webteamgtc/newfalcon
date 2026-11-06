@@ -6,6 +6,7 @@ import { useVipUser } from "@/context/VipUserProvider";
 import { formatActivity, formatCurrency, isVipQualified, VIP_QUALIFICATION_TARGETS } from "@/data/vipUsers";
 import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
 import { hasPublicTicketBooking } from "@/components/vip/PublicVipTicketBookingForm";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 function getProgressColors(percent: number) {
   if (percent >= 100) {
@@ -248,7 +249,7 @@ export default function VipProgressSection() {
             </div>
           </div>
         )}
-        {isFullyQualified && (
+        {isFullyQualified && REGISTRATION_OPEN && (
           <div className="mt-6 flex justify-center">
             <button
               type="button"
@@ -261,11 +262,13 @@ export default function VipProgressSection() {
           </div>
         )}
 
-        <PublicVipTicketBookingModal
-          open={bookingModalOpen}
-          onClose={() => setBookingModalOpen(false)}
-          user={user}
-        />
+        {REGISTRATION_OPEN ? (
+          <PublicVipTicketBookingModal
+            open={bookingModalOpen}
+            onClose={() => setBookingModalOpen(false)}
+            user={user}
+          />
+        ) : null}
       </div>
     </section>
   );

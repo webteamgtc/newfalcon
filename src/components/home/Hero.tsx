@@ -5,9 +5,11 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Button from "@/components/Button";
 import PublicVipTicketBookingModal from "@/components/vip/PublicVipTicketBookingModal";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 export default function Hero() {
   const t = useTranslations("home.hero");
+  const tClosed = useTranslations("registrationClosed");
   const locale = useLocale();
   const isZh = locale === "zh";
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
@@ -103,7 +105,7 @@ export default function Hero() {
           </p>
 
           <Button type="button" onClick={() => setBookingModalOpen(true)} className="mt-10">
-            {t("cta")}
+            {REGISTRATION_OPEN ? t("cta") : tClosed("ctaClosed")}
           </Button>
         </div>
 

@@ -3,10 +3,14 @@ import { createVerificationToken, generateRandomOtp } from "@/lib/otpStore";
 import { EMAIL_PATTERN } from "@/lib/seatBooking/categories";
 import { getClientIp, rateLimit } from "@/lib/seatBooking/server";
 import { normalizeEmailLocale, sendSeatOtpEmail } from "@/lib/seatBooking/emails";
+import { requireRegistrationOpen } from "@/lib/registrationGate.server";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
+  const closed = requireRegistrationOpen();
+  if (closed) return closed;
+
   try {
     const body = await request.json().catch(() => ({}));
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";

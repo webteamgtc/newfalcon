@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
 import PageHero from "@/components/PageHero";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 export default function GuestHero() {
   const t = useTranslations("guestPage.hero");
+  const tClosed = useTranslations("registrationClosed");
 
   return (
     <PageHero
@@ -11,7 +13,10 @@ export default function GuestHero() {
       headingPlain={t("headingPlain")}
       headingItalic={t("headingItalic")}
       subtext={t("subtext")}
-      primaryCta={{ label: t("cta"), href: "/check-status" }}
+      primaryCta={{
+        label: REGISTRATION_OPEN ? t("cta") : tClosed("ctaUserStatus"),
+        href: REGISTRATION_OPEN ? "/check-status" : "/user-status",
+      }}
     />
   );
 }

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { requireRegistrationOpen } from "@/lib/registrationGate.server";
 import {
   getRegistrationDb,
   STAFF_REGISTRATION_COLLECTION,
@@ -22,6 +23,9 @@ function isDuplicateEmailError(error: unknown) {
 }
 
 export async function POST(request: Request) {
+  const closed = requireRegistrationOpen();
+  if (closed) return closed;
+
   try {
     const body = await request.json();
     const firstName =

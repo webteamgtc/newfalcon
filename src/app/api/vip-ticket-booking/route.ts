@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getRegistrationDb, REGISTRATION_COLLECTION } from "@/lib/mongodb";
+import { requireRegistrationOpen } from "@/lib/registrationGate.server";
 import { uploadPassportFile } from "@/lib/s3";
 
 export const runtime = "nodejs";
@@ -63,6 +64,9 @@ function parseIbClientField(raw: FormDataEntryValue | null): Record<string, unkn
 }
 
 export async function POST(request: Request) {
+  const closed = requireRegistrationOpen();
+  if (closed) return closed;
+
   try {
     const formData = await request.formData();
 

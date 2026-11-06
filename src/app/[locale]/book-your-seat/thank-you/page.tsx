@@ -2,7 +2,9 @@ import Image from "next/image";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { getSeatCategory } from "@/lib/seatBooking/categories";
+import RegistrationClosedPanel from "@/components/registration/RegistrationClosedPanel";
 import { GoldRule } from "@/components/seat-booking/SeatBookingShell";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 type Props = {
   params: { locale: string };
@@ -16,6 +18,17 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function SeatThankYouPage({ params, searchParams }: Props) {
   unstable_setRequestLocale(params.locale);
+
+  if (!REGISTRATION_OPEN) {
+    return (
+      <section className="relative isolate min-h-[70vh] overflow-hidden bg-parchment">
+        <div className="container pb-24 pt-32 md:pt-40">
+          <RegistrationClosedPanel variant="page" />
+        </div>
+      </section>
+    );
+  }
+
   const t = await getTranslations({ locale: params.locale, namespace: "seatBooking" });
   const reference = /^GFA-[A-Z0-9]{6}$/.test(searchParams.ref ?? "") ? searchParams.ref : null;
   const category = getSeatCategory(searchParams.type ?? "");

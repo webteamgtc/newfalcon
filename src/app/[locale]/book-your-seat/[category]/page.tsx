@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { getSeatCategory } from "@/lib/seatBooking/categories";
+import RegistrationClosedPanel from "@/components/registration/RegistrationClosedPanel";
 import SeatBookingShell from "@/components/seat-booking/SeatBookingShell";
+import { getSeatCategory } from "@/lib/seatBooking/categories";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 export const dynamic = "force-dynamic";
 
@@ -23,5 +25,16 @@ export default function SeatCategoryPage({ params }: Params) {
   // Unknown category: send people to the category picker.
   if (!category) redirect("/book-your-seat");
   unstable_setRequestLocale(params.locale);
+
+  if (!REGISTRATION_OPEN) {
+    return (
+      <section className="min-h-[70vh] bg-parchment">
+        <div className="container pb-24 pt-32 md:pt-40">
+          <RegistrationClosedPanel variant="page" />
+        </div>
+      </section>
+    );
+  }
+
   return <SeatBookingShell category={category} locale={params.locale} />;
 }

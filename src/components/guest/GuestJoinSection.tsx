@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Button from "@/components/Button";
+import RegistrationClosedNotice from "@/components/registration/RegistrationClosedNotice";
+import { REGISTRATION_OPEN } from "@/lib/registrationGate";
 
 export default function GuestJoinSection() {
   const t = useTranslations("guestPage.join");
@@ -27,9 +29,13 @@ export default function GuestJoinSection() {
             <span className="italic text-falcon-deep">{t("headingItalic")}</span>
           </h2>
           <div className="hidden md:block">
-            <Button href="/check-status" className="mt-8">
-              {t("cta")}
-            </Button>
+            {REGISTRATION_OPEN ? (
+              <Button href="/check-status" className="mt-8">
+                {t("cta")}
+              </Button>
+            ) : (
+              <RegistrationClosedNotice className="mt-8" />
+            )}
           </div>
         </div>
       </div>
